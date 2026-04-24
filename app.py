@@ -125,13 +125,19 @@ if st.button("📥 선택 항목으로 PDF 보고서 만들기", use_container_w
                     pdf.ln(2)
 
             # PDF 출력
-            pdf_bytes = pdf.output(dest='S').encode('latin-1', 'replace')
+            pdf_bytes = pdf.output(dest='S')
             st.download_button(
                 label="💾 생성된 PDF 파일 다운로드",
-                data=pdf_bytes,
-                file_name=f"NMC_Monitoring_Report_{datetime.now().strftime('%m%d')}.pdf",
+                data=bytes(pdf_bytes), # 데이터를 안전하게 변환
+                file_name=f"NMC_Report_{datetime.now().strftime('%m%d')}.pdf",
                 mime="application/pdf"
             )
+st.download_button(
+    label="💾 생성된 PDF 파일 다운로드",
+    data=bytes(pdf_bytes), # 데이터를 안전하게 변환
+    file_name=f"NMC_Report_{datetime.now().strftime('%m%d')}.pdf",
+    mime="application/pdf"
+)
             st.success("보고서 작성이 완료되었습니다! 위 버튼을 눌러 저장하세요.")
             
         except Exception as e:
