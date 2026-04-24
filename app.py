@@ -4,8 +4,8 @@ import glob
 import os
 from datetime import datetime
 
-# 페이지 설정
-st.set_page_config(page_title="NMC 응급의료 모니터링", layout="wide")
+# 1. 페이지 설정
+st.set_page_config(page_title="NMC 응급의료 모니터링 시스템", layout="wide")
 
 def get_latest_file(pattern):
     files = glob.glob(pattern)
@@ -16,44 +16,49 @@ df_a = pd.read_json(get_latest_file('assembly_results_*.json')) if get_latest_fi
 df_s = pd.read_json(get_latest_file('schedule_results_*.json')) if get_latest_file('schedule_results_*.json') else pd.DataFrame()
 df_n = pd.read_json(get_latest_file('news_results_*.json')) if get_latest_file('news_results_*.json') else pd.DataFrame()
 
-# 샘플 보고서의 디자인 요소를 CSS로 100% 구현
+# 2. NMC 공식 양식 CSS (색상, 태그, 헤더 디테일 완벽 반영)
 STYLE = """
 <style>
-    .report-wrap { font-family: 'Malgun Gothic', sans-serif; background-color: #F4F7FA; padding: 30px; }
-    .header { background: linear-gradient(135deg, #1B3A6B 0%, #2A5298 100%); color: white; padding: 40px 30px; border-radius: 10px; position: relative; }
+    @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap');
+    .report-wrap { font-family: 'Noto Sans KR', sans-serif; background-color: #F8F9FB; padding: 40px; }
     
-    /* 요약 카드 레이아웃 */
-    .card-box { display: flex; gap: 15px; margin: 25px 0; }
-    .card { flex: 1; background: white; padding: 20px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); text-align: center; }
-    .card-val { font-size: 28px; font-weight: bold; color: #1B3A6B; margin-bottom: 5px; }
+    /* 상단 헤더 */
+    .header { background: linear-gradient(135deg, #1B3A6B 0%, #2A5298 100%); color: white; padding: 40px 30px; border-radius: 12px; margin-bottom: 30px; }
+    .header-top { font-size: 13px; opacity: 0.8; letter-spacing: 1px; margin-bottom: 8px; }
+    .header-title { font-size: 30px; font-weight: 700; margin: 0; }
+    .header-date { margin-top: 15px; font-size: 15px; opacity: 0.9; }
+
+    /* 요약 카드 */
+    .card-box { display: flex; gap: 15px; margin-bottom: 40px; }
+    .card { flex: 1; background: white; padding: 20px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); text-align: center; border-top: 5px solid #1B3A6B; }
+    .card-val { font-size: 32px; font-weight: 700; color: #1B3A6B; margin-bottom: 5px; }
     .card-lbl { font-size: 13px; color: #666; font-weight: 600; }
 
-    /* 섹션 타이틀 */
-    .sec-title { background: #1B3A6B; color: white; padding: 12px 20px; border-radius: 6px; font-weight: bold; font-size: 18px; margin-top: 40px; display: flex; justify-content: space-between; align-items: center; }
-    
-    /* 개별 카드형 항목 (왼쪽 포인트 컬러) */
-    .item-card { background: white; padding: 25px; margin: 15px 0; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.04); position: relative; }
-    .item-a { border-left: 8px solid #E63946; } /* 의안: 빨간색 */
-    .item-s { border-left: 8px solid #FFB703; } /* 일정: 노란색 */
-    .item-n { border-left: 8px solid #8E9AAF; } /* 뉴스: 회색 */
+    /* 섹션 제목 (이미지 속 디테일 반영) */
+    .sec-header { display: flex; justify-content: space-between; align-items: flex-end; border-bottom: 2px solid #1B3A6B; padding-bottom: 10px; margin-top: 45px; margin-bottom: 20px; }
+    .sec-title-text { font-size: 22px; font-weight: 800; color: #1B3A6B; border-left: 6px solid #1B3A6B; padding-left: 15px; line-height: 1; }
+    .time-stamp { font-size: 12px; color: #A0AEC0; margin-left: 12px; font-weight: normal; }
+    .sec-meta { font-size: 14px; color: #888; font-weight: 600; }
 
-    /* 키워드 및 배지 스타일 */
-    .keyword-tag { font-size: 11px; font-weight: bold; color: #1B3A6B; margin-bottom: 8px; display: block; }
-    .badge { padding: 3px 10px; border-radius: 4px; font-size: 11px; font-weight: bold; color: white; margin-right: 8px; vertical-align: middle; }
+    /* 아이템 카드 및 포인트 바 */
+    .item-card { background: white; padding: 30px; margin: 20px 0; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.03); position: relative; overflow: hidden; }
+    .point-bar { position: absolute; left: 0; top: 0; bottom: 0; width: 8px; }
     
-    /* 상세 정보 텍스트 */
-    .bill-meta { background: #F8F9FA; padding: 12px; border-radius: 6px; font-size: 13px; color: #555; margin: 12px 0; }
-    .summary-text { font-size: 14.5px; line-height: 1.7; color: #333; text-align: justify; margin-top: 15px; }
+    /* 둥근 알약 키워드 태그 */
+    .keyword-tag { display: inline-block; background-color: #E9EFF6; color: #1B3A6B; padding: 4px 14px; border-radius: 20px; font-size: 12px; font-weight: 700; margin-right: 8px; margin-bottom: 12px; }
     
-    /* 링크 버튼 */
-    .btn-link { display: inline-block; margin-top: 15px; font-size: 13px; font-weight: bold; color: #1B3A6B; text-decoration: none; border: 1.5px solid #1B3A6B; padding: 5px 12px; border-radius: 5px; transition: 0.3s; }
-    .btn-link:hover { background: #1B3A6B; color: white; }
+    /* 배지 및 텍스트 */
+    .badge { padding: 4px 12px; border-radius: 4px; font-size: 12px; font-weight: 700; color: white; vertical-align: middle; margin-right: 8px; }
+    .item-title { font-size: 19px; font-weight: 700; color: #111; margin: 12px 0; }
+    .meta-box { background: #F1F3F7; padding: 15px; border-radius: 8px; font-size: 14px; color: #4A5568; margin: 15px 0; display: flex; gap: 20px; }
+    .summary-box { font-size: 15px; line-height: 1.8; color: #333; text-align: justify; margin-top: 15px; word-break: keep-all; }
+    .link-btn { display: inline-block; margin-top: 20px; font-size: 13px; font-weight: 700; color: #1B3A6B; text-decoration: none; border: 1.5px solid #1B3A6B; padding: 6px 15px; border-radius: 5px; }
 </style>
 """
 
-st.title("🚑 NMC 공식 보고서 자동 생성 시스템")
+st.title("🚑 NMC 정책 모니터링 자동 보고서")
 
-# 선택 UI (기존과 동일)
+# 3. 항목 선택 UI
 selected = {'a': [], 's': [], 'n': []}
 c1, c2, c3 = st.columns(3)
 with c1:
@@ -69,78 +74,6 @@ with c3:
     for i, r in df_n.iterrows():
         if st.checkbox(f"{r.get('title')}", key=f"n{i}"): selected['n'].append(r.to_dict())
 
+# 4. 보고서 생성 로직
 if st.button("✨ NMC 공식 양식으로 보고서 발행", use_container_width=True):
-    total_cnt = len(selected['a']) + len(selected['s']) + len(selected['n'])
-    
-    html_content = f"""
-    {STYLE}
-    <div class="report-wrap">
-        <div class="header">
-            <div style="font-size:13px; opacity:0.8; margin-bottom:5px;">의료정책연구 | 응급의료정책팀</div>
-            <div style="font-size:28px; font-weight:bold;">응급의료 동향 모니터링 보고서</div>
-            <div style="margin-top:10px; font-size:14px;">{datetime.now().strftime('%Y.%m.%d')}</div>
-        </div>
-
-        <div class="card-box">
-            <div class="card"><div class="card-val">{len(selected['a'])}</div><div class="card-lbl">계류 의안</div></div>
-            <div class="card"><div class="card-val">{len(selected['s'])}</div><div class="card-lbl">예정 일정</div></div>
-            <div class="card"><div class="card-val">{len(selected['n'])}</div><div class="card-lbl">언론 기사</div></div>
-            <div class="card" style="background:#F1F3F5;"><div class="card-val">{total_cnt}</div><div class="card-lbl">전체 항목</div></div>
-        </div>
-    """
-
-    # 1. 의안 섹션
-    if selected['a']:
-        html_content += f'<div class="sec-title"><span>📋 1. 의안 현황</span><span style="font-size:13px;">총 {len(selected["a"])}건</span></div>'
-        for item in selected['a']:
-            html_content += f"""
-            <div class="item-card item-a">
-                <span class="keyword-tag">의료법</span>
-                <div style="margin-bottom:10px;">
-                    <span class="badge" style="background:#E63946;">중요</span>
-                    <b style="font-size:18px;">{item.get('bill_name')}</b>
-                </div>
-                <div class="bill-meta">
-                    <b>제안자:</b> {item.get('proposer', '정보없음')} | <b>상태:</b> {item.get('status', '접수')} | <b>입법예고:</b> {item.get('period', '-')}
-                </div>
-                <div class="summary-text">{item.get('summary', '요약 정보가 없습니다.')}</div>
-                <a href="{item.get('url')}" class="btn-link" target="_blank">🔗 상세 정보 원문 링크</a>
-            </div>
-            """
-
-    # 2. 일정 섹션
-    if selected['s']:
-        html_content += f'<div class="sec-title"><span>📅 2. 주요 일정</span><span style="font-size:13px;">총 {len(selected["s"])}건</span></div>'
-        for item in selected['s']:
-            html_content += f"""
-            <div class="item-card item-s">
-                <span class="keyword-tag">{item.get('category', '토론회/세미나')}</span>
-                <span class="badge" style="background:#FFB703; color:black;">일정</span>
-                <b style="font-size:17px;">{item.get('title')}</b>
-                <div style="margin-top:12px; font-size:14px; color:#444;">📍 일시 및 장소: <b>{item.get('date', '-')}</b></div>
-            </div>
-            """
-
-    # 3. 뉴스 섹션 (키워드 표시 추가)
-    if selected['n']:
-        html_content += f'<div class="sec-title"><span>📰 3. 언론 모니터링</span><span style="font-size:13px;">총 {len(selected["n"])}건</span></div>'
-        for item in selected['n']:
-            # 뉴스 검색에 사용된 키워드 (예: 중증응급, 상급종합병원 등) 추출
-            keywords = item.get('keywords', '중증응급, 응급의료') 
-            html_content += f"""
-            <div class="item-card item-n">
-                <span class="keyword-tag">{keywords}</span>
-                <div style="margin-bottom:10px;">
-                    <span class="badge" style="background:#8E9AAF;">참고</span>
-                    <b style="font-size:16px;">{item.get('title')}</b>
-                </div>
-                <div style="font-size:13px; color:#777; margin-bottom:10px;">{item.get('source')} | {item.get('date', '')}</div>
-                <a href="{item.get('url')}" class="btn-link" target="_blank">🔗 기사 원문 보기</a>
-            </div>
-            """
-
-    html_content += "</div>"
-    
-    st.markdown(html_content, unsafe_allow_html=True)
-    st.download_button("💾 NMC 최종 보고서(.html) 다운로드", data=html_content, file_name=f"NMC_Report_Final_{datetime.now().strftime('%m%d')}.html", mime="text/html")
-    st.success("🎉 이미지 샘플과 동일한 디자인으로 보고서가 생성되었습니다!")
+    total = len(selected['a
