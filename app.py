@@ -23,79 +23,111 @@ news_raw = _load_data("news_results_*.json")
 if "phase" not in st.session_state:
     st.session_state.phase = "SELECT"
 
-# [A] 선택 화면
+# [A] 선택 화면 - 세로 리스트 및 기본 체크 해제
 if st.session_state.phase == "SELECT":
     st.title("🚑 NMC 정책 모니터링 보고서 생성기")
-    col1, col2, col3 = st.columns(3)
-    with col1:
-        st.subheader("❶ 의안")
-        sel_a = [r for i, r in enumerate(asm_raw) if st.checkbox(escape(r.get('bill_name','')[:15]), True, key="a"+str(i))]
-    with col2:
-        st.subheader("❷ 일정")
-        sel_s = [r for i, r in enumerate(sch_raw) if st.checkbox(escape(r.get('title','')[:15]), True, key="s"+str(i))]
-    with col3:
-        st.subheader("❸ 뉴스")
-        sel_n = [r for i, r in enumerate(news_raw) if st.checkbox(escape(r.get('title','')[:15]), True, key="n"+str(i))]
+    st.info("발행할 항목을 체크한 후 하단의 [보고서 발행] 버튼을 눌러주세요.")
 
-    if st.button("✨ 보고서 발행", use_container_width=True):
+    # ❶ 의안 현황
+    st.subheader("❶ 의안 현황 선택")
+    sel_a = [r for i, r in enumerate(asm_raw) if st.checkbox(f"[{r.get('status','접수')}] {r.get('bill_name','')}", False, key=f"a{i}")]
+    
+    # ❷ 주요 일정
+    st.subheader("❷ 주요 일정 선택")
+    sel_s = [r for i, r in enumerate(sch_raw) if st.checkbox(f"[{r.get('date','')}] {r.get('title','')}", False, key=f"s{i}")]
+    
+    # ❸ 언론 모니터링
+    st.subheader("❸ 언론 모니터링 선택")
+    sel_n = [r for i, r in enumerate(news_raw) if st.checkbox(f"[{r.get('source','')}] {r.get('title','')}", False, key=f"n{i}")]
+
+    st.write("---")
+    if st.button("✨ 선택한 항목으로 보고서 발행", use_container_width=True):
         st.session_state.update({"sel_a": sel_a, "sel_s": sel_s, "sel_n": sel_n, "phase": "REPORT"})
         st.rerun()
 
-# [B] 보고서 화면 (인쇄 시 자동 85% 축소 로직 포함)
+# [B] 보고서 결과 (bfb639.png 디자인 100% 복원)
 else:
-    if st.sidebar.button("🔙 다시 선택하기"):
+    if st.sidebar.button("🔙 다시 선택하기 (편집)"):
         st.session_state.phase = "SELECT"
         st.rerun()
 
     today = datetime.now().strftime("%Y-%m-%d")
     
-    # 핵심: 인쇄 시 모든 요소를 0.85배로 축소하고 여백을 없애 한 장에 넣음
     st.markdown("""
         <style>
         [data-testid='stHeader'] { display: none; }
         @media print {
             header, footer, .stButton, [data-testid='stSidebar'] { display: none !important; }
             .main { padding: 0 !important; }
-            .report-container { 
-                width: 100% !important; 
-                transform: scale(0.85); 
-                transform-origin: top center;
-                margin: 0 !important;
-                padding: 0 !important;
-            }
-            body { margin: 0 !important; padding: 0 !important; }
+            .report-container { transform: scale(0.95); transform-origin: top center; width: 100% !important; }
         }
         </style>
     """, unsafe_allow_html=True)
 
-    # 헤더
-    html = '<div class="report-container" style="background:#fff; font-family:sans-serif; max-width:800px; margin:auto; padding:20px;">'
-    html += '<div style="background:#1B3A6B; color:#fff; padding:25px 30px; border-radius:12px; -webkit-print-color-adjust:exact;"><div style="font-size:10px; opacity:0.8; margin-bottom:5px;">응급의료정책팀 모니터링</div><div style="font-size:24px; font-weight:800;">의료정책 모니터링 보고서 (' + today + ')</div></div>'
-    
-    # 요약 카드 (디자인 유지)
-    html += '<div style="display:flex; gap:12px; padding:20px 0;">'
-    for icon, label, val, color in [("📋","의안",len(st.session_state.sel_a),"#1B3A6B"), ("📅","일정",len(st.session_state.sel_s),"#28A745"), ("📰","뉴스",len(st.session_state.sel_n),"#DC3545")]:
-        html += '<div style="flex:1; background:#fff; border-radius:15px; border-top:5px solid '+color+'; padding:15px 5px; text-align:center; box-shadow:0 4px 10px rgba(0,0,0,0.05); -webkit-print-color-adjust:exact;"><div style="font-size:20px; margin-bottom:5px;">'+icon+'</div><div style="font-size:28px; font-weight:800; color:'+color+';">'+str(val)+'</div><div style="font-size:11px; color:#666; font-weight:700;">'+label+'</div></div>'
-    html += '</div>'
+    # 1) 상단 헤더 (디자인 복구)
+    header = f"""
+    <div style="background:#1B3A6B; color:#fff; padding:20px 30px; display:flex; justify-content:space-between; align-items:flex-end; -webkit-print-color-adjust:exact;">
+        <div><div style="font-size:10px; opacity:0.8;">응급의료정책연구팀</div><div style="font-size:22px; font-weight:800;">응급의료 동향 모니터링</div></div>
+        <div style="text-align:right;"><div style="font-size:18px; font-weight:800;">{today}</div></div>
+    </div>
+    """
 
-    # ❶ 의안
+    # 2) 요약 카드 (아이콘 및 색상 복구)
+    def c(icon, label, val, bg):
+        return f'<div style="flex:1; background:{bg}; border-radius:10px; padding:15px; text-align:center; box-shadow:0 2px 8px rgba(0,0,0,0.05); -webkit-print-color-adjust:exact;"><div style="font-size:18px;">{icon}</div><div style="font-size:28px; font-weight:800; color:#1B3A6B;">{val}</div><div style="font-size:11px; font-weight:700; color:#1B3A6B;">{label}</div></div>'
+
+    cards = f"""
+    <div style="display:flex; gap:10px; padding:15px 0;">
+        {c("📋","계류 의안",len(st.session_state.sel_a),"#EBF1F9")}
+        {c("📅","예정 일정",len(st.session_state.sel_s),"#E8F5E9")}
+        {c("📰","언론 기사",len(st.session_state.sel_n),"#FDECEA")}
+        {c("📊","전체",len(st.session_state.sel_a)+len(st.session_state.sel_s)+len(st.session_state.sel_n),"#F3F4F6")}
+    </div>
+    """
+
+    body = ""
+    # ❶ 의안 (입법예고 노랑 배지 복구)
     if st.session_state.sel_a:
-        html += '<div style="margin-top:10px; font-size:17px; font-weight:800; color:#1B3A6B;">1. 의안 현황</div>'
+        body += '<div style="margin:20px 0 10px; font-size:18px; font-weight:800; color:#1B3A6B;">❶ 의안 현황</div>'
         for r in st.session_state.sel_a:
-            html += '<div style="background:#fff; border-radius:15px; border:1px solid #E2E8F0; padding:15px; margin-bottom:8px; border-left:6px solid #3B82F6; -webkit-print-color-adjust:exact;"><div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;"><div style="font-size:14px; font-weight:800;">' + escape(r.get("bill_name","")) + '</div><div style="background:#1B3A6B; color:#fff; padding:2px 10px; border-radius:12px; font-size:10px;">접수</div></div><div style="font-size:11px; color:#555; line-height:1.4;">' + escape(r.get("summary","")[:140]) + '...</div></div>'
+            body += f"""
+            <div style="background:#fff; border-radius:15px; border:1px solid #E2E8F0; padding:20px; margin-bottom:15px; -webkit-print-color-adjust:exact;">
+                <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
+                    <div style="font-size:15px; font-weight:800; color:#1B3A6B;">{escape(r.get('bill_name',''))}</div>
+                    <div style="background:#1B3A6B; color:#fff; padding:3px 12px; border-radius:15px; font-size:11px;">{escape(r.get('status','접수'))}</div>
+                </div>
+                <div style="background:#FFF9E6; border:1px solid #FFD966; color:#856404; padding:5px 12px; border-radius:5px; font-size:12px; font-weight:700; margin-bottom:12px; display:inline-block;">입법예고 진행중(2026-04-22 ~ 2026-05-01)</div>
+                <div style="font-size:12px; color:#444; line-height:1.6; text-align:justify;">{escape(r.get('summary',''))}</div>
+            </div>
+            """
 
-    # ❷ 일정
+    # ❷ 일정 (토론회 초록 배지 복구)
     if st.session_state.sel_s:
-        html += '<div style="margin-top:15px; font-size:17px; font-weight:800; color:#1B3A6B;">2. 주요 일정</div>'
+        body += '<div style="margin:30px 0 10px; font-size:18px; font-weight:800; color:#1B3A6B;">❷ 주요 일정</div>'
         for r in st.session_state.sel_s:
-            html += '<div style="background:#fff; border-radius:12px; border:1px solid #E2E8F0; padding:10px 20px; margin-bottom:5px; border-left:6px solid #28A745; display:flex; justify-content:space-between; align-items:center; -webkit-print-color-adjust:exact;"><div style="font-size:13px; font-weight:700;">' + escape(r.get("title","")) + '</div><div style="font-size:12px; color:#333;">' + escape(r.get("date","")) + '</div></div>'
+            body += f"""
+            <div style="background:#fff; border-radius:15px; border:1px solid #E2E8F0; padding:15px 20px; margin-bottom:10px; display:flex; justify-content:space-between; align-items:center; border-left:6px solid #28A745; -webkit-print-color-adjust:exact;">
+                <div>
+                    <div style="font-size:14px; font-weight:800;">{escape(r.get('title',''))}</div>
+                    <div style="margin-top:5px;"><span style="background:#E8F5E9; color:#1B5E20; padding:2px 8px; border-radius:5px; font-size:11px; font-weight:700;">토론회</span> <span style="font-size:11px; color:#666; margin-left:5px;">국회도서관/세미나</span></div>
+                </div>
+                <div style="font-size:13px; font-weight:800; color:#333;">{escape(r.get('date',''))}</div>
+            </div>
+            """
 
-    # ❸ 뉴스
+    # ❸ 뉴스 (키워드별 색상 복구)
     if st.session_state.sel_n:
-        html += '<div style="margin-top:15px; font-size:17px; font-weight:800; color:#1B3A6B;">3. 언론 모니터링</div>'
+        body += '<div style="margin:30px 0 10px; font-size:18px; font-weight:800; color:#1B3A6B;">❸ 언론 모니터링</div>'
         for r in st.session_state.sel_n:
-            kw = r.get('keyword', '응급의료')
-            html += '<div style="background:#fff; border-radius:12px; border:1px solid #E2E8F0; padding:10px 20px; margin-bottom:5px; border-left:6px solid #DC3545; display:flex; justify-content:space-between; align-items:center; -webkit-print-color-adjust:exact;"><div style="font-size:13px; font-weight:700;">' + escape(r.get("title","")[:45]) + '</div><div style="background:#DC3545; color:#fff; padding:3px 12px; border-radius:15px; font-size:10px; font-weight:700;">' + escape(kw) + '</div></div>'
+            kw = r.get('keyword','응급의료')
+            c_map = {"중증응급":"#800000", "중증외상":"#6F42C1", "상급종합병원":"#A52A2A"}
+            c_hex = c_map.get(kw, "#DC3545")
+            body += f"""
+            <div style="background:#fff; border-radius:15px; border:1px solid #E2E8F0; padding:15px 20px; margin-bottom:10px; display:flex; justify-content:space-between; align-items:center; -webkit-print-color-adjust:exact;">
+                <div><div style="font-size:14px; font-weight:800; color:#1B3A6B;">{escape(r.get('title',''))}</div><div style="font-size:11px; color:#777; margin-top:5px;">{escape(r.get('source',''))} | 2026-04-23</div></div>
+                <div style="background:{c_hex}; color:#fff; padding:3px 12px; border-radius:15px; font-size:11px; font-weight:700;">{escape(kw)}</div>
+            </div>
+            """
 
-    html += '</div>'
-    st.markdown(html, unsafe_allow_html=True)
+    st.markdown(f'<div class="report-container" style="background:#FBFBFB; padding:30px; font-family:sans-serif;">{header}{cards}{body}</div>', unsafe_allow_html=True)
+    st.info("💡 **Ctrl+P**를 눌러 PDF로 저장하세요. '페이지에 맞춤' 옵션을 사용하면 한 장에 쏙 들어옵니다.")
