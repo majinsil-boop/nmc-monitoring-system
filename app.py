@@ -32,22 +32,22 @@ data_configs = [
 
 all_selected_data = []
 
-for config in data_configs:
+ for config in data_configs:
     st.subheader(config["title"])
     latest = get_latest_file(config["pattern"])
     if latest:
         df = pd.read_json(latest)
-        # 선택 기능이 있는 데이터프레임
+        # selection_mode 대신 최신 문법인 on_select="rerun"과 함께 사용
         event = st.dataframe(
             df,
             use_container_width=True,
             hide_index=True,
-            on_select="rerun",
+            on_select="rerun", # 이 부분이 핵심입니다!
             selection_mode="multi_row",
             key=config["title"]
         )
-        # 선택된 데이터 추출
-        if event.selection.rows:
+        # 선택된 데이터 추출 로직
+        if hasattr(event, 'selection') and event.selection.rows:
             all_selected_data.append(df.iloc[event.selection.rows])
     st.markdown("---")
 
