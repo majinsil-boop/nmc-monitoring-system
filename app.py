@@ -32,7 +32,7 @@ data_configs = [
 
 all_selected_data = []
 
- for config in data_configs:
+for config in data_configs:
     st.subheader(config["title"])
     latest = get_latest_file(config["pattern"])
     if latest:
