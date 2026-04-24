@@ -5,7 +5,7 @@ import os
 from datetime import datetime
 from html import escape
 
-# 1. 페이지 설정 및 상태 초기화
+# 1. 설정 및 상태 초기화 (데이터 유실 방지)
 st.set_page_config(page_title="NMC 보고서", layout="wide")
 
 if "phase" not in st.session_state:
@@ -24,13 +24,12 @@ def _load_data(pattern):
             return json.load(f)
     except: return []
 
-# [절대 경로 깡패 함수] 주소 앞에 //를 붙여서 무조건 외부로 튕겨나가게 함
+# [핵심] 주소 보정: 점(.)이 있는데 http가 없으면 무조건 https:// 삽입
 def fix_url(u):
     if not u or str(u).strip() in ["#", ""]: return "#"
     s = str(u).strip().replace("https://https://", "https://")
     if s.lower().startswith("http"): return s
-    # 점(.)이 있다면 도메인이므로 //를 붙여 외부임을 선언
-    if "." in s: return "//" + s
+    if "." in s: return "https://" + s
     return s
 
 a_raw = _load_data("assembly_results_*.json")
@@ -46,23 +45,24 @@ if st.session_state.phase == "SELECT":
     for i, r in enumerate(a_raw):
         lk = fix_url(r.get("link") or r.get("bill_link"))
         st.write("🔗 **" + str(r.get('bill_name','')) + "**")
-        st.markdown('<a href="' + lk + '" target="_blank" rel="noopener noreferrer">👉 [원문 확인 클릭]</a>', unsafe_allow_html=True)
-        if st.checkbox("포함", key="ca"+str(i)): sa.append(r)
+        # 성공한 뉴스 로직: 문자열 결합(+)으로 따옴표 꼬임 방지
+        st.markdown('<a href="' + lk + '" target="_blank">👉 [원문 확인 클릭]</a>', unsafe_allow_html=True)
+        if st.checkbox("선택", key="ca"+str(i)): sa.append(r)
         st.write("---")
 
     st.subheader("❷ 일정")
     for i, r in enumerate(s_raw):
         lk = fix_url(r.get("link"))
         st.write("📅 **" + str(r.get('title','')) + "**")
-        st.markdown('<a href="' + lk + '" target="_blank" rel="noopener noreferrer">👉 [원문 확인 클릭]</a>', unsafe_allow_html=True)
-        if st.checkbox("포함", key="cs"+str(i)): ss.append(r)
+        st.markdown('<a href="' + lk + '" target="_blank">👉 [원문 확인 클릭]</a>', unsafe_allow_html=True)
+        if st.checkbox("선택", key="cs"+str(i)): ss.append(r)
         st.write("---")
 
     st.subheader("❸ 뉴스")
     for i, r in enumerate(n_raw):
         lk = fix_url(r.get("link") or r.get("url"))
         st.write("📰 **" + str(r.get('title','')) + "**")
-        st.markdown('<a href="' + lk + '" target="_blank" rel="noopener noreferrer">👉 [기사 보기 클릭]</a>', unsafe_allow_html=True)
+        st.markdown('<a href="' + lk + '" target="_blank">👉 [기사 보기 클릭]</a>', unsafe_allow_html=True)
         if st.checkbox("선택", key="cn"+str(i)): sn.append(r)
         st.write("---")
 
@@ -71,7 +71,7 @@ if st.session_state.phase == "SELECT":
         st.session_state.phase = "REPORT"
         st.rerun()
 
-# [B] 보고서 화면 (데이터 표출 완벽 복구)
+# [B] 보고서 화면 (생략 없이 100% 채웠습니다)
 else:
     t = datetime.now().strftime("%Y-%m-%d")
     st.sidebar.button("🔙 다시 선택", on_click=lambda: st.session_state.update({"phase":"SELECT"}))
@@ -90,7 +90,7 @@ else:
             h += '<div style="background:#fff; border:1px solid #E2E8F0; border-left:6px solid #1B3A6B; padding:15px; border-radius:12px; margin-bottom:10px; -webkit-print-color-adjust:exact;">'
             h += '<div style="display:flex; justify-content:space-between; align-items:center;">'
             h += '<div style="font-size:14px; font-weight:800; color:#1B3A6B;">' + escape(str(r.get("bill_name",""))) + '</div>'
-            h += '<a href="' + l + '" target="_blank" rel="noopener noreferrer" style="background:#1B3A6B; color:#fff; padding:4px 10px; border-radius:5px; font-size:10px; text-decoration:none;">원문보기 🔗</a></div>'
+            h += '<a href="' + l + '" target="_blank" style="background:#1B3A6B; color:#fff; padding:4px 10px; border-radius:5px; font-size:10px; text-decoration:none;">원문보기 🔗</a></div>'
             h += '<div style="font-size:11px; color:#444; margin-top:8px;">' + escape(str(r.get("summary",""))) + '</div></div>'
 
     # ❷ 일정
@@ -100,7 +100,7 @@ else:
             l = fix_url(r.get("link"))
             h += '<div style="background:#fff; border:1px solid #E2E8F0; border-left:6px solid #28A745; padding:12px 15px; margin-bottom:8px; display:flex; justify-content:space-between; align-items:center; -webkit-print-color-adjust:exact;">'
             h += '<div><div style="font-size:13px; font-weight:800; color:#333;">' + escape(str(r.get("title",""))) + '</div></div>'
-            h += '<a href="' + l + '" target="_blank" rel="noopener noreferrer" style="background:#28A745; color:#fff; padding:4px 10px; border-radius:4px; font-size:10px; text-decoration:none;">상세보기 🔗</a></div>'
+            h += '<a href="' + l + '" target="_blank" style="background:#28A745; color:#fff; padding:4px 10px; border-radius:4px; font-size:10px; text-decoration:none;">상세보기 🔗</a></div>'
 
     # ❸ 뉴스
     if st.session_state.sel_n:
@@ -113,7 +113,7 @@ else:
             h += '<div><div style="font-size:13px; font-weight:800; color:#1B3A6B;">' + escape(str(r.get("title",""))) + '</div>'
             h += '<div style="font-size:10px; color:#777;">' + escape(str(r.get("source",""))) + ' | ' + escape(str(r.get("date",""))) + '</div></div>'
             h += '<div style="text-align:right;"><div style="background:' + c + '; color:#fff; padding:2px 10px; border-radius:12px; font-size:10px; font-weight:700; margin-bottom:5px;">' + escape(str(kw)) + '</div>'
-            h += '<a href="' + l + '" target="_blank" rel="noopener noreferrer" style="color:#DC3545; font-size:10px; font-weight:700; text-decoration:none;">기사보기 🔗</a></div></div>'
+            h += '<a href="' + l + '" target="_blank" style="color:#DC3545; font-size:10px; font-weight:700; text-decoration:none;">기사보기 🔗</a></div></div>'
     
     h += '</div>'
     st.markdown(h, unsafe_allow_html=True)
