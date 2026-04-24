@@ -1,81 +1,89 @@
 ﻿import streamlit as st
 import pandas as pd
 import glob
-import os
-from fpdf import FPDF
 from datetime import datetime
 
-st.set_page_config(page_title="NMC 모니터링 시스템", page_icon="🚑", layout="wide")
-st.title("🚑 응급의료 정책 모니터링 및 보고서")
+# 페이지 설정
+st.set_page_config(page_title="응급의료 동향 모니터링", layout="wide")
+
+# 스타일링 (PDF의 깔끔한 느낌을 위한 CSS)
+st.markdown("""
+    <style>
+    .report-box {
+        background-color: #f8f9fa;
+        padding: 20px;
+        border-radius: 10px;
+        border-left: 5px solid #004a99;
+        margin-bottom: 20px;
+    }
+    .metric-card {
+        background-color: #ffffff;
+        border: 1px solid #e0e0e0;
+        padding: 15px;
+        border-radius: 8px;
+        text-align: center;
+    }
+    </style>
+    """, unsafe_allow_html=True)
 
 def get_latest_file(pattern):
     files = glob.glob(pattern)
-    if not files: return None
-    files.sort()
-    return files[-1]
+    return sorted(files)[-1] if files else None
 
-# 데이터 설정
-data_configs = [
-    {"title": "🏛️ 국회 의안", "pattern": "assembly_results_*.json"},
-    {"title": "📅 주요 일정", "pattern": "schedule_results_*.json"},
-    {"title": "📰 뉴스 동향", "pattern": "news_results_*.json"}
-]
+# --- 상단 헤더 섹션 ---
+st.title("🚑 응급의료 동향 모니터링")
+col_date, col_time = st.columns([8, 2])
+with col_date:
+    st.subheader(f"📅 {datetime.now().strftime('%Y.%m.%d')}")
+with col_time:
+    st.write(f"⏱️ {datetime.now().strftime('%H:%M')} 생성")
 
-# 선택 항목 저장 바구니
-if 'report_list' not in st.session_state:
-    st.session_state.report_list = []
+# --- 1. 상단 요약 수치 (PDF의 상단 카운터 재현) ---
+latest_a = get_latest_file('assembly_results_*.json')
+latest_s = get_latest_file('schedule_results_*.json')
+latest_n = get_latest_file('news_results_*.json')
 
-st.sidebar.header("📋 보고서 생성함")
-st.info("각 항목의 체크박스를 선택하세요. 화면 하단에 보고서가 생성됩니다.")
+df_a = pd.read_json(latest_a) if latest_a else pd.DataFrame()
+df_s = pd.read_json(latest_s) if latest_s else pd.DataFrame()
+df_n = pd.read_json(latest_n) if latest_n else pd.DataFrame()
 
-current_selected = []
+c1, c2, c3, c4 = st.columns(4)
+with c1: st.metric("계류 의안", f"{len(df_a)}건")
+with c2: st.metric("예정 일정", f"{len(df_s)}건")
+with c3: st.metric("언론 기사", f"{len(df_n)}건")
+with c4: st.metric("전체 업데이트", f"{len(df_a)+len(df_s)+len(df_n)}건")
 
-# --- 메인 화면: 데이터 표시 ---
-for config in data_configs:
-    st.header(config["title"])
-    latest = get_latest_file(config["pattern"])
-    
-    if latest:
-        try:
-            df = pd.read_json(latest)
-            for i, row in df.iterrows():
-                # [핵심] 국회의 'bill_name'과 뉴스의 'title'을 모두 찾습니다.
-                display_name = row.get('bill_name', 
-                               row.get('title', 
-                               row.get('제목', 
-                               row.get('subject', '제목 없음'))))
-                
-                # 체크박스 생성
-                is_selected = st.checkbox(f"{display_name}", key=f"{config['title']}_{i}")
-                if is_selected:
-                    current_selected.append(row.to_dict())
-        except Exception as e:
-            st.error(f"{config['title']} 파일을 읽는 중 오류가 발생했습니다.")
-    else:
-        st.write(f"아직 {config['title']} 데이터 파일이 없습니다.")
-    st.markdown("---")
+st.markdown("---")
 
-# --- 보고서 미리보기 및 다운로드 ---
-if current_selected:
-    st.markdown("## 📄 선택된 항목 미리보기")
-    report_df = pd.DataFrame(current_selected)
-    
-    # 화면 표시용 컬럼 정리
-    cols = report_df.columns
-    display_cols = [c for c in ['bill_name', 'title', 'proposed_date', 'date', 'url'] if c in cols]
-    st.table(report_df[display_cols])
-    
-    # 1. CSV 다운로드 (한글이 가장 안전함)
-    csv = report_df.to_csv(index=False).encode('utf-8-sig')
-    st.download_button(
-        label="📥 보고서 다운로드 (Excel/CSV)",
-        data=csv,
-        file_name=f"NMC_Report_{datetime.now().strftime('%Y%m%d')}.csv",
-        mime="text/csv"
-    )
+# --- 2. 섹션별 본문 (PDF 레이아웃 재현) ---
 
-    # 2. PDF 다운로드 알림
-    st.warning("⚠️ 현재 서버 환경에서 PDF 한글 출력은 추가 폰트 설정이 필요합니다. 우선 Excel(CSV) 파일을 업무에 활용해 주세요!")
-    
-else:
-    st.sidebar.write("선택된 항목이 없습니다.")
+# [1] 의안 현황
+st.markdown("### 1️⃣ 의안 현황")
+if not df_a.empty:
+    for _, row in df_a.iterrows():
+        with st.container():
+            st.markdown(f"""
+            <div class="report-box">
+                <h4>{row.get('bill_name', '의안명 없음')}</h4>
+                <p><b>📅 발의일:</b> {row.get('proposed_date', '-')} | <b>🏛️ 위원회:</b> {row.get('committee', '-')} | <b>상태:</b> {row.get('status', '-')}</p>
+                <p style="color: #666;">{row.get('summary', '요약 정보가 없습니다.')}</p>
+                <a href="{row.get('url', '#')}">🔗 상세 보기</a>
+            </div>
+            """, unsafe_allow_html=True)
+
+# [2] 주요 일정
+st.markdown("### 2️⃣ 주요 일정")
+if not df_s.empty:
+    for _, row in df_s.iterrows():
+        st.info(f"📍 {row.get('title', '일정명 없음')} | {row.get('date', '-')} | {row.get('location', '-')}")
+
+# [3] 언론 모니터링
+st.markdown("### 3️⃣ 언론 모니터링")
+if not df_n.empty:
+    # 키워드별로 묶어서 표출하거나 리스트로 나열
+    for _, row in df_n.iterrows():
+        col_news, col_link = st.columns([8, 2])
+        with col_news:
+            st.write(f"📰 **{row.get('title')}** ({row.get('source', '-')})")
+        with col_link:
+            st.link_button("기사보기", row.get('url', ''))
