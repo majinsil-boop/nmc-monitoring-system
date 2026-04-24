@@ -3,6 +3,7 @@ import glob
 import json
 import os
 import io
+import subprocess
 from datetime import datetime
 from html import escape
 
@@ -22,28 +23,74 @@ def get_link(record: dict, *keys) -> str:
             return fix_url(v)
     return "#"
 
-# ── 폰트 경로 탐색 (로컬 / Streamlit Cloud 모두 대응) ─────────────────────────
-def _find_font(bold=False):
-    suffix = "Bold" if bold else "Regular"
-    candidates = [
-        f"/usr/share/fonts/opentype/noto/NotoSansCJK-{suffix}.ttc",
-        f"/usr/share/fonts/truetype/noto/NotoSansCJK-{suffix}.ttc",
+# ── 한글 폰트 탐색 (경로 후보 + fc-list 동적 탐색) ────────────────────────────
+def _find_korean_font(bold=False):
+    """
+    여러 경로 후보를 순서대로 탐색하고,
+    모두 없으면 fc-list 명령어로 시스템에서 직접 탐색.
+    """
+    keyword = "Bold" if bold else "Regular"
+    fallback_keyword = "Bold" if bold else "Regular"
+
+    static_candidates = [
+        # opentype (Ubuntu 기본)
+        f"/usr/share/fonts/opentype/noto/NotoSansCJK-{keyword}.ttc",
+        f"/usr/share/fonts/opentype/noto/NotoSansCJK-{keyword}.ttf",
+        # truetype
+        f"/usr/share/fonts/truetype/noto/NotoSansCJK-{keyword}.ttc",
+        f"/usr/share/fonts/truetype/noto/NotoSansCJK-{keyword}.ttf",
+        # noto 단독 폴더
+        f"/usr/share/fonts/noto/NotoSansCJK-{keyword}.ttc",
+        f"/usr/share/fonts/noto/NotoSansCJK-{keyword}.ttf",
+        # Streamlit Cloud 변형 경로
+        f"/usr/share/fonts/opentype/noto/NotoSansCJKkr-{keyword}.otf",
+        f"/usr/share/fonts/truetype/noto/NotoSansCJKkr-{keyword}.ttf",
+        # Regular 폴백 (bold 요청이어도 Regular로 대체)
         "/usr/share/fonts/opentype/noto/NotoSansCJK-Regular.ttc",
         "/usr/share/fonts/truetype/noto/NotoSansCJK-Regular.ttc",
+        "/usr/share/fonts/noto/NotoSansCJK-Regular.ttc",
     ]
-    for p in candidates:
+
+    for p in static_candidates:
         if os.path.exists(p):
             return p
+
+    # fc-list로 동적 탐색
+    try:
+        result = subprocess.run(
+            ["fc-list", ":lang=ko", "--format=%{file}\n"],
+            capture_output=True, text=True, timeout=5
+        )
+        for line in result.stdout.splitlines():
+            path = line.strip()
+            if path and os.path.exists(path):
+                if bold and ("Bold" in path or "bold" in path):
+                    return path
+                if not bold and ("Regular" in path or "regular" in path):
+                    return path
+        # bold/regular 구분 없이 첫 번째 한국어 폰트 반환
+        for line in result.stdout.splitlines():
+            path = line.strip()
+            if path and os.path.exists(path):
+                return path
+    except Exception:
+        pass
+
     return None
 
 # ── fpdf2 PDF 생성 ─────────────────────────────────────────────────────────────
 def generate_pdf_bytes(sel_a, sel_s, sel_n, today) -> bytes:
     from fpdf import FPDF
 
-    FONT_REG  = _find_font(bold=False)
-    FONT_BOLD = _find_font(bold=True)
+    FONT_REG  = _find_korean_font(bold=False)
+    FONT_BOLD = _find_korean_font(bold=True) or FONT_REG
+
     if not FONT_REG:
-        raise FileNotFoundError("한글 폰트를 찾을 수 없습니다. packages.txt에 fonts-noto-cjk 를 추가하세요.")
+        raise FileNotFoundError(
+            "한글 폰트를 찾을 수 없습니다.\n"
+            "packages.txt에 다음을 추가하고 재배포하세요:\n"
+            "fonts-noto-cjk"
+        )
 
     KW_COLOR = {"중증응급": "#800000", "중증외상": "#6F42C1", "상급종합병원": "#A52A2A"}
 
@@ -55,7 +102,7 @@ def generate_pdf_bytes(sel_a, sel_s, sel_n, today) -> bytes:
         def __init__(self):
             super().__init__(orientation="P", unit="mm", format="A4")
             self.add_font("Noto", "",  FONT_REG)
-            self.add_font("Noto", "B", FONT_BOLD or FONT_REG)
+            self.add_font("Noto", "B", FONT_BOLD)
             self.set_margins(15, 15, 15)
             self.set_auto_page_break(True, 18)
 
@@ -276,46 +323,78 @@ if st.session_state.phase == "SELECT":
     st.title("🚑 NMC 정책 모니터링 보고서 생성기")
     sel_a, sel_s, sel_n = [], [], []
 
+    # ── ❶ 의안 ──────────────────────────────────────────────────────────────
     st.subheader("❶ 의안 현황")
     if not asm_raw:
         st.info("의안 데이터가 없습니다.")
     for i, r in enumerate(asm_raw):
         link = get_link(r, "url", "bill_link", "link")
-        col_t, col_l = st.columns([0.8, 0.2])
-        with col_t:
-            if st.checkbox(f"[{r.get('status','접수')}] {r.get('bill_name','')}", key=f"check_a_{i}"):
+        col_chk, col_link = st.columns([0.82, 0.18])
+        with col_chk:
+            checked = st.checkbox(
+                f"[{r.get('status','접수')}] {r.get('bill_name','')}",
+                key=f"check_a_{i}"
+            )
+            if checked:
                 sel_a.append(r)
-        with col_l:
+        with col_link:
             if link != "#":
-                st.markdown(f"[🔗 원문보기]({link})")
+                st.markdown(
+                    f'<a href="{link}" target="_blank" '
+                    f'style="font-size:13px;color:#1B3A6B;text-decoration:none;">'
+                    f'🔗 원문보기</a>',
+                    unsafe_allow_html=True
+                )
 
     st.write("---")
+
+    # ── ❷ 일정 ──────────────────────────────────────────────────────────────
     st.subheader("❷ 주요 일정")
     if not sch_raw:
         st.info("일정 데이터가 없습니다.")
     for i, r in enumerate(sch_raw):
         link = get_link(r, "url", "link")
-        col_t, col_l = st.columns([0.8, 0.2])
-        with col_t:
-            if st.checkbox(f"📅 [{r.get('date','')}] {r.get('title','')}", key=f"check_s_{i}"):
+        col_chk, col_link = st.columns([0.82, 0.18])
+        with col_chk:
+            checked = st.checkbox(
+                f"📅 [{r.get('date','')}] {r.get('title','')}",
+                key=f"check_s_{i}"
+            )
+            if checked:
                 sel_s.append(r)
-        with col_l:
+        with col_link:
             if link != "#":
-                st.markdown(f"[🔗 원문보기]({link})")
+                st.markdown(
+                    f'<a href="{link}" target="_blank" '
+                    f'style="font-size:13px;color:#1B3A6B;text-decoration:none;">'
+                    f'🔗 원문보기</a>',
+                    unsafe_allow_html=True
+                )
 
     st.write("---")
+
+    # ── ❸ 뉴스 ──────────────────────────────────────────────────────────────
     st.subheader("❸ 언론 모니터링")
     if not news_raw:
         st.info("뉴스 데이터가 없습니다.")
     for i, r in enumerate(news_raw):
         link = get_link(r, "url", "link")
-        col_t, col_l = st.columns([0.8, 0.2])
-        with col_t:
-            if st.checkbox(f"📰 [{r.get('source','')}] {r.get('title','')}", key=f"check_n_{i}"):
+        col_chk, col_link = st.columns([0.82, 0.18])
+        with col_chk:
+            checked = st.checkbox(
+                f"📰 [{r.get('source','')}] {r.get('title','')}",
+                key=f"check_n_{i}"
+            )
+            if checked:
                 sel_n.append(r)
-        with col_l:
+        with col_link:
             if link != "#":
-                st.markdown(f"[🔗 기사보기]({link})")
+                st.markdown(
+                    f'<a href="{link}" target="_blank" '
+                    f'style="font-size:13px;color:#1B3A6B;text-decoration:none;">'
+                    f'🔗 기사보기</a>',
+                    unsafe_allow_html=True
+                )
 
     st.write("---")
     if st.button("✨ 보고서 발행", use_container_width=True):
@@ -332,6 +411,7 @@ if st.session_state.phase == "SELECT":
 else:
     today = datetime.now().strftime("%Y-%m-%d")
 
+    # 사이드바
     if st.sidebar.button("🔙 다시 선택하기"):
         st.session_state.phase = "SELECT"
         st.rerun()
@@ -389,8 +469,9 @@ else:
         f'border-radius:10px;-webkit-print-color-adjust:exact;">'
         f'<div><div style="font-size:10px;opacity:.8;">응급의료정책연구팀</div>'
         f'<div style="font-size:22px;font-weight:800;">응급의료 동향 모니터링</div></div>'
-        f'<div style="text-align:right;"><div style="font-size:18px;font-weight:800;">{today}</div></div>'
-        f'</div>'
+        f'<div style="text-align:right;">'
+        f'<div style="font-size:18px;font-weight:800;">{today}</div>'
+        f'</div></div>'
     )
 
     html += '<div style="display:flex;gap:10px;padding:15px 0;">'
