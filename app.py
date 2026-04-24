@@ -5,7 +5,7 @@ import os
 from datetime import datetime
 from html import escape
 
-st.set_page_config(page_title="NMC 정책 모니터링", layout="wide")
+st.set_page_config(page_title="NMC 보고서", layout="wide")
 
 def _load_data(pattern):
     curr = os.path.dirname(os.path.abspath(__file__))
@@ -31,7 +31,6 @@ n_raw = _load_data("news_results_*.json")
 
 if "phase" not in st.session_state:
     st.session_state.phase = "SELECT"
-# 데이터 유실 방지 초기화
 if "sel_a" not in st.session_state: st.session_state.sel_a = []
 if "sel_s" not in st.session_state: st.session_state.sel_s = []
 if "sel_n" not in st.session_state: st.session_state.sel_n = []
@@ -44,8 +43,9 @@ if st.session_state.phase == "SELECT":
     for i, r in enumerate(a_raw):
         lk = fix_url(r.get("link") or r.get("bill_link"))
         st.write("🔗 **" + str(r.get('bill_name','')) + "**")
+        # [핵심] 성공했던 뉴스 로직 그대로: 문자열 결합(+)으로 따옴표 꼬임 방지
         st.markdown('<a href="' + lk + '" target="_blank">👉 [원문 확인 클릭]</a>', unsafe_allow_html=True)
-        if st.checkbox("선택", key="ca"+str(i)): sa.append(r)
+        if st.checkbox("포함", key="ca"+str(i)): sa.append(r)
         st.write("---")
 
     st.subheader("❷ 일정")
@@ -53,7 +53,7 @@ if st.session_state.phase == "SELECT":
         lk = fix_url(r.get("link"))
         st.write("📅 **" + str(r.get('title','')) + "**")
         st.markdown('<a href="' + lk + '" target="_blank">👉 [원문 확인 클릭]</a>', unsafe_allow_html=True)
-        if st.checkbox("선택", key="cs"+str(i)): ss.append(r)
+        if st.checkbox("포함", key="cs"+str(i)): ss.append(r)
         st.write("---")
 
     st.subheader("❸ 뉴스")
@@ -72,7 +72,7 @@ if st.session_state.phase == "SELECT":
         st.rerun()
 
 else:
-    # [보고서 화면 디자인 100% 유지]
+    # [보고서 화면 디자인 복구]
     t = datetime.now().strftime("%Y-%m-%d")
     st.sidebar.button("🔙 다시 선택", on_click=lambda: st.session_state.update({"phase":"SELECT"}))
     st.markdown("<style>[data-testid='stHeader']{display:none;} @media print{header,footer,.stButton,[data-testid='stSidebar']{display:none !important;}.main{padding:0 !important;}}</style>", unsafe_allow_html=True)
