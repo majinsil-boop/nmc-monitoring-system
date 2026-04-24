@@ -17,9 +17,10 @@ def _load_data(pattern):
             return json.load(f)
     except: return []
 
+# [무조건 강제 연결] 주소 보정 로직
 def fix_url(u):
     if not u: return "#"
-    u = str(u).strip()
+    u = str(u).strip().replace(" ", "") # 공백까지 완전히 제거
     if u.startswith("http"): return u
     if "." in u: return "https://" + u
     return "#"
@@ -35,25 +36,31 @@ if st.session_state.phase == "SELECT":
     st.title("🚑 NMC 정책 보고서 생성기")
     sa, ss, sn = [], [], []
 
+    # ❶ 의안 (뉴스 성공 로직 그대로 복제)
     st.subheader("❶ 의안")
     for i, r in enumerate(a_raw):
         lk = fix_url(r.get("link") or r.get("bill_link"))
-        st.markdown("**" + r.get('bill_name','') + "** [🔗원문](" + lk + ")")
+        st.write("🔗 **" + r.get('bill_name','') + "**")
+        st.markdown('<a href="' + lk + '" target="_blank">👉 [여기를 클릭해서 원문 확인]</a>', unsafe_allow_html=True)
         if st.checkbox("선택", key="ca"+str(i)): sa.append(r)
         st.caption("요약: " + r.get('summary',''))
         st.write("---")
 
+    # ❷ 일정
     st.subheader("❷ 일정")
     for i, r in enumerate(s_raw):
         lk = fix_url(r.get("link"))
-        st.markdown("📅 **" + r.get('title','') + "** [🔗원문](" + lk + ")")
+        st.write("📅 **" + r.get('title','') + "**")
+        st.markdown('<a href="' + lk + '" target="_blank">👉 [여기를 클릭해서 원문 확인]</a>', unsafe_allow_html=True)
         if st.checkbox("선택", key="cs"+str(i)): ss.append(r)
         st.write("---")
 
+    # ❸ 뉴스 (원래 잘 되던 뉴스 로직)
     st.subheader("❸ 뉴스")
     for i, r in enumerate(n_raw):
         lk = fix_url(r.get("link") or r.get("url"))
-        st.markdown("📰 **" + r.get('title','') + "** [🔗기사](" + lk + ")")
+        st.write("📰 **" + r.get('title','') + "**")
+        st.markdown('<a href="' + lk + '" target="_blank">👉 [기사보기]</a>', unsafe_allow_html=True)
         if st.checkbox("선택", key="cn"+str(i)): sn.append(r)
         st.write("---")
 
