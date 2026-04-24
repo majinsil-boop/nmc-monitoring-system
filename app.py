@@ -2,69 +2,10 @@
 import pandas as pd
 import glob
 import os
-from fpdf import FPDF
 from datetime import datetime
 
+# 1. 페이지 설정
 st.set_page_config(page_title="NMC 응급의료 모니터링", layout="wide")
-
-class NMC_Official_PDF(FPDF):
-    def __init__(self):
-        super().__init__()
-        if os.path.exists("font.ttf"):
-            self.add_font("Korean", "", "font.ttf", uni=True)
-            self.kfont = "Korean"
-        else: self.kfont = "Arial"
-
-    def header(self):
-        # 1. 상단 네이비 그라데이션 구역 (이미지 스타일)
-        self.set_fill_color(27, 58, 107) # #1B3A6B
-        self.rect(0, 0, 210, 50, 'F')
-        
-        self.set_text_color(255, 255, 255)
-        self.set_font(self.kfont, size=10)
-        self.cell(0, 10, "의료정책연구 | 응급의료 동향 모니터링", ln=True)
-        
-        self.set_font(self.kfont, size=24)
-        self.cell(0, 15, "응급의료 동향 모니터링", ln=True, align='L')
-        
-        self.set_font(self.kfont, size=11)
-        self.cell(0, 10, datetime.now().strftime("%Y.%m.%d"), ln=True)
-        self.ln(20)
-
-    def draw_summary_cards(self, a_cnt, s_cnt, n_cnt):
-        # 2. 요약 카드 섹션 (이미지의 카드 4개 재현)
-        self.set_y(55)
-        card_w = 45
-        # 카드 배경들
-        for i in range(4):
-            self.set_fill_color(255, 255, 255)
-            self.rect(10 + (i * 48), 55, card_w, 25, 'F')
-            self.rect(10 + (i * 48), 55, card_w, 2, 'F') # 상단 선
-
-        self.set_text_color(27, 58, 107)
-        self.set_font(self.kfont, size=14)
-        # 수치 기입
-        self.text(25, 68, str(a_cnt))
-        self.text(73, 68, str(s_cnt))
-        self.text(121, 68, str(n_cnt))
-        self.text(169, 68, str(a_cnt + s_cnt + n_cnt))
-        
-        self.set_font(self.kfont, size=9)
-        self.set_text_color(100, 100, 100)
-        self.text(15, 75, "계류 의안")
-        self.text(63, 75, "예정 일정")
-        self.text(111, 75, "언론 기사")
-        self.text(159, 75, "전체 항목")
-        self.ln(35)
-
-    def section_title(self, num, title):
-        # 3. 섹션 제목 (이미지의 네이비 바 스타일)
-        self.set_fill_color(27, 58, 107)
-        self.set_text_color(255, 255, 255)
-        self.set_font(self.kfont, size=14)
-        self.cell(0, 12, f"  {num}  {title}", ln=True, fill=True)
-        self.ln(5)
-        self.set_text_color(0, 0, 0)
 
 def get_latest_file(pattern):
     files = glob.glob(pattern)
@@ -75,47 +16,74 @@ df_a = pd.read_json(get_latest_file('assembly_results_*.json')) if get_latest_fi
 df_s = pd.read_json(get_latest_file('schedule_results_*.json')) if get_latest_file('schedule_results_*.json') else pd.DataFrame()
 df_n = pd.read_json(get_latest_file('news_results_*.json')) if get_latest_file('news_results_*.json') else pd.DataFrame()
 
-st.title("🚑 NMC 정책 모니터링 시스템")
+# 2. 이미지 속 디자인을 그대로 옮긴 CSS
+STYLE = """
+<style>
+    .report-wrap { font-family: 'Malgun Gothic', sans-serif; background-color: #EEF2F9; padding: 20px; }
+    .header { background: linear-gradient(135deg, #1B3A6B 0%, #2A5298 100%); color: white; padding: 30px; border-radius: 10px; margin-bottom: 20px; }
+    .card-box { display: flex; gap: 10px; margin-bottom: 20px; }
+    .card { flex: 1; background: white; padding: 15px; border-radius: 8px; border-top: 4px solid #1B3A6B; box-shadow: 0 2px 5px rgba(0,0,0,0.1); text-align: center; }
+    .card-val { font-size: 24px; font-weight: bold; color: #1B3A6B; }
+    .sec-title { background: #1B3A6B; color: white; padding: 10px 15px; border-radius: 5px; font-weight: bold; margin-top: 20px; display: flex; justify-content: space-between; }
+    .item { background: white; padding: 15px; border-left: 5px solid #DC3545; margin: 10px 0; border-radius: 4px; box-shadow: 0 1px 3px rgba(0,0,0,0.05); }
+    .badge { background: #DC3545; color: white; padding: 2px 8px; border-radius: 3px; font-size: 11px; font-weight: bold; margin-right: 10px; }
+    .link { color: #1B3A6B; text-decoration: none; font-weight: bold; font-size: 13px; border: 1px solid #1B3A6B; padding: 3px 8px; border-radius: 4px; }
+</style>
+"""
 
-# 선택 UI
+st.title("🚑 NMC 고퀄리티 보고서 생성기")
+
+# 체크박스 선택 UI
 selected = {'a': [], 's': [], 'n': []}
-cols = st.columns(3)
-for i, (name, df, key) in enumerate([("의안", df_a, 'a'), ("일정", df_s, 's'), ("뉴스", df_n, 'n')]):
-    with cols[i]:
-        st.subheader(f"🏛️ {name}")
-        if not df.empty:
-            for idx, r in df.iterrows():
-                if st.checkbox(f"{r.get('bill_name') or r.get('title')}", key=f"{key}{idx}"):
-                    selected[key].append(r.to_dict())
+c1, c2, c3 = st.columns(3)
+with c1:
+    st.subheader("📋 의안")
+    for i, r in df_a.iterrows():
+        if st.checkbox(f"{r.get('bill_name')}", key=f"a{i}"): selected['a'].append(r.to_dict())
+with c2:
+    st.subheader("📅 일정")
+    for i, r in df_s.iterrows():
+        if st.checkbox(f"{r.get('title')}", key=f"s{i}"): selected['s'].append(r.to_dict())
+with c3:
+    st.subheader("📰 뉴스")
+    for i, r in df_n.iterrows():
+        if st.checkbox(f"{r.get('title')}", key=f"n{i}"): selected['n'].append(r.to_dict())
 
-if st.button("🚀 이미지 양식 그대로 PDF 생성", use_container_width=True):
-    if not any(selected.values()): st.warning("항목을 선택하세요.")
-    else:
-        pdf = NMC_Official_PDF()
-        pdf.add_page()
-        
-        # 카드 그리기
-        pdf.draw_summary_cards(len(selected['a']), len(selected['s']), len(selected['n']))
-        
-        # 섹션 1
-        if selected['a']:
-            pdf.section_title("1", "의안 현황")
-            for item in selected['a']:
-                pdf.set_font(pdf.kfont, size=11)
-                pdf.multi_cell(0, 8, txt=f"• {item.get('bill_name')}")
-                pdf.set_text_color(27, 58, 107)
-                pdf.set_font(pdf.kfont, size=9)
-                pdf.cell(0, 6, "   [원문 링크]", ln=True, link=item.get('url', ''))
-                pdf.ln(2)
+# 보고서 발행 버튼
+if st.button("✨ 기존 보고서 디자인으로 발행", use_container_width=True):
+    total = len(selected['a']) + len(selected['s']) + len(selected['n'])
+    
+    # HTML 조립
+    html = f"""
+    {STYLE}
+    <div class="report-wrap">
+        <div class="header">
+            <div style="font-size:12px; opacity:0.8;">응급의료정책팀 | 자동 모니터링</div>
+            <div style="font-size:24px; font-weight:bold;">의료정책 모니터링 보고서 ({datetime.now().strftime('%Y-%m-%d')})</div>
+        </div>
+        <div class="card-box">
+            <div class="card"><div class="card-val">{len(selected['a'])}</div><div style="font-size:12px;">계류 의안</div></div>
+            <div class="card"><div class="card-val">{len(selected['s'])}</div><div style="font-size:12px;">예정 일정</div></div>
+            <div class="card"><div class="card-val">{len(selected['n'])}</div><div style="font-size:12px;">언론 기사</div></div>
+            <div class="card" style="background:#f8f9fa;"><div class="card-val">{total}</div><div style="font-size:12px;">전체 항목</div></div>
+        </div>
+    """
+    
+    if selected['a']:
+        html += f'<div class="sec-title"><span>📋 1. 의안 현황</span><span>{len(selected["a"])}건</span></div>'
+        for item in selected['a']:
+            html += f'<div class="item"><span class="badge">중요</span><b>{item.get("bill_name")}</b><br><br><a href="{item.get("url")}" class="link" target="_blank">🔗 원문 링크 클릭</a></div>'
 
-        # 섹션 2
-        if selected['s']:
-            pdf.ln(5)
-            pdf.section_title("2", "주요 일정")
-            for item in selected['s']:
-                pdf.set_font(pdf.kfont, size=11)
-                pdf.multi_cell(0, 8, txt=f"• {item.get('title')} ({item.get('date', '-')})")
-                pdf.ln(2)
+    if selected['n']:
+        html += f'<div class="sec-title"><span>📰 3. 언론 모니터링</span><span>{len(selected["n"])}건</span></div>'
+        for item in selected['n']:
+            html += f'<div class="item" style="border-left-color:#6c757d;"><span class="badge" style="background:#6c757d;">참고</span><b>{item.get("title")}</b><br><br><a href="{item.get("url")}" class="link" target="_blank">🔗 기사 보기</a></div>'
 
-        pdf_bytes = pdf.output(dest='S')
-        st.download_button("💾 PDF 저장", data=bytes(pdf_bytes), file_name="NMC_Official_Report.pdf")
+    html += "</div>"
+    
+    # 웹 화면에 즉시 보여주기
+    st.markdown(html, unsafe_allow_html=True)
+    
+    # 파일로 저장할 수 있게 제공
+    st.download_button("💾 보고서 파일(.html) 다운로드", data=html, file_name=f"NMC_보고서_{datetime.now().strftime('%m%d')}.html", mime="text/html")
+    st.success("드디어 디자인이 적용되었습니다! 파일을 다운로드해 브라우저에서 열어보세요.")
