@@ -28,38 +28,34 @@ if st.session_state.phase == "SELECT":
     st.title("🚑 NMC 정책 보고서 생성기")
     sa, ss, sn = [], [], []
 
-    # ❶ 의안 (성공한 뉴스 로직과 동일하게 구성)
+    # ❶ 의안 - 뉴스랑 똑같은 [텍스트](링크) 문법으로 고정
     st.subheader("❶ 의안")
     for i, r in enumerate(a_raw):
-        # 주소에 https://가 없으면 강제로 붙임
         lk = str(r.get("link") or r.get("bill_link") or "#").strip()
-        if not lk.startswith("http") and lk != "#": lk = "https://" + lk
-        
-        st.write("🔗 **" + str(r.get('bill_name','')) + "**")
-        st.markdown('<a href="' + lk + '" target="_blank">👉 [원문 확인]</a>', unsafe_allow_html=True)
-        if st.checkbox("선택", key="ca"+str(i)): sa.append(r)
+        if "." in lk and not lk.startswith("http"): lk = "https://" + lk
+        st.markdown(f"🔗 **{r.get('bill_name','')}**")
+        st.markdown(f"[👉 여기를 클릭해서 국회 원문 보기]({lk})")
+        if st.checkbox("포함", key=f"ca{i}"): sa.append(r)
         st.write("---")
 
-    # ❷ 일정 (성공한 뉴스 로직과 동일하게 구성)
+    # ❷ 일정
     st.subheader("❷ 일정")
     for i, r in enumerate(s_raw):
         lk = str(r.get("link", "#")).strip()
-        if not lk.startswith("http") and lk != "#": lk = "https://" + lk
-
-        st.write("📅 **" + str(r.get('title','')) + "**")
-        st.markdown('<a href="' + lk + '" target="_blank">👉 [원문 확인]</a>', unsafe_allow_html=True)
-        if st.checkbox("선택", key="cs"+str(i)): ss.append(r)
+        if "." in lk and not lk.startswith("http"): lk = "https://" + lk
+        st.markdown(f"📅 **{r.get('title','')}**")
+        st.markdown(f"[👉 여기를 클릭해서 상세 일정 보기]({lk})")
+        if st.checkbox("포함", key=f"cs{i}"): ss.append(r)
         st.write("---")
 
     # ❸ 뉴스 (이미 성공한 섹션)
     st.subheader("❸ 뉴스")
     for i, r in enumerate(n_raw):
         lk = str(r.get("link") or r.get("url") or "#").strip()
-        if not lk.startswith("http") and lk != "#": lk = "https://" + lk
-        
-        st.write("📰 **" + str(r.get('title','')) + "**")
-        st.markdown('<a href="' + lk + '" target="_blank">👉 [기사 보기]</a>', unsafe_allow_html=True)
-        if st.checkbox("선택", key="cn"+str(i)): sn.append(r)
+        if "." in lk and not lk.startswith("http"): lk = "https://" + lk
+        st.markdown(f"📰 **{r.get('title','')}**")
+        st.markdown(f"[👉 여기를 클릭해서 뉴스 기사 보기]({lk})")
+        if st.checkbox("선택", key=f"cn{i}"): sn.append(r)
         st.write("---")
 
     if st.button("✨ 보고서 발행"):
@@ -67,47 +63,33 @@ if st.session_state.phase == "SELECT":
         st.session_state.phase = "REPORT"; st.rerun()
 
 else:
+    # 보고서 화면도 최대한 단순화해서 '깡' 링크로 구성
     t = datetime.now().strftime("%Y-%m-%d")
     st.sidebar.button("🔙 다시 선택", on_click=lambda: st.session_state.update({"phase":"SELECT"}))
-    st.markdown("<style>[data-testid='stHeader']{display:none;} @media print{header,footer,.stButton,[data-testid='stSidebar']{display:none !important;}.main{padding:0 !important;}}</style>", unsafe_allow_html=True)
     
-    h = '<div style="background:#FBFBFB; padding:20px; font-family:sans-serif;">'
-    h += '<div style="background:#1B3A6B; color:#fff; padding:20px 30px; display:flex; justify-content:space-between; align-items:flex-end; border-radius:10px; -webkit-print-color-adjust:exact;">'
-    h += '<div><div style="font-size:10px; opacity:0.8;">응급의료정책연구팀</div><div style="font-size:22px; font-weight:800;">응급의료 동향 모니터링</div></div>'
-    h += '<div><div style="font-size:18px; font-weight:800;">' + t + '</div></div></div>'
+    st.markdown(f"# 🚑 응급의료 동향 보고서 ({t})")
     
     if st.session_state.sel_a:
-        h += '<div style="margin:20px 0 10px; font-size:16px; font-weight:800; color:#1B3A6B;">❶ 의안 현황</div>'
+        st.subheader("❶ 의안 현황")
         for r in st.session_state.sel_a:
             l = str(r.get("link") or r.get("bill_link") or "#").strip()
-            if not l.startswith("http") and l != "#": l = "https://" + l
-            h += '<div style="background:#fff; border:1px solid #E2E8F0; border-left:6px solid #1B3A6B; padding:15px; border-radius:12px; margin-bottom:10px; -webkit-print-color-adjust:exact;">'
-            h += '<div style="display:flex; justify-content:space-between; align-items:center;">'
-            h += '<div style="font-size:14px; font-weight:800; color:#1B3A6B;">' + escape(str(r.get("bill_name",""))) + '</div>'
-            h += '<a href="' + l + '" target="_blank" style="background:#1B3A6B; color:#fff; padding:4px 10px; border-radius:5px; font-size:10px; text-decoration:none;">원문보기 🔗</a></div>'
-            h += '<div style="font-size:11px; color:#444; margin-top:8px;">' + escape(str(r.get("summary",""))) + '</div></div>'
+            if "." in l and not l.startswith("http"): l = "https://" + l
+            st.markdown(f"**{r.get('bill_name','')}**")
+            st.markdown(f"[원문 링크 바로가기]({l})")
+            st.caption(r.get("summary",""))
 
     if st.session_state.sel_s:
-        h += '<div style="margin:20px 0 10px; font-size:16px; font-weight:800; color:#1B3A6B;">❷ 주요 일정</div>'
+        st.subheader("❷ 주요 일정")
         for r in st.session_state.sel_s:
             l = str(r.get("link", "#")).strip()
-            if not l.startswith("http") and l != "#": l = "https://" + l
-            h += '<div style="background:#fff; border:1px solid #E2E8F0; border-left:6px solid #28A745; padding:12px 15px; margin-bottom:8px; display:flex; justify-content:space-between; align-items:center; -webkit-print-color-adjust:exact;">'
-            h += '<div><div style="font-size:13px; font-weight:800; color:#333;">' + escape(str(r.get("title",""))) + '</div></div>'
-            h += '<a href="' + l + '" target="_blank" style="background:#28A745; color:#fff; padding:4px 10px; border-radius:4px; font-size:10px; text-decoration:none;">상세보기 🔗</a></div>'
+            if "." in l and not l.startswith("http"): l = "https://" + l
+            st.markdown(f"📅 {r.get('date','')} - **{r.get('title','')}**")
+            st.markdown(f"[일정 링크 바로가기]({l})")
 
     if st.session_state.sel_n:
-        h += '<div style="margin:20px 0 10px; font-size:16px; font-weight:800; color:#1B3A6B;">❸ 언론 모니터링</div>'
+        st.subheader("❸ 언론 모니터링")
         for r in st.session_state.sel_n:
             l = str(r.get("link") or r.get("url") or "#").strip()
-            if not l.startswith("http") and l != "#": l = "https://" + l
-            kw = r.get("keyword", "응급의료")
-            c = {"중증응급":"#800000", "중증외상":"#6F42C1"}.get(kw, "#DC3545")
-            h += '<div style="background:#fff; border:1px solid #E2E8F0; border-left:6px solid #DC3545; padding:12px 15px; margin-bottom:10px; display:flex; justify-content:space-between; align-items:center; -webkit-print-color-adjust:exact;">'
-            h += '<div><div style="font-size:13px; font-weight:800; color:#1B3A6B;">' + escape(str(r.get("title",""))) + '</div>'
-            h += '<div style="font-size:10px; color:#777;">' + escape(str(r.get("source",""))) + ' | ' + escape(str(r.get("date",""))) + '</div></div>'
-            h += '<div style="text-align:right;"><div style="background:' + str(c) + '; color:#fff; padding:2px 10px; border-radius:12px; font-size:10px; font-weight:700; margin-bottom:5px;">' + escape(str(kw)) + '</div>'
-            h += '<a href="' + l + '" target="_blank" style="color:#DC3545; font-size:10px; text-decoration:none; font-weight:700;">기사보기 🔗</a></div></div>'
-    
-    h += '</div>'
-    st.markdown(h, unsafe_allow_html=True)
+            if "." in l and not l.startswith("http"): l = "https://" + l
+            st.markdown(f"📰 **{r.get('title','')}** ({r.get('source','')})")
+            st.markdown(f"[뉴스 기사 바로가기]({l})")
