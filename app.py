@@ -65,22 +65,36 @@ else:
     st.markdown("<style>@media print { header, footer, .stButton, .stInfo, [data-testid='stSidebar'] { display: none !important; } .main { padding: 0 !important; } }</style>", unsafe_allow_html=True)
 
     def render_card(icon, label, val, t_c, b_c, br_c):
-        style = "flex:1;background:{};border-radius:15px;border-top:5px solid {};padding:20px 10px;text-align:center;box-shadow:0 2px 8px rgba(0,0,0,0.05);-webkit-print-color-adjust:exact;".format(b_c, br_c)
-        return '<div style="{}"><div style="font-size:22px;margin-bottom:8px;">{}</div><div style="font-size:32px;font-weight:800;color:{};margin-bottom:4px;">{}</div><div style="font-size:12px;font-weight:700;color:{};opacity:0.8;">{}</div></div>'.format(style, icon, t_c, val, t_c, label)
+        style = "flex:1;background:" + b_c + ";border-radius:15px;border-top:5px solid " + br_c + ";padding:20px 10px;text-align:center;box-shadow:0 2px 8px rgba(0,0,0,0.05);-webkit-print-color-adjust:exact;"
+        html = '<div style="' + style + '">'
+        html += '<div style="font-size:22px;margin-bottom:8px;">' + icon + '</div>'
+        html += '<div style="font-size:32px;font-weight:800;color:' + t_c + ';margin-bottom:4px;">' + str(val) + '</div>'
+        html += '<div style="font-size:12px;font-weight:700;color:' + t_c + ';opacity:0.8;">' + escape(label) + '</div>'
+        html += '</div>'
+        return html
 
-    report_html = '<div style="background:#FBFBFB;padding:30px;font-family:sans-serif;">'
+    report_list = []
+    report_list.append('<div style="background:#FBFBFB;padding:30px;font-family:sans-serif;">')
     
     # 1) 헤더
-    report_html += '<div style="background:#1B3A6B;color:#fff;padding:35px 30px;border-radius:10px 10px 0 0;-webkit-print-color-adjust:exact;"><div style="font-size:11px;letter-spacing:2px;opacity:0.8;margin-bottom:10px;">응급의료정책팀 | 자동 모니터링 보고서</div><div style="font-size:26px;font-weight:700;">의료정책 모니터링 보고서 (' + today + ')</div></div>'
+    header_html = '<div style="background:#1B3A6B;color:#fff;padding:35px 30px;border-radius:10px 10px 0 0;-webkit-print-color-adjust:exact;">'
+    header_html += '<div style="font-size:11px;letter-spacing:2px;opacity:0.8;margin-bottom:10px;">응급의료정책팀 | 자동 모니터링 보고서</div>'
+    header_html += '<div style="font-size:26px;font-weight:700;">의료정책 모니터링 보고서 (' + today + ')</div>'
+    header_html += '</div>'
+    report_list.append(header_html)
     
     # 2) 요약 카드
-    report_html += '<div style="display:flex;gap:12px;padding:20px 0;">'
-    report_html += render_card("📋", "계류의안", len(st.session_state.sel_a), "#1B3A6B", "#EBF1F9", "#1B3A6B")
-    report_html += render_card("📅", "예정일정", len(st.session_state.sel_s), "#155724", "#E8F5E9", "#155724")
-    report_html += render_card("📰", "언론기사", len(st.session_state.sel_n), "#721C24", "#F8D7DA", "#721C24")
-    report_html += render_card("📊", "전체", len(st.session_state.sel_a)+len(st.session_state.sel_s)+len(st.session_state.sel_n), "#495057", "#F1F3F5", "#495057")
-    report_html += '</div>'
+    report_list.append('<div style="display:flex;gap:12px;padding:20px 0;">')
+    report_list.append(render_card("📋", "계류의안", len(st.session_state.sel_a), "#1B3A6B", "#EBF1F9", "#1B3A6B"))
+    report_list.append(render_card("📅", "예정일정", len(st.session_state.sel_s), "#155724", "#E8F5E9", "#155724"))
+    report_list.append(render_card("📰", "언론기사", len(st.session_state.sel_n), "#721C24", "#F8D7DA", "#721C24"))
+    report_list.append(render_card("📊", "전체", len(st.session_state.sel_a)+len(st.session_state.sel_s)+len(st.session_state.sel_n), "#495057", "#F1F3F5", "#495057"))
+    report_list.append('</div>')
 
     # ❶ 의안
     if st.session_state.sel_a:
-        report_html += '<div style="display:flex;align-items:center;gap
+        report_list.append('<div style="display:flex;align-items:center;gap:10px;margin-top:30px;margin-bottom:15px;"><div style="background:#1B3A6B;color:#fff;width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;-webkit-print-color-adjust:exact;">1</div><div style="font-size:18px;font-weight:800;color:#1B3A6B;">의안 현황</div></div>')
+        for r in st.session_state.sel_a:
+            item_html = '<div style="background:#fff;border-radius:20px;border:1px solid #E2E8F0;padding:25px;margin-bottom:20px;border-left:6px solid #3B82F6;box-shadow:0 4px 12px rgba(0,0,0,0.03);-webkit-print-color-adjust:exact;">'
+            item_html += '<div style="display:flex;justify-content:space-between;margin-bottom:12px;"><div style="font-size:16px;font-weight:800;color:#1B3A6B;">' + escape(r.get("bill_name","")) + '</div><div style="background:#1B3A6B;color:#fff;padding:3px 12px;border-radius:15px;font-size:11px;font-weight:700;-webkit-print-color-adjust:exact;">' + escape(r.get("status","접수")) + '</div></div>'
+            item_html += '<div style="background:#FFF9E6;border:1px solid #FFD966;color:#856404;padding:5px 12px;border-radius:5px;font-size:12px;font-weight:700
