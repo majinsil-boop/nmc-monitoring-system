@@ -3,7 +3,6 @@ import glob
 import json
 import os
 import io
-import subprocess
 from datetime import datetime
 from html import escape
 
@@ -23,58 +22,44 @@ def get_link(record: dict, *keys) -> str:
             return fix_url(v)
     return "#"
 
-# ── 한글 폰트 탐색 (경로 후보 + fc-list 동적 탐색) ────────────────────────────
+# ── 한글 폰트 탐색 (repo 내장 → 시스템 순서로 탐색) ──────────────────────────
 def _find_korean_font(bold=False):
     """
-    여러 경로 후보를 순서대로 탐색하고,
-    모두 없으면 fc-list 명령어로 시스템에서 직접 탐색.
+    1순위: repo 내 fonts/ 폴더 (가장 확실)
+    2순위: 시스템 설치 경로 (로컬 개발 환경 대응)
     """
     keyword = "Bold" if bold else "Regular"
-    fallback_keyword = "Bold" if bold else "Regular"
 
-    static_candidates = [
-        # opentype (Ubuntu 기본)
-        f"/usr/share/fonts/opentype/noto/NotoSansCJK-{keyword}.ttc",
-        f"/usr/share/fonts/opentype/noto/NotoSansCJK-{keyword}.ttf",
-        # truetype
-        f"/usr/share/fonts/truetype/noto/NotoSansCJK-{keyword}.ttc",
-        f"/usr/share/fonts/truetype/noto/NotoSansCJK-{keyword}.ttf",
-        # noto 단독 폴더
-        f"/usr/share/fonts/noto/NotoSansCJK-{keyword}.ttc",
-        f"/usr/share/fonts/noto/NotoSansCJK-{keyword}.ttf",
-        # Streamlit Cloud 변형 경로
-        f"/usr/share/fonts/opentype/noto/NotoSansCJKkr-{keyword}.otf",
-        f"/usr/share/fonts/truetype/noto/NotoSansCJKkr-{keyword}.ttf",
-        # Regular 폴백 (bold 요청이어도 Regular로 대체)
-        "/usr/share/fonts/opentype/noto/NotoSansCJK-Regular.ttc",
-        "/usr/share/fonts/truetype/noto/NotoSansCJK-Regular.ttc",
-        "/usr/share/fonts/noto/NotoSansCJK-Regular.ttc",
+    # app.py 기준 상대 경로로 fonts/ 폴더 탐색
+    base_dir = os.path.dirname(os.path.abspath(__file__))
+    fonts_dir = os.path.join(base_dir, "fonts")
+
+    repo_candidates = [
+        os.path.join(fonts_dir, f"NotoSansCJKkr-{keyword}.otf"),
+        os.path.join(fonts_dir, f"NotoSansCJK-{keyword}.otf"),
+        os.path.join(fonts_dir, f"NotoSansCJKkr-{keyword}.ttf"),
+        os.path.join(fonts_dir, f"NotoSansCJK-{keyword}.ttf"),
+        # bold 요청인데 없으면 Regular로 폴백
+        os.path.join(fonts_dir, "NotoSansCJKkr-Regular.otf"),
+        os.path.join(fonts_dir, "NotoSansCJK-Regular.otf"),
+        os.path.join(fonts_dir, "NotoSansCJKkr-Regular.ttf"),
     ]
 
-    for p in static_candidates:
+    for p in repo_candidates:
         if os.path.exists(p):
             return p
 
-    # fc-list로 동적 탐색
-    try:
-        result = subprocess.run(
-            ["fc-list", ":lang=ko", "--format=%{file}\n"],
-            capture_output=True, text=True, timeout=5
-        )
-        for line in result.stdout.splitlines():
-            path = line.strip()
-            if path and os.path.exists(path):
-                if bold and ("Bold" in path or "bold" in path):
-                    return path
-                if not bold and ("Regular" in path or "regular" in path):
-                    return path
-        # bold/regular 구분 없이 첫 번째 한국어 폰트 반환
-        for line in result.stdout.splitlines():
-            path = line.strip()
-            if path and os.path.exists(path):
-                return path
-    except Exception:
-        pass
+    # 시스템 경로 폴백 (로컬 개발 환경)
+    system_candidates = [
+        f"/usr/share/fonts/opentype/noto/NotoSansCJK-{keyword}.ttc",
+        f"/usr/share/fonts/truetype/noto/NotoSansCJK-{keyword}.ttc",
+        f"/usr/share/fonts/noto/NotoSansCJK-{keyword}.ttc",
+        "/usr/share/fonts/opentype/noto/NotoSansCJK-Regular.ttc",
+        "/usr/share/fonts/truetype/noto/NotoSansCJK-Regular.ttc",
+    ]
+    for p in system_candidates:
+        if os.path.exists(p):
+            return p
 
     return None
 
