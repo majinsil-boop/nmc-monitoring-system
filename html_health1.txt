@@ -1,0 +1,2046 @@
+<!DOCTYPE html><html lang="ko"><head>
+<title>위원회 일정 - 목록화면 | 위원회 일정 |  보건복지위원회</title>
+<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+
+<meta http-equiv="Expires" content="-1">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Cache-Control" content="no-cache">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=yes, target-densitydpi=medium-dpi">
+<meta name="format-detection" content="telephone=no">
+<meta name="copyright" content="대한민국국회. ALL RIGHTS RESERVED.">
+<meta name="keywords" content="국회사무처,대한민국국회,국회위원회">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="국회위원회">
+<meta property="og:description" content="국회위원회">
+<meta property="og:url" content="https://committee.na.go.kr">
+<meta property="og:image" content="/og_assembly_kakako.png">
+<meta name="twitter:title" content="국회위원회">
+<meta name="twitter:description" content="국회위원회">
+<meta name="twitter:image" content="/og_assembly_kakako.png">
+<meta name="twitter:card" content="summary_large_image">
+<!-- 트위터 카드 타입은 summary_large_image, summary, photo 중 하나를 선택할 수 있다. -->
+
+<!-- Spring Security CSRF Meta Tags -->
+<meta name="_csrf_parameter" content="_csrf"><meta name="_csrf_header" content="X-CSRF-TOKEN"><meta name="_csrf" content="1ab02ee2-46a6-4266-adab-42d836f251ee"><link rel="icon" href="/favicon.ico">
+<link rel="stylesheet" href="/static/cmmit/css/default.css?ver=0.0001">
+<link rel="stylesheet" href="/static/cmmit/css/dev.css?ver=0.0001">
+<link rel="stylesheet" href="/static/cmmit/css/style.css?ver=2411113">
+<link rel="stylesheet" href="/static/cmmit/css/content.css?ver=2411113">
+<link rel="stylesheet" href="/static/cmmit/css/mobile.css?ver=0.0001">
+<script async="" charset="utf-8" src="https://tag.assembly.go.kr:9443/static/00002/ntm.js?ver=1775174400000"></script><script async="" charset="utf-8" src="https://tag.assembly.go.kr:9443/static/00002/install.js?ver=1775192400000"></script><script>
+    var glb_ctxPathJS = "";
+</script>
+<script src="/static/jslibrary/jquery-3.5.1.min.js?ver=0.0001"></script>
+<script src="/static/jslibrary/lodash.min.js?ver=0.0001"></script>
+<script src="/static/cmmit/js/common.js?ver=0.0001"></script>
+<script src="/static/cmmit/js/commonHelpUtil.js?ver=0.0001"></script>
+<script src="/static/cmmit/js/commonStrUtil.js?ver=0.0001"></script>
+<script src="/static/cmmit/js/navigation.js?ver=0.0001"></script>
+
+<link rel="stylesheet" href="/static/jslibrary/jquery-ui/jquery-ui.css?ver=0.0001">
+<script src="/static/jslibrary/jquery-ui/jquery-ui.js?ver=0.0001"></script>
+<script src="/static/jslibrary/jquery.serializeObject.min.js?ver=0.0001"></script>
+<script src="/static/jslibrary/sns/kakao.js?ver=0.0001"></script>
+<!-- Nethru Tag Manager -->
+<script>(function(f,d,k,h){var b;var a=m()+"ver="+c(d);g();function e(){var o=document.getElementsByTagName(f)[0];var n=document.createElement(f);n.async=true;n.charset="utf-8";n.src=a;o.parentNode.insertBefore(n,o)}function m(){return window.location.protocol=="https:"?"https://tag.assembly.go.kr:9443/static/00002/install.js?":"https://tag.assembly.go.kr:9443/static/00002/install.js?"}function c(n){var o=new Date().getTime();var p=n*1000*60;return n>0?Math.floor(o/p)*p:o}function g(){var n=l();if(!n){return false}n.open("GET",a,true);n.withCredentials=h;n.send(null);n.onload=function(){j();e()};n.onerror=n.onabort=function(){j()};i(function(){n.abort()},k)}function l(){var q;var o=[function(){return new XDomainRequest()},function(){return new XMLHttpRequest()},function(){return new ActiveXObject("Msxml2.XMLHTTP")},function(){return new ActiveXObject("Msxml3.XMLHTTP")},function(){return new ActiveXObject("Microsoft.XMLHTTP")}];for(var n=0;n<o.length;n++){try{q=o[n]()}catch(p){continue}break}return q}function i(o,n){b=setTimeout(o,n)}function j(){if(b){clearTimeout(b);b=null}}})("script",60,/*{{timeout}}*/2000,/*{{withCredentials}}*/false);</script>
+<!-- End Nethru Tag Manager -->
+
+<script>
+    Kakao.init("059662abd4e705d231610d6f6bf2409f");
+</script>
+<!-- Naver Analytics -->
+<script src="//wcs.naver.net/wcslog.js"></script><script type="text/javascript" async="" src="https://ssl.pstatic.net/melona/libs/gfp-nac-module/synchronizer.js"></script>
+<script>
+    if(!wcs_add) var wcs_add = {};
+    wcs_add["wa"] = "1a0c755fa72aec0";
+    if(window.wcs) {
+        wcs_do();
+    }
+</script>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-DYGBSP7D7G"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){window.dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-DYGBSP7D7G');
+</script>
+</head>
+<body>
+    <script>
+
+// 내부 IP 대역 목록
+var INNER_IP_BAND_LIST = [];
+var INNER_IP_BAND_LIST_MAIN = [];
+var HOME_PAGE_MY_ADDR  = "175.118.2.35";     // PC IP
+
+$(document).ready(function() {
+    $('#lnb_search').bind("click", function (event) {
+        var glnbForm = document.glnbSearchForm;
+        glnbForm.query.focus();
+    });
+
+    $('#btn_search_close').bind("click", function (event) {
+        $('.lnb_util #lnb_search').focus();
+    });
+
+    $('#all-search__input').keydown(function(event) {
+        if(event.keyCode == 13) { 
+            event.preventDefault();
+            if($('#all-search__input').val !=''){
+                glnbSearch();
+            }
+        }
+    });
+
+    /* 통합검색 팝업 접근성 */
+    $(".layer_search #btn_search_close").on("keydown", function(event) {
+        if (!event.shiftKey && event.keyCode == 9) {
+            event.preventDefault();
+            $('#all-search__input').focus();
+        }
+    });
+    $(".layer_search #all-search__input").on("keydown", function(event) {
+        if (event.shiftKey && event.keyCode == 9) {
+            event.preventDefault();
+            $('#btn_search_close').focus();
+        }
+    });
+    /* //통합검색 팝업 접근성 */
+
+    $(".glnb_nsns_icon a[id^=link_glnb_], .ft_menu_etc a[id^=link_glnb_footer_]").on("click", function(event) {
+        event.preventDefault();
+
+        var id = $(this).attr("id");
+        id = id.replace("link_glnb_footer_", "");
+        id = id.replace("link_glnb_", "");
+        var url = ""; 
+        if ( id == "facebook" ) {
+            url = "https://www.facebook.com/NationalAssemblyROK";
+        }
+        else if ( id == "youtube" ) {
+            url = "https://www.youtube.com/channel/UCsWa6xl7KxOolVhROUJ4Ghw";
+        }
+        else if ( id == "twitter" ) {
+            url = "https://twitter.com/news_NA";
+        }
+        else if ( id == "insta" ) {
+            url = "https://www.instagram.com/theassembly_kr/";
+        }
+        else if ( id == "rss" ) {
+            url = "https://www.assembly.go.kr/portal/rss/rss/searchRss.do?menuNo=600251";
+            var winid = window.open(url, id);
+            winid.focus();
+            return;
+        } else {}
+        
+        
+        if ( glnbInnerIpCheck() ) {
+            alert("인터넷망에서 접속가능합니다.");
+            return false;
+        }
+        
+        if ( url != "" )  {
+            var winid = window.open(url, id);
+            winid.focus();
+        }
+    });
+
+    $(".banner-close .btn-close").on("click",function(){
+        $(".lnb_bg").css("top","141px");
+    })
+});
+
+function glnbSearch(){
+    var glnbForm = document.glnbSearchForm;
+    var queryVal = glnbForm.query.value;
+    
+    var pattern = /^\s+|\s+$/g;
+      if (queryVal.replace(pattern,'')=="") {
+        alert("검색어를 입력해 주세요.");
+        glnbForm.query.focus();
+        return;
+    } else {
+        glnbForm.action=com.help.url("/cmmit/signl/search/search.do");
+        $('#glnbSearchForm').append("<input type=\"hidden\" name=\"" + CSRF_PARAMETER + "\" value=\""+ CSRF_TOKEN +"\">")
+        glnbForm.submit();
+    }
+    return false;
+}
+
+/**
+ * 내부IP 목록 조회
+ */
+function glnbInnerIpCheck() {
+    
+    var innerIpYn = false;
+    if ( INNER_IP_BAND_LIST == null || INNER_IP_BAND_LIST == undefined || INNER_IP_BAND_LIST.length == 0 ) {
+        var params = {
+              menuNo   : $("#menuNo").val()
+            // Spring Security CSRF Param 처리
+            , _csrf    : $("meta[name='_csrf']").attr("content")
+        };
+        $.ajax({
+            type    : 'post',
+            url     : "/cmmit/main/innerIpBandList.json",
+            data    : params,
+            async   : false,
+            success : function(data) {
+                var resultCode = data.resultCode;
+                var resultMsg  = data.msg;
+                if(resultCode == "success") {
+                    var resultList = data.ipList;
+                    INNER_IP_BAND_LIST = [];
+                    if ( resultList != null && resultList.length > 0 ) {
+                        for ( var i = 0 ; i < resultList.length ; i++ ) {
+                            if ( resultList[ i ].com1Val != "" && resultList[ i ].com1Val != null ) {
+                                INNER_IP_BAND_LIST.push(decodeNaValue(resultList[ i ].com1Val));
+                            }
+                        }
+
+                        innerIpYn = glnbInnerIpSubCheck();
+                    } else {
+                        innerIpYn = false;
+                    }
+                }
+            }
+        });
+    } else {
+        innerIpYn = glnbInnerIpSubCheck();
+    }
+    
+    return innerIpYn;
+}
+
+/**
+ * 접속 IP 가 내부IP 인지 확인.. 
+ */
+function glnbInnerIpSubCheck() {
+    
+    var innerIpYn = false;
+    var innerIpList = INNER_IP_BAND_LIST;
+    
+//     console.log("------------------------------");
+//     console.log("INNER_IP_BAND_LIST::" + JSON.stringify(INNER_IP_BAND_LIST));
+//     console.log("------------------------------");
+    
+    if ( innerIpList != null && innerIpList.length > 0 ) {
+        for ( var i = 0 ; i < innerIpList.length ; i++ ) {
+            var idx = innerIpList[i].indexOf(".*");
+            if ( idx >= 0 ) {
+                // 내부 IP 대역 확인
+                var innIpBand = innerIpList[i].substring(0, idx);
+                if ( HOME_PAGE_MY_ADDR.indexOf(innIpBand) == 0 ) {
+                    innerIpYn = true;
+                    break;
+                }
+            } else {
+                // 내부 IP 확인
+                if ( HOME_PAGE_MY_ADDR == innerIpList[i] ) {
+                    innerIpYn = true;
+                    break;
+                }
+            }
+        }
+    } else {
+        innerIpYn = false;
+    }
+    
+    // console.log("inner ip YN::"+innerIpYn);
+    return innerIpYn;
+}
+
+/**
+ * 입력된 암호된 값을 복호화 처리
+ *
+ * @param encodeStr
+ * @returns
+ */
+function decodeNaValue(encodeStr)  {
+
+    var decodeBase64Var = '';
+    try {
+        decodeBase64Var = atob(encodeStr);
+    } catch(e) {
+        decodeBase64Var = encodeStr;
+    }
+
+    var len = decodeBase64Var.length;
+    var decodeStr = '';
+    for ( var i = 0 ; i < len ; i ++ ) {
+        var numChr = decodeBase64Var.charCodeAt(i);
+        var decodeNumChr = numChr - 3;
+        decodeStr = decodeStr + String.fromCharCode(decodeNumChr);
+    }
+
+    return decodeStr;
+}
+
+// 로그인 Type 저장
+var loginType = "";
+
+/**
+ * Login 선택 화면 Show
+ */
+function loginOpen(goUrl){
+
+
+    if ( "N" == "Y" )
+    
+    {
+        location.href = goUrl;
+        return true;
+    } else {
+        if ( confirm("로그인하셔야 이용이 가능합니다.\n로그인 페이지로 이동 하시겠습니까?") ) {
+            location.href="/cmmit/ssoLogin.do?returnUrl=https://committee.na.go.kr" + goUrl ;
+            return false;
+        }
+    }
+}
+
+/**
+ * Login 선택 화면 Close 
+ */
+function loginChoiceClose(){
+    $("#choiceLogin").hide();
+}
+
+/**
+ * Login 선택 화면 Close 
+ */
+function loginPage(mtype){
+    // alert("mtype::" + mtype);
+    if(mtype == 'Y'){
+    	var rUrl = "";
+    	if ( loginType == "CVA" ) {
+    		rUrl = "/cmmit/cnts/cntsCva/nativeCmpt.do?cntsDivCd=CVA&cntsCd=DTAA&menuNo=2000048";
+    	} else if ( loginType == "MYCVA" ) {
+    		rUrl = "/cmmit/cnts/cntsCont/dataB.do?menuNo=2000048&cntsDivCd=CVA&cntsCd=DTAB";
+    	}
+    	
+        location.href="/cmmit/ssoLogin.do?loginType="+loginType + "&returnUrl=https://committee.na.go.kr" + rUrl ;
+        
+    }else{
+        location.href="/cmmit/contents/usersec/userVerify.do?loginType="+loginType;
+    }
+}
+
+function fn_toggleSubMenu(isShow) {
+    if ( isShow ) {
+        gfn_setCookie("cmitSubTop", "Y", 1);
+        $("#cmitSubTopYn").val("Y");
+        $("#cmitsub_top_show").show();
+        $("#cmitsub_top_hide").hide();
+        $(".btn_openclose").focus()
+    }
+    else {
+        gfn_setCookie("cmitSubTop", "N", 1);
+        $("#cmitSubTopYn").val("N");
+        $("#cmitsub_top_show").hide();
+        $("#cmitsub_top_hide").show();
+        $(".btn_opencopen").focus()
+    }
+}
+
+// 퀵메뉴
+function quickFunction() {
+    document.getElementById("QuickDropdown").classList.toggle("show");
+
+    // if ($("#QuickDropdown").hasClass("show")){
+    //     $("#QuickDropdown").attr("title","확장됨");
+    // }else{
+    //     $("#QuickDropdown").attr("title","축소됨");
+    // }
+    var dropbtn = $(".dropbtn");
+    var isExpanded = $("#QuickDropdown").hasClass("show");
+    dropbtn.attr("title", (isExpanded ? ' 확장됨' : ' 축소됨'));
+
+}
+
+</script>
+
+    <!-- skip -->
+    <div class="skip"> 
+        <a href="#content">본문내용 바로가기</a> 
+    </div>
+    <!-- //skip -->
+    
+    <!-- 검색창 -->
+    <div class="layer_search">
+        <div>
+            <div class="layer_search_txt">
+                <strong>찾으시는 검색어를 입력해주세요</strong>
+            </div>
+            <form name="glnbSearchForm" id="glnbSearchForm" method="post" action="/cmmit/signl/search/search.do">
+            <div class="layer_search_box">
+                 <strong><label for="all-search__input" class="all-search__label">통합검색</label></strong>
+                <div>
+                    <input id="all-search__input" name="query" type="text" title="검색어입력" placeholder="검색어를 입력하세요">
+                    <input type="hidden" name="menuNo" value="600000">
+                    <input type="hidden" name="collection" value="ALL">
+                    <input type="hidden" name="exCmitId" value="9700341">
+                </div>
+
+                <button type="button" id="goSearch" onclick="glnbSearch()">검색</button>
+            </div>
+             </form>
+            <a href="javascript:void(0);" id="btn_search_close" title="대화상자 닫기">대화상자 닫기</a>
+        </div>
+    </div>
+    <!-- //검색창 -->
+    
+    <!-- mobile gnb -->    
+    <div class="mobile_gnb">
+        <strong>전체메뉴</strong>
+        <div class="m_logo">
+            <span class="m_slogan">내일을 여는 국민의 국회</span>
+        </div>
+        <div class="layer_sns_m">
+            <ul>
+                <li><a href="https://www.facebook.com/NationalAssemblyROK" target="_blank" class="icon_glnb_facebook" title="새창열림_페이스북">페이스북</a></li>
+                <li><a href="https://www.youtube.com/channel/UCsWa6xl7KxOolVhROUJ4Ghw" target="_blank" class="icon_glnb_youtube" title="새창열림_유투브">유투브</a></li>
+                <li><a href="https://twitter.com/news_NA" target="_blank" class="icon_glnb_twitter" title="새창열림_X">X</a></li>
+                <li><a href="https://www.instagram.com/theassembly_kr/" target="_blank" class="icon_glnb_insta" title="새창열림_인스타그램">인스타그램</a></li>
+                <li><a href="https://www.assembly.go.kr/portal/rss/rss/searchRss.do?menuNo=600251" target="_blank" class="icon_glnb_rss" title="새창열림_RSS">RSS</a></li>
+            </ul>
+        </div>
+
+        <div class="mobile_gnb_inner">
+            <div class="mobile_gnb_menu">
+                <div class="topMenuDiv">
+                                <a href="javascript:;">위원회 소개</a>
+                                <ul class="top_menu_lv1">
+                                    <!-- LV1 -->
+                                                <li data-menuno="2000010"><a href="/cmmit/main/contents.do?menuNo=2000010
+">위원회 개관</a></li>
+                                                    <li class="child" data-menuno="2000011">
+                                                    <a href="/cmmit/mem/cmmitMemList/list.do?menuNo=2000013
+">위원회 구성</a>
+                                                        <ul class="top_menu_lv2">
+                                                            <li data-menuno="2000013"><a href="/cmmit/mem/cmmitMemList/list.do?menuNo=2000013
+">위원명단</a></li>
+                                                                        <li data-menuno="2000014"><a href="/cmmit/mem/cmmitMemList/subCmt.do?menuNo=2000014
+">소위원회</a></li>
+                                                                        <li data-menuno="2000084"><a href="/cmmit/bbs/BCMT2014/list.do?menuNo=2000084
+">위원명단공지</a></li>
+                                                                        <li data-menuno="2000015"><a href="/cmmit/empList/empList/empList.do?menuNo=2000015
+">위원회 직원</a></li>
+                                                                        </ul>
+                                                    </li>
+                                            <!-- LV1 -->
+                                                <li data-menuno="2000012"><a href="/cmmit/refr/refr/cmmitOrgList.do?menuNo=2000012
+">소관기관</a></li>
+                                                    </ul>
+                            </div>
+                    <div class="topMenuDiv on">
+                                <a href="javascript:;">위원회 일정</a>
+                                <ul class="top_menu_lv1">
+                                    <!-- LV1 -->
+                                                <li data-menuno="2000048"><a href="/cmmit/schl/cmitSchl/schlList.do?menuNo=2000048
+" class="on">위원회 일정</a></li>
+                                                    </ul>
+                            </div>
+                    <div class="topMenuDiv">
+                                <a href="javascript:;">법률·의안·청원</a>
+                                <ul class="top_menu_lv1">
+                                    <!-- LV1 -->
+                                                <li data-menuno="2000016"><a href="/cmmit/refr/refr/cmmitLawList.do?menuNo=2000016
+">소관법률</a></li>
+                                                    <li class="child" data-menuno="2000018">
+                                                    <a href="/cmmit/bill/cntsBill/list.do?menuNo=2000079
+">의안</a>
+                                                        <ul class="top_menu_lv2">
+                                                            <li data-menuno="2000079"><a href="/cmmit/bill/cntsBill/list.do?menuNo=2000079
+">의안통계 · 현황</a></li>
+                                                                        <li data-menuno="2000019"><a href="/cmmit/bill/billReport/list.do?menuNo=2000019
+">검토보고</a></li>
+                                                                        <li data-menuno="2000108"><a href="/cmmit/bill/billReport/list.do?menuNo=2000108
+">심사보고</a></li>
+                                                                        <li data-menuno="2000080"><a href="/cmmit/main/contents.do?menuNo=2000080
+">의안안내</a></li>
+                                                                        </ul>
+                                                    </li>
+                                            <li class="child" data-menuno="2000017">
+                                                    <a href="/cmmit/lgsltpa/lgsltpa/ongoingList.do?menuNo=2000082
+">입법예고</a>
+                                                        <ul class="top_menu_lv2">
+                                                            <li data-menuno="2000082"><a href="/cmmit/lgsltpa/lgsltpa/ongoingList.do?menuNo=2000082
+">입법예고 현황</a></li>
+                                                                        <li data-menuno="2000083"><a href="/cmmit/main/contents.do?menuNo=2000083
+">입법예고 안내</a></li>
+                                                                        </ul>
+                                                    </li>
+                                            <!-- LV1 -->
+                                                <li data-menuno="2000050"><a href="/cmmit/bbs/BCMT2001/list.do?menuNo=2000050
+">행정입법 검토</a></li>
+                                                    <li class="child" data-menuno="2000006">
+                                                    <a href="/cmmit/petit/petit/pendList.do?menuNo=2000033
+">청원</a>
+                                                        <ul class="top_menu_lv2">
+                                                            <li data-menuno="2000033"><a href="/cmmit/petit/petit/pendList.do?menuNo=2000033
+">청원현황</a></li>
+                                                                        <li data-menuno="2000035"><a href="/cmmit/petit/petit/reviewList.do?menuNo=2000035
+">검토 및 심사보고</a></li>
+                                                                        <li data-menuno="2000074"><a href="/cmmit/main/contents.do?menuNo=2000074
+">청원안내</a></li>
+                                                                        </ul>
+                                                    </li>
+                                            </ul>
+                            </div>
+                    <div class="topMenuDiv">
+                                <a href="javascript:;">예산안·결산·기금</a>
+                                <ul class="top_menu_lv1">
+                                    <!-- LV1 -->
+                                                <li data-menuno="2000021"><a href="/cmmit/bill/budget/list.do?menuNo=2000021
+">예산안 심사</a></li>
+                                                    <!-- LV1 -->
+                                                <li data-menuno="2000022"><a href="/cmmit/bill/budget/list.do?menuNo=2000022
+">결산심사</a></li>
+                                                    <!-- LV1 -->
+                                                <li data-menuno="2000023"><a href="/cmmit/bill/budget/list.do?menuNo=2000023
+">기금심사</a></li>
+                                                    <!-- LV1 -->
+                                                <li data-menuno="2000072"><a href="/cmmit/main/contents.do?menuNo=2000072
+">예산안·결산·기금 안내</a></li>
+                                                    </ul>
+                            </div>
+                    <div class="topMenuDiv">
+                                <a href="javascript:;">국정감사</a>
+                                <ul class="top_menu_lv1">
+                                    <!-- LV1 -->
+                                                <li data-menuno="2000030"><a href="/cmmit/bbs/BCMT2002/list.do?menuNo=2000030
+">계획서</a></li>
+                                                    <!-- LV1 -->
+                                                <li data-menuno="2000031"><a href="/cmmit/bbs/BCMT2003/list.do?menuNo=2000031
+">결과보고서</a></li>
+                                                    <!-- LV1 -->
+                                                <li data-menuno="2000051"><a href="/cmmit/bbs/BCMT2004/list.do?menuNo=2000051
+">참고자료</a></li>
+                                                    <!-- LV1 -->
+                                                <li data-menuno="2000032"><a href="/cmmit/bbs/BCMT2005/list.do?menuNo=2000032
+">시정 및 처리결과</a></li>
+                                                    <!-- LV1 -->
+                                                <li data-menuno="2000073"><a href="/cmmit/main/contents.do?menuNo=2000073
+">국정감사 안내</a></li>
+                                                    </ul>
+                            </div>
+                    <div class="topMenuDiv">
+                                <a href="javascript:;">회의록</a>
+                                <ul class="top_menu_lv1">
+                                    <!-- LV1 -->
+                                                <li data-menuno="2000071"><a href="/cmmit/cmitMtgRcord/mtgRcord/mtgRcordList.do?menuNo=2000071
+">회의록</a></li>
+                                                    <!-- LV1 -->
+                                                <li data-menuno="2000075"><a href="/cmmit/main/contents.do?menuNo=2000075
+">회의록안내</a></li>
+                                                    </ul>
+                            </div>
+                    <div class="topMenuDiv">
+                                <a href="javascript:;">위원회 소식</a>
+                                <ul class="top_menu_lv1">
+                                    <!-- LV1 -->
+                                                <li data-menuno="2000037"><a href="/cmmit/bbs/B0000051/list.do?menuNo=2000037
+">보도자료</a></li>
+                                                    <li class="child" data-menuno="2000076">
+                                                    <a href="/cmmit/cmtEstn/cmtEstn/list.do?menuNo=2000116
+">자료실</a>
+                                                        <ul class="top_menu_lv2">
+                                                            <li data-menuno="2000116"><a href="/cmmit/cmtEstn/cmtEstn/list.do?menuNo=2000116
+">전체자료</a></li>
+                                                                        <li data-menuno="2000109"><a href="/cmmit/bbs/BCMT2075/list.do?menuNo=2000109
+">정책자료</a></li>
+                                                                        <li data-menuno="2000110"><a href="/cmmit/bbs/BCMT2076/list.do?menuNo=2000110
+">공청회/간담회/세미나</a></li>
+                                                                        <li data-menuno="2000111"><a href="/cmmit/bbs/BCMT2077/list.do?menuNo=2000111
+">(인사)청문회</a></li>
+                                                                        <li data-menuno="2000112"><a href="/cmmit/bbs/BCMT2078/list.do?menuNo=2000112
+">사진/동영상</a></li>
+                                                                        <li data-menuno="2000113"><a href="/cmmit/bbs/BCMT2079/list.do?menuNo=2000113
+">양식/서식</a></li>
+                                                                        <li data-menuno="2000114"><a href="/cmmit/bbs/BCMT2080/list.do?menuNo=2000114
+">기타</a></li>
+                                                                        <li data-menuno="2000115"><a href="/cmmit/bbs/BCMT2081/list.do?menuNo=2000115
+">특위</a></li>
+                                                                        </ul>
+                                                    </li>
+                                            </ul>
+                            </div>
+                    </div>
+            <div class="mobile_gnb_btn">
+                <ul>
+                    <li><a href="https://www.assembly.go.kr/portal/pop/popInfoService.do">국회정보길라잡이</a></li>
+                    <li><a href="https://www.assembly.go.kr/portal/cnts/cntsCont/dataA.do?cntsDivCd=NAAS&amp;menuNo=600137">국회의원 검색</a></li>
+                </ul>
+            </div>
+            <div class="mobile_gnb_login">
+                <a href="/cmmit/ssoLogin.do">로그인</a>
+                    </div>
+        </div>
+        <a href="javascript:;" class="btn_m_x">닫기</a>
+    </div>
+    <!-- //mobile gnb -->
+    <header> 
+    <!-- GNB -->
+    <!-- top banner -->
+    <script src="/static/jslibrary/bxslider/jquery.bxslider.min.js"></script>
+<script src="/static/jslibrary/bxslider/jquery.bxslider.js"></script>
+<script src="/static/jslibrary/bxslider/jquery.bxslider-rahisified.min.js"></script>
+
+<div class="banrDiv" style="display: none;">
+    <div class="top-banner__wrap">
+
+        <div class="banner-wrap">
+            <ul class="top-banner"></ul>
+            <div class="button-wrap">
+                <div class="banner-close" id="banner-close">
+                    <div class="checkbox check-type1">
+                        <input type="checkbox" name="topBanrChkday" id="topBanrChkday" title="topBanrChkday" class="chkToday" value="Y">
+                        <label for="topBanrChkday"><span id="todayChk" style="color:#fff">오늘열지않기</span></label>
+                    </div>
+                    <button class="btn-close">닫기</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="top-banner__mobile">
+        <div class="banner-wrap">
+            <ul class="top-bannerM"></ul>
+            <div class="button-wrap">
+                <div class="banner-close" id="banner-close">
+                    <div class="checkbox check-type1">
+                        <input type="checkbox" name="topBanrChkday" id="topBanrChkdayM" title="topBanrChkdayM" class="chkToday" value="Y">
+                        <label for="topBanrChkdayM"><span id="todayChkM" style="color:#fff">오늘열지않기</span></label>
+                    </div>
+                    <button class="btn-close">닫기</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="/static/cmmit/js/main/sub/topBanr.js"></script>
+<div class="gnb">
+        <div>
+            <ul class="gnb_assembly">
+                <li class="ga00"><a target="_blank" href="https://www.assembly.go.kr/portal/na/agenda/agendaSchl.do?menuNo=600015" title="새창열림">제22대 제434회국회(임시회) </a></li>
+                <li class="ga01"><a target="_blank" href="https://www.assembly.go.kr/portal/pop/popInfoService.do" id="gnb_assembly_info" title="새창열림">국회정보길라잡이</a></li>
+                         <li class="ga02"><a target="_blank" href="https://www.assembly.go.kr/portal/cnts/cntsCont/dataA.do?cntsDivCd=NAAS&amp;menuNo=600137" title="새창열림">국회의원 검색</a></li>
+            </ul>
+            <div class="gnb_util">
+                <ul class="gnb_menu">
+                    <li class="m_none"><a href="/">Home</a></li>
+                    <li class="bl0"><a href="/cmmit/ssoLogin.do">로그인</a></li>
+                        <li class="m_none">
+                        <div>
+                            <strong>화면크기</strong>
+                            <a href="javascript:;" class="gnb_plus" onclick="zoomOut();">화면확대</a>
+                            <a href="javascript:;" class="gnb_minus" onclick="zoomIn();">화면축소</a>
+                        </div>
+                    </li>
+                    <li class="m_none">
+                        <ol class="glnb_nsns_icon">
+                            <li><a href="" target="_blank" class="icon_glnb_facebook" id="link_glnb_facebook" title="새창열림_페이스북">페이스북</a></li>
+                            <li><a href="" target="_blank" class="icon_glnb_insta" id="link_glnb_insta" title="새창열림_인스타그램">인스타그램</a></li>
+                            <li><a href="" target="_blank" class="icon_glnb_youtube" id="link_glnb_youtube" title="새창열림_유튜브">유튜브</a></li>
+                            <li><a href="" target="_blank" class="icon_glnb_twitter" id="link_glnb_twitter" title="새창열림_X">X</a></li>
+                            </ol>
+                    </li>
+                    <li><a href="/cmmit/rss/rss/siteMap.do?menuNo=2000049">사이트맵</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- //GNB -->
+    
+    <!-- LNB -->
+    <div class="lnb ">
+        <div class="logoarea">
+            <h1 class="logo">
+                <a href="/cmmit/main/main.do" class="health" title="보건복지위원회 Health and Welfare Committee">
+<span class="blind">보건복지위원회 Health and Welfare Committee</span>
+                </a>
+            </h1>
+        </div>
+        <div class="menu">
+            <ul class="menu_mst">
+                <li>
+                        <a class="topMenuLink" id="2000067" href="/cmmit/main/contents.do?menuNo=2000010" style="text-align: center;">위원회 소개
+</a>
+                            <!-- 하위메뉴가 1개 이하이면 표시 안함(위원회 일정) -->
+                                <ul class="menu_sub" id="subMenuLink_2000067" style="display: none;">
+                                    <li><a href="/cmmit/main/contents.do?menuNo=2000010">위원회 개관
+</a></li>
+                                                    <li><a href="/cmmit/mem/cmmitMemList/list.do?menuNo=2000013">위원회 구성
+</a></li>
+                                                    <li><a href="/cmmit/refr/refr/cmmitOrgList.do?menuNo=2000012">소관기관
+</a></li>
+                                                    </ul>
+                            </li>
+                    <li>
+                        <a class="topMenuLink" id="2000002" href="/cmmit/schl/cmitSchl/schlList.do?menuNo=2000048" style="text-align: center;">위원회 일정
+</a>
+                                    <!-- 하위메뉴가 1개 이하이면 표시 안함(위원회 일정) -->
+                                <ul class="menu_sub" id="subMenuLink_2000002" style="display: none;">
+                                    <li><a href="/cmmit/schl/cmitSchl/schlList.do?menuNo=2000048">위원회 일정
+</a></li>
+                                                    </ul>
+                            </li>
+                    <li>
+                        <a class="topMenuLink" id="2000003" href="/cmmit/refr/refr/cmmitLawList.do?menuNo=2000016" style="text-align: center;">법률·의안·청원
+</a>
+                                    <!-- 하위메뉴가 1개 이하이면 표시 안함(위원회 일정) -->
+                                <ul class="menu_sub" id="subMenuLink_2000003" style="display: none;">
+                                    <li><a href="/cmmit/refr/refr/cmmitLawList.do?menuNo=2000016">소관법률
+</a></li>
+                                                    <li><a href="/cmmit/bill/cntsBill/list.do?menuNo=2000079">의안
+</a></li>
+                                                    <li><a href="/cmmit/lgsltpa/lgsltpa/ongoingList.do?menuNo=2000082">입법예고
+</a></li>
+                                                    <li><a href="/cmmit/bbs/BCMT2001/list.do?menuNo=2000050">행정입법 검토
+</a></li>
+                                                    <li><a href="/cmmit/petit/petit/pendList.do?menuNo=2000033">청원
+</a></li>
+                                                    </ul>
+                            </li>
+                    <li>
+                        <a class="topMenuLink" id="2000004" href="/cmmit/bill/budget/list.do?menuNo=2000021" style="text-align: center;">예산안·결산·기금
+</a>
+                                    <!-- 하위메뉴가 1개 이하이면 표시 안함(위원회 일정) -->
+                                <ul class="menu_sub" id="subMenuLink_2000004" style="display: none;">
+                                    <li><a href="/cmmit/bill/budget/list.do?menuNo=2000021">예산안 심사
+</a></li>
+                                                    <li><a href="/cmmit/bill/budget/list.do?menuNo=2000022">결산심사
+</a></li>
+                                                    <li><a href="/cmmit/bill/budget/list.do?menuNo=2000023">기금심사
+</a></li>
+                                                    <li><a href="/cmmit/main/contents.do?menuNo=2000072">예산안·결산·기금 안내
+</a></li>
+                                                    </ul>
+                            </li>
+                    <li>
+                        <a class="topMenuLink" id="2000005" href="/cmmit/bbs/BCMT2002/list.do?menuNo=2000030" style="text-align: center;">국정감사
+</a>
+                                    <!-- 하위메뉴가 1개 이하이면 표시 안함(위원회 일정) -->
+                                <ul class="menu_sub" id="subMenuLink_2000005" style="display: none;">
+                                    <li><a href="/cmmit/bbs/BCMT2002/list.do?menuNo=2000030">계획서
+</a></li>
+                                                    <li><a href="/cmmit/bbs/BCMT2003/list.do?menuNo=2000031">결과보고서
+</a></li>
+                                                    <li><a href="/cmmit/bbs/BCMT2004/list.do?menuNo=2000051">참고자료
+</a></li>
+                                                    <li><a href="/cmmit/bbs/BCMT2005/list.do?menuNo=2000032">시정 및 처리결과
+</a></li>
+                                                    <li><a href="/cmmit/main/contents.do?menuNo=2000073">국정감사 안내
+</a></li>
+                                                    </ul>
+                            </li>
+                    <li>
+                        <a class="topMenuLink" id="2000064" href="/cmmit/cmitMtgRcord/mtgRcord/mtgRcordList.do?menuNo=2000071" style="text-align: center;">회의록
+</a>
+                                    <!-- 하위메뉴가 1개 이하이면 표시 안함(위원회 일정) -->
+                                <ul class="menu_sub" id="subMenuLink_2000064" style="display: none;">
+                                    <li><a href="/cmmit/cmitMtgRcord/mtgRcord/mtgRcordList.do?menuNo=2000071">회의록
+</a></li>
+                                                    <li><a href="/cmmit/main/contents.do?menuNo=2000075">회의록안내
+</a></li>
+                                                    </ul>
+                            </li>
+                    <li>
+                        <a class="topMenuLink" id="2000009" href="/cmmit/bbs/B0000051/list.do?menuNo=2000037" style="text-align: center;">위원회 소식
+</a>
+                                    <!-- 하위메뉴가 1개 이하이면 표시 안함(위원회 일정) -->
+                                <ul class="menu_sub" id="subMenuLink_2000009" style="display: none;">
+                                    <li><a href="/cmmit/bbs/B0000051/list.do?menuNo=2000037">보도자료
+</a></li>
+                                                    <li><a href="/cmmit/cmtEstn/cmtEstn/list.do?menuNo=2000116">자료실
+</a></li>
+                                                    </ul>
+                            </li>
+                    </ul>
+        </div>
+        <ul class="lnb_util">
+        	<span class="sr-only">국민을 지키는 미래로 나아가는 국회</span>           
+            <li><a href="javascript:;" class="lnb_search" id="lnb_search" title="대화상자 열기">검색</a></li>
+            <li>
+                <a href="javascript:;" id="m_menu_open" class="lnb_list m_block">전체메뉴</a>
+            </li>
+        </ul>
+
+    </div>
+    <!-- //LNB -->
+    <div id="lnb_bg" class="lnb_bg " style="top: 150px;">
+        <div>
+            <strong>국민을 지키는 국회 미래로 나아가는 국회</strong>
+        </div>
+    </div>
+    </header>
+
+    <!-- 서브페이지 상단 타이틀 및 배경이미지 -->
+    <input type="hidden" id="cmitSubTopYn" value="Y">
+            <div class="health cmitsub_top nsub_top nsub_bg02 nsub_bg_two002" id="cmitsub_top_show">
+        <div>
+            <div class="nsub_h2">
+                <h2>위원회 일정
+</h2>
+                    </div>
+            <div class="nsub_other">
+                <div class="location">
+                    <ul>
+                        <li><span>HOME</span></li>
+                        <li><span>위원회 일정
+</span></li>
+                                    <li><span>위원회 일정
+</span></li>
+                                    </ul>
+                </div>
+
+                <ul class="api_box_eng">
+                        <li><a href="javascript:;" class="btn_print" title="새창열림">인쇄하기</a></li>
+                    <li><a href="javascript:;" class="btn_share" id="btn_share_sns" title="SNS 공유하기">공유</a></li>
+                    <li><a href="javascript:;" class="btn_satis" id="btn_satisfaction" title="만족도조사">만족도조사</a></li>
+                    <li><a href="javascript:;" class="btn_openclose" title="인트로 영역 접기" onclick="fn_toggleSubMenu(false)">인트로 영역 접기</a></li>
+
+                </ul>
+
+                <!-- SNS layer -->
+                <div class="layer_sns">
+                    <ul>
+                        <li><a class="sns_kakaostory" href="javascript:;" onclick="fn_sendSns('kakaostory','위원회 일정 - 목록화면 | 위원회 일정 |  보건복지위원회');" title="새창열림">kakaostory</a></li>
+                        <li><a class="sns_facebook" href="javascript:;" onclick="fn_sendSns('facebook','위원회 일정 - 목록화면 | 위원회 일정 |  보건복지위원회');" title="새창열림">facebook</a></li>
+                        <li><a class="sns_twitter" href="javascript:;" onclick="fn_sendSns('twitter','위원회 일정 - 목록화면 | 위원회 일정 |  보건복지위원회');" title="새창열림">X</a></li>
+                        <li><a class="sns_blog" href="javascript:;" onclick="fn_sendSns('naverblog','위원회 일정 - 목록화면 | 위원회 일정 |  보건복지위원회');" title="새창열림">naverblog</a></li>
+                        <li><a class="sns_kakaotalk" id="sns_kakaotalk" href="javascript:;" onclick="fn_sendSns('kakaotalk','위원회 일정 - 목록화면 | 위원회 일정 |  보건복지위원회');" title="새창열림">kakaotalk</a></li>
+                        <li><a class="sns_url" href="javascript:;">URL</a></li>
+                    </ul>
+                    <a href="javascript:;" class="btn_sns_x" title="대화상자 닫기">대화상자 닫기</a>
+                </div>
+                <!-- //SNS layer -->
+
+                <!-- 만족도조사 layer -->
+                <div class="layer_satis">
+                    <form id="form_layer">
+                        <input type="hidden" name="siteId" value="portal">
+                        <div class="contents popup__satis">
+                            <div class="title_h">
+                                <h3 class="h_satis">열람하신 페이지에서 제공하는 정보에 만족하십니까? <br>의견을 주시면 빠른 시일 내에 반영하겠습니다.</h3>
+                            </div>
+                            <div class="board01">
+                                <div class="contentsBox">
+                                    <ul>
+                                        <li><input type="radio" name="stsfdgIdex" id="satis_rdo__5" checked="checked" value="5"><label for="satis_rdo__5">매우만족</label></li>
+                                        <li><input type="radio" name="stsfdgIdex" id="satis_rdo__4" value="4"><label for="satis_rdo__4">만족</label></li>
+                                        <li><input type="radio" name="stsfdgIdex" id="satis_rdo__3" value="3"><label for="satis_rdo__3">보통</label></li>
+                                        <li><input type="radio" name="stsfdgIdex" id="satis_rdo__2" value="2"><label for="satis_rdo__2">불만족</label></li>
+                                        <li><input type="radio" name="stsfdgIdex" id="satis_rdo__1" value="1"><label for="satis_rdo__1">매우불만족</label></li>
+                                    </ul>
+                                    <textarea title="만족도 조사 입력" id="satis_txa__cont" name="opinionCn" rows="3" cols="5" style="resize: vertical;"></textarea>
+                                    <p><button type="button" class="btn_bl btn_satis_reg" id="satis_btn__confirm">확인</button></p>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="javascript:;" class="btn_satis_x" id="satis_btn__close" title="대화상자 닫기">대화상자 닫기</a>
+                    </form>
+                </div>
+                <!-- //만족도조사 layer -->
+
+            </div>
+        </div>
+        </div>
+
+        <!-- 화면열기 -->
+        <div class="nsub_other" style="display: none;" id="cmitsub_top_hide">
+            <div class="location">
+            <ul>
+                <li><span>HOME</span></li>
+                <li><span>위원회 일정
+</span></li>
+                            <li><span>위원회 일정
+</span></li>
+                            </ul>
+        </div>
+
+        <ul class="api_box_eng">
+                <li><a href="javascript:;" class="btn_print" title="새창열림">인쇄하기</a></li>
+            <li><a href="javascript:;" class="btn_share" id="btn_share_sns_opendiv" title="SNS 공유하기">공유</a></li>
+            <li><a href="javascript:;" class="btn_satis" id="btn_satisfaction_opendiv" title="만족도조사">만족도조사</a></li>
+            <li><a href="javascript:;" class="btn_opencopen" title="인트로 영역 열기" onclick="fn_toggleSubMenu(true)">인트로 영역 열기</a></li>
+
+        </ul>
+
+        <!-- SNS layer -->
+        <div class="layer_sns">
+            <ul>
+                <li><a class="sns_kakaostory" href="javascript:;" onclick="fn_sendSns('kakaostory','위원회 일정 - 목록화면 | 위원회 일정 |  보건복지위원회');" title="새창열림">kakaostory</a></li>
+                <li><a class="sns_facebook" href="javascript:;" onclick="fn_sendSns('facebook','위원회 일정 - 목록화면 | 위원회 일정 |  보건복지위원회');" title="새창열림">facebook</a></li>
+                <li><a class="sns_twitter" href="javascript:;" onclick="fn_sendSns('twitter','위원회 일정 - 목록화면 | 위원회 일정 |  보건복지위원회');" title="새창열림">X</a></li>
+                <li><a class="sns_blog" href="javascript:;" onclick="fn_sendSns('naverblog','위원회 일정 - 목록화면 | 위원회 일정 |  보건복지위원회');" title="새창열림">naverblog</a></li>
+                <li><a class="sns_kakaotalk" id="sns_kakaotalk_opendiv" href="javascript:;" onclick="fn_sendSns('kakaotalk','위원회 일정 - 목록화면 | 위원회 일정 |  보건복지위원회');" title="새창열림">kakaotalk</a></li>
+                <li><a class="sns_url" href="javascript:;">URL</a></li>
+            </ul>
+            <a href="javascript:;" class="btn_sns_x" title="대화상자 닫기">대화상자 닫기</a>
+        </div>
+        <!-- //SNS layer -->
+
+        <div class="layer_satis">
+            <form id="form_layer_opendiv">
+                <input type="hidden" name="siteId" value="portal">
+                <div class="contents popup__satis">
+                    <div class="title_h">
+                        <h3 class="h_satis">열람하신 페이지에서 제공하는 정보에 만족하십니까? <br>의견을 주시면 빠른 시일 내에 반영하겠습니다.</h3>
+                    </div>
+                    <div class="board01">
+                        <div class="contentsBox">
+                            <ul>
+                                <li><input type="radio" name="stsfdgIdex" id="satis_rdo__5_opendiv" checked="checked" value="5"><label for="satis_rdo__5_opendiv">매우만족</label></li>
+                                <li><input type="radio" name="stsfdgIdex" id="satis_rdo__4_opendiv" value="4"><label for="satis_rdo__4_opendiv">만족</label></li>
+                                <li><input type="radio" name="stsfdgIdex" id="satis_rdo__3_opendiv" value="3"><label for="satis_rdo__3_opendiv">보통</label></li>
+                                <li><input type="radio" name="stsfdgIdex" id="satis_rdo__2_opendiv" value="2"><label for="satis_rdo__2_opendiv">불만족</label></li>
+                                <li><input type="radio" name="stsfdgIdex" id="satis_rdo__1_opendiv" value="1"><label for="satis_rdo__1_opendiv">매우불만족</label></li>
+                            </ul>
+                            <textarea title="만족도 조사 입력" id="satis_txa__cont_opendiv" name="opinionCn" rows="3" cols="5" style="resize: vertical;"></textarea>
+                            <p><button type="button" class="btn_bl btn_satis_reg" id="satis_btn__confirm_opendiv">확인</button></p>
+                        </div>
+                    </div>
+                </div>
+                <a href="javascript:;" class="btn_satis_x" id="satis_btn__close_opendiv" title="대화상자 닫기">대화상자 닫기</a>
+            </form>
+        </div>
+
+        </div>
+
+    <!-- 서브페이지 상단 타이틀 및 배경이미지 -->
+
+    <!-- 국회정보서비스 -->
+    <div class="pop_assembly_infoservice">
+        <div>
+            </div>
+        <div class="pop_bgwhite"></div>
+    </div>
+    <!-- //국회정보서비스 -->
+
+    <!-- 로그인 화면 -->
+    <div id="choiceLogin" class="reserv_popup" style="display:none;">
+        <div>
+            <div class="reserv_header">
+                <strong>로그인</strong><span>을 해주세요.</span>
+            </div>
+            <div class="reserv_choose">
+                <ul>
+                    <li><a href="javascript:loginPage('Y');" class="rch01">회원로그인</a></li>
+                    <li><a href="javascript:loginPage('N');" class="rch02">비회원로그인</a></li>
+                </ul>
+            </div>
+            <a href="javascript:loginChoiceClose();" class="btn_reserv_x">닫기</a>
+        </div>
+    </div>
+<!-- container -->
+	<div class="containers" id="containers">
+        <!-- SNB -->
+        <div class="snb test">
+            <div>
+                <div>
+                    <input type="hidden" title="hidden" id="menu__currMenuNo" value="2000048">
+                    <input type="hidden" title="hidden" id="menu__currUpperMenuNo" value="2000002">
+                    <ul class="left_menu">
+                    <li class="child on" data-menuno="2000048">
+                                            <a href="/cmmit/schl/cmitSchl/schlList.do?menuNo=2000048
+" target="_self" title="선택됨">위원회 일정</a>
+                                                </li>
+                                </ul>
+                </div>
+            </div>
+        </div>
+        <!-- //SNB -->
+            <!-- content -->
+        <div class="content" id="content"> <!-- subtitle -->
+            <div class="subtitle">
+
+                <h3>위원회 일정</h3>
+                </div>
+            <!-- //subtitle -->
+        
+
+
+
+
+
+<link rel="stylesheet" href="/static/cmmit/css/jquery.mCustomScrollbar.css">
+<!-- tab area -->
+<div>
+  <div class="tab" id="tab-schdl-btn-sect">
+    <div class="mobile_tab">
+      <a href="javascript:;" class="on" id="mobile_top_tab_on" title="선택됨">위원회 일정</a>
+    </div>
+    <ul id="tab-schdl">
+      <li><a href="javascript:;" id="tab_schdl_schedule" value="schedule" class="on" title="선택됨">위원회 일정</a></li>
+      
+        
+          
+             
+               
+                <li><a href="javascript:;" id="tab_schdl_001" value="001" title="전체회의">전체회의 </a></li>
+              
+            
+          
+            
+          
+            
+          
+            
+          
+        
+      
+        
+          
+            
+          
+            
+          
+            
+          
+             
+               
+                <li><a href="javascript:;" id="tab_schdl_002" value="002" title="소위원회">소위원회 </a></li>
+              
+            
+          
+        
+      
+        
+      
+        
+      
+        
+          
+            
+          
+            
+          
+            
+          
+            
+          
+        
+      
+        
+          
+            
+          
+            
+          
+             
+               
+                <li><a href="javascript:;" id="tab_schdl_004" value="004" title="공청회">공청회 </a></li>
+              
+            
+          
+            
+          
+        
+      
+        
+      
+        
+          
+            
+          
+            
+          
+            
+          
+            
+          
+        
+      
+        
+          
+            
+          
+            
+          
+            
+          
+            
+          
+        
+      
+        
+          
+            
+          
+            
+          
+            
+          
+            
+          
+        
+      
+        
+          
+            
+          
+             
+               
+                <li><a href="javascript:;" id="tab_schdl_006" value="006" title="기타">기타 </a></li>
+              
+            
+          
+            
+          
+            
+          
+        
+      
+    </ul>
+   </div>
+</div>
+<!-- //tab area -->
+
+<!-- 캘린더/목록 -->
+<div class="sub_tab" id="sub_tab_schdl">
+  <div class="mobile_sub_tab">
+    <a href="javascript:;" class="on" title="목록 선택됨">목록</a>
+  </div>
+
+  <ul class="cnts-tab-list" style="display:flex">
+    <h5 class="sr-only">위원회 일정</h5>
+    <li>
+      <a href="javascript:;" id="sub_tab_schdl_schedule" data-id="schedule" class="">캘린더</a>
+    </li>
+    <li>
+      <a href="javascript:;" id="sub_tab_schdl_all" data-id="all" class="on" title="선택됨">목록</a>
+    </li>
+  </ul>
+</div>
+
+<div class="contents" id="calendarMain"><h5 class="sr-only">캘린더</h5>
+  <form name="frm" id="frm" action="" method="get">
+    <input type="hidden" title="hidden" id="menuNo" name="menuNo" value="2000048">
+    <input type="hidden" title="hidden" id="siteId" name="siteId" value="cmmit">
+    <input type="hidden" title="hidden" id="pageIndex" name="pageIndex" value="">
+    <input type="hidden" title="hidden" id="scheduleDivCd" name="scheduleDivCd" value="">
+    <input type="hidden" title="hidden" id="scheduleDivNm" name="scheduleDivNm" value="">
+    <input type="hidden" title="hidden" id="cmtCnclDivCd" name="cmtCnclDivCd" value="all">
+    <input type="text" title="URL 복사" style="display:none;" id="url-link" value="">
+
+    <h3 class="blind" id="choice_tab_nm">국회일정</h3>
+
+    <div class="calendar-wrap" id="calender_schl" style="display: none;">
+      <div class="assembly-calendar">
+        <div class="calendar-btn">
+          <strong id="calendar__meetYM" class="calendar-date">2026.4</strong>
+          <ul>
+            <li><a href="javascript:;" id="calendar__btn_prev"><span class="sr-only">이전달</span></a></li>
+            <li><a href="javascript:;" id="calendar__btn_next"><span class="sr-only">다음달</span></a></li>
+          </ul>
+        </div>
+        <table>
+          <caption><strong>국회일정</strong></caption>
+          <colgroup>
+            <col>
+          </colgroup>
+          <thead>
+            <tr>
+              <th scope="col" class="sunday">일</th>
+              <th scope="col">월</th>
+              <th scope="col">화</th>
+              <th scope="col">수</th>
+              <th scope="col">목</th>
+              <th scope="col">금</th>
+              <th scope="col" class="saturday">토</th>
+            </tr>
+          </thead>
+          <tbody id="calendar__body"><tr><td><em style="color: rgb(247, 83, 56);"></em><ul></ul></td><td><em></em><ul></ul></td><td><em></em><ul></ul></td><td id="calDate__2026-04-01"><a href="javascript:;"><em>1</em><ul></ul></a></td><td id="calDate__2026-04-02"><a href="javascript:;"><em>2</em><ul><li data-gubun="CMMIT"><span class="icon_assembly_cmmit">전체회의</span></li><li data-gubun="ASSEM"><span class="icon_assembly_assem">소위원회</span></li></ul></a></td><td id="calDate__2026-04-03" class="today on"><a href="javascript:;" title="오늘"><em>3</em><ul></ul></a></td><td id="calDate__2026-04-04"><a href="javascript:;"><em style="color: rgb(21, 81, 253);">4</em><ul></ul></a></td></tr><tr><td id="calDate__2026-04-05"><a href="javascript:;"><em style="color: rgb(247, 83, 56);">5</em><ul></ul></a></td><td id="calDate__2026-04-06"><a href="javascript:;"><em>6</em><ul></ul></a></td><td id="calDate__2026-04-07"><a href="javascript:;"><em>7</em><ul></ul></a></td><td id="calDate__2026-04-08"><a href="javascript:;"><em>8</em><ul></ul></a></td><td id="calDate__2026-04-09"><a href="javascript:;"><em>9</em><ul></ul></a></td><td id="calDate__2026-04-10"><a href="javascript:;"><em>10</em><ul></ul></a></td><td id="calDate__2026-04-11"><a href="javascript:;"><em style="color: rgb(21, 81, 253);">11</em><ul></ul></a></td></tr><tr><td id="calDate__2026-04-12"><a href="javascript:;"><em style="color: rgb(247, 83, 56);">12</em><ul></ul></a></td><td id="calDate__2026-04-13"><a href="javascript:;"><em>13</em><ul></ul></a></td><td id="calDate__2026-04-14"><a href="javascript:;"><em>14</em><ul></ul></a></td><td id="calDate__2026-04-15"><a href="javascript:;"><em>15</em><ul></ul></a></td><td id="calDate__2026-04-16"><a href="javascript:;"><em>16</em><ul></ul></a></td><td id="calDate__2026-04-17"><a href="javascript:;"><em>17</em><ul></ul></a></td><td id="calDate__2026-04-18"><a href="javascript:;"><em style="color: rgb(21, 81, 253);">18</em><ul></ul></a></td></tr><tr><td id="calDate__2026-04-19"><a href="javascript:;"><em style="color: rgb(247, 83, 56);">19</em><ul></ul></a></td><td id="calDate__2026-04-20"><a href="javascript:;"><em>20</em><ul></ul></a></td><td id="calDate__2026-04-21"><a href="javascript:;"><em>21</em><ul></ul></a></td><td id="calDate__2026-04-22"><a href="javascript:;"><em>22</em><ul></ul></a></td><td id="calDate__2026-04-23"><a href="javascript:;"><em>23</em><ul></ul></a></td><td id="calDate__2026-04-24"><a href="javascript:;"><em>24</em><ul></ul></a></td><td id="calDate__2026-04-25"><a href="javascript:;"><em style="color: rgb(21, 81, 253);">25</em><ul></ul></a></td></tr><tr><td id="calDate__2026-04-26"><a href="javascript:;"><em style="color: rgb(247, 83, 56);">26</em><ul></ul></a></td><td id="calDate__2026-04-27"><a href="javascript:;"><em>27</em><ul></ul></a></td><td id="calDate__2026-04-28"><a href="javascript:;"><em>28</em><ul></ul></a></td><td id="calDate__2026-04-29"><a href="javascript:;"><em>29</em><ul></ul></a></td><td id="calDate__2026-04-30"><a href="javascript:;"><em>30</em><ul></ul></a></td><td><em></em><ul></ul></td><td><em style="color: rgb(21, 81, 253);"></em><ul></ul></td></tr></tbody>
+        </table>
+        <div class="calendar-text">
+          <ul>
+          
+              
+                 
+                  <li><span class="icon_assembly_cmmit">전</span>전체회의</li>
+                
+              
+                
+              
+                
+              
+                
+              
+          
+              
+                
+              
+                
+              
+                
+              
+                 
+                  <li><span class="icon_assembly_assem">소</span>소위원회</li>
+                
+              
+          
+              
+                
+              
+                
+              
+                
+              
+                
+              
+          
+              
+                
+              
+                
+              
+                 
+                  <li><span class="icon_assembly_press">공</span>공청회</li>
+                
+              
+                
+              
+          
+              
+                
+              
+                
+              
+                
+              
+                
+              
+          
+              
+                
+              
+                
+              
+                
+              
+                
+              
+          
+              
+                
+              
+                 
+                  <li><span class="icon_assembly_chcmt">기</span>기타</li>
+                
+              
+                
+              
+                
+              
+          
+          </ul>
+        </div>
+      </div>
+
+      <!-- schedule list -->
+      <div class="calendar-content">
+        <h3 id="schl__meetYmd" style="display: none;"></h3>
+        <div id="schl__sect" style="height: 100%;">
+          <div id="schl__list"><div id="no-plan"><div class="plan-content"><img src="/static/cmmit/img/calendar-txt.png" alt="내일을 여는 국민의 국회"></div><dl><dt class="plan-date"><strong>2026년 4월 3일</strong></dt><dd>금일 일정이 없습니다.</dd></dl></div></div>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
+
+<div class="contents" id="calendarList" style=""><h5 class="sr-only">목록</h5>
+  
+
+
+
+
+
+
+
+
+
+<div>
+<form name="listFrm" id="listFrm" action="" method="post">
+    <input type="hidden" name="_csrf" value="1ab02ee2-46a6-4266-adab-42d836f251ee">
+    <input type="hidden" title="hidden" id="cnclSchSn" name="cnclSchSn" value="">
+    <input type="hidden" title="hidden" id="historyBackUrl" name="historyBackUrl" value="">
+    <input type="hidden" title="hidden" id="atchFileId" name="atchFileId" value="">
+    <input type="hidden" title="hidden" id="fileSn" name="fileSn" value="">
+    <input type="hidden" title="hidden" id="hrCmtId" value="9700341">
+    <input type="hidden" title="hidden" id="pageUnitSel" value="10">
+    
+    <!-- search box -->
+    <div class="select_box m_none">
+        
+            
+            
+                <input type="hidden" title="hidden" id="baseCnt" value="1">
+                
+            
+        
+        <dl>
+            <dt>회의일자</dt>
+            <dd>
+                <div class="input_calendar">
+                    <div class="field">
+                        <input type="text" title="시작일자(입력예:YYYY-MM-DD)" class="sdate hasDatepicker" name="sdate" id="search_txt_cmit_sdate" maxlength="10" placeholder="예)2024-07-09"><img class="ui-datepicker-trigger" src="/static/commons/img/calendar.png" alt="달력" title="달력">
+                    </div>
+                    <span>~</span>
+                    <div class="field">
+                        <input type="text" title="종료일자(입력예:YYYY-MM-DD)" class="edate hasDatepicker" name="edate" id="search_txt_cmit_edate" maxlength="10" placeholder="예)2024-07-09"><img class="ui-datepicker-trigger" src="/static/commons/img/calendar.png" alt="달력" title="달력">
+                    </div>
+                </div>
+            </dd>
+            <dt>제목명</dt>
+            <dd>
+                <input type="text" id="search_txt_cmit_searchVal" name="searchVal" value="" class="w100p" size="40" maxlength="100" placeholder="제목을 입력해 주세요." title="제목입력">
+            </dd>
+        </dl>
+    </div>
+    <!-- //search box -->
+    <!-- 모바일 조회조건선택 -->
+    <div class="m_select_box">
+        <dl class="m_select_search">
+            <dd>
+                <ul>
+                    <li class="w100p"><input type="text" id="search_txt_mb_cmit_searchVal" name="searchValMb" value="" class="w40" size="40" maxlength="100" placeholder="제목을 입력해 주세요." title="제목 입력"></li>
+                    <li><button type="button" class="btn_mb_search btn_bl" id="btn_mb_search">검색</button></li>
+                    <li><button type="button" class="btn_de search_detail" id="search_detail">+상세검색</button></li>
+                </ul>
+            </dd>
+        </dl>
+        <div class="m_select_box_detail">
+            
+                
+                
+                    <input type="hidden" title="hidden" id="baseCnt" value="1">
+                    
+                
+            
+            <dl>
+                <dt>회의일자</dt>
+                <dd>
+                    <div class="sb_select_align">
+                        <div class="field">
+                            <input type="text" title="시작일자(입력예:YYYY-MM-DD)" class="sdate w50p hasDatepicker" name="sdateMb" id="search_txt_mb_cmit_sdate" maxlength="10" placeholder="예)2024-07-09"><img class="ui-datepicker-trigger" src="/static/commons/img/calendar.png" alt="달력" title="달력">
+                        </div>
+                        <span>~</span>
+                        <div class="field">
+                            <input type="text" title="종료일자(입력예:YYYY-MM-DD)" class="edate w50p hasDatepicker" name="edateMb" id="search_txt_mb_cmit_edate" maxlength="10" placeholder="예)2024-07-09"><img class="ui-datepicker-trigger" src="/static/commons/img/calendar.png" alt="달력" title="달력">
+                        </div>
+                    </div>    
+                </dd>
+            </dl>
+            <dl>
+                <dt class="align_center"><button type="button" class="btn_mb_search btn_bl">검색</button></dt>
+            </dl>
+        </div>
+    </div>
+    <!-- //모바일 조회조건선택 -->
+</form>
+
+    <!-- list -->
+    <div>
+        <h3 class="blind">전체</h3>
+        <div class="inquiry_search">
+            <div class="board_count" id="cmitSchlList-pageInfo"><span>전체 </span><strong>1,217</strong> <span>건 (1/122페이지)</span><select name="pageUnit" id="pageUnit" title="노출개수 설정">     <option value="5">5</option>     <option value="6">6</option>     <option value="7">7</option>     <option value="8">8</option>     <option value="9">9</option>     <option value="10">10</option>     <option value="20">20</option>     <option value="30">30</option>     <option value="50">50</option>     <option value="100">100</option></select><button type="button" class="btn_bl" onclick="fnSearch('1')">적용</button></div>
+            <div>
+                <button type="button" class="btn_bl m_none" id="cmitSchl_search">검색</button>
+                <button type="button" class="btn_bk" id="btn_excel_down">목록다운로드</button>
+            </div>
+        </div>
+
+        <!-- board list -->
+        <div class="board01 pr td_center board-added">
+             <table class="table table-hover cmitSchlListTable">
+                 <caption><strong>위원회 일정</strong></caption>
+                 <colgroup>
+                     <col style="width: 5%;">
+                     <col style="width: 15%;">
+                     <col style="width:  ;">
+                     <col style="width: 15%;">
+                     <col style="width: 15%;">
+                     <col style="width: 8%;">
+                     <col style="width: 8%;">
+                 </colgroup> 
+                 <thead>
+                     <tr>
+                         <th scope="col">번호</th>
+                         <th scope="col">위원회명</th>
+                         <th scope="col">제목</th>
+                         <th scope="col">회기</th>
+                         <th scope="col">회의일자</th>
+                         <th scope="col" class="classPreview">미리보기</th>
+                         <th scope="col" class="classDown">다운로드</th>
+                     </tr>
+                 </thead>
+                 <tbody id="cmitSchlList-dataset-data-table"><tr>     <td>1217</td>     <td>보건복지위원회</td>     <td class="align_left td_block"><a class="board_subject" href="javascript:doActionList.detail('10121013','https://health.na.go.kr/cmmit/schl/cmitSchl/view.do?menuNo=2000048&amp;cmtSchSn=10121013')"> 제1차 예산결산심사소위원회</a>         <div class="m_subject">             <ul class="m_date">                 <li>보건복지위원회</li>                 <li>제433회국회(임시회)</li>                 <li>2026-04-02 본회의 산회 직후</li>             </ul>             <ul class="m_down m_visible">                 <li id="prevew_m_10121013">                     <a class="attach_file" href="/cmmit/prevew/docsPreview/previewDocs.do?atchFileId=4e731beb0a566cf3e0646805caa0f40c&amp;fileSn=1&amp;viewType=CONTBODY&amp;_csrf=1ab02ee2-46a6-4266-adab-42d836f251ee" target="_blank" title="미리보기(새창열림)">미리보기</a>                 </li>                 <li id="downOpen_m_10121013">                     <a href="javascript:void(0)" id="downOpen_mm_10121013" class="btn_board_download" onclick="downlayerOpen('10121013')" title="파일 대화상자 열기">다운로드</a>                     <div class="board_download_layer" id="brdDwn_m_10121013" style="display: none">                         <strong>다운로드할 파일을 선택하세요</strong>                         <ul><li><a href="javascript:gfn_atchFileDownload('cmmit','2000048','4e731beb0a566cf3e0646805caa0f40c','1')" title="회의예정.hwp">회의예정.hwp</a></li><li><a href="javascript:gfn_atchFileDownload('cmmit','2000048','4e731beb0a566cf3e0646805caa0f40c','2')" title="회의결과.hwp">회의결과.hwp</a></li>                         </ul>                         <a href="javascript:void(0);" class="btn_download_x" title="대화상자 닫기" onclick="downLayerClose('10121013' , 'Y');">대화상자 닫기</a>                     </div>                 </li>             </ul>         </div>     </td>     <td>제433회국회(임시회)</td>     <td>2026-04-02 본회의 산회 직후</td>     <td class="classPreview">         <a class="attach_file" id="prevew_10121013" href="/cmmit/prevew/docsPreview/previewDocs.do?atchFileId=4e731beb0a566cf3e0646805caa0f40c&amp;fileSn=1&amp;viewType=CONTBODY&amp;_csrf=1ab02ee2-46a6-4266-adab-42d836f251ee" target="_blank" title="미리보기(새창열림)">미리보기</a>     </td>     <td class="classDown">         <a href="javascript:void(0)" class="btn_board_download" id="downOpen_10121013" onclick="downlayerOpen('10121013')" title="파일 대화상자 열기">다운로드</a>         <div class="board_download_layer" id="brdDwn_10121013" style="display: none;">             <strong>다운로드할 파일을 선택하세요</strong>             <ul><li><a href="javascript:gfn_atchFileDownload('cmmit','2000048','4e731beb0a566cf3e0646805caa0f40c','1')" title="회의예정.hwp">회의예정.hwp</a></li><li><a href="javascript:gfn_atchFileDownload('cmmit','2000048','4e731beb0a566cf3e0646805caa0f40c','2')" title="회의결과.hwp">회의결과.hwp</a></li>             </ul>             <a href="javascript:void(0);" class="btn_download_x" title="대화상자 닫기" onclick="downLayerClose('10121013', 'N');">대화상자 닫기</a>        </div>     </td></tr><tr>     <td>1216</td>     <td>보건복지위원회</td>     <td class="align_left td_block"><a class="board_subject" href="javascript:doActionList.detail('10121004','https://health.na.go.kr/cmmit/schl/cmitSchl/view.do?menuNo=2000048&amp;cmtSchSn=10121004')"> 제3차 전체회의</a>         <div class="m_subject">             <ul class="m_date">                 <li>보건복지위원회</li>                 <li>제433회국회(임시회)</li>                 <li>2026-04-02 10:00</li>             </ul>             <ul class="m_down m_visible">                 <li id="prevew_m_10121004">                     <a class="attach_file" href="/cmmit/prevew/docsPreview/previewDocs.do?atchFileId=4e6023a3b9eb38afe0646805caa0f40c&amp;fileSn=1&amp;viewType=CONTBODY&amp;_csrf=1ab02ee2-46a6-4266-adab-42d836f251ee" target="_blank" title="미리보기(새창열림)">미리보기</a>                 </li>                 <li id="downOpen_m_10121004">                     <a href="javascript:void(0)" id="downOpen_mm_10121004" class="btn_board_download" onclick="downlayerOpen('10121004')" title="파일 대화상자 열기">다운로드</a>                     <div class="board_download_layer" id="brdDwn_m_10121004" style="display: none">                         <strong>다운로드할 파일을 선택하세요</strong>                         <ul><li><a href="javascript:gfn_atchFileDownload('cmmit','2000048','4e6023a3b9eb38afe0646805caa0f40c','1')" title="회의예정.hwp">회의예정.hwp</a></li><li><a href="javascript:gfn_atchFileDownload('cmmit','2000048','4e6023a3b9eb38afe0646805caa0f40c','2')" title="회의결과.hwp">회의결과.hwp</a></li>                         </ul>                         <a href="javascript:void(0);" class="btn_download_x" title="대화상자 닫기" onclick="downLayerClose('10121004' , 'Y');">대화상자 닫기</a>                     </div>                 </li>             </ul>         </div>     </td>     <td>제433회국회(임시회)</td>     <td>2026-04-02 10:00</td>     <td class="classPreview">         <a class="attach_file" id="prevew_10121004" href="/cmmit/prevew/docsPreview/previewDocs.do?atchFileId=4e6023a3b9eb38afe0646805caa0f40c&amp;fileSn=1&amp;viewType=CONTBODY&amp;_csrf=1ab02ee2-46a6-4266-adab-42d836f251ee" target="_blank" title="미리보기(새창열림)">미리보기</a>     </td>     <td class="classDown">         <a href="javascript:void(0)" class="btn_board_download" id="downOpen_10121004" onclick="downlayerOpen('10121004')" title="파일 대화상자 열기">다운로드</a>         <div class="board_download_layer" id="brdDwn_10121004" style="display: none;">             <strong>다운로드할 파일을 선택하세요</strong>             <ul><li><a href="javascript:gfn_atchFileDownload('cmmit','2000048','4e6023a3b9eb38afe0646805caa0f40c','1')" title="회의예정.hwp">회의예정.hwp</a></li><li><a href="javascript:gfn_atchFileDownload('cmmit','2000048','4e6023a3b9eb38afe0646805caa0f40c','2')" title="회의결과.hwp">회의결과.hwp</a></li>             </ul>             <a href="javascript:void(0);" class="btn_download_x" title="대화상자 닫기" onclick="downLayerClose('10121004', 'N');">대화상자 닫기</a>        </div>     </td></tr><tr>     <td>1215</td>     <td>보건복지위원회</td>     <td class="align_left td_block"><a class="board_subject" href="javascript:doActionList.detail('10120926','https://health.na.go.kr/cmmit/schl/cmitSchl/view.do?menuNo=2000048&amp;cmtSchSn=10120926')"> 제6차 전체회의(연금개혁 특별위원회)</a>         <div class="m_subject">             <ul class="m_date">                 <li>보건복지위원회</li>                 <li>제433회국회(임시회)</li>                 <li>2026-03-18 10:00</li>             </ul>             <ul class="m_down m_visible">                 <li id="prevew_m_10120926">                     <a class="attach_file" href="/cmmit/prevew/docsPreview/previewDocs.do?atchFileId=4ca8db6803c54cc4e0646805caa0f40c&amp;fileSn=1&amp;viewType=CONTBODY&amp;_csrf=1ab02ee2-46a6-4266-adab-42d836f251ee" target="_blank" title="미리보기(새창열림)">미리보기</a>                 </li>                 <li id="downOpen_m_10120926">                     <a href="javascript:void(0)" id="downOpen_mm_10120926" class="btn_board_download" onclick="downlayerOpen('10120926')" title="파일 대화상자 열기">다운로드</a>                     <div class="board_download_layer" id="brdDwn_m_10120926" style="display: none">                         <strong>다운로드할 파일을 선택하세요</strong>                         <ul><li><a href="javascript:gfn_atchFileDownload('cmmit','2000048','4ca8db6803c54cc4e0646805caa0f40c','1')" title="회의예정.hwp">회의예정.hwp</a></li><li><a href="javascript:gfn_atchFileDownload('cmmit','2000048','4ca8db6803c54cc4e0646805caa0f40c','2')" title="회의결과.hwp">회의결과.hwp</a></li>                         </ul>                         <a href="javascript:void(0);" class="btn_download_x" title="대화상자 닫기" onclick="downLayerClose('10120926' , 'Y');">대화상자 닫기</a>                     </div>                 </li>             </ul>         </div>     </td>     <td>제433회국회(임시회)</td>     <td>2026-03-18 10:00</td>     <td class="classPreview">         <a class="attach_file" id="prevew_10120926" href="/cmmit/prevew/docsPreview/previewDocs.do?atchFileId=4ca8db6803c54cc4e0646805caa0f40c&amp;fileSn=1&amp;viewType=CONTBODY&amp;_csrf=1ab02ee2-46a6-4266-adab-42d836f251ee" target="_blank" title="미리보기(새창열림)">미리보기</a>     </td>     <td class="classDown">         <a href="javascript:void(0)" class="btn_board_download" id="downOpen_10120926" onclick="downlayerOpen('10120926')" title="파일 대화상자 열기">다운로드</a>         <div class="board_download_layer" id="brdDwn_10120926" style="display: none;">             <strong>다운로드할 파일을 선택하세요</strong>             <ul><li><a href="javascript:gfn_atchFileDownload('cmmit','2000048','4ca8db6803c54cc4e0646805caa0f40c','1')" title="회의예정.hwp">회의예정.hwp</a></li><li><a href="javascript:gfn_atchFileDownload('cmmit','2000048','4ca8db6803c54cc4e0646805caa0f40c','2')" title="회의결과.hwp">회의결과.hwp</a></li>             </ul>             <a href="javascript:void(0);" class="btn_download_x" title="대화상자 닫기" onclick="downLayerClose('10120926', 'N');">대화상자 닫기</a>        </div>     </td></tr><tr>     <td>1214</td>     <td>보건복지위원회</td>     <td class="align_left td_block"><a class="board_subject" href="javascript:doActionList.detail('10120933','https://health.na.go.kr/cmmit/schl/cmitSchl/view.do?menuNo=2000048&amp;cmtSchSn=10120933')"> 제2차 전체회의</a>         <div class="m_subject">             <ul class="m_date">                 <li>보건복지위원회</li>                 <li>제433회국회(임시회)</li>                 <li>2026-03-13 11:00</li>             </ul>             <ul class="m_down m_visible">                 <li id="prevew_m_10120933">                     <a class="attach_file" href="/cmmit/prevew/docsPreview/previewDocs.do?atchFileId=4cd457aeb31a3846e0646805caa0f40c&amp;fileSn=1&amp;viewType=CONTBODY&amp;_csrf=1ab02ee2-46a6-4266-adab-42d836f251ee" target="_blank" title="미리보기(새창열림)">미리보기</a>                 </li>                 <li id="downOpen_m_10120933">                     <a href="javascript:void(0)" id="downOpen_mm_10120933" class="btn_board_download" onclick="downlayerOpen('10120933')" title="파일 대화상자 열기">다운로드</a>                     <div class="board_download_layer" id="brdDwn_m_10120933" style="display: none">                         <strong>다운로드할 파일을 선택하세요</strong>                         <ul><li><a href="javascript:gfn_atchFileDownload('cmmit','2000048','4cd457aeb31a3846e0646805caa0f40c','1')" title="회의예정.hwp">회의예정.hwp</a></li><li><a href="javascript:gfn_atchFileDownload('cmmit','2000048','4cd457aeb31a3846e0646805caa0f40c','2')" title="회의결과.hwp">회의결과.hwp</a></li>                         </ul>                         <a href="javascript:void(0);" class="btn_download_x" title="대화상자 닫기" onclick="downLayerClose('10120933' , 'Y');">대화상자 닫기</a>                     </div>                 </li>             </ul>         </div>     </td>     <td>제433회국회(임시회)</td>     <td>2026-03-13 11:00</td>     <td class="classPreview">         <a class="attach_file" id="prevew_10120933" href="/cmmit/prevew/docsPreview/previewDocs.do?atchFileId=4cd457aeb31a3846e0646805caa0f40c&amp;fileSn=1&amp;viewType=CONTBODY&amp;_csrf=1ab02ee2-46a6-4266-adab-42d836f251ee" target="_blank" title="미리보기(새창열림)">미리보기</a>     </td>     <td class="classDown">         <a href="javascript:void(0)" class="btn_board_download" id="downOpen_10120933" onclick="downlayerOpen('10120933')" title="파일 대화상자 열기">다운로드</a>         <div class="board_download_layer" id="brdDwn_10120933" style="display: none;">             <strong>다운로드할 파일을 선택하세요</strong>             <ul><li><a href="javascript:gfn_atchFileDownload('cmmit','2000048','4cd457aeb31a3846e0646805caa0f40c','1')" title="회의예정.hwp">회의예정.hwp</a></li><li><a href="javascript:gfn_atchFileDownload('cmmit','2000048','4cd457aeb31a3846e0646805caa0f40c','2')" title="회의결과.hwp">회의결과.hwp</a></li>             </ul>             <a href="javascript:void(0);" class="btn_download_x" title="대화상자 닫기" onclick="downLayerClose('10120933', 'N');">대화상자 닫기</a>        </div>     </td></tr><tr>     <td>1213</td>     <td>보건복지위원회</td>     <td class="align_left td_block"><a class="board_subject" href="javascript:doActionList.detail('10120920','https://health.na.go.kr/cmmit/schl/cmitSchl/view.do?menuNo=2000048&amp;cmtSchSn=10120920')"> 제1차 법안심사제2소위원회</a>         <div class="m_subject">             <ul class="m_date">                 <li>보건복지위원회</li>                 <li>제433회국회(임시회)</li>                 <li>2026-03-12 10:00</li>             </ul>             <ul class="m_down m_visible">                 <li id="prevew_m_10120920">                     <a class="attach_file" href="/cmmit/prevew/docsPreview/previewDocs.do?atchFileId=4ca34ed1c6070fdae0646805caa0f40c&amp;fileSn=1&amp;viewType=CONTBODY&amp;_csrf=1ab02ee2-46a6-4266-adab-42d836f251ee" target="_blank" title="미리보기(새창열림)">미리보기</a>                 </li>                 <li id="downOpen_m_10120920">                     <a href="javascript:void(0)" id="downOpen_mm_10120920" class="btn_board_download" onclick="downlayerOpen('10120920')" title="파일 대화상자 열기">다운로드</a>                     <div class="board_download_layer" id="brdDwn_m_10120920" style="display: none">                         <strong>다운로드할 파일을 선택하세요</strong>                         <ul><li><a href="javascript:gfn_atchFileDownload('cmmit','2000048','4ca34ed1c6070fdae0646805caa0f40c','1')" title="회의예정.hwp">회의예정.hwp</a></li><li><a href="javascript:gfn_atchFileDownload('cmmit','2000048','4ca34ed1c6070fdae0646805caa0f40c','2')" title="회의결과.hwp">회의결과.hwp</a></li>                         </ul>                         <a href="javascript:void(0);" class="btn_download_x" title="대화상자 닫기" onclick="downLayerClose('10120920' , 'Y');">대화상자 닫기</a>                     </div>                 </li>             </ul>         </div>     </td>     <td>제433회국회(임시회)</td>     <td>2026-03-12 10:00</td>     <td class="classPreview">         <a class="attach_file" id="prevew_10120920" href="/cmmit/prevew/docsPreview/previewDocs.do?atchFileId=4ca34ed1c6070fdae0646805caa0f40c&amp;fileSn=1&amp;viewType=CONTBODY&amp;_csrf=1ab02ee2-46a6-4266-adab-42d836f251ee" target="_blank" title="미리보기(새창열림)">미리보기</a>     </td>     <td class="classDown">         <a href="javascript:void(0)" class="btn_board_download" id="downOpen_10120920" onclick="downlayerOpen('10120920')" title="파일 대화상자 열기">다운로드</a>         <div class="board_download_layer" id="brdDwn_10120920" style="display: none;">             <strong>다운로드할 파일을 선택하세요</strong>             <ul><li><a href="javascript:gfn_atchFileDownload('cmmit','2000048','4ca34ed1c6070fdae0646805caa0f40c','1')" title="회의예정.hwp">회의예정.hwp</a></li><li><a href="javascript:gfn_atchFileDownload('cmmit','2000048','4ca34ed1c6070fdae0646805caa0f40c','2')" title="회의결과.hwp">회의결과.hwp</a></li>             </ul>             <a href="javascript:void(0);" class="btn_download_x" title="대화상자 닫기" onclick="downLayerClose('10120920', 'N');">대화상자 닫기</a>        </div>     </td></tr><tr>     <td>1212</td>     <td>보건복지위원회</td>     <td class="align_left td_block"><a class="board_subject" href="javascript:doActionList.detail('10120919','https://health.na.go.kr/cmmit/schl/cmitSchl/view.do?menuNo=2000048&amp;cmtSchSn=10120919')"> 제1차 법안심사제1소위원회</a>         <div class="m_subject">             <ul class="m_date">                 <li>보건복지위원회</li>                 <li>제433회국회(임시회)</li>                 <li>2026-03-11 10:00</li>             </ul>             <ul class="m_down m_visible">                 <li id="prevew_m_10120919">                     <a class="attach_file" href="/cmmit/prevew/docsPreview/previewDocs.do?atchFileId=4ca34bbcc1100df8e0646805caa0f40c&amp;fileSn=1&amp;viewType=CONTBODY&amp;_csrf=1ab02ee2-46a6-4266-adab-42d836f251ee" target="_blank" title="미리보기(새창열림)">미리보기</a>                 </li>                 <li id="downOpen_m_10120919">                     <a href="javascript:void(0)" id="downOpen_mm_10120919" class="btn_board_download" onclick="downlayerOpen('10120919')" title="파일 대화상자 열기">다운로드</a>                     <div class="board_download_layer" id="brdDwn_m_10120919" style="display: none">                         <strong>다운로드할 파일을 선택하세요</strong>                         <ul><li><a href="javascript:gfn_atchFileDownload('cmmit','2000048','4ca34bbcc1100df8e0646805caa0f40c','1')" title="회의예정.hwp">회의예정.hwp</a></li><li><a href="javascript:gfn_atchFileDownload('cmmit','2000048','4ca34bbcc1100df8e0646805caa0f40c','2')" title="회의결과.hwp">회의결과.hwp</a></li>                         </ul>                         <a href="javascript:void(0);" class="btn_download_x" title="대화상자 닫기" onclick="downLayerClose('10120919' , 'Y');">대화상자 닫기</a>                     </div>                 </li>             </ul>         </div>     </td>     <td>제433회국회(임시회)</td>     <td>2026-03-11 10:00</td>     <td class="classPreview">         <a class="attach_file" id="prevew_10120919" href="/cmmit/prevew/docsPreview/previewDocs.do?atchFileId=4ca34bbcc1100df8e0646805caa0f40c&amp;fileSn=1&amp;viewType=CONTBODY&amp;_csrf=1ab02ee2-46a6-4266-adab-42d836f251ee" target="_blank" title="미리보기(새창열림)">미리보기</a>     </td>     <td class="classDown">         <a href="javascript:void(0)" class="btn_board_download" id="downOpen_10120919" onclick="downlayerOpen('10120919')" title="파일 대화상자 열기">다운로드</a>         <div class="board_download_layer" id="brdDwn_10120919" style="display: none;">             <strong>다운로드할 파일을 선택하세요</strong>             <ul><li><a href="javascript:gfn_atchFileDownload('cmmit','2000048','4ca34bbcc1100df8e0646805caa0f40c','1')" title="회의예정.hwp">회의예정.hwp</a></li><li><a href="javascript:gfn_atchFileDownload('cmmit','2000048','4ca34bbcc1100df8e0646805caa0f40c','2')" title="회의결과.hwp">회의결과.hwp</a></li>             </ul>             <a href="javascript:void(0);" class="btn_download_x" title="대화상자 닫기" onclick="downLayerClose('10120919', 'N');">대화상자 닫기</a>        </div>     </td></tr><tr>     <td>1211</td>     <td>보건복지위원회</td>     <td class="align_left td_block"><a class="board_subject" href="javascript:doActionList.detail('10120916','https://health.na.go.kr/cmmit/schl/cmitSchl/view.do?menuNo=2000048&amp;cmtSchSn=10120916')"> 제1차 전체회의</a>         <div class="m_subject">             <ul class="m_date">                 <li>보건복지위원회</li>                 <li>제433회국회(임시회)</li>                 <li>2026-03-10 10:00</li>             </ul>             <ul class="m_down m_visible">                 <li id="prevew_m_10120916">                     <a class="attach_file" href="/cmmit/prevew/docsPreview/previewDocs.do?atchFileId=4c96370cc5724e24e0646805caa0f40c&amp;fileSn=1&amp;viewType=CONTBODY&amp;_csrf=1ab02ee2-46a6-4266-adab-42d836f251ee" target="_blank" title="미리보기(새창열림)">미리보기</a>                 </li>                 <li id="downOpen_m_10120916">                     <a href="javascript:void(0)" id="downOpen_mm_10120916" class="btn_board_download" onclick="downlayerOpen('10120916')" title="파일 대화상자 열기">다운로드</a>                     <div class="board_download_layer" id="brdDwn_m_10120916" style="display: none">                         <strong>다운로드할 파일을 선택하세요</strong>                         <ul><li><a href="javascript:gfn_atchFileDownload('cmmit','2000048','4c96370cc5724e24e0646805caa0f40c','1')" title="회의예정.hwp">회의예정.hwp</a></li><li><a href="javascript:gfn_atchFileDownload('cmmit','2000048','4c96370cc5724e24e0646805caa0f40c','2')" title="회의결과.hwp">회의결과.hwp</a></li>                         </ul>                         <a href="javascript:void(0);" class="btn_download_x" title="대화상자 닫기" onclick="downLayerClose('10120916' , 'Y');">대화상자 닫기</a>                     </div>                 </li>             </ul>         </div>     </td>     <td>제433회국회(임시회)</td>     <td>2026-03-10 10:00</td>     <td class="classPreview">         <a class="attach_file" id="prevew_10120916" href="/cmmit/prevew/docsPreview/previewDocs.do?atchFileId=4c96370cc5724e24e0646805caa0f40c&amp;fileSn=1&amp;viewType=CONTBODY&amp;_csrf=1ab02ee2-46a6-4266-adab-42d836f251ee" target="_blank" title="미리보기(새창열림)">미리보기</a>     </td>     <td class="classDown">         <a href="javascript:void(0)" class="btn_board_download" id="downOpen_10120916" onclick="downlayerOpen('10120916')" title="파일 대화상자 열기">다운로드</a>         <div class="board_download_layer" id="brdDwn_10120916" style="display: none;">             <strong>다운로드할 파일을 선택하세요</strong>             <ul><li><a href="javascript:gfn_atchFileDownload('cmmit','2000048','4c96370cc5724e24e0646805caa0f40c','1')" title="회의예정.hwp">회의예정.hwp</a></li><li><a href="javascript:gfn_atchFileDownload('cmmit','2000048','4c96370cc5724e24e0646805caa0f40c','2')" title="회의결과.hwp">회의결과.hwp</a></li>             </ul>             <a href="javascript:void(0);" class="btn_download_x" title="대화상자 닫기" onclick="downLayerClose('10120916', 'N');">대화상자 닫기</a>        </div>     </td></tr><tr>     <td>1210</td>     <td>보건복지위원회</td>     <td class="align_left td_block"><a class="board_subject" href="javascript:doActionList.detail('10120896','https://health.na.go.kr/cmmit/schl/cmitSchl/view.do?menuNo=2000048&amp;cmtSchSn=10120896')"> 제1차 법안심사제2소위원회</a>         <div class="m_subject">             <ul class="m_date">                 <li>보건복지위원회</li>                 <li>제432회국회(임시회)</li>                 <li>2026-02-27 10:00</li>             </ul>             <ul class="m_down m_visible">                 <li id="prevew_m_10120896">                     <a class="attach_file" href="/cmmit/prevew/docsPreview/previewDocs.do?atchFileId=4ba36b69c6996b5ee0646805caa0f40c&amp;fileSn=1&amp;viewType=CONTBODY&amp;_csrf=1ab02ee2-46a6-4266-adab-42d836f251ee" target="_blank" title="미리보기(새창열림)">미리보기</a>                 </li>                 <li id="downOpen_m_10120896">                     <a href="javascript:void(0)" id="downOpen_mm_10120896" class="btn_board_download" onclick="downlayerOpen('10120896')" title="파일 대화상자 열기">다운로드</a>                     <div class="board_download_layer" id="brdDwn_m_10120896" style="display: none">                         <strong>다운로드할 파일을 선택하세요</strong>                         <ul><li><a href="javascript:gfn_atchFileDownload('cmmit','2000048','4ba36b69c6996b5ee0646805caa0f40c','1')" title="회의예정.hwp">회의예정.hwp</a></li><li><a href="javascript:gfn_atchFileDownload('cmmit','2000048','4ba36b69c6996b5ee0646805caa0f40c','2')" title="회의결과.hwp">회의결과.hwp</a></li>                         </ul>                         <a href="javascript:void(0);" class="btn_download_x" title="대화상자 닫기" onclick="downLayerClose('10120896' , 'Y');">대화상자 닫기</a>                     </div>                 </li>             </ul>         </div>     </td>     <td>제432회국회(임시회)</td>     <td>2026-02-27 10:00</td>     <td class="classPreview">         <a class="attach_file" id="prevew_10120896" href="/cmmit/prevew/docsPreview/previewDocs.do?atchFileId=4ba36b69c6996b5ee0646805caa0f40c&amp;fileSn=1&amp;viewType=CONTBODY&amp;_csrf=1ab02ee2-46a6-4266-adab-42d836f251ee" target="_blank" title="미리보기(새창열림)">미리보기</a>     </td>     <td class="classDown">         <a href="javascript:void(0)" class="btn_board_download" id="downOpen_10120896" onclick="downlayerOpen('10120896')" title="파일 대화상자 열기">다운로드</a>         <div class="board_download_layer" id="brdDwn_10120896" style="display: none;">             <strong>다운로드할 파일을 선택하세요</strong>             <ul><li><a href="javascript:gfn_atchFileDownload('cmmit','2000048','4ba36b69c6996b5ee0646805caa0f40c','1')" title="회의예정.hwp">회의예정.hwp</a></li><li><a href="javascript:gfn_atchFileDownload('cmmit','2000048','4ba36b69c6996b5ee0646805caa0f40c','2')" title="회의결과.hwp">회의결과.hwp</a></li>             </ul>             <a href="javascript:void(0);" class="btn_download_x" title="대화상자 닫기" onclick="downLayerClose('10120896', 'N');">대화상자 닫기</a>        </div>     </td></tr><tr>     <td>1209</td>     <td>보건복지위원회</td>     <td class="align_left td_block"><a class="board_subject" href="javascript:doActionList.detail('10120894','https://health.na.go.kr/cmmit/schl/cmitSchl/view.do?menuNo=2000048&amp;cmtSchSn=10120894')"> 제1차 전체회의</a>         <div class="m_subject">             <ul class="m_date">                 <li>보건복지위원회</li>                 <li>제432회국회(임시회)</li>                 <li>2026-02-26 13:30</li>             </ul>             <ul class="m_down m_visible">                 <li id="prevew_m_10120894">                     <a class="attach_file" href="/cmmit/prevew/docsPreview/previewDocs.do?atchFileId=4ba1068370eb0d7be0646805caa0f40c&amp;fileSn=1&amp;viewType=CONTBODY&amp;_csrf=1ab02ee2-46a6-4266-adab-42d836f251ee" target="_blank" title="미리보기(새창열림)">미리보기</a>                 </li>                 <li id="downOpen_m_10120894">                     <a href="javascript:void(0)" id="downOpen_mm_10120894" class="btn_board_download" onclick="downlayerOpen('10120894')" title="파일 대화상자 열기">다운로드</a>                     <div class="board_download_layer" id="brdDwn_m_10120894" style="display: none">                         <strong>다운로드할 파일을 선택하세요</strong>                         <ul><li><a href="javascript:gfn_atchFileDownload('cmmit','2000048','4ba1068370eb0d7be0646805caa0f40c','1')" title="회의예정.hwp">회의예정.hwp</a></li><li><a href="javascript:gfn_atchFileDownload('cmmit','2000048','4ba1068370eb0d7be0646805caa0f40c','2')" title="회의결과.hwp">회의결과.hwp</a></li>                         </ul>                         <a href="javascript:void(0);" class="btn_download_x" title="대화상자 닫기" onclick="downLayerClose('10120894' , 'Y');">대화상자 닫기</a>                     </div>                 </li>             </ul>         </div>     </td>     <td>제432회국회(임시회)</td>     <td>2026-02-26 13:30</td>     <td class="classPreview">         <a class="attach_file" id="prevew_10120894" href="/cmmit/prevew/docsPreview/previewDocs.do?atchFileId=4ba1068370eb0d7be0646805caa0f40c&amp;fileSn=1&amp;viewType=CONTBODY&amp;_csrf=1ab02ee2-46a6-4266-adab-42d836f251ee" target="_blank" title="미리보기(새창열림)">미리보기</a>     </td>     <td class="classDown">         <a href="javascript:void(0)" class="btn_board_download" id="downOpen_10120894" onclick="downlayerOpen('10120894')" title="파일 대화상자 열기">다운로드</a>         <div class="board_download_layer" id="brdDwn_10120894" style="display: none;">             <strong>다운로드할 파일을 선택하세요</strong>             <ul><li><a href="javascript:gfn_atchFileDownload('cmmit','2000048','4ba1068370eb0d7be0646805caa0f40c','1')" title="회의예정.hwp">회의예정.hwp</a></li><li><a href="javascript:gfn_atchFileDownload('cmmit','2000048','4ba1068370eb0d7be0646805caa0f40c','2')" title="회의결과.hwp">회의결과.hwp</a></li>             </ul>             <a href="javascript:void(0);" class="btn_download_x" title="대화상자 닫기" onclick="downLayerClose('10120894', 'N');">대화상자 닫기</a>        </div>     </td></tr><tr>     <td>1208</td>     <td>보건복지위원회</td>     <td class="align_left td_block"><a class="board_subject" href="javascript:doActionList.detail('10120843','https://health.na.go.kr/cmmit/schl/cmitSchl/view.do?menuNo=2000048&amp;cmtSchSn=10120843')"> 제5차 전체회의(연금개혁 특별위원회)</a>         <div class="m_subject">             <ul class="m_date">                 <li>보건복지위원회</li>                 <li>제432회국회(임시회)</li>                 <li>2026-02-05 09:00</li>             </ul>             <ul class="m_down m_visible">                 <li id="prevew_m_10120843">                     <a class="attach_file" href="/cmmit/prevew/docsPreview/previewDocs.do?atchFileId=49e5dd6b51b664dce0646805caa0f40c&amp;fileSn=1&amp;viewType=CONTBODY&amp;_csrf=1ab02ee2-46a6-4266-adab-42d836f251ee" target="_blank" title="미리보기(새창열림)">미리보기</a>                 </li>                 <li id="downOpen_m_10120843">                     <a href="javascript:void(0)" id="downOpen_mm_10120843" class="btn_board_download" onclick="downlayerOpen('10120843')" title="파일 대화상자 열기">다운로드</a>                     <div class="board_download_layer" id="brdDwn_m_10120843" style="display: none">                         <strong>다운로드할 파일을 선택하세요</strong>                         <ul><li><a href="javascript:gfn_atchFileDownload('cmmit','2000048','49e5dd6b51b664dce0646805caa0f40c','1')" title="회의예정.hwp">회의예정.hwp</a></li><li><a href="javascript:gfn_atchFileDownload('cmmit','2000048','49e5dd6b51b664dce0646805caa0f40c','2')" title="회의결과.hwp">회의결과.hwp</a></li>                         </ul>                         <a href="javascript:void(0);" class="btn_download_x" title="대화상자 닫기" onclick="downLayerClose('10120843' , 'Y');">대화상자 닫기</a>                     </div>                 </li>             </ul>         </div>     </td>     <td>제432회국회(임시회)</td>     <td>2026-02-05 09:00</td>     <td class="classPreview">         <a class="attach_file" id="prevew_10120843" href="/cmmit/prevew/docsPreview/previewDocs.do?atchFileId=49e5dd6b51b664dce0646805caa0f40c&amp;fileSn=1&amp;viewType=CONTBODY&amp;_csrf=1ab02ee2-46a6-4266-adab-42d836f251ee" target="_blank" title="미리보기(새창열림)">미리보기</a>     </td>     <td class="classDown">         <a href="javascript:void(0)" class="btn_board_download" id="downOpen_10120843" onclick="downlayerOpen('10120843')" title="파일 대화상자 열기">다운로드</a>         <div class="board_download_layer" id="brdDwn_10120843" style="display: none;">             <strong>다운로드할 파일을 선택하세요</strong>             <ul><li><a href="javascript:gfn_atchFileDownload('cmmit','2000048','49e5dd6b51b664dce0646805caa0f40c','1')" title="회의예정.hwp">회의예정.hwp</a></li><li><a href="javascript:gfn_atchFileDownload('cmmit','2000048','49e5dd6b51b664dce0646805caa0f40c','2')" title="회의결과.hwp">회의결과.hwp</a></li>             </ul>             <a href="javascript:void(0);" class="btn_download_x" title="대화상자 닫기" onclick="downLayerClose('10120843', 'N');">대화상자 닫기</a>        </div>     </td></tr></tbody>
+             </table>
+         </div>
+         
+         <!-- paging -->
+         <div id="cmitSchlList-pageNav"><div class="paginationSet"><ul class="pagination pagination-centered"><li class="i first disabled"><a title="처음 목록" href="javascript:fnSearch(1)"><span class="s"><span>처음 <span class="t">목록</span></span></span></a></li><li class="i prev disabled"><a title="이전 목록" href="javascript:fnSearch(0)"><span class="s"><span>이전 <span class="t">목록</span></span></span></a></li><li class="active"><span><em title="현재목록"><span>1</span></em></span></li><li><a href="javascript:fnSearch(2)"><span>2</span></a></li><li><a href="javascript:fnSearch(3)"><span>3</span></a></li><li><a href="javascript:fnSearch(4)"><span>4</span></a></li><li><a href="javascript:fnSearch(5)"><span>5</span></a></li><li><a href="javascript:fnSearch(6)"><span>6</span></a></li><li><a href="javascript:fnSearch(7)"><span>7</span></a></li><li><a href="javascript:fnSearch(8)"><span>8</span></a></li><li><a href="javascript:fnSearch(9)"><span>9</span></a></li><li><a href="javascript:fnSearch(10)"><span>10</span></a></li><li class="i next"><a title="다음 목록" href="javascript:fnSearch(11)"><span class="s"><span>다음 <span class="t">목록</span></span></span></a></li><li class="i end"><a title="마지막 목록" href="javascript:fnSearch(122)"><span class="s"><span>끝 <span class="t">목록</span></span></span></a></li></ul></div><div class="mobile_paging"><div><span><em title="현재목록">1</em> / 122</span></div><ul><li><a class="mbtn_arrow_first disabled" title="처음 목록" href="javascript:fnSearch(1)"><span class="s"><span>처음 <span class="t">목록</span></span></span></a><a class="mbtn_arrow_prev disabled" title="이전 목록" href="javascript:fnSearch(0)"><span class="s"><span>이전 <span class="t">목록</span></span></span></a></li><li><a class="mbtn_arrow_next" title="다음 목록" href="javascript:fnSearch(2)"><span class="s"><span>다음 <span class="t">목록</span></span></span></a><a class="mbtn_arrow_last" title="마지막 목록" href="javascript:fnSearch(11)"><span class="s"><span>끝 <span class="t">목록</span></span></span></a></li></ul></div></div>
+         <!-- //paging -->
+         
+    </div>
+    <!-- list -->
+    
+</div>
+<!-- //contents -->
+
+<script src="/static/cmmit/js/schl/list.js"></script>
+</div>
+
+
+
+<script src="/static/cmmit/js/schl/schlList.js"></script></div>
+        <!-- //content -->
+	</div>
+	<!-- //container -->
+
+    <div class="quick_and_nav nav_fullPageMenu01 quick_sub">
+        <div class="fullpage-nav-area">
+            <div>
+                <div class="dropdown">
+                    <a class="welink" href="javascript:;" id="clickCmit" title="대화상자 열기"><strong>위원회</strong><span>바로가기</span></a>
+                    <button onclick="quickFunction()" class="dropbtn" title="확장됨">Quick 메뉴</button>
+                    <div id="QuickDropdown" class="dropdown-content show">
+                        <ul>
+                            <li><a href="javascript:void(0);" id="quickMenu01" title="새창열림">대한민국 국회</a></li>
+<li><a href="javascript:void(0);" id="quickMenu03" title="새창열림">인터넷 의사중계</a></li>
+                            <li><a href="javascript:void(0);" id="quickMenu04" title="새창열림">의안정보</a></li>
+                            <li><a href="javascript:void(0);" id="quickMenu05" title="새창열림">법률정보</a></li>
+                            <li><a href="javascript:void(0);" id="quickMenu06" title="새창열림">회의록</a></li>
+                            <li><a href="javascript:void(0);" id="quickMenu07" title="새창열림">국민동의청원</a></li>
+                            <li><a href="javascript:void(0);" id="quickMenu08" title="새창열림">입법예고</a></li>
+                            <li><a href="javascript:void(0);" id="quickMenu09" title="새창열림">열린국회정보</a></li>
+                        </ul>
+                        <p class="top"><a href="#">TOP</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+	<!-- footer -->
+	<!-- footer -->
+<div class="footer">
+    <footer>
+        <div class="logo_footer">
+            <img src="/static/cmmit/img/nlogo_footer.png" alt="대한민국 국회">
+        </div>
+        <div class="footer_menu">
+
+            <ul id="ft_menu">
+                <li><a href="javascript:;" id="footer_indvdl_prcs_polcy" class="" title="대화상자 열기">개인정보 처리방침</a></li>
+<li><a href="javascript:;" id="footer_hmpg_use_stplat" class="line" title="대화상자 열기">이용약관</a></li>
+                <li><a href="javascript:;" id="footer_cpyrht_policy" class="line" title="대화상자 열기">저작권 정책</a></li>
+</ul>
+
+            <address>
+                <span>서울특별시 영등포구 의사당대로 1 (여의도동) 07233</span>
+                <span class="f_bullet">대표전화 : 02-6788-2114</span>
+                <span class="f_bullet">홈페이지 문의 : <a href="mailto:webmaster@assembly.go.kr" class="mailto">webmaster@assembly.go.kr</a></span>
+            </address>
+            <div class="copyright">Copyrightⓒ National Assembly. All rights reserved. <br>대한민국국회 홈페이지의 모든 정보에 대한 권한은 국회에 있습니다.</div>
+
+            <ul class="foot_homepage">
+                <li>
+                    <select id="footer_jrsd_hmpg_cd" title="소관기관 홈페이지 선택" name="footer_jrsd_hmpg_cd"><option value="">소관기관 홈페이지</option><option value="https://nas.na.go.kr">국회사무처</option><option value="https://www.nanet.go.kr">국회도서관</option><option value="https://www.nabo.go.kr">국회예산정책처</option><option value="https://www.nars.go.kr">국회입법조사처</option><option value="https://archives.nanet.go.kr/main.do">국회기록원</option><option value="https://www.nafi.re.kr/new/index.do">국회미래연구원</option></select>
+                    <button class="btn_bl" id="btn_jrsd_hmpg_cd" title="선택한 페이지로 새창이동">GO</button>
+                </li>
+                <li>
+                    <select id="footer_cmmit_hmpg_cd" title="위원회홈페이지 선택" name="footer_cmmit_hmpg_cd"><option value="">위원회 홈페이지</option><option value="https://committee.na.go.kr">국회상임위원회 및 특별위원회</option><option value="https://steering.na.go.kr">국회운영위원회</option><option value="https://legislation.na.go.kr">법제사법위원회</option><option value="https://policy.na.go.kr">정무위원회</option><option value="https://finance.na.go.kr">재정경제기획위원회</option><option value="https://edu.na.go.kr">교육위원회</option><option value="https://science.na.go.kr">과학기술정보방송통신위원회</option><option value="https://uft.na.go.kr">외교통일위원회</option><option value="https://defense.na.go.kr">국방위원회</option><option value="https://adminhom.na.go.kr">행정안전위원회</option><option value="https://cst.na.go.kr">문화체육관광위원회</option><option value="https://agri.na.go.kr">농림축산식품해양수산위원회</option><option value="https://industry.na.go.kr">산업통상자원중소벤처기업위원회</option><option value="https://health.na.go.kr">보건복지위원회</option><option value="https://environment.na.go.kr">기후에너지환경노동위원회</option><option value="https://ltc.na.go.kr">국토교통위원회</option><option value="https://intelligence.na.go.kr">정보위원회</option><option value="https://women.na.go.kr">성평등가족위원회</option><option value="https://budget.na.go.kr">예산결산특별위원회</option><option value="https://spc.na.go.kr">특별위원회</option></select>
+                    <button class="btn_bl" id="btn_cmmit_hmpg_cd" title="선택한 페이지로 새창이동">GO</button>
+                </li>
+                <li>
+                    <select id="footer_hmpg_cd" title="홈페이지 선택" name="footer_hmpg_cd"><option value="">홈페이지</option><option value="https://www.naon.go.kr">국회뉴스ON</option><option value="https://www.natv.go.kr">국회방송</option><option value="http://assembly.webcast.go.kr">인터넷의사중계</option><option value="https://museum.assembly.go.kr/">국회박물관</option><option value="https://training.assembly.go.kr">국회의정연수원</option><option value="https://vplatform.assembly.go.kr/">정책영상플랫폼</option></select>
+                    <button class="btn_bl" id="btn_hmpg_cd" title="선택한 페이지로 새창이동">GO</button>
+                </li>
+                <li>
+                    <select id="footer_na_info_sys_cd" title="국회정보시스템 선택" name="footer_na_info_sys_cd"><option value="">국회정보시스템</option><option value="https://open.assembly.go.kr">열린국회정보</option><option value="https://petitions.assembly.go.kr/paHome">국민동의청원</option><option value="https://likms.assembly.go.kr/bill/main.do">의안정보시스템</option><option value="http://w3.assembly.go.kr/vod">영상회의록</option><option value="https://record.assembly.go.kr/">회의록시스템</option><option value="https://pal.assembly.go.kr">국회입법예고</option><option value="https://likms.assembly.go.kr/law">국회법률정보시스템</option><option value="https://likms.assembly.go.kr/inspections/main.do">국정감사정보시스템</option><option value="https://open.assembly.go.kr:442/admjud/guideAdmjud.do">행정심판시스템</option><option value="https://gosi.assembly.go.kr">국회채용시스템</option></select>
+                    <button class="btn_bl" id="btn_na_info_sys_cd" title="선택한 페이지로 새창이동">GO</button>
+                </li>
+            </ul>
+
+            <div class="ft_menu_etc">
+                <ul>
+                    <li><a href="javascript:void(0);" id="footer_web_acces" class="wa" title="새창열림_한국웹접근성인증평가원">웹접근성인증마크</a></li>
+                    <li><a href="javascript:void(0);" id="footer_kogl" class="site_open" title="새창열림_공공누리">OPEN</a></li>
+                    <li><a class="fsns_rss" id="link_glnb_footer_rss" href="javascript:void(0);" title="새창열림_RSS">RSS</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Quick Menu -->
+    </div>
+<!-- //footer -->
+
+<!-- mobile quick menu -->
+<!-- mobile quick menu -->
+
+<!-- loading... -->
+<div class="loading_bar" id="glb-ifm-loading-sect" style="display: none;">
+    <div class="progress_bar">
+        <div>
+            <div class="progress">
+                <div class="bar"></div>
+            </div>
+            <span class="progress_txt">잠시만 기다려주십시오.<em>Wait a minute</em></span>
+        </div>
+    </div>
+</div>
+<!-- //loading... -->
+
+
+
+<form id="hdn_download_form" name="hdn_download_form" method="post" target="hdn_download_iframe"></form>
+<iframe id="hdn_download_iframe" name="hdn_download_iframe" title="hdn_download_iframe" style="display: none;"></iframe>
+
+
+<!-- 로그기록  -->
+<!--
+<script>
+document.writeln("<span class='sr-only'><img src='/cmmit/singl/siteConectStats/rcord.do?menuNo=2000048&amp;conectUrlad=/cmmit/schl/cmitSchl/schlList.do' alt=''></span>");
+</script> -->
+<!-- 로그기록 END  -->
+<div class="loading" id="loadingDiv" style="display:none;">
+    <div class="spinner">
+        <div class="bounce1"></div>
+        <div class="bounce2"></div>
+        <div class="bounce3"></div>
+    </div>
+
+    <p> <br>게시물 저장 중입니다.</p> </div>
+
+<script src="/static/jslibrary/tablesummary.js"></script>
+
+<script src="/static/cmmit/js/main/inc/footer.js?ver=0.1025"></script>
+
+<script src="/static/cmmit/js/main/sub/excelCountCheck.js"></script>
+<div class="npop_download" style="display: none;">
+    <div>
+        <div tabindex="0">
+            <span></span>
+            <ul>
+                <li><a href="javascript:void(0);" class="btn_bk">다운로드</a></li>
+                <li><a href="javascript:void(0);" class="btn_bl">취소</a></li>
+            </ul>
+        </div>
+    </div>
+</div><!-- //footer -->
+
+    <div class="modal_pop" id="click_cmit" style="display:none;">
+        <div class="poplayer_footer">
+        <div>
+            <h2>위원회 바로가기</h2>
+            <div class="poplayer_footer_form site_quick" id="goCmit" style="height: auto; overflow-y:visible;">
+                <label for="currentCmitDomain" class="blind"></label>
+                <input hidden="hidden" id="currentCmitDomain" value="health" title="도메인정보">
+                <div class="welink_home_btn">
+                    <a id="welink_home" href="https://committee.na.go.kr" target="_blank" title="새창열림">국회상임위원회 및 특별위원회 <span>(통합 홈페이지)</span></a>
+                </div>
+                <ul id="findCmitList" style="width: auto;"><li>     <a href="https://steering.na.go.kr" target="_blank" title="새창열림">국회운영위원회</a></li><li>     <a href="https://legislation.na.go.kr" target="_blank" title="새창열림">법제사법위원회</a></li><li>     <a href="https://policy.na.go.kr" target="_blank" title="새창열림">정무위원회</a></li><li>     <a href="https://finance.na.go.kr" target="_blank" title="새창열림">재정경제기획위원회</a></li><li>     <a href="https://edu.na.go.kr" target="_blank" title="새창열림">교육위원회</a></li><li>     <a href="https://science.na.go.kr" target="_blank" title="새창열림">과학기술정보방송통신위원회</a></li><li>     <a href="https://uft.na.go.kr" target="_blank" title="새창열림">외교통일위원회</a></li><li>     <a href="https://defense.na.go.kr" target="_blank" title="새창열림">국방위원회</a></li><li>     <a href="https://adminhom.na.go.kr" target="_blank" title="새창열림">행정안전위원회</a></li><li>     <a href="https://cst.na.go.kr" target="_blank" title="새창열림">문화체육관광위원회</a></li><li>     <a href="https://agri.na.go.kr" target="_blank" title="새창열림">농림축산식품해양수산위원회</a></li><li>     <a href="https://industry.na.go.kr" target="_blank" title="새창열림">산업통상자원중소벤처기업위원회</a></li><li>     <a href="https://health.na.go.kr" target="_blank" title="새창열림">보건복지위원회</a></li><li>     <a href="https://environment.na.go.kr" target="_blank" title="새창열림">기후에너지환경노동위원회</a></li><li>     <a href="https://ltc.na.go.kr" target="_blank" title="새창열림">국토교통위원회</a></li><li>     <a href="https://intelligence.na.go.kr" target="_blank" title="새창열림">정보위원회</a></li><li>     <a href="https://women.na.go.kr" target="_blank" title="새창열림">성평등가족위원회</a></li><li>     <a href="https://budget.na.go.kr" target="_blank" title="새창열림">예산결산특별위원회</a></li><li>     <a href="/cmmit/cmitInfo/cmmitInfoSpcList/list.do?menuNo=2000100" target="_blank" title="새창열림">특별위원회</a></li></ul>
+            </div>
+            <a href="javascript:;" class="btn_modal_x" onclick="$('#clickCmit').focus();" title="대화상자 닫기">대화상자 닫기</a>
+        </div>
+    </div>
+
+<script>
+$(function () {
+
+    /* 위원회 바로가기 modal */
+    $("#clickCmit").on("click", function(event) {
+        $("#click_cmit").show();
+        $("#welink_home").focus();
+
+    });
+
+    doActionCmit.init();
+});
+
+/* 접속한 URL에 따라 위원회도메인 리스트 */
+var doActionCmit = function () {
+    var self;
+
+    return{
+        init:function () {
+            self = this;
+            this.findCmit();
+        },
+
+        findCmit:function () {
+
+            com.help.ajax({
+                url: "/cmmit/main/cmmitMain/findCmmitList.json",
+                done: function (res) {
+                    doActionCmit.cmitList(res)
+                }
+            });
+
+        },
+        cmitList: function (res) {
+
+            /* 현재 도메인 (assembly.go.kr/na.go.kr 두가지 운영) */
+            var url = window.location.hostname;
+            var protocol = window.location.protocol;
+            var firstDot = url.indexOf('.');
+            var siteUrl = url.substring(firstDot + 1, url.length);
+            // var domainUrl = siteUrl.concat(':').concat(window.location.port);
+            var domainUrl = 'na.go.kr'; //na.go.kr 고정 - 필요 시 변경 후 사용
+            var currentCmitDomain = $("#currentCmitDomain").val();
+
+            var $sect = $("#findCmitList");
+            var fulldomainUrl = "";
+
+
+            /* 위원회 리스트 */
+            if (res.cmmitList.length > 0 ){
+                _.forEach(res.cmmitList, function (m, i) {
+                    /* 특별위 - 메뉴로 이동 */
+                    if (m.com2Val == "spc") {
+                        fulldomainUrl = "/cmmit/cmitInfo/cmmitInfoSpcList/list.do?menuNo=2000100";
+                    }else{
+                        fulldomainUrl = protocol+"//"+m.com2Val+"."+domainUrl;
+                    }
+                    var $item = ""
+                        + "<li>"
+                        + "     <a href=\""+fulldomainUrl+"\" target=\"_blank\" title=\"새창열림\">"+m.comNm+"</a>"
+                        + "</li>"
+
+                    $sect.append($item);
+                });
+            }
+
+            /* 총괄 홈페이지 */
+            var welink_home = protocol+"//committee."+domainUrl
+            $("#welink_home").attr("href",welink_home);
+
+        }
+    }
+
+}();
+</script></div>
+
+    <!-- 개인정보 처리방침 -->
+    <div class="modal_pop footpop" style="display:none;">
+        <div class="poplayer_footer">
+            <div>
+                <h2>개인정보 처리방침</h2>
+                <div class="poplayer_footer_form" id="footer_indvdlPrcsPolcy" tabindex="0">
+
+                    <div class="personalInformation poplayer_form_pd">
+                    <p>ㆍ국회사무처는 「개인정보 보호법」에 따라 정보주체의 개인정보 및 권익을 보호하고, 개인정보와 관련한 정보주체의 고충을 원활하게 처리할 수 있도록 다음과 같은 개인정보 처리방침을 두고 있습니다.</p>
+                    <h3 class="mt40">제1조(개인정보의 처리 목적)</h3>
+                    <p class="mt20">① 국회사무처는 대국민 서비스 제공, 민원처리, 소관업무 수행 등의 목적에 필요한 범위에서 최소한의 개인정보를 처리하고 있습니다. 이용 목적이 변경되는 경우에는 「개인정보 보호법」제18조에 따라 별도의 동의를 받는 등 필요한 조치를 이행할 예정입니다.</p>
+                    <p class="mt20">② 국회홈페이지는 다음 목적을 위해 개인 정보를 처리합니다.</p>
+                    <div class="mt10 ml10">1. 국회홈페이지 회원 가입 및 관리<br>
+                    회원 가입의사 확인, 회원제 서비스 또는 제한적 본인 확인제에 따른 본인확인, 개인식별, 부정이용방지, 만 14세 미만 아동 개인정보 수집 시 법정대리인 동의여부 확인, 추후 법정 대리인 본인 확인, 분쟁 조정을 위한 기록 보존, 고지사항 전달 등을 목적으로 개인정보를 처리합니다.</div>
+                    <div class="mt10 ml10">2. 민원사무 처리<br>
+                    민원인의 신원 확인, 민원사항 확인, 처리결과 통보 등을 목적으로 개인정보를 처리합니다.</div>
+                    <div class="mt10 ml10">3. 대국민 서비스 제공 및 개선<br>
+                    대국민 서비스 및 콘텐츠 제공, 맞춤서비스 제공, 홍보 행사 관련 정보 및 참여 기회 제공, 접속 빈도 파악 및 회원의 서비스 이용에 대한 통계 분석 등을 목적으로 개인정보를 처리합니다.</div>
+                    <p class="mt20">③ 국회홈페이지 회원가입정보는 통합회원관리를 통해 아래의 국회 관련 홈페이지에서 개인정보를 처리합니다.</p>
+                    <table class="privacy">
+                        <caption><strong>국회 관련 홈페이지 안내</strong></caption><colgroup><col style="width: 30%;"><col style="width: 70%;"></colgroup>
+                        <thead>
+                            <tr>
+                                <th scope="col">국회 관련 홈페이지</th>
+                                <th scope="col">처리 목적</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="align_center">국회사무처 홈페이지</td>
+                                <td class="tal">총장과의 대화, 자유게시판에서의 민원사항 확인 및 통계분석 등</td>
+                            </tr>
+                            <tr>
+                                <td class="align_center">위원회 홈페이지</td>
+                                <td class="tal">자유게시판에서의 민원사항 확인 및 통계분석 등</td>
+                            </tr>
+                            <tr>
+                                <td class="align_center">대한민국 국회위원회 홈페이지</td>
+                                <td class="tal">연구회원 및 지도교사 관리</td>
+                            </tr>
+                            <tr>
+                                <td class="align_center">국회 방문자센터 홈페이지</td>
+                                <td class="tal">참관신청처리 및 관리</td>
+                            </tr>
+                            <tr>
+                                <td class="align_center">국회방송 홈페이지</td>
+                                <td class="tal">시청자소감, 의견및제안, 문의에서의 민원사항 확인 및 통계분석 등</td>
+                            </tr>
+                            <tr>
+                                <td class="align_center">국회의정연수원 홈페이지</td>
+                                <td class="tal">교육, 연수 신청 처리 및 관리</td>
+                            </tr>
+                            <tr>
+                                <td class="align_center">맞춤입법콘텐츠검색시스템</td>
+                                <td class="tal">서비스 이용자 관리</td>
+                            </tr>
+                            <tr>
+                                <td class="align_center">국회뉴스ON</td>
+                                <td class="tal">이벤트 신청, 댓글작성 등</td>
+                            </tr>
+                            <tr>
+                                <td class="align_center">국회 문화행사 홈페이지</td>
+                                <td class="tal">문화행사 예약 신청처리 및 관리</td>
+                            </tr>
+                            <tr>
+                                <td class="align_center">국회 입법예고시스템</td>
+                                <td class="tal">의견 제출</td>
+                            </tr>
+                            <tr>
+                                <td class="align_center">국민동의청원</td>
+                                <td class="tal">청원업무처리, 서비스 제공 등</td>
+                            </tr>
+                            <tr>
+                                <td class="align_center">열린국회정보</td>
+                                <td class="tal">정보공개청구 업무처리, 서비스 제공 등</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <h3 class="mt40">제2조(개인정보의 처리 및 보유 기간, 처리하는 개인정보 항목)</h3>
+                    <p class="mt20">① 국회사무처에서 처리하는 개인정보는 수집·이용 목적으로 명시한 범위 내에서 처리하며, 개인정보 보호법 및 관련 법령에서 정하는 보유기간을 준용하여 이행하고 있습니다.</p>
+                    <p class="mt20">② 국회홈페이지에서 처리하는 개인정보의 처리 항목 및 보유기간은 다음과 같습니다.</p>
+                    <div class="mt10 ml10">1. 국회홈페이지 회원 정보</div>
+                    <table class="privacy">
+                        <caption><strong>국회홈페이지 회원 개인정보의 처리 항목 및 보유기간</strong></caption><colgroup><col style="width: 15%;"><col style="width: 15%;"><col style="width: 70%;"></colgroup>
+                        <tbody>
+                            <tr>
+                                <th colspan="2" scope="row">수집근거</th>
+                                <td class="tal">정보주체의 동의</td>
+                            </tr>
+                            <tr>
+                                <th colspan="2" scope="row">보유기간</th>
+                                <td class="tal">회원 탈퇴 시까지</td>
+                            </tr>
+                            <tr class="tc">
+                                <th rowspan="2" scope="row">수집항목</th>
+                                <th scope="row">필수항목</th>
+                                <td class="tal">이름, 생년월일, 이메일, 본인인증기관으로부터의 인증결과값(CI값)</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">선택항목</th>
+                                <td class="tal">전화번호, 휴대폰 번호, 주소, 학교</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="mt10 ml10">2. 국회홈페이지 국회민원 및 국민제안 관리</div>
+                    <table class="privacy">
+                        <caption><strong>국회홈페이지 국회민원 및 국민제안 정보의 처리 항목 및 보유기간</strong></caption><colgroup><col style="width: 15%;"><col style="width: 15%;"><col style="width: 70%;"></colgroup>
+                        <tbody>
+                            <tr>
+                                <th colspan="2" scope="row">수집근거</th>
+                                <td class="tal">「민원사무처리에 관한 법률」</td>
+                            </tr>
+                            <tr>
+                                <th colspan="2" scope="row">보유기간</th>
+                                <td class="tal">10년</td>
+                            </tr>
+                            <tr class="tc">
+                                <th rowspan="2" scope="row">수집항목</th>
+                                <th scope="row">필수항목</th>
+                                <td class="tal">이름, 주소, 본인인증기관으로부터의 인증결과값(CI값)</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">선택항목</th>
+                                <td class="tal">이메일, 전화번호, 휴대폰 번호</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="mt10">※ 상세한 국회사무처의 개인정보파일 등록사항 공개는 국회홈페이지(www.assembly.go.kr) ▷ 개인정보파일목록 메뉴를 활용해 주시기 바랍니다.</div>
+                    <p class="mt20">③ 국회홈페이지 접속 시에는 이용자의 브라우저 종류 및 운영체제(OS), 인터넷 프로토콜(IP) 주소, 방문일시, 국회홈페이지를 방문할 때 거친 웹 사이트의 주소 등이 자동 수집됩니다. 이와 같이 자동 수집되는 정보는 관련 법령에 따라 처리되고, 홈페이지의 개선과 보완을 위한 통계 분석에 활용됩니다.</p>
+                    <h3 class="mt40">제3조(개인정보의 제3자 제공)</h3>
+                    <p class="mt20">국회사무처는 원칙적으로 정보주체의 개인정보를 제1조(개인정보 처리 목적)에서 명시한 범위 안에서만 처리하며, 다음 각 호의 어느 하나에 해당하는 경우를 제외하고는 정보주체의 사전 동의 없이 본래의 목적을 초과하여 처리하거나 제3자에게 제공하지 않습니다.</p>
+                    <div class="mt10 ml10">1. 정보주체로부터 별도의 동의를 받는 경우</div>
+                    <div class="mt10 ml10">2. 법률에 특별한 규정이 있는 경우</div>
+                    <div class="mt10 ml10">3. 정보주체 또는 그 법정대리인이 의사표시를 할 수 없는 상태에 있거나 주소불명 등으로 사전 동의를 받을 수 없는 경우로서 명백히 정보주체 또는 제3자의 급박한 생명, 신체, 재산의 이익을 위하여 필요하다고 인정되는 경우</div>
+                    <div class="mt10 ml10">4. 통계작성 및 학술연구 등의 목적을 위하여 필요한 경우로서 특정 개인을 알아볼 수 없는 형태로 개인정보를 제공하는 경우</div>
+                    <div class="mt10 ml10">5. 개인정보를 목적 외의 용도로 이용하거나 이를 제3자에게 제공하지 아니하면 다른 법률에서 정하는 소관 업무를 수행할 수 없는 경우로서 보호위원회의 심의·의결을 거친 경우</div>
+                    <div class="mt10 ml10">6. 조약, 그 밖의 국제협정의 이행을 위하여 외국정부 또는 국제기구에 제공하기 위하여 필요한 경우</div>
+                    <div class="mt10 ml10">7. 범죄의 수사와 공소의 제기 및 유지를 위하여 필요한 경우</div>
+                    <div class="mt10 ml10">8. 법원의 재판업무 수행을 위하여 필요한 경우</div>
+                    <div class="mt10 ml10">9. 형(形)의 감호, 보호처분의 집행을 위하여 필요한 경우</div>
+                    <h3 class="mt40">제4조(개인정보의 처리 위탁)</h3>
+                    <p class="mt20">① 국회사무처는 원활한 업무처리를 위하여 다음과 같이 개인정보 처리업무를 위탁하고 있습니다.</p>
+                    <div class="mt10 ml10">- 수탁자 : 대신정보통신 주식회사<br>
+                    <!-- &nbsp;&nbsp;- 수탁기간 : &lsquo;15.3.2.~&rsquo;17.12.31.<br /> -->- 수탁내용 : 국회 정보시스템 유지관리<br>
+                    &nbsp;</div>
+                    <p class="mt20">② 국회사무처는 위탁계약 시 「개인정보 보호법」제26조에 따라 위탁업무 수행목적 외 개인정보 처리금지, 기술적·관리적 보호조치 및 책임부담 등을 명확히 규정된 문서에 따라 처리하고 있습니다. 위탁업무의 내용이나 수탁자 변경될 경우에는 지체 없이 개인정보처리방침을 통하여 고지하겠습니다.</p>
+                    <h3 class="mt40">제5조(정보주체의 권리·의무 및 행사방법)</h3>
+                    <p class="mt20">① 정보주체는 국회사무처에 언제든지 「개인정보 보호법」 제32조에 따라 등록 대상이 되는 개인정보파일에 수록된 자신의 개인정보에 대해 다음 각 호의 개인정보 보호 관련 권리를 행사할 수 있습니다.</p>
+                    <div class="mt10 ml10">1. 개인정보 열람 요구<br>
+                    2. 오류 등이 있을 경우 개인정보 정정 요구<br>
+                    3. 개인정보 삭제 요구<br>
+                    4. 개인정보 처리 정지 요구</div>
+                    <p class="mt20">② 제1항에 따른 권리 행사는 서면, 전자우편, 모사전송(FAX) 등을 통하여 할 수 있으며, 국회사무처는 이에 대해 지체 없이 조치하겠습니다.</p>
+                    <p class="mt20">③ 정보주체가 개인정보의 오류 등에 대한 정정 또는 삭제를 요구한 경우에는 국회사무처는 정정 또는 삭제를 완료할 때까지 해당 개인정보를 이용하거나 제공하지 않습니다.</p>
+                    <p class="mt20">④ 제1항에 따른 권리행사는 정보주체의 법정대리인이나 위임을 받은 자 등 대리인을 통하여 할 수 있습니다. 이 경우 위임장을 제출하여야 합니다.</p>
+                    <p class="mt20">⑤ 개인정보 열람 및 처리정지 요구는 「개인정보 보호법」 제35조제4항 또는 제37조제2항에 따라 정보주체의 권리가 제한 될 수 있습니다.</p>
+                    <p class="mt20">⑥ 개인정보의 정정 및 삭제 요구는 다른 법령에서 그 개인정보가 수집 대상으로 명시되어 있는 경우에는 그 삭제를 요구할 수 없습니다.</p>
+                    <p class="mt20">⑦ 국회사무처는 정보주체 권리에 따른 열람의 요구, 정정·삭제의 요구, 처리정지의 요구 시 열람 등의 요구를 한 자가 본인이거나 정당한 대리인인지를 확인할 수 있습니다.</p>
+                    <h3 class="mt40">제6조(개인정보 파기 절차 및 방법)</h3>
+                    <p class="mt20">국회사무처는 원칙적으로 개인정보의 보유기간 경과, 처리목적이 달성 등 개인정보가 불필요하게 되었을 때에는 지체 없이 다음의 절차 및 방법에 따라 해당 개인정보를 파기합니다. 다만, 다른 법령에 따라 보존하여야 하는 경우에는 관련 법령에 따라 처리하고 있습니다.</p>
+                    <div class="mt10 ml10">1. 파기절차 : 목적이 달성된 개인정보는 즉시 파기되거나 내부 방침및 기타 관련 법령에 따라 일정기간 저장된 후 파기됩니다. 목적 달성 후 일정기간 보관되는 개인정보는 법령에 의한 경우가 아니고서는 다른 목적으로 이용되지 않습니다.</div>
+                    <div class="mt10 ml10">2. 파기방법 : 전자적 파일형태로 저장된 개인정보는 기록을 재생할 수 없는 기술적 방법을 사용하여 삭제합니다.</div>
+                    <h3 class="mt40">제7조(개인정보의 안전성 확보조치)</h3>
+                    <p class="mt20">국회사무처는 「개인정보 보호법」제29조(안전조치의무)에 따라 다음과 같이 개인정보의 안전성 확보에 필요한 기술적·관리적·물리적 조치를 하고 있습니다.</p>
+                    <div class="mt10 ml10">1. 내부관리계획의 수립 및 시행<br>
+                    개인정보의 안전한 처리를 위하여 내부관리계획을 수립하여 시행하고 있습니다.</div>
+                    <div class="mt10 ml10">2. 개인정보 취급 직원의 최소화 및 교육<br>
+                    개인정보를 취급하는 직원은 반드시 필요한 인원에 한하여 지정·관리하고 있으며, 취급직원을 대상으로 안전한 관리를 위한 교육을 실시하고 있습니다.</div>
+                    <div class="mt10 ml10">3. 개인정보의 암호화<br>
+                    개인정보는 암호화 등을 통해 안전하게 저장 및 관리되고 있으며,중요한 데이터는 저장 및 전송 시 암호화하여 사용하는 등의 별도 보안기능을 사용하고 있습니다.</div>
+                    <div class="mt10 ml10">4. 접속 기록의 보관 개인정보처리시스템에 접속한 기록(웹 로그, 요약정보 등)을 최소 6개월 이상 보관·관리하고 있습니다.</div>
+                    <div class="mt10 ml10">5. 개인정보에 대한 접근 제한 개인정보를 처리하는 개인정보처리시스템에 대한 접근권한의 부여·말소를 통하여 개인정보에 대한 접근 통제를 위한 필요한 조치를 하고 있으며, 침입차단시스템을 이용하여 외부로부터 무단 접근을 통제하고 있습니다.</div>
+                    <div class="mt10 ml10">6. 보안프로그램 설치 및 주기적 점검·갱신 해킹이나 컴퓨터 바이러스 등에 의한 개인정보 유출 및 훼손을 막기 위하여 보안프로그램을 설치하고 주기적으로 갱신·점검하고 있습니다.</div>
+                    <div class="mt10 ml10">7. 비인가자에 대한 출입 통제 개인정보를 보관하고 있는 개인정보처리시스템의 물리적 보관 장소를 별도로 두고 이에 대해 출입통제 절차를 수립·운영하고 있습니다.</div>
+                    <h3 class="mt40">제8조(권익침해 구제방법)</h3>
+                    <p class="mt20">① 정보주체는 개인정보 침해로 인한 피해를 구제 받기 위하여 다음의 기관에 대해 개인정보 침해에 대한 피해구제, 분쟁해결이나 상담 등을 문의할 수 있습니다.</p>
+                    <div class="mt10 ml10">1. 개인정보침해 신고센터(한국인터넷진흥원 운영)<br>
+                    ㆍ소관업무 : 개인정보 침해사실 신고, 상담신청<br>
+                    ㆍ홈페이지 : privacy.kisa.or.kr<br>
+                    ㆍ전화 : (국번없이) 118<br>
+                    ㆍ주소 : (58324) 전라남도 나주시 진흥길 9 (빛가람동 301-2) 3층 개인정보침해 신고센터</div>
+                    <div class="mt10 ml10">2. 개인정보분쟁조정위원회<br>
+                    ㆍ소관업무 : 개인정보 분쟁조정신청, 집단분쟁조정(민사적 해결)<br>
+                    ㆍ홈페이지 : www.kopico.go.kr<br>
+                    ㆍ전화 : (국번없이)1833-6972<br>
+                    ㆍ주소 : (03171) 서울특별시 종로구 세종대로 209 정부서울청사 4층</div>
+                    <div class="mt10 ml10">3. 대검찰청 사이버수사과<br>
+                    ㆍ홈페이지 : www.spo.go.kr(cid@spo.go.kr)<br>
+                    ㆍ전화 : (국번없이) 1301</div>
+                    <div class="mt10 ml10">4. 경찰청 사이버안전국<br>
+                    ㆍ홈페이지 : cyberbureau.police.go.kr<br>
+                    ㆍ전화 : (국번없이) 182</div>
+                    <p class="mt20">② 개인정보의 열람, 정정·삭제, 처리정지 등에 대한 정보주체의 요구에 대하여 공공기관의 장이 행한 처분 또는 부작위로 인하여 권리 또는 이익을 침해 받은 자는 「행정심판법」이 정하는 바에 따라 행정심판을 청구할 수 있습니다.</p>
+                    <h3 class="mt40">제9조(홈페이지 개인정보 보호책임자)</h3>
+                    <p class="mt20">국회사무처는 홈페이지 개인정보를 보호하고 개인정보와 관련한 업무를 수행하기 위하여 다음과 같이 개인정보 보호책임자 등을 지정하고 있습니다.</p>
+                    <div class="mt10 ml10">1. 홈페이지 개인정보 보호책임자 : 국회사무처 기획조정실장</div>
+                    <div class="mt10 ml10">2. 홈페이지 담당부서 : 디지털운영담당관실(02-6788-3055)</div>
+                    <h3 class="mt40">제10조(개인정보 자동 수집 장치의 설치·운영 및 그 거부에 관한 사항)</h3>
+                    <p class="mt20">① 국회사무처는 이용자에게 개별적인 맞춤서비스를 제공하기 위해 이용정보를 저장하고 수시로 불러오는 쿠키(cookie)를 사용합니다. <br>
+                    <br>
+                    ② 쿠키(cookie)는 웹사이트를 운영하는데 이용되는 서버가 이용자의 컴퓨터 브라우저에게 보내는 소량의 정보이며 이용자의 PC 컴퓨터 내의 하드디스크에 저장되기도 합니다.<br>
+                    - 쿠키(cookie)의 사용목적 : 이용자가 방문한 각 서비스와 웹 사이트들에 대한 방문 및 이용형태, 인기 검색어, 보안접속 여부 등을<br>
+                    &nbsp;&nbsp;파악하여 이용자에게 최적화된 정보 제공을 위해 사용됩니다.<br>
+                    - 쿠키(cookie)의 설치·운영 및 거부 : 웹브라우저 상단의 도구&gt;인터넷옵션&gt;개인정보 메뉴의 옵션 설정을 통해 쿠키(cookie) 저장을<br>
+                    &nbsp;&nbsp;거부할 수 있습니다.<br>
+                    - 쿠키(cookie) 저장을 거부할 경우 맞춤형 서비스 이용에 어려움이 발생할 수 있습니다.</p>
+                    <h3 class="mt40">제11조(개인정보 처리방침 변경)</h3>
+                    <p class="mt20">이 개인정보처리방침은 2020.2.17. 부터 적용되고, 이 전의 개인정보 처리방침은 아래에서 확인할 수 있습니다. 국회사무처는 개인정보<br>
+                    처리방침을 개정하는 경우 웹사이트에 공지하여 알려드리겠습니다.</p>
+                        <div class="txt01 mt10" style="line-height:1.4;">- 2017년 3월29일 ~ 2020년 2월 16일 <a class="ft_button" href="https://assembly.go.kr/portal/conts/contsFileDown.do?fileName=indivfile1&amp;fileOutName=개인정보처리방침(국회)_20200216&amp;fileExt=hwp">다운로드</a><br>
+                        - 2015년 10월13일 ~ 2017년 3월 28일 <a class="ft_button" href="https://assembly.go.kr/portal/conts/contsFileDown.do?fileName=indivfile2&amp;fileOutName=개인정보처리방침(국회)_20170329&amp;fileExt=hwp">다운로드</a><br>
+                        - 2015년 3월3일 ~ 2015년 10월 12일 <a class="ft_button" href="https://assembly.go.kr/portal/conts/contsFileDown.do?fileName=indivfile3&amp;fileOutName=개인정보처리방침(국회)_20151012&amp;fileExt=hwp">다운로드</a><br>
+                        - 2014년 8월7일 ~ 2015년 3월 2일 <a class="ft_button" href="https://assembly.go.kr/portal/conts/contsFileDown.do?fileName=indivfile4&amp;fileOutName=개인정보처리방침(국회)_20150302&amp;fileExt=hwp">다운로드</a><br>
+                        - ~ 2014년 8월 6일 <a class="ft_button" href="https://assembly.go.kr/portal/conts/contsFileDown.do?fileName=indivfile5&amp;fileOutName=국회_개인정보처리방침(20140806이전)&amp;fileExt=hwp">다운로드</a>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="btn-set tac">
+                    <a href="javascript:;" class="b-basic" onclick="$('#footer_indvdl_prcs_polcy').focus();">확인</a>
+                </div>
+                <a href="javascript:;" class="btn_modal_x" onclick="$('#footer_indvdl_prcs_polcy').focus();" title="대화상자 닫기">대화상자 닫기</a>
+            </div>
+        </div>
+</div>
+    <!-- //개인정보 처리방침 -->
+
+    <!-- 개인정보 파일목록 -->
+    <!-- //개인정보 파일목록 -->
+
+    <!-- 홈페이지 이용약관 -->
+    <div class="modal_pop footpop" style="display:none;">
+        <div class="poplayer_footer">
+            <div>
+                <h2>홈페이지 이용약관</h2>
+                <div class="poplayer_footer_form" id="footer_hmpgUseStplat" tabindex="0">
+
+                    <div class="personalInformation poplayer_form_pd"><!--<p class="txt01 mt40">대한민국국회 홈페이지 이용약관</p>-->
+                    <h3 class="title01 tac">제1장 총칙</h3>
+                    <p class="grayText txt01 mt40">제1조(목적)</p>
+                    <p class="txt01 mt10">대한민국국회 홈페이지 이용약관(이하 "본 약관"이라 한다)은 대한민국국회(이하 "국회"라 한다) 홈페이지 및 국회 홈페이지의 제반 온라인 서비스(이하 "서비스"라 한다) 이용과 관련하여 국회와 이용자의 권리·의무·책임사항과 기타 필요한 사항을 규정함을 목적으로 합니다.</p>
+                    <p class="grayText txt01 mt40">제2조(정의)</p>
+                    <p class="txt01 mt10">본 약관에서 사용하는 용어의 정의는 다음과 같습니다.</p>
+                    <p class="txt01 mt10">1. "이용자"란 국회 홈페이지에 접속하여 본 약관에 따라 국회가 제공하는 서비스를 이용하는 회원 및 비회원을 말합니다.</p>
+                    <p class="txt01 mt10">2. "회원"이란 국회 홈페이지의 가입 신청 절차에 따라 회원 등록을 한 자로서 국회 홈페이지의 정보 및 서비스를 계속적으로 이용할 수 있는 자를 말합니다.</p>
+                    <p class="txt01 mt10">3. "본인확인"이란 국회 홈페이지가 제공하는 서비스 이용을 위하여 공공/일반 I-PIN 인증 또는 휴대폰 번호 인증 등으로 본인임을 확인하는 것을 말합니다.</p>
+                    <p class="grayText txt01 mt40">제3조(약관의 효력과 개정)</p>
+                    <p class="txt01 mt10">① 본 약관은 국회 홈페이지 서비스 화면에 공지함으로써 이용자에게 공시하고, 본 약관에 동의한 이용자가 회원에 가입함으로써 효력이 발생하며, 국회 홈페이지의 서비스 제공 행위 및 이용자의 서비스 사용 행위에 본 약관이 우선적으로 적용됩니다.</p>
+                    <p class="txt01 mt10">② 국회는 필요한 경우 이 약관의 내용을 변경할 수 있으며, 변경된 약관은 국회 홈페이지 서비스 화면에 공지함으로써 이용자가 직접 확인할 수 있도록 합니다.</p>
+                    <p class="txt01 mt10">③ 회원은 개정된 약관에 동의하지 않을 경우 회원 탈퇴할 수 있으며, 명시적으로 거부의 의사표시를 하지 아니하고 계속 사용하는 경우에는 약관 변경에 동의한 것으로 간주됩니다.</p>
+                    <p class="txt01 mt10">④ 본 약관에 명시되지 않은 사항에 대해서는 「전기통신사업법」, 「정보통신망 이용촉진 및 정보보호 등에 관한 법률」, 「개인정보 보호법」 등 관련 법령의 규정에 따릅니다.</p>
+                    <h3 class="title01 mt35 tac">제2장 서비스 제공 및 이용</h3>
+                    <p class="grayText txt01 mt40">제4조(회원 가입)</p>
+                    <p class="txt01 mt10">① 국회 홈페이지 회원에 가입하고자 하는 이용자는 국회 홈페이지의 회원 가입 신청 절차에 따라 본인확인을 거쳐 본 이용약관 및 개인정보처리방침 등에 "동의" 여부를 표시하고, 개인정보를 기재함으로써 회원에 가입합니다.</p>
+                    <p class="grayText txt01 mt40">제5조(회원 탈퇴 및 자격 상실)</p>
+                    <p class="txt01 mt10">① 회원은 언제든지 회원 탈퇴를 할 수 있으며 국 회는 지체 없이 회원 탈퇴를 처리하고, 해당 개인정보를 파기합니다.</p>
+                    <p class="txt01 mt10">② 국회 홈페이지가 제12조제2항 및 제13조제1항에 따라 이용자의 회원 자격을 상실시키기로 결정한 경우에는 회원 등록을 말소합니다. 이 경우 회원 등록 말소 전에 회원에게 이를 통지하고, 소명할 기회를 부여합니다.</p>
+                    <p class="grayText txt01 mt40">제6조(서비스의 제공 및 변경)</p>
+                    <p class="txt01 mt10">① 국회 홈페이지는 이용자에게 다음과 같은 서비스를 제공합니다.</p>
+                    <p class="txt01 mt10">1. 국회의 의정활동 관련 콘텐츠, 맞춤서비스, 홍보행사 정보 및 참여기회 제공 등의 대국민 정보 서비스</p>
+                    <p class="txt01 mt10">2. 온라인 상의 민원 처리 서비스</p>
+                    <p class="txt01 mt10">② 국회 홈페이지는 서비스의 내용이 변경되는 경우, 그 내용 및 제공 일자를 제8조제2항에서 정한 방법으로 이용자에게 통지하고, 제1항에 정한 서비스를 변경하여 제공할 수 있습니다.</p>
+                    <p class="grayText txt01 mt40">제7조(서비스의 중단)</p>
+                    <p class="txt01 mt10">① 국회 홈페이지는 정보시스템, 서버, 정보기기, 네트워크의 점검·교체 및 장애발생 등의 사유가 발생한 경우에는 서비스의 제공을 일시적으로 중단할 수 있습니다. 또한, 운영상 상당한 이유가 있는 경우 현재 제공되는 서비스를 새로운 서비스로 교체 또는 중단할 수 있습니다.</p>
+                    <p class="txt01 mt10">② 제1항에 의한 서비스 중단의 경우에는 국회는 제8조제2항에서 정한 방법으로 이용자에게 통지합니다. 다만, 국회가 통제할 수 없는 사유로 인한 서비스의 중단(시스템 관리자의 고의·과실이 없는 정보시스템, 서버, 정보기기, 네트워크의 장애발생 등)으로 인하여 사전 통지가 불가능한 경우에는 그러하지 아니합니다.</p>
+                    <p class="grayText txt01 mt40">제8조(이용자에 대한 통지)</p>
+                    <p class="txt01 mt10">① 국회가 특정 이용자에 대한 통지를 하는 경우 이용자가 회원 가입 시에 기재한 메일주소로 할 수 있습니다.</p>
+                    <p class="txt01 mt10">② 국회가 불특정다수 이용자에 대한 통지를 하는 경우 국회 홈페이지 게시판 및 서비스 화면에 게시함으로써 개별 통지에 갈음할 수 있습니다.</p>
+                    <p class="grayText txt01 mt40">제9조(개인정보보호)</p>
+                    <p class="txt01 mt10">① 국회는 「개인정보 보호법」등 관련 법령, 국회 개인정보 보호에 관한 규정 및 국회의 개인정보처리방침이 정하는 바에 따라 이용자의 개인정보를 보호하기 위하여 노력합니다. 다만, 국회가 운영하는 홈페이지에 포함된 링크 또는 배너를 클릭하여 다른 사이트로 옮겨갈 경우에는 해당 사이트의 개인정보보호방침에 따릅니다.</p>
+                    <p class="txt01 mt10">② 국회 홈페이지는 회원 정보를 다음과 같이 처리합니다.</p>
+                    <p class="txt01 mt10">1. 개인정보의 수집 및 이용 : 국회 홈페이지는 회원가입 시, 대국민 서비스 제공·민원처리·소관업무 수행 등의 목적에 필요한 범위 내에서 이용자 본인의 동의(14세 미만인 경우 법정 대리인의 동의)를 받아 최소한의 개인정보를 수집합니다. 또한, 민감정보·고유식별정보의 수집이 필요한 경우에는 각각을 구분하여 별도의 동의를 받아 처리합니다.</p>
+                    <p class="txt01 mt10">2. 개인정보의 목적 외 이용 및 제3자 제공 : 국회 홈페이지는 수집된 회원의 개인정보를 제2항제1호의 목적 범위 내에서 이용하며, 이용자 본인의 동의 없이 본래의 목적을 초과하여 처리하거나 제3자에게 제공하지 않습니다.</p>
+                    <p class="txt01 mt10">③ 회원은 개인정보 관리화면을 통하여 언제든지 본인의 개인정보를 열람·수정·삭제할 수 있습니다.</p>
+                    <p class="txt01 mt10">④ 회원은 회원 가입 신청 시 기재한 사항에 변경이 발생한 경우, 변경사항을 수정하여 기재하여야 합니다. 회원이 변경사항을 수정 기재하지 않아 발생한 불이익에 대하여 국회는 책임지지 않습니다.</p>
+                    <p class="grayText txt01 mt40">제10조(국회의 의무)</p>
+                    <p class="txt01 mt10">① 국회는 관련 법령과 본 약관이 정하는 바에 따라 지속적이고, 안정적으로 서비스를 제공하기 위해서 노력합니다.</p>
+                    <p class="txt01 mt10">② 국회는 이용자가 안전하게 인터넷 서비스를 이용할 수 있도록 개인정보의 안전성 확보에 필요한 기술적·관리적 및 물리적 보안 조치를 취합니다.</p>
+                    <p class="grayText txt01 mt40">제11조(이용자의 ID 및 비밀번호에 대한 의무)</p>
+                    <p class="txt01 mt10">① 이용자의 ID와 비밀번호에 관한 관리책임은 이용자에게 있습니다. 다만, 국회가 개인정보보호법 등 관계 법령에 의하여 책임을 지는 경우는 제외합니다.</p>
+                    <p class="txt01 mt10">② 이용자는 자신의 ID 및 비밀번호를 제3자에게 이용하게 해서는 안 되며, 작업 종료 시에는 반드시 로그아웃하고, 웹브라우저의 창을 닫아야 합니다.</p>
+                    <p class="txt01 mt10">③ 이용자는 자신의 ID 및 비밀번호가 도용되거나 제3자가 사용하고 있음을 인지한 경우에는 바로 국회에 통보하고 국회의 안내가 있는 경우에는 그에 따라야 합니다.</p>
+                    <p class="grayText txt01 mt40">제12조(이용자의 의무)</p>
+                    <p class="txt01 mt10">①이용자는 다음 각 호의 행위를 하여서는 안 됩니다.</p>
+                    <p class="txt01 mt10">1. 신청 또는 변경 시 허위 내용을 등록하는 행위</p>
+                    <p class="txt01 mt10">2. 타인의 명의를 도용하여 부정사용하는 행위</p>
+                    <p class="txt01 mt10">3. 국회의 직원이나 국회 서비스의 관리자를 가장하거나 사칭하는 행위</p>
+                    <p class="txt01 mt10">4. 국회 홈페이지에 게시된 정보를 변경하는 행위</p>
+                    <p class="txt01 mt10">5. 다른 이용자에 대한 개인정보를 수집·저장·공개하는 행위</p>
+                    <p class="txt01 mt10">6. 외설 또는 폭력적·위협적인 메시지·화상·음성·기타 공서양속에 반하는 정보를 메일로 송신하거나 공개 또는 게시하는 행위</p>
+                    <p class="txt01 mt10">7. 사생활 침해 또는 명예훼손 등 타인의 권리를 침해하는 정보를 유통시키는 행위</p>
+                    <p class="txt01 mt10">8. 국회 또는 타인의 지적재산권을 침해하거나 업무를 방해하는 행위</p>
+                    <p class="txt01 mt10">9. 컴퓨터 소프트웨어·하드웨어·네트워크 등의 정상적인 가동을 방해, 파괴할 목적으로 고안된 소프트웨어 바이러스·기타 다른 컴퓨터 코드·파일·프로그램을 포함하고 있는 자료를 게시하거나 전자우편으로 발송하는 행위</p>
+                    <p class="txt01 mt10">10. 불특정 다수를 대상으로 하여 광고 또는 선전을 게시하거나 스팸메일을 전송하는 등의 행위</p>
+                    <p class="txt01 mt10">11. 국회 홈페이지의 이용 약관을 위반하는 행위</p>
+                    <p class="txt01 mt10">12. 기타 관련 법령에 의하여 그 전송 또는 게시가 금지되는 정보를 전송 또는 게시하는 행위</p>
+                    <p class="txt01 mt10">② 제1항에 해당하는 행위를 한 이용자가 있을 경우 국회는 이용자의 회원자격을 적정한 방법으로 제한, 정지 또는 상실시킬 수 있습니다.</p>
+                    <p class="txt01 mt10">③ 이용자는 그 귀책사유로 인하여 국회나 다른 이용자가 입은 손해를 배상할 책임이 있습니다.</p>
+                    <p class="grayText txt01 mt40">제13조(공개 게시물의 삭제 등)</p>
+                    <p class="txt01 mt10">① 이용자가 게재한 공개 게시물의 내용이 다음 각 호에 해당하는 경우 국회 홈페이지는 이용자에게 사전 통지 없이 해당 공개 게시물을 삭제할 수 있고, 해당 이용자의 회원 자격을 제한, 정지 또는 상실시킬 수 있습니다.</p>
+                    <p class="txt01 mt10">1. 음란한 부호·문언·음향·화상 또는 영상을 배포·판매·임대하거나 공공연하게 전 시하는 내용</p>
+                    <p class="txt01 mt10">2. 사람을 비방할 목적으로 공공연하게 사실이나 거짓의 사실을 드러내어 타인의 명예를 훼손하는 내용</p>
+                    <p class="txt01 mt10">3. 공포심이나 불안감을 유발하는 부호·문언·음향·화상 또는 영상을 반복적으로 상대방에게 도달하도록 하는 내용</p>
+                    <p class="txt01 mt10">4. 정당한 사유 없이 정보통신시스템, 데이터 또는 프로그램 등을 훼손·멸실·변경·위조하거나 그 운용을 방해하는 내용</p>
+                    <p class="txt01 mt10">5. 「청소년 보호법」에 따른 청소년유해매체물을 게재 또는 광고하는 내용</p>
+                    <p class="txt01 mt10">6. 법령에 따라 금지되는 사행행위에 해당하는 내용</p>
+                    <p class="txt01 mt10">7. 법령에 따라 분류되는 비밀 등 국가기밀을 누설하는 내용</p>
+                    <p class="txt01 mt10">8.「국가보안법」에서 금지하는 행위를 수행하는 내용</p>
+                    <p class="txt01 mt10">9. 그 밖에 범죄를 목적으로 하거나 교사 또는 방조하는 내용</p>
+                    <p class="txt01 mt10">10. 종교적 분쟁 등을 야기하는 내용으로서, 이러한 분쟁으로 인하여 국회의 업무가 방해되거나 방해되리라고 판단되는 경우</p>
+                    <p class="txt01 mt10">11. 기타 관련 법령에 위배된다고 판단되는 내용</p>
+                    <p class="txt01 mt10">② 공개게시물의 내용으로 인하여 사생활 침해나 명예훼손 등 타인의 권리가 침해된 경우 그 침해를 받은 자는 국회에게 침해사실을 소명하여 그 정보의 삭제를 요청할 수 있습니다.</p>
+                    <p class="txt01 mt10">③ 국회는 제2항에 따른 요청을 받으면 지체 없이 삭제·임시조치 등의 필요한 조치를 하고, 즉시 신청인 및 정보 게시자에게 알리는 한편, 필요한 조치를 취한 사실을 해당 게시판에 공시하는 등의 방법으로 이용자가 알 수 있도록 합니다.</p>
+                    <p class="txt01 mt10">④ 국회는 제2항에 따른 정보의 삭제요청에도 불구하고, 권리의 침해 여부를 판단하기 어렵거나 이해당사자 간에 다툼이 예상되는 경우에는 해당 정보에 대한 접근을 임시적으로 차단하는 조치(이하 "임시조치"라 한다)를 할 수 있습니다. 이 경우 임시조치의 기간은 30일 이내로 합니다.</p>
+                    <p class="grayText txt01 mt40">제14조(저작권의 귀속 및 공공저작물의 자유이용)</p>
+                    <p class="txt01 mt10">① 국회가 창작·작성한 저작물에 대한 저작권 및 기타 지적재산권은 국회사무처에 귀속합니다.</p>
+                    <p class="txt01 mt10">② 저작권법 제24조의2(공공저작물의 자유이용)에 따라 국회에서 제공하는 자료 중에서 국회사무처가 저작재산권의 전부를 보유한 저작물의 경우에는 이용허락 없이 자유이용이 가능합니다. 자유이용이 가능한 자료는 "공공저작물 자유이용허락 표시 기준"에 따라 "공공누리, KOGL 제1유형"을 부착하여 개방하고 있습니다.</p>
+                    <p class="txt01 mt10">③ 이용자는 공공누리 표시가 부착된 공공저작물을 상업적 활용 여부에 관계없이 무료로 자유롭게 이용하고 2차적 저작물 작성 등 변형하여 이용할 수 있습니다. 다만, 이용자는 저작물의 출처를 반드시 표시해야할 의무가 있으며, 개인정보보호법 등 다른 법령에 따라 이용이 제한되는 정보의 경우에는 공공저작물의 이용이 제한됩니다.</p>
+                    <h3 class="title01 mt35 tac">제3장 손해배상 등</h3>
+                    <p class="grayText txt01 mt40">제15조(손해배상)</p>
+                    <p class="txt01 mt10">국회는 무료로 제공되는 서비스와 관련하여 회원에게 어떠한 손해가 발생하더라도 동 손해가 국회의 중대한 과실에 의한 경우를 제외하고는 이에 대하여 책임을 부담하지 않습니다.</p>
+                    <p class="grayText txt01 mt40">제16조(면책조항)</p>
+                    <p class="txt01 mt10">① 국회는 천재지변 또는 이에 준하는 불가항력으로 인하여 서비스를 제공할 수 없는 경우에는 서비스 제공에 관한 책임이 면제됩니다.</p>
+                    <p class="txt01 mt10">② 국회는 회원의 귀책사유로 인한 서비스 이용의 장애에 대하여 책임을 지지 않습니다.</p>
+                    <p class="txt01 mt10">③ 국회는 회원이 서비스를 이용하여 기대하는 이익이나 서비스를 통하여 얻은 자료로 인한 손해에 관하여 책임을 지지 않습니다.</p>
+                    <p class="txt01 mt10">④ 국회는 회원이 서비스에 게재한 정보, 자료, 사실의 신뢰도, 정확성 등의 내용에 관하여는 책임을 지지 않습니다.</p>
+                    <p class="grayText txt01 mt40">제17조(재판관할)</p>
+                    <p class="txt01 mt10">① 서비스 이용과 관련하여 국회와 회원 사이에 분쟁이 발생한 경우, 국회와 회원은 발생한 분쟁을 원만하게 해결하기 위하여 필요한 모든 노력을 하여야 합니다.</p>
+                    <p class="txt01 mt10">② 제1항의 규정에도 불구하고 서비스 이용으로 발생한 분쟁에 대하여 소송이 제기될 경우 국회 소재지를 관할하는 법원을 관할법원으로 합니다.</p>
+                    <h3 class="title01 mt35 tac">&lt;부 칙&gt;</h3>
+                    <p>본 약관은 2014. 10. 22. 부터 적용합니다.</p>
+                    <p>* 본 약관에 대한 저작권은 대한민국 국회에 귀속하며 무단 복제·배포·전송·기타 저작권 침해행위를 엄금합니다.</p>
+                    </div>
+
+                </div>
+                <div class="btn-set tac">
+                    <a href="javascript:;" class="b-basic" onclick="$('#footer_hmpg_use_stplat').focus();">확인</a>
+                </div>
+                <a href="javascript:;" class="btn_modal_x" onclick="$('#footer_hmpg_use_stplat').focus();" title="대화상자 닫기">대화상자 닫기</a>
+            </div>
+        </div>
+</div>
+    <!-- //홈페이지 이용약관 -->
+
+    <!-- 저작권정책 -->
+    <div class="modal_pop footpop" style="display:none;">
+        <div class="poplayer_footer">
+            <div>
+                <h2>저작권정책</h2>
+                <div class="poplayer_footer_form" id="footer_cpyrhtPolicy" tabindex="0">
+
+                    <div class="personalInformation poplayer_form_pd">
+                        <p>국회가 창작, 작성한 저작물에 대한 저작권 및 기타 지적 재산권은 국회사무처에 귀속됩니다.<br>
+                        &nbsp;</p>
+                        <p>저작권법 제24조의2(공공저작물의 자유이용)에 따라 대한민국 국회 홈페이지에서 제공하는 자료 중에서 국회사무처가 저작재산권의 전부를 보유한 저작물의 경우에는 별도의 이용허락 없이 자유이용이 가능합니다.</p>
+                        <div class="imgCont01 mt15"><img alt="공공누리 공공저작물 자유이용허락(제1유형 - 출처표시조건)" src="/static/cmmit/img/KOGL_Type1.gif">
+                        <ul class="depth3">
+                            <li>단, 자유이용이 가능한 자료는 "공공저작물 자유이용허락 표시 기준(공공누리, KOGL) 제1유형"을 부착하여 개방하고 있으므로 공공누리 표시가 부착된 저작물인지를 확인한 이후에 자유롭게 이용하시기 바랍니다. 자유이용의 경우, 이용자께서는 반드시 저작물의 출처를 구체적으로 표시하여야 합니다.</li>
+                        </ul>
+                        </div>
+                        <p class="mt15">공공누리가 부착되지 않은 자료들을 사용하고자 할 경우에는 담당자와 사전에 협의한 이후에 이용하여 주시기 바랍니다.<br>webmaster@assembly.go.kr 또는 전화(02-6788-3055)</p>
+                    </div>
+
+                </div>
+                <div class="btn-set tac">
+                    <a href="javascript:;" class="b-basic" onclick="$('#footer_cpyrht_policy').focus();">확인</a>
+                </div>
+                <a href="javascript:;" class="btn_modal_x" onclick="$('#footer_cpyrht_policy').focus();" title="대화상자 닫기">대화상자 닫기</a>
+            </div>
+        </div>
+</div>
+    <!-- //저작권정책 -->
+
+    <!-- mobile quick -->
+    <!-- //Quick Menu -->
+            <a href="javascript:;" class="btn-quick-go">Quick<br>메뉴</a>
+            <a href="javascript:;" class="btn-top-go">TOP</a>
+        <!-- mobile quick menu -->
+<div class="mobile_quickmenu">
+    <div class="mobile_quickmenu_box">
+        <div>
+            <a class="welinkM" href="javascript:;" id="clickCmitM"><strong>위원회</strong><span>바로가기</span></a>
+            <div>
+                <strong>Quick 메뉴</strong>
+                <ul>
+                    <li><a href="https://www.assembly.go.kr/portal/main/main.do" target="new">대한민국 국회</a></li>
+                    <li><a href="https://assembly.webcast.go.kr/main/" target="new">인터넷 의사중계</a></li>
+                    <li><a href="https://likms.assembly.go.kr/bill/main.do" target="new">의안정보</a></li>
+                    <li><a href="https://likms.assembly.go.kr/law/" target="new">법률정보</a></li>
+                    <li><a href="https://record.assembly.go.kr/" target="new">회의록</a></li>
+                    <li><a href="https://petitions.assembly.go.kr/paHome" target="new">국민동의청원</a></li>
+                    <li><a href="https://pal.assembly.go.kr/napal/main/main.do" target="new">입법예고</a></li>
+                    <li><a href="https://open.assembly.go.kr/portal/mainPage.do" target="new">열린국회정보</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <a href="#" class="mobile_quick_x">닫기</a>
+</div>
+<!-- mobile quick menu -->
+<script>
+    $(function () {
+
+        /* 위원회 바로가기 modal */
+        $("#clickCmitM").on("click", function(event) {
+            $("#click_cmit").show();
+        });
+
+    });
+</script>
+<!-- //mobile quick -->
+
+
+
+<div id="ui-datepicker-div" class="ui-datepicker ui-widget ui-widget-content ui-helper-clearfix ui-corner-all"><div class="ui-datepicker-header ui-widget-header ui-helper-clearfix ui-corner-all"><a class="ui-datepicker-prev ui-corner-all" data-handler="prev" data-event="click" title="이전달"><span class="ui-icon ui-icon-circle-triangle-w">이전달</span></a><a class="ui-datepicker-next ui-corner-all" data-handler="next" data-event="click" title="다음달"><span class="ui-icon ui-icon-circle-triangle-e">다음달</span></a><div class="ui-datepicker-title"><select class="ui-datepicker-month" data-handler="selectMonth" data-event="change" title="월 선택"><option value="0">1월</option><option value="1">2월</option><option value="2">3월</option><option value="3" selected="selected">4월</option><option value="4">5월</option><option value="5">6월</option><option value="6">7월</option><option value="7">8월</option><option value="8">9월</option><option value="9">10월</option><option value="10">11월</option><option value="11">12월</option></select><select class="ui-datepicker-year" data-handler="selectYear" data-event="change" title="년도 선택"><option value="2016">2016</option><option value="2017">2017</option><option value="2018">2018</option><option value="2019">2019</option><option value="2020">2020</option><option value="2021">2021</option><option value="2022">2022</option><option value="2023">2023</option><option value="2024">2024</option><option value="2025">2025</option><option value="2026" selected="selected">2026</option><option value="2027">2027</option><option value="2028">2028</option><option value="2029">2029</option><option value="2030">2030</option><option value="2031">2031</option><option value="2032">2032</option><option value="2033">2033</option><option value="2034">2034</option><option value="2035">2035</option><option value="2036">2036</option></select>년</div></div><table class="ui-datepicker-calendar"><caption><strong>일, 월, 화, 수, 목, 금, 토 정보를 포함하는 표</strong></caption><thead><tr><th scope="col" class="ui-datepicker-week-end"><span title="일">일</span></th><th scope="col"><span title="월">월</span></th><th scope="col"><span title="화">화</span></th><th scope="col"><span title="수">수</span></th><th scope="col"><span title="목">목</span></th><th scope="col"><span title="금">금</span></th><th scope="col" class="ui-datepicker-week-end"><span title="토">토</span></th></tr></thead><tbody><tr><td class=" ui-datepicker-week-end ui-datepicker-other-month ui-datepicker-unselectable ui-state-disabled">&nbsp;</td><td class=" ui-datepicker-other-month ui-datepicker-unselectable ui-state-disabled">&nbsp;</td><td class=" ui-datepicker-other-month ui-datepicker-unselectable ui-state-disabled">&nbsp;</td><td class=" " data-handler="selectDay" data-event="click" data-month="3" data-year="2026"><a class="ui-state-default" href="#">1</a></td><td class=" " data-handler="selectDay" data-event="click" data-month="3" data-year="2026"><a class="ui-state-default" href="#">2</a></td><td class=" ui-datepicker-days-cell-over  ui-datepicker-current-day ui-datepicker-today" data-handler="selectDay" data-event="click" data-month="3" data-year="2026"><a class="ui-state-default ui-state-highlight ui-state-active ui-state-hover" href="#">3</a></td><td class=" ui-datepicker-week-end " data-handler="selectDay" data-event="click" data-month="3" data-year="2026"><a class="ui-state-default" href="#">4</a></td></tr><tr><td class=" ui-datepicker-week-end " data-handler="selectDay" data-event="click" data-month="3" data-year="2026"><a class="ui-state-default" href="#">5</a></td><td class=" " data-handler="selectDay" data-event="click" data-month="3" data-year="2026"><a class="ui-state-default" href="#">6</a></td><td class=" " data-handler="selectDay" data-event="click" data-month="3" data-year="2026"><a class="ui-state-default" href="#">7</a></td><td class=" " data-handler="selectDay" data-event="click" data-month="3" data-year="2026"><a class="ui-state-default" href="#">8</a></td><td class=" " data-handler="selectDay" data-event="click" data-month="3" data-year="2026"><a class="ui-state-default" href="#">9</a></td><td class=" " data-handler="selectDay" data-event="click" data-month="3" data-year="2026"><a class="ui-state-default" href="#">10</a></td><td class=" ui-datepicker-week-end " data-handler="selectDay" data-event="click" data-month="3" data-year="2026"><a class="ui-state-default" href="#">11</a></td></tr><tr><td class=" ui-datepicker-week-end " data-handler="selectDay" data-event="click" data-month="3" data-year="2026"><a class="ui-state-default" href="#">12</a></td><td class=" " data-handler="selectDay" data-event="click" data-month="3" data-year="2026"><a class="ui-state-default" href="#">13</a></td><td class=" " data-handler="selectDay" data-event="click" data-month="3" data-year="2026"><a class="ui-state-default" href="#">14</a></td><td class=" " data-handler="selectDay" data-event="click" data-month="3" data-year="2026"><a class="ui-state-default" href="#">15</a></td><td class=" " data-handler="selectDay" data-event="click" data-month="3" data-year="2026"><a class="ui-state-default" href="#">16</a></td><td class=" " data-handler="selectDay" data-event="click" data-month="3" data-year="2026"><a class="ui-state-default" href="#">17</a></td><td class=" ui-datepicker-week-end " data-handler="selectDay" data-event="click" data-month="3" data-year="2026"><a class="ui-state-default" href="#">18</a></td></tr><tr><td class=" ui-datepicker-week-end " data-handler="selectDay" data-event="click" data-month="3" data-year="2026"><a class="ui-state-default" href="#">19</a></td><td class=" " data-handler="selectDay" data-event="click" data-month="3" data-year="2026"><a class="ui-state-default" href="#">20</a></td><td class=" " data-handler="selectDay" data-event="click" data-month="3" data-year="2026"><a class="ui-state-default" href="#">21</a></td><td class=" " data-handler="selectDay" data-event="click" data-month="3" data-year="2026"><a class="ui-state-default" href="#">22</a></td><td class=" " data-handler="selectDay" data-event="click" data-month="3" data-year="2026"><a class="ui-state-default" href="#">23</a></td><td class=" " data-handler="selectDay" data-event="click" data-month="3" data-year="2026"><a class="ui-state-default" href="#">24</a></td><td class=" ui-datepicker-week-end " data-handler="selectDay" data-event="click" data-month="3" data-year="2026"><a class="ui-state-default" href="#">25</a></td></tr><tr><td class=" ui-datepicker-week-end " data-handler="selectDay" data-event="click" data-month="3" data-year="2026"><a class="ui-state-default" href="#">26</a></td><td class=" " data-handler="selectDay" data-event="click" data-month="3" data-year="2026"><a class="ui-state-default" href="#">27</a></td><td class=" " data-handler="selectDay" data-event="click" data-month="3" data-year="2026"><a class="ui-state-default" href="#">28</a></td><td class=" " data-handler="selectDay" data-event="click" data-month="3" data-year="2026"><a class="ui-state-default" href="#">29</a></td><td class=" " data-handler="selectDay" data-event="click" data-month="3" data-year="2026"><a class="ui-state-default" href="#">30</a></td><td class=" ui-datepicker-other-month ui-datepicker-unselectable ui-state-disabled">&nbsp;</td><td class=" ui-datepicker-week-end ui-datepicker-other-month ui-datepicker-unselectable ui-state-disabled">&nbsp;</td></tr></tbody></table></div></body></html>

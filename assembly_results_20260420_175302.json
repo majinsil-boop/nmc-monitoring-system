@@ -1,0 +1,20 @@
+[
+  {
+    "bill_no": "2218323",
+    "bill_name": "공공보건의료에 관한 법률 일부개정법률안 (소병훈의원 등 10인) (새창 열림)",
+    "proposer": "의원",
+    "proposed_date": "2026-04-14",
+    "vote_date": "",
+    "status": "소관위접수",
+    "url": "https://likms.assembly.go.kr/bill/bi/billDetailPage.do?billId=PRC_X2V6U0U4T0T8P1Q1O0O9N3L7M9T3V9",
+    "keyword": "공공보건의료법",
+    "status_changed_date": "2026-04-15",
+    "legislative_notice": "입법예고중(2026-04-16 ~ 2026-04-25)",
+    "summary": "현행법은 의료취약지 지정 시 지역별 인구 분포, 의료인력 등을 평가·분석하도록 하고 있으나, 전문과목별 의사 수급의 적정성을 판단할 객관적 지표 활용 근거가 없는 실정입니다. 이를 개선하기 위해 지역별·전문과목별 의사 수급 적정성을 판단할 수 있는 객관적 지표를 활용하도록 법적 근거를 마련하는 내용을 담고 있습니다.",
+    "prev_status": "소관위접수",
+    "status_change_label": "",
+    "status_changed": false,
+    "is_key_member": false,
+    "priority_mark": ""
+  }
+]

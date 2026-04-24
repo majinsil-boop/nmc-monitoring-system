@@ -1,0 +1,21 @@
+[
+  {
+    "bill_no": "2218435",
+    "bill_name": "의료법 일부개정법률안 (정태호의원 등 10인) (새창 열림)",
+    "proposer": "의원",
+    "proposed_date": "2026-04-20",
+    "vote_date": "",
+    "status": "소관위접수",
+    "url": "https://likms.assembly.go.kr/bill/bi/billDetailPage.do?billId=PRC_X2V6E0D4C1B7J0H9G0F5N4M1N9L0K1",
+    "keyword": "의료법",
+    "status_changed_date": "2026-04-21",
+    "legislative_notice": "입법예고중(2026-04-22 ~ 2026-05-01)",
+    "committee": "보건복지위원회",
+    "summary": "현행 의료기관 인증기준이 일반적인 환자 안전·의료 질 지표 중심으로 구성되어 있어 장애인의 특수한 의료 수요를 반영하지 못한다는 문제를 해소하기 위한 개정안입니다. 의료기관 인증 평가 시 장애인을 위한 편의·접근성 및 맞춤형 서비스 제공 수준을 별도로 반영하도록 인증기준을 보완하는 것이 핵심 내용입니다. 이를 통해 장애인의 의료 접근성을 실질적으로 높이고 의료 서비스의 형평성을 강화하고자 합니다.",
+    "prev_status": "소관위접수",
+    "status_change_label": "",
+    "status_changed": false,
+    "is_key_member": false,
+    "priority_mark": ""
+  }
+]

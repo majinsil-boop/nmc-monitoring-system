@@ -1,0 +1,714 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>모니터링 보고서 검토</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:"Malgun Gothic","Apple SD Gothic Neo",sans-serif;background:#EEF2F9;font-size:13px;line-height:1.65;color:#222}
+
+/* 헤더 */
+.header{background:linear-gradient(135deg,#1B3A6B 0%,#2A5298 100%);color:#fff;padding:22px 28px 16px}
+.header h1{font-size:20px;font-weight:700;margin-bottom:4px}
+.header p{font-size:12px;opacity:.7}
+
+.wrap{max-width:980px;margin:0 auto;padding:20px 16px 80px}
+
+/* 로딩/오류 배너 */
+.info-banner{background:#fff3cd;border:1px solid #ffc107;border-radius:6px;padding:12px 18px;margin-bottom:16px;font-size:13px;color:#856404}
+.info-banner.error{background:#f8d7da;border-color:#dc3545;color:#721c24}
+
+/* 요약 카드 */
+.cards{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:16px}
+.card{flex:1;min-width:100px;background:#fff;border-radius:6px;border-top:4px solid #1B3A6B;
+      padding:11px 14px;text-align:center;box-shadow:0 1px 4px rgba(0,0,0,.08)}
+.card .num{font-size:24px;font-weight:700;color:#1B3A6B}
+.card .lbl{font-size:11px;color:#666;margin-top:2px}
+
+/* 툴바 */
+.toolbar{background:#fff;border:1px solid #D0D7E5;border-radius:6px;
+         padding:9px 14px;display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:14px}
+.toolbar input[type=text]{padding:5px 10px;border:1px solid #ccc;border-radius:4px;
+  font-size:12px;font-family:inherit;width:180px}
+.spacer{flex:1}
+.btn{padding:6px 14px;border:none;border-radius:4px;font-size:12px;font-weight:600;
+     cursor:pointer;font-family:inherit;white-space:nowrap}
+.btn-gray{background:#e9ecef;color:#333}.btn-gray:hover{background:#dee2e6}
+.btn-navy{background:#1B3A6B;color:#fff}.btn-navy:hover{background:#2A5298}
+.btn-green{background:#28A745;color:#fff}.btn-green:hover{background:#218838}
+
+/* 섹션 헤더 */
+.section{margin-bottom:16px}
+.sec-head{
+  color:#fff;padding:10px 16px;border-radius:5px 5px 0 0;
+  display:flex;align-items:center;gap:8px;cursor:pointer;user-select:none;
+}
+.sec-head.assembly{background:#1B3A6B}
+.sec-head.schedule{background:#17599A}
+.sec-head.news    {background:#1D6E9E}
+.sec-head:hover{filter:brightness(1.1)}
+.sec-icon{font-size:15px}
+.sec-title{font-size:14px;font-weight:700;flex:1}
+.sec-badge{background:rgba(255,255,255,.2);padding:2px 10px;border-radius:20px;font-size:11px}
+.sec-body{border:1px solid #D0D7E5;border-top:none;border-radius:0 0 5px 5px;background:#fff}
+.sec-ctrl{padding:6px 14px 7px;border-bottom:1px solid #F0F2F5;display:flex;gap:10px}
+.sec-ctrl a{font-size:11px;color:#2A5298;cursor:pointer;text-decoration:underline}
+.sec-body.collapsed .sec-ctrl,.sec-body.collapsed .item{display:none}
+
+/* 항목 공통 */
+.item{display:flex;align-items:flex-start;gap:10px;padding:10px 14px;
+      border-bottom:1px solid #F0F4F8;transition:background .1s}
+.item:last-child{border-bottom:none}
+.item:hover{background:#F8FAFF}
+.item.off{opacity:.35}
+.item input[type=checkbox]{margin-top:2px;width:14px;height:14px;accent-color:#1B3A6B;cursor:pointer;flex-shrink:0}
+.item-body{flex:1;min-width:0}
+.item-title{font-size:13px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-bottom:3px}
+.item-title a{color:#1B3A6B;text-decoration:none}
+.item-title a:hover{text-decoration:underline}
+.item-meta{font-size:11px;color:#888;display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.tag{display:inline-block;padding:1px 7px;border-radius:3px;font-size:11px;font-weight:600}
+.tag-red   {background:#FDECEA;color:#C0392B}
+.tag-orange{background:#FEF3E2;color:#B35900}
+.tag-gray  {background:#F1F3F5;color:#555}
+.tag-blue  {background:#EAF0FB;color:#1B3A6B}
+.tag-green {background:#D4EDDA;color:#155724}
+.item-summary{font-size:11px;color:#666;margin-top:4px;line-height:1.5;
+              padding:5px 8px;background:#F8F9FA;border-radius:3px}
+
+/* 빈 상태 */
+.empty{padding:24px;text-align:center;color:#bbb;font-size:13px}
+
+/* 하단 바 */
+.bottom{position:fixed;bottom:0;left:0;right:0;background:#fff;border-top:2px solid #1B3A6B;
+        padding:10px 24px;display:flex;align-items:center;gap:12px;
+        box-shadow:0 -2px 8px rgba(0,0,0,.1);z-index:99;flex-wrap:wrap}
+.sel-info{font-size:13px;font-weight:700;color:#1B3A6B}
+
+.hidden{display:none!important}
+
+/* 토스트 알림 */
+.toast{position:fixed;bottom:80px;right:24px;background:#1B3A6B;color:#fff;
+  padding:13px 18px;border-radius:8px;font-size:12px;line-height:1.7;max-width:380px;
+  white-space:pre-line;box-shadow:0 4px 16px rgba(0,0,0,.25);z-index:9999;
+  animation:toastIn .2s ease;pointer-events:none}
+.toast.warn{background:#856404}
+.toast.ok  {background:#155724}
+@keyframes toastIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>모니터링 보고서 검토</h1>
+  <p>의안 · 국회일정 · 언론기사를 확인하고 보고서에 포함할 항목을 선택하세요</p>
+</div>
+
+<div class="wrap">
+
+  <!-- 배너 (데이터 없을 때 표시) -->
+  <div class="info-banner hidden" id="infoBanner"></div>
+
+  <!-- 요약 카드 -->
+  <div class="cards" id="cards">
+    <div class="card"><div class="num" id="cAsm">0</div><div class="lbl">계류 의안</div></div>
+    <div class="card"><div class="num" id="cSch">0</div><div class="lbl">예정 일정</div></div>
+    <div class="card"><div class="num" id="cNews">0</div><div class="lbl">언론 기사</div></div>
+    <div class="card"><div class="num" id="cTotal">0</div><div class="lbl">전체 선택</div></div>
+  </div>
+
+  <!-- 툴바 -->
+  <div class="toolbar" id="toolbar">
+    <input type="text" id="qInput" placeholder="제목 검색..." oninput="renderAll()">
+    <div class="spacer"></div>
+    <button class="btn btn-gray" onclick="setAll(true)">전체 선택</button>
+    <button class="btn btn-gray" onclick="setAll(false)">전체 해제</button>
+    <button class="btn btn-green" onclick="makeReport()">보고서 생성 (HTML+PDF)</button>
+  </div>
+
+  <!-- 본문 -->
+  <div id="mainList"></div>
+
+</div>
+
+<!-- 하단 바 -->
+<div class="bottom" id="bottom">
+  <span class="sel-info" id="selInfo">0건 선택</span>
+  <div class="spacer"></div>
+  <button class="btn btn-green" onclick="makeReport()">보고서 생성 (HTML+PDF)</button>
+</div>
+
+<script>
+// ── 데이터 저장소 ─────────────────────────────────────────────────────────────
+const store = { assembly: [], schedule: [], news: [] };
+// checked: 'assembly-0', 'schedule-2', 'news-5' 형태
+const checked = new Set();
+
+// run_all.py가 데이터를 임베드할 때 이 줄을 교체합니다
+const __PRELOADED__ = null; // __PRELOAD_MARKER__
+
+// ── UI 갱신 ──────────────────────────────────────────────────────────────────
+function refresh() {
+  renderAll();
+}
+
+function renderAll() {
+  const q = document.getElementById('qInput')?.value.trim().toLowerCase() || '';
+  const out = [];
+
+  if (store.assembly.length) out.push(renderAssembly(q));
+  if (store.schedule.length) out.push(renderSchedule(q));
+  if (store.news.length)     out.push(renderNews(q));
+
+  document.getElementById('mainList').innerHTML = out.join('');
+  updateStats();
+}
+
+// ── 의안 섹션 ────────────────────────────────────────────────────────────────
+function importanceAsm(item) {
+  if (item.legislative_notice && isNoticeActive(item.legislative_notice)) return '중요';
+  const s = item.status || '';
+  if (['위원회심사','본회의','공포'].some(x => s.includes(x))) return '중요';
+  return '보통';
+}
+function isNoticeActive(notice) {
+  const m = (notice||'').match(/~\s*(\d{4}-\d{2}-\d{2})/);
+  if (!m) return !!notice;
+  return new Date(m[1]) >= new Date(new Date().toDateString());
+}
+
+function renderAssembly(q) {
+  const items = store.assembly.map((a, i) => ({...a, _k:'assembly-'+i}))
+    .filter(a => !q || (a.bill_name||'').toLowerCase().includes(q));
+
+  const sel = items.filter(a => checked.has(a._k)).length;
+  const rows = items.length ? items.map(a => {
+    const lvl   = importanceAsm(a);
+    const on    = checked.has(a._k);
+    const name  = (a.bill_name||'').replace(' (새창 열림)','').trim();
+    const tagC  = lvl==='중요' ? 'tag-red' : 'tag-orange';
+    const notice = a.legislative_notice && isNoticeActive(a.legislative_notice) ? a.legislative_notice : '';
+    return `
+    <div class="item ${on?'':'off'}" id="item-${a._k}">
+      <input type="checkbox" ${on?'checked':''} onchange="toggle('${a._k}',this.checked)">
+      <div class="item-body">
+        <div class="item-title">
+          ${a.url ? `<a href="${esc(a.url)}" target="_blank">${esc(name)}</a>` : esc(name)}
+        </div>
+        <div class="item-meta">
+          <span class="tag ${tagC}">${lvl}</span>
+          <span class="tag tag-blue">${esc(a.keyword||'')}</span>
+          <span class="tag tag-gray">${esc(a.status||'')}</span>
+          ${notice ? `<span class="tag tag-orange">${esc(notice)}</span>` : ''}
+          <span>발의: ${esc(a.proposed_date||'')}</span>
+        </div>
+        ${a.summary ? `<div class="item-summary">${esc((a.summary||'').substring(0,180))}${a.summary.length>180?'…':''}</div>` : ''}
+      </div>
+    </div>`;
+  }).join('') : '<div class="empty">해당 항목이 없습니다.</div>';
+
+  return `
+  <div class="section">
+    <div class="sec-head assembly" onclick="toggleSec('sb-assembly')">
+      <span class="sec-icon">📋</span>
+      <span class="sec-title">의안 현황 (국회의안정보시스템)</span>
+      <span class="sec-badge" id="badge-assembly">${sel} / ${items.length}건 선택</span>
+      <span style="font-size:11px;opacity:.7">▼</span>
+    </div>
+    <div class="sec-body" id="sb-assembly">
+      <div class="sec-ctrl">
+        <a onclick="setSection('assembly',true)">전체 선택</a>
+        <a onclick="setSection('assembly',false)">전체 해제</a>
+      </div>
+      ${rows}
+    </div>
+  </div>`;
+}
+
+// ── 일정 섹션 ────────────────────────────────────────────────────────────────
+function renderSchedule(q) {
+  const items = store.schedule.map((a, i) => ({...a, _k:'schedule-'+i}))
+    .filter(a => !q || (a.title||'').toLowerCase().includes(q));
+
+  const sel = items.filter(a => checked.has(a._k)).length;
+  const rows = items.length ? items.map(a => {
+    const on      = checked.has(a._k);
+    const upcoming = a.is_upcoming;
+    const bodyTag  = a.url ? `a class="item-body" href="${esc(a.url)}" target="_blank" style="text-decoration:none;color:inherit;cursor:pointer"` : `div class="item-body"`;
+    const bodyEnd  = a.url ? `a` : `div`;
+    return `
+    <div class="item ${on?'':'off'}" id="item-${a._k}">
+      <input type="checkbox" ${on?'checked':''} onchange="toggle('${a._k}',this.checked)">
+      <${bodyTag}>
+        <div class="item-title">${esc(a.title||'')}</div>
+        <div class="item-meta">
+          <span class="tag ${upcoming?'tag-red':'tag-gray'}">${upcoming?'예정':'과거'}</span>
+          <span class="tag tag-blue">${esc(a.event_type||'')}</span>
+          ${a.topic_keyword ? `<span class="tag tag-orange">★ ${esc(a.topic_keyword)}</span>` : ''}
+          <span>${esc(a.date||'')}</span>
+          <span>${esc(a.source||'')}</span>
+        </div>
+      </${bodyEnd}>
+    </div>`;
+  }).join('') : '<div class="empty">해당 항목이 없습니다.</div>';
+
+  return `
+  <div class="section">
+    <div class="sec-head schedule" onclick="toggleSec('sb-schedule')">
+      <span class="sec-icon">📅</span>
+      <span class="sec-title">일정 현황 (보건복지위원회)</span>
+      <span class="sec-badge" id="badge-schedule">${sel} / ${items.length}건 선택</span>
+      <span style="font-size:11px;opacity:.7">▼</span>
+    </div>
+    <div class="sec-body" id="sb-schedule">
+      <div class="sec-ctrl">
+        <a onclick="setSection('schedule',true)">전체 선택</a>
+        <a onclick="setSection('schedule',false)">전체 해제</a>
+      </div>
+      ${rows}
+    </div>
+  </div>`;
+}
+
+// ── 뉴스 섹션 ────────────────────────────────────────────────────────────────
+function renderNews(q) {
+  const items = store.news.map((a, i) => ({...a, _k:'news-'+i}))
+    .filter(a => !q || (a.title||'').toLowerCase().includes(q)
+                    || (a.source||'').toLowerCase().includes(q));
+
+  // 키워드별 그룹
+  const groups = {};
+  for (const a of items) (groups[a.keyword] = groups[a.keyword]||[]).push(a);
+
+  const totalSel = items.filter(a => checked.has(a._k)).length;
+
+  const groupHTML = Object.entries(groups).map(([kw, grpItems]) => {
+    const gSel = grpItems.filter(a => checked.has(a._k)).length;
+    const rows  = grpItems.map(a => {
+      const on = checked.has(a._k);
+      return `
+      <div class="item ${on?'':'off'}" id="item-${a._k}" style="padding-left:28px;">
+        <input type="checkbox" ${on?'checked':''} onchange="toggle('${a._k}',this.checked)">
+        <div class="item-body">
+          <div class="item-title">
+            ${a.url ? `<a href="${esc(a.url)}" target="_blank">${esc(a.title||'')}</a>` : esc(a.title||'')}
+          </div>
+          <div class="item-meta">
+            <span class="tag tag-gray">${esc(a.source||'출처미상')}</span>
+            <span>${esc((a.date||'').substring(0,10))}</span>
+          </div>
+        </div>
+      </div>`;
+    }).join('');
+
+    return `
+    <div style="border-bottom:1px solid #EEF2F9;">
+      <div style="padding:7px 14px;background:#F4F7FC;display:flex;align-items:center;gap:8px;cursor:pointer;"
+           onclick="toggleSec('ng-${esc(kw)}')">
+        <span style="font-size:12px;font-weight:700;color:#1B3A6B;flex:1;">${esc(kw)}</span>
+        <span style="font-size:11px;color:#888;" id="ng-badge-${esc(kw)}">${gSel}/${grpItems.length}건</span>
+        <a style="font-size:11px;color:#2A5298;margin-left:8px;" onclick="setKw('${esc(kw)}',true,event)">전체선택</a>
+        <a style="font-size:11px;color:#2A5298;margin-left:4px;" onclick="setKw('${esc(kw)}',false,event)">전체해제</a>
+      </div>
+      <div id="ng-${esc(kw)}">${rows}</div>
+    </div>`;
+  }).join('');
+
+  return `
+  <div class="section">
+    <div class="sec-head news" onclick="toggleSec('sb-news')">
+      <span class="sec-icon">📰</span>
+      <span class="sec-title">언론 모니터링 (전일 기사)</span>
+      <span class="sec-badge" id="badge-news">${totalSel} / ${items.length}건 선택</span>
+      <span style="font-size:11px;opacity:.7">▼</span>
+    </div>
+    <div class="sec-body" id="sb-news">
+      <div class="sec-ctrl">
+        <a onclick="setSection('news',true)">전체 선택</a>
+        <a onclick="setSection('news',false)">전체 해제</a>
+      </div>
+      ${groupHTML || '<div class="empty">해당 항목이 없습니다.</div>'}
+    </div>
+  </div>`;
+}
+
+// ── 체크박스 제어 ─────────────────────────────────────────────────────────────
+function toggle(key, val) {
+  val ? checked.add(key) : checked.delete(key);
+  const el = document.getElementById('item-'+key);
+  if (el) el.className = 'item ' + (val ? '' : 'off');
+  updateStats();
+  updateBadges();
+}
+
+function setAll(val) {
+  ['assembly','schedule','news'].forEach(type =>
+    store[type].forEach((_, i) => val ? checked.add(type+'-'+i) : checked.delete(type+'-'+i))
+  );
+  renderAll();
+}
+
+function setSection(type, val) {
+  store[type].forEach((_, i) => val ? checked.add(type+'-'+i) : checked.delete(type+'-'+i));
+  renderAll();
+}
+
+function setKw(kw, val, e) {
+  e.stopPropagation();
+  store.news.forEach((a, i) => { if (a.keyword === kw) val ? checked.add('news-'+i) : checked.delete('news-'+i); });
+  renderAll();
+}
+
+function toggleSec(id) {
+  const el = document.getElementById(id);
+  if (el) el.classList.toggle('collapsed');
+}
+
+function updateStats() {
+  const asmSel  = store.assembly.filter((_,i) => checked.has('assembly-'+i)).length;
+  const schSel  = store.schedule.filter((_,i) => checked.has('schedule-'+i)).length;
+  const newsSel = store.news.filter((_,i) => checked.has('news-'+i)).length;
+  document.getElementById('cAsm').textContent   = asmSel;
+  document.getElementById('cSch').textContent   = schSel;
+  document.getElementById('cNews').textContent  = newsSel;
+  document.getElementById('cTotal').textContent = asmSel + schSel + newsSel;
+  document.getElementById('selInfo').textContent = `의안 ${asmSel}건 · 일정 ${schSel}건 · 기사 ${newsSel}건 선택`;
+}
+
+function updateBadges() {
+  const types = ['assembly','schedule','news'];
+  types.forEach(type => {
+    const badge = document.getElementById('badge-'+type);
+    if (!badge) return;
+    const total = store[type].length;
+    const sel   = store[type].filter((_,i) => checked.has(type+'-'+i)).length;
+    badge.textContent = `${sel} / ${total}건 선택`;
+  });
+  // 뉴스 키워드 배지
+  const kwGroups = {};
+  store.news.forEach((a, i) => (kwGroups[a.keyword] = kwGroups[a.keyword]||[]).push(i));
+  Object.entries(kwGroups).forEach(([kw, idxs]) => {
+    const b = document.getElementById('ng-badge-'+kw);
+    if (b) b.textContent = idxs.filter(i => checked.has('news-'+i)).length + '/' + idxs.length + '건';
+  });
+}
+
+// ── 보고서 생성 ───────────────────────────────────────────────────────────────
+function makeReport() {
+  const selAsm  = store.assembly.filter((_,i) => checked.has('assembly-'+i));
+  const selSch  = store.schedule.filter((_,i) => checked.has('schedule-'+i));
+  const selNews = store.news.filter((_,i) => checked.has('news-'+i));
+  const total   = selAsm.length + selSch.length + selNews.length;
+  if (!total) { alert('선택된 항목이 없습니다.'); return; }
+
+  const d = new Date();
+  const pad = n => String(n).padStart(2,'0');
+  const today    = `${d.getFullYear()}.${pad(d.getMonth()+1)}.${pad(d.getDate())}`;
+  const fileDate = `${d.getFullYear()}${pad(d.getMonth()+1)}${pad(d.getDate())}`;
+  const now      = `${pad(d.getHours())}:${pad(d.getMinutes())} 생성`;
+
+  // ── 공통 헬퍼 ────────────────────────────────────────────────────────────
+  const KW_COLOR = {
+    '응급의료':   {bg:'#1B3A6B', fg:'#fff'},
+    '응급실':     {bg:'#C0392B', fg:'#fff'},
+    '닥터헬기':   {bg:'#17599A', fg:'#fff'},
+    '중증외상':   {bg:'#6C3483', fg:'#fff'},
+    '응급실 뺑뺑이': {bg:'#B35900', fg:'#fff'},
+  };
+  function kwTag(kw) {
+    const {bg='#495057', fg='#fff'} = KW_COLOR[kw] || {};
+    return `<span style="display:inline-block;background:${bg};color:${fg};padding:2px 9px;border-radius:20px;font-size:9px;font-weight:700;letter-spacing:.3px">${esc(kw)}</span>`;
+  }
+  function kwTags(arr) {
+    return [...new Set(arr)].map(kwTag).join(' ');
+  }
+
+  // ── 의안 헬퍼 ───────────────────────────────────────────────────────────
+  function asmProposer(a) {
+    const m = (a.bill_name||'').match(/\(([^)]+(?:의원|위원회)[^)]*)\)/);
+    if (m) return m[1].replace(/\s*새창[^)]*$/,'').trim();
+    return a.proposer || '';
+  }
+  function asmStatusLabel(a) {
+    const s = (a.status||'').replace(/\s/g,'');
+    const map = {
+      '접수':'상임위 회부 대기', '소관위심사':'소위원회 심의 중',
+      '위원회심사':'소위원회 심의 중', '소위원회심사':'소위원회 심의 중',
+      '체계자구심사':'법사위 심사 중', '본회의심의':'본회의 심의 예정',
+      '본회의의결':'본회의 통과', '가결':'본회의 통과',
+      '수정가결':'수정 가결', '정부이송':'정부 이송',
+      '공포':'시행 임박', '부결':'부결', '철회':'철회',
+      '임기만료폐기':'임기만료 폐기', '폐기':'폐기',
+    };
+    if (map[s]) return map[s];
+    if (s.includes('소위')) return '소위원회 심의 중';
+    if (s.includes('공청회')||s.includes('청문회')) return '공청회·청문회';
+    if (s.includes('통과')||s.includes('가결')) return '위원회 통과';
+    return a.status || '';
+  }
+  function asmStatusStyle(label) {
+    if (label.includes('시행 임박')||label.includes('통과')||label.includes('가결')) return 'background:#1a6e2e;color:#fff';
+    if (label.includes('본회의')) return 'background:#003d99;color:#fff';
+    if (label.includes('법사위')||label.includes('소위')) return 'background:#7a5000;color:#fff';
+    if (label.includes('부결')||label.includes('폐기')||label.includes('철회')) return 'background:#5a6268;color:#fff';
+    return 'background:#2c3e7a;color:#fff';
+  }
+  function asmCleanSummary(raw) {
+    if (!raw) return '';
+    let s = raw
+      .replace(/^(및\s*)?주요내용\s*(제안이유\s*(및\s*주요내용\s*)?)?/,'')
+      .replace(/^제안이유\s*(및\s*주요내용\s*)?/,'').trim();
+    if (s.length <= 130) return s;
+    // 200자 창에서 문장 종결 위치 탐색
+    const win = s.substring(0, 210);
+    for (let i = Math.min(win.length-1, 200); i >= 40; i--) {
+      if (win[i] === '.' || win[i] === '。') return s.substring(0, i+1);
+    }
+    return s.substring(0, 160) + '…';
+  }
+
+  // ── 키워드 태그 수집 ────────────────────────────────────────────────────
+  const asmKws  = [...new Set(selAsm.map(a => a.keyword).filter(Boolean))];
+  const schKws  = ['회의','공청회','토론회','세미나','청문회','협약식'].filter(k =>
+    selSch.some(a => (a.event_type||'').includes(k) || (a.title||'').includes(k)));
+  const newsKws = [...new Set(selNews.map(a => a.keyword).filter(Boolean))];
+
+  // ── ① 의안 섹션 ─────────────────────────────────────────────────────────
+  // 의안 카드: 법안명 | 발의자·의원실 | 진행상태 | 주요내용 열 레이아웃
+  const ASM_PASTEL = ['#a8c4e8','#aad4b8','#f0b8a0','#c4aae0','#f0d0a0','#a0d4d0'];
+  const asmCards = selAsm.length === 0
+    ? `<p style="padding:14px;text-align:center;color:#aaa;font-size:11px">해당 기간 내 수집된 의안이 없습니다.</p>`
+    : selAsm.map((a, idx) => {
+        const name      = (a.bill_name||'').replace(/\s*\(새창[^)]*\)/g,'').trim();
+        const proposer  = asmProposer(a);
+        const statusLbl = asmStatusLabel(a);
+        const statusSty = asmStatusStyle(statusLbl);
+        const notice    = a.legislative_notice && isNoticeActive(a.legislative_notice)
+          ? `<div style="margin-top:3px"><span style="background:#fff3cd;color:#856404;border:1px solid #ffc107;padding:1px 6px;border-radius:4px;font-size:8.5px;font-weight:700">입법예고 ${esc(a.legislative_notice)}</span></div>` : '';
+        // 주요내용: 앞 헤더만 제거하고 전문 표시 (줄바꿈 자연스럽게)
+        const sum = (a.summary||'').replace(/^(및\s*)?주요내용\s*(제안이유\s*(및\s*주요내용\s*)?)?/,'')
+                                    .replace(/^제안이유\s*(및\s*주요내용\s*)?/,'').trim();
+        const accent = ASM_PASTEL[idx % ASM_PASTEL.length];
+        const cardInner = `
+          <div style="display:grid;grid-template-columns:3fr 1.4fr 1.6fr;gap:0 12px;align-items:start;margin-bottom:${sum?'6px':'0'}">
+            <div>
+              <div style="font-size:11px;font-weight:700;color:#0d2a5e;line-height:1.45">${esc(name)}</div>${notice}
+            </div>
+            <div style="font-size:10px;color:#3a5080;font-weight:600;padding-top:2px">${esc(proposer)}</div>
+            <div style="padding-top:2px"><span style="${statusSty};padding:2px 8px;border-radius:20px;font-size:9px;font-weight:700;white-space:nowrap">${esc(statusLbl)}</span></div>
+          </div>
+          ${sum?`<div style="font-size:10px;color:#444;line-height:1.7;border-top:1px solid #eef0f5;padding-top:5px;word-break:keep-all;overflow-wrap:break-word;white-space:normal">${esc(sum)}</div>`:''}`;
+        const cardStyle = `background:#fff;border-radius:10px;border-left:5px solid ${accent};box-shadow:0 1px 6px rgba(0,0,0,.07);padding:10px 14px;margin-bottom:8px;page-break-inside:avoid;display:block;color:inherit;text-decoration:none;overflow:visible`;
+        return a.url
+          ? `<a href="${esc(a.url)}" style="${cardStyle}">${cardInner}</a>`
+          : `<div style="${cardStyle}">${cardInner}</div>`;
+      }).join('');
+  const asmHTML = rptSection(1, '의안 현황', selAsm.length, asmKws, asmCards);
+
+  // ── ② 일정 섹션 ─────────────────────────────────────────────────────────
+  const SCH_PASTEL = ['#98d4a8','#a8d8c0','#b8e0d0','#88c8a8','#a0dcc0','#90d0b8'];
+  const schCards = selSch.length === 0
+    ? `<div style="background:#fff;border-radius:10px;border-left:5px solid #b8e0d0;box-shadow:0 1px 6px rgba(0,0,0,.07);padding:12px 16px;margin-bottom:8px;text-align:center;color:#888;font-size:11px">예정된 주요 일정이 없습니다.</div>`
+    : selSch.map((a, idx) => {
+        const isUp   = !!a.is_upcoming;
+        const accent = SCH_PASTEL[idx % SCH_PASTEL.length];
+        const dateBg = isUp ? '#1a7a3c' : '#6a9a7a';
+        return `<div style="background:#fff;border-radius:10px;border-left:5px solid ${accent};box-shadow:0 1px 6px rgba(0,0,0,.07);padding:10px 14px;margin-bottom:8px;display:flex;align-items:flex-start;gap:10px;page-break-inside:avoid">
+          <div style="flex:1;min-width:0">
+            <div style="font-size:11px;font-weight:700;color:#0d3a1e;line-height:1.45;margin-bottom:4px">
+              ${a.url?`<a href="${esc(a.url)}" style="color:#0d3a1e;text-decoration:none">${esc(a.title||'')}</a>`:esc(a.title||'')}
+            </div>
+            <div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap">
+              ${a.event_type?`<span style="background:#d4f0dd;color:#155724;padding:1px 7px;border-radius:4px;font-size:9px;font-weight:600">${esc(a.event_type)}</span>`:''}
+              ${a.topic_keyword?`<span style="font-size:9.5px;color:#6a5000">★ ${esc(a.topic_keyword)}</span>`:''}
+              ${a.source?`<span style="font-size:9.5px;color:#666">${esc(a.source)}</span>`:''}
+            </div>
+          </div>
+          <div style="flex-shrink:0;text-align:right">
+            <div style="background:${dateBg};color:#fff;font-size:9px;font-weight:700;padding:2px 9px;border-radius:20px;margin-bottom:4px">${isUp?'예정':'참고'}</div>
+            <div style="font-size:10.5px;font-weight:700;color:#1a4a2a">${esc((a.date||'').substring(0,10))}</div>
+          </div>
+        </div>`;
+      }).join('');
+  const schHTML = rptSection(2, '주요 일정', selSch.length, schKws.length?schKws:[], schCards);
+
+  // ── ③ 뉴스 섹션 ─────────────────────────────────────────────────────────
+  const NEWS_PASTEL = ['#f4a8a8','#f0b8b0','#ecc0b8','#f8a0a0','#f0aaaa','#e8b0a8'];
+  const newsCards = selNews.length === 0
+    ? `<p style="padding:14px;text-align:center;color:#aaa;font-size:11px">선택된 기사가 없습니다.</p>`
+    : selNews.map((a, idx) => {
+        const kw    = a.keyword||'';
+        const {bg: kwBg='#8B0000', fg: kwFg='#fff'} = KW_COLOR[kw] || {};
+        const title  = a.title||'';
+        const source = a.source||'';
+        const date   = (a.date||a.published_date||'').substring(0,10);
+        const sum    = a.summary ? a.summary.substring(0,100)+(a.summary.length>100?'…':'') : '';
+        const accent = NEWS_PASTEL[idx % NEWS_PASTEL.length];
+        const inner  = `<div style="display:flex;justify-content:space-between;align-items:flex-start;gap:10px">
+          <div style="flex:1;min-width:0">
+            <div style="font-size:11px;font-weight:700;color:#6b0000;line-height:1.45;margin-bottom:3px">${esc(title)}</div>
+            <div style="font-size:9.5px;color:#888;margin-bottom:${sum?'4px':'0'}">
+              <span style="font-weight:600;color:#555">${esc(source)}</span>${date?`<span style="margin-left:6px">${esc(date)}</span>`:''}
+            </div>
+            ${sum?`<div style="font-size:10px;color:#333;line-height:1.6">${esc(sum)}</div>`:''}
+          </div>
+          <span style="flex-shrink:0;background:${kwBg};color:${kwFg};padding:2px 9px;border-radius:20px;font-size:9px;font-weight:700;white-space:nowrap;margin-top:2px">${esc(kw)}</span>
+        </div>`;
+        return a.url
+          ? `<a href="${esc(a.url)}" style="display:block;color:inherit;text-decoration:none;background:#fff;border-radius:10px;border-left:5px solid ${accent};box-shadow:0 1px 6px rgba(0,0,0,.07);padding:9px 14px;margin-bottom:8px;page-break-inside:avoid">${inner}</a>`
+          : `<div style="background:#fff;border-radius:10px;border-left:5px solid ${accent};box-shadow:0 1px 6px rgba(0,0,0,.07);padding:9px 14px;margin-bottom:8px;page-break-inside:avoid">${inner}</div>`;
+      }).join('');
+  const newsHTML = rptSection(3, '언론 모니터링', selNews.length, newsKws, newsCards);
+
+  const html = `<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<title>응급의료 동향 모니터링 (${today})</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;600;700;900&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Noto Sans KR','Malgun Gothic',sans-serif;color:#1a1a1a;font-size:11px;line-height:1.6;background:#fdfcf9}
+a{text-decoration:none;color:inherit}
+@page{size:A4 portrait;margin:6mm 6mm}
+@media print{
+  *{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  html{zoom:0.86}
+  body{background:#fdfcf9;margin:0;padding:0}
+  a[href]:after{content:none !important}
+}
+</style>
+</head>
+<body>
+<div style="width:100%;margin:0 auto;padding:0">
+
+  <!-- 헤더 -->
+  <div style="background:linear-gradient(135deg,#0d2a5e 0%,#1B3A6B 60%,#2A5298 100%);color:#fff;padding:14px 20px;border-radius:0;display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;box-shadow:0 3px 12px rgba(13,42,94,.22)">
+    <div>
+      <div style="font-size:9px;letter-spacing:2px;opacity:.6;margin-bottom:5px">응급의료정책연구팀</div>
+      <div style="font-size:19px;font-weight:900;letter-spacing:-.3px;line-height:1.2">응급의료 동향 모니터링</div>
+    </div>
+    <div style="text-align:right">
+      <div style="font-size:18px;font-weight:700;letter-spacing:.5px">${today}</div>
+      <div style="font-size:9px;opacity:.55;margin-top:3px">${now}</div>
+    </div>
+  </div>
+
+  <!-- 요약 카운트 박스 -->
+  <div style="padding:0 8px">
+  <div style="display:flex;gap:8px;margin-bottom:14px">
+    ${[
+      ['📋','계류 의안', selAsm.length, '#0d2a5e','#e8edf8','#1B3A6B'],
+      ['📅','예정 일정', selSch.length, '#0d4a22','#e8f5ee','#1a6e35'],
+      ['📰','언론 기사', selNews.length, '#6b0000','#fdeaea','#C0392B'],
+      ['📊','전체',       total,          '#2a2a2a','#f0ede8','#888'],
+    ].map(([icon,label,count,txtClr,bgClr,topClr])=>`
+    <div style="flex:1;background:${bgClr};border-radius:10px;padding:10px 14px;border-top:3px solid ${topClr};box-shadow:0 1px 5px rgba(0,0,0,.07);text-align:center">
+      <div style="font-size:15px;margin-bottom:3px">${icon}</div>
+      <div style="font-size:24px;font-weight:900;color:${txtClr};line-height:1.1">${count}</div>
+      <div style="font-size:9.5px;color:${txtClr};opacity:.7;margin-top:3px;font-weight:600">${label}</div>
+    </div>`).join('')}
+  </div>
+
+  ${asmHTML}
+  ${schHTML}
+  ${newsHTML}
+
+  <!-- 푸터 -->
+  <div style="margin-top:12px;padding-top:8px;border-top:1px solid #ddd;display:flex;justify-content:space-between;align-items:center">
+    <span style="font-size:9px;color:#999">본 보고서는 자동 수집·검토된 항목만 포함됩니다. 중요 사항은 반드시 원문을 확인하십시오.</span>
+    <span style="font-size:9px;color:#999;font-weight:600">응급의료정책연구팀</span>
+  </div>
+  </div>
+</div>
+</body></html>`;
+
+  // ── Flask 서버로 전송 → HTML+PDF 동시 생성 ───────────────────────────────
+  const btns = document.querySelectorAll('.btn-green');
+  btns.forEach(b => { b._orig = b.textContent; b.textContent = '⏳ 생성 중...'; b.disabled = true; });
+  const restoreBtns = () => btns.forEach(b => { b.textContent = b._orig; b.disabled = false; });
+
+  const ctrl   = new AbortController();
+  const tid    = setTimeout(() => ctrl.abort(), 90_000);
+
+  fetch('/save-report', {
+    method:  'POST',
+    headers: {'Content-Type': 'application/json'},
+    body:    JSON.stringify({html, filename: `보고서_${fileDate}.html`}),
+    signal:  ctrl.signal,
+  })
+  .then(r => { clearTimeout(tid); if (!r.ok) throw new Error('server'); return r.json(); })
+  .then(res => {
+    restoreBtns();
+    showToast(`✅ 보고서 생성 완료\nHTML : ${res.html_path}\nPDF  : ${res.pdf_path}`, 'ok');
+  })
+  .catch(() => {
+    clearTimeout(tid);
+    restoreBtns();
+    // 폴백: 파일 다운로드 + 인쇄 대화상자
+    const blob  = new Blob([html], {type:'text/html;charset=utf-8'});
+    const dlUrl = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = dlUrl; a.download = `보고서_${fileDate}.html`; a.click();
+    const win = window.open(dlUrl, '_blank');
+    if (win) win.onload = () => setTimeout(() => win.print(), 400);
+    showToast('⚠️ 서버 미연결\nHTML 다운로드 + 인쇄 대화상자로 대체됩니다.\n(run_all.py 실행 시 자동 연결됩니다)', 'warn');
+  });
+}
+
+const CIRCLE_NUMS = ['','1','2','3','4','5'];
+
+// 섹션 헤더만 → 카드는 독립적으로 나열 (한 묶음 박스 없음)
+function rptSection(num, title, count, kws, inner) {
+  const n      = CIRCLE_NUMS[num] || num;
+  const kwHtml = kws && kws.length
+    ? kws.map(k=>`<span style="display:inline-block;background:#e8e4dc;color:#555;padding:1px 9px;border-radius:20px;font-size:9px;font-weight:600">${esc(k)}</span>`).join(' ')
+    : '';
+  return `<div style="margin-bottom:16px;padding:0 8px">
+    <!-- 섹션 헤더 -->
+    <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px">
+      <span style="display:inline-flex;align-items:center;justify-content:center;width:24px;height:24px;background:#0d2a5e;color:#fff;border-radius:50%;font-size:13px;font-weight:900;flex-shrink:0;line-height:1">${n}</span>
+      <span style="font-size:13px;font-weight:800;color:#0d2a5e;flex:1;letter-spacing:.1px">${title}</span>
+      <span style="background:#0d2a5e;color:#fff;padding:2px 11px;border-radius:20px;font-size:9px;font-weight:700">총 ${count}건</span>
+    </div>
+    ${kwHtml ? `<div style="margin-bottom:8px;display:flex;gap:5px;flex-wrap:wrap">${kwHtml}</div>` : ''}
+    ${inner}
+  </div>`;
+}
+
+function showToast(msg, type = '') {
+  const t = document.createElement('div');
+  t.className = 'toast' + (type ? ' ' + type : '');
+  t.textContent = msg;
+  document.body.appendChild(t);
+  setTimeout(() => { t.style.transition = 'opacity .4s'; t.style.opacity = '0'; }, 4000);
+  setTimeout(() => t.remove(), 4500);
+}
+
+function esc(s) {
+  return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+// ── 초기화 ──────────────────────────────────────────────────────────────────
+(function init() {
+  if (__PRELOADED__) {
+    ['assembly','schedule','news'].forEach(type => {
+      const data = __PRELOADED__[type] || [];
+      store[type] = data;
+      data.forEach((_, i) => checked.add(type+'-'+i));
+    });
+    refresh();
+  } else {
+    // Flask 서버 없이 직접 열었을 때 안내 표시
+    const banner = document.getElementById('infoBanner');
+    banner.classList.remove('hidden');
+    banner.textContent = '데이터를 불러오지 못했습니다. run_all.py를 실행하거나 python report_server.py를 먼저 실행한 후 http://127.0.0.1:5000 에 접속하세요.';
+    banner.classList.add('error');
+    renderAll();
+  }
+})()
+</script>
+</body>
+</html>

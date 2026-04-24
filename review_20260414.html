@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>모니터링 보고서 검토</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:"Malgun Gothic","Apple SD Gothic Neo",sans-serif;background:#EEF2F9;font-size:13px;line-height:1.65;color:#222}
+
+/* 헤더 */
+.header{background:linear-gradient(135deg,#1B3A6B 0%,#2A5298 100%);color:#fff;padding:22px 28px 16px}
+.header h1{font-size:20px;font-weight:700;margin-bottom:4px}
+.header p{font-size:12px;opacity:.7}
+
+.wrap{max-width:980px;margin:0 auto;padding:20px 16px 80px}
+
+/* 파일 로드 패널 */
+.load-panel{background:#fff;border-radius:8px;padding:20px 24px;margin-bottom:18px;box-shadow:0 1px 4px rgba(0,0,0,.08)}
+.load-panel h3{font-size:13px;font-weight:700;color:#1B3A6B;margin-bottom:14px;border-left:4px solid #1B3A6B;padding-left:8px}
+.load-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.dropzone{
+  border:2px dashed #B0BED6;border-radius:6px;padding:16px 10px;text-align:center;
+  cursor:pointer;transition:border-color .2s,background .2s;position:relative;
+}
+.dropzone:hover,.dropzone.drag{border-color:#2A5298;background:#F0F4FC}
+.dropzone.loaded{border-color:#28A745;border-style:solid;background:#F0FFF4}
+.dropzone input{display:none}
+.dropzone .dz-icon{font-size:22px;margin-bottom:6px}
+.dropzone .dz-label{font-size:12px;font-weight:700;color:#1B3A6B;margin-bottom:3px}
+.dropzone .dz-hint{font-size:11px;color:#999}
+.dropzone.loaded .dz-hint{color:#28A745;font-weight:600}
+.dropzone .dz-clear{position:absolute;top:6px;right:8px;font-size:14px;color:#999;cursor:pointer;line-height:1}
+.dropzone .dz-clear:hover{color:#DC3545}
+
+/* 요약 카드 */
+.cards{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:16px}
+.card{flex:1;min-width:100px;background:#fff;border-radius:6px;border-top:4px solid #1B3A6B;
+      padding:11px 14px;text-align:center;box-shadow:0 1px 4px rgba(0,0,0,.08)}
+.card .num{font-size:24px;font-weight:700;color:#1B3A6B}
+.card .lbl{font-size:11px;color:#666;margin-top:2px}
+
+/* 툴바 */
+.toolbar{background:#fff;border:1px solid #D0D7E5;border-radius:6px;
+         padding:9px 14px;display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:14px}
+.toolbar input[type=text]{padding:5px 10px;border:1px solid #ccc;border-radius:4px;
+  font-size:12px;font-family:inherit;width:180px}
+.spacer{flex:1}
+.btn{padding:6px 14px;border:none;border-radius:4px;font-size:12px;font-weight:600;
+     cursor:pointer;font-family:inherit;white-space:nowrap}
+.btn-gray{background:#e9ecef;color:#333}.btn-gray:hover{background:#dee2e6}
+.btn-navy{background:#1B3A6B;color:#fff}.btn-navy:hover{background:#2A5298}
+.btn-green{background:#28A745;color:#fff}.btn-green:hover{background:#218838}
+
+/* 섹션 헤더 */
+.section{margin-bottom:16px}
+.sec-head{
+  color:#fff;padding:10px 16px;border-radius:5px 5px 0 0;
+  display:flex;align-items:center;gap:8px;cursor:pointer;user-select:none;
+}
+.sec-head.assembly{background:#1B3A6B}
+.sec-head.schedule{background:#17599A}
+.sec-head.news    {background:#1D6E9E}
+.sec-head:hover{filter:brightness(1.1)}
+.sec-icon{font-size:15px}
+.sec-title{font-size:14px;font-weight:700;flex:1}
+.sec-badge{background:rgba(255,255,255,.2);padding:2px 10px;border-radius:20px;font-size:11px}
+.sec-body{border:1px solid #D0D7E5;border-top:none;border-radius:0 0 5px 5px;background:#fff}
+.sec-ctrl{padding:6px 14px 7px;border-bottom:1px solid #F0F2F5;display:flex;gap:10px}
+.sec-ctrl a{font-size:11px;color:#2A5298;cursor:pointer;text-decoration:underline}
+.sec-body.collapsed .sec-ctrl,.sec-body.collapsed .item{display:none}
+
+/* 항목 공통 */
+.item{display:flex;align-items:flex-start;gap:10px;padding:10px 14px;
+      border-bottom:1px solid #F0F4F8;transition:background .1s}
+.item:last-child{border-bottom:none}
+.item:hover{background:#F8FAFF}
+.item.off{opacity:.35}
+.item input[type=checkbox]{margin-top:2px;width:14px;height:14px;accent-color:#1B3A6B;cursor:pointer;flex-shrink:0}
+.item-body{flex:1;min-width:0}
+.item-title{font-size:13px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-bottom:3px}
+.item-title a{color:#1B3A6B;text-decoration:none}
+.item-title a:hover{text-decoration:underline}
+.item-meta{font-size:11px;color:#888;display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.tag{display:inline-block;padding:1px 7px;border-radius:3px;font-size:11px;font-weight:600}
+.tag-red   {background:#FDECEA;color:#C0392B}
+.tag-orange{background:#FEF3E2;color:#B35900}
+.tag-gray  {background:#F1F3F5;color:#555}
+.tag-blue  {background:#EAF0FB;color:#1B3A6B}
+.tag-green {background:#D4EDDA;color:#155724}
+.item-summary{font-size:11px;color:#666;margin-top:4px;line-height:1.5;
+              padding:5px 8px;background:#F8F9FA;border-radius:3px}
+
+/* 빈 상태 */
+.empty{padding:24px;text-align:center;color:#bbb;font-size:13px}
+
+/* 하단 바 */
+.bottom{position:fixed;bottom:0;left:0;right:0;background:#fff;border-top:2px solid #1B3A6B;
+        padding:10px 24px;display:flex;align-items:center;gap:12px;
+        box-shadow:0 -2px 8px rgba(0,0,0,.1);z-index:99;flex-wrap:wrap}
+.sel-info{font-size:13px;font-weight:700;color:#1B3A6B}
+
+.hidden{display:none!important}
+
+/* 토스트 알림 */
+.toast{position:fixed;bottom:80px;right:24px;background:#1B3A6B;color:#fff;
+  padding:13px 18px;border-radius:8px;font-size:12px;line-height:1.7;max-width:380px;
+  white-space:pre-line;box-shadow:0 4px 16px rgba(0,0,0,.25);z-index:9999;
+  animation:toastIn .2s ease;pointer-events:none}
+.toast.warn{background:#856404}
+.toast.ok  {background:#155724}
+@keyframes toastIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>모니터링 보고서 검토</h1>
+  <p>의안 · 국회일정 · 언론기사를 확인하고 보고서에 포함할 항목을 선택하세요</p>
+</div>
+
+<div class="wrap">
+
+  <!-- 파일 로드 -->
+  <div class="load-panel">
+    <h3>JSON 파일 불러오기</h3>
+    <div class="load-grid">
+      <!-- 의안 -->
+      <div class="dropzone" id="dz-assembly" onclick="document.getElementById('fi-assembly').click()"
+           ondragover="dzOver(event,'assembly')" ondragleave="dzLeave('assembly')" ondrop="dzDrop(event,'assembly')">
+        <input type="file" id="fi-assembly" accept=".json" onchange="loadFile('assembly',this.files[0])">
+        <span class="dz-clear hidden" id="clr-assembly" onclick="clearData(event,'assembly')">✕</span>
+        <div class="dz-icon">📋</div>
+        <div class="dz-label">의안 현황</div>
+        <div class="dz-hint" id="hint-assembly">assembly_results_*.json</div>
+      </div>
+      <!-- 일정 -->
+      <div class="dropzone" id="dz-schedule" onclick="document.getElementById('fi-schedule').click()"
+           ondragover="dzOver(event,'schedule')" ondragleave="dzLeave('schedule')" ondrop="dzDrop(event,'schedule')">
+        <input type="file" id="fi-schedule" accept=".json" onchange="loadFile('schedule',this.files[0])">
+        <span class="dz-clear hidden" id="clr-schedule" onclick="clearData(event,'schedule')">✕</span>
+        <div class="dz-icon">📅</div>
+        <div class="dz-label">국회 일정</div>
+        <div class="dz-hint" id="hint-schedule">schedule_results_*.json</div>
+      </div>
+      <!-- 뉴스 -->
+      <div class="dropzone" id="dz-news" onclick="document.getElementById('fi-news').click()"
+           ondragover="dzOver(event,'news')" ondragleave="dzLeave('news')" ondrop="dzDrop(event,'news')">
+        <input type="file" id="fi-news" accept=".json" onchange="loadFile('news',this.files[0])">
+        <span class="dz-clear hidden" id="clr-news" onclick="clearData(event,'news')">✕</span>
+        <div class="dz-icon">📰</div>
+        <div class="dz-label">언론 기사</div>
+        <div class="dz-hint" id="hint-news">news_results_*.json</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 요약 카드 -->
+  <div class="cards hidden" id="cards">
+    <div class="card"><div class="num" id="cAsm">0</div><div class="lbl">계류 의안</div></div>
+    <div class="card"><div class="num" id="cSch">0</div><div class="lbl">예정 일정</div></div>
+    <div class="card"><div class="num" id="cNews">0</div><div class="lbl">언론 기사</div></div>
+    <div class="card"><div class="num" id="cTotal">0</div><div class="lbl">전체 선택</div></div>
+  </div>
+
+  <!-- 툴바 -->
+  <div class="toolbar hidden" id="toolbar">
+    <input type="text" id="qInput" placeholder="제목 검색..." oninput="renderAll()">
+    <div class="spacer"></div>
+    <button class="btn btn-gray" onclick="setAll(true)">전체 선택</button>
+    <button class="btn btn-gray" onclick="setAll(false)">전체 해제</button>
+    <button class="btn btn-green" onclick="makeReport()">보고서 생성 (HTML+PDF)</button>
+  </div>
+
+  <!-- 본문 -->
+  <div id="mainList"></div>
+
+</div>
+
+<!-- 하단 바 -->
+<div class="bottom hidden" id="bottom">
+  <span class="sel-info" id="selInfo">0건 선택</span>
+  <div class="spacer"></div>
+  <button class="btn btn-green" onclick="makeReport()">보고서 생성 (HTML+PDF)</button>
+</div>
+
+<script>
+// ── 데이터 저장소 ─────────────────────────────────────────────────────────────
+const store = { assembly: [], schedule: [], news: [] };
+// checked: 'assembly-0', 'schedule-2', 'news-5' 형태
+const checked = new Set();
+
+// run_all.py가 데이터를 임베드할 때 이 줄을 교체합니다
+const __PRELOADED__ = {"assembly": [], "schedule": [], "news": [{"keyword": "중증외상", "source": "news", "title": "\"응급실 대책, 지금 당장 수술 가능한가?\"... 시민단체, 대구시 대책 비...", "url": "https://news.bbsi.co.kr/news/articleView.html?idxno=4077935", "date": "2026-04-13", "collected_at": "2026-04-14 13:53:37"}, {"keyword": "중증외상", "source": "dgmbc", "title": "우리복지시민연합 \"실질적 응급의료 안전망 구축·알권리 보장하라\"", "url": "https://dgmbc.com/NewsArticle/834804", "date": "2026-04-13", "collected_at": "2026-04-14 13:53:37"}, {"keyword": "중증외상", "source": "biz", "title": "‘대구시 ’응급실 뺑뺑이‘ 재발 방지 대책 있나’…복지연합 ‘실효...", "url": "https://biz.heraldcorp.com/article/10715730?ref=naver", "date": "2026-04-13", "collected_at": "2026-04-14 13:53:37"}, {"keyword": "응급의료", "source": "ujeil", "title": "울주보건소, 구급차 운용·관리실태 현장점검", "url": "http://www.ujeil.com/news/articleView.html?idxno=384147", "date": "2026-04-13", "collected_at": "2026-04-14 13:53:05"}, {"keyword": "응급의료", "source": "thefirstmedia", "title": "GC &페니카 헬스케어 센터, 베트남 하노이에 한국인 전용 응급환자 대응...", "url": "http://www.thefirstmedia.net/news/articleView.html?idxno=197831", "date": "2026-04-13", "collected_at": "2026-04-14 13:53:13"}, {"keyword": "응급의료", "source": "namdonews", "title": "여수해경, 1분기 응급환자 62명 긴급 이송", "url": "https://www.namdonews.com/news/articleView.html?idxno=907342", "date": "2026-04-13", "collected_at": "2026-04-14 13:53:10"}, {"keyword": "응급의료", "source": "lawissue", "title": "GC, 베트남 하노이에 한국인 응급환자 대응 핫라인 구축", "url": "http://www.lawissue.co.kr/view.php?ud=202604132253535084f4ab64559d_12", "date": "2026-04-13", "collected_at": "2026-04-14 13:53:03"}, {"keyword": "응급의료", "source": "kookje", "title": "센텀종합병원 증증환자 비중 응급의료센터 상회", "url": "http://www.kookje.co.kr/news2011/asp/newsbody.asp?code=0700&key=20260414.22015002293", "date": "2026-04-13", "collected_at": "2026-04-14 13:53:10"}, {"keyword": "응급의료", "source": "kookje", "title": "부산백병원 ‘협진 강화’ 소아응급의료체계 구축", "url": "http://www.kookje.co.kr/news2011/asp/newsbody.asp?code=0700&key=20260414.22014002281", "date": "2026-04-13", "collected_at": "2026-04-14 13:53:10"}, {"keyword": "응급의료", "source": "k-health", "title": "경기도, '2026 경기 기후보험' 시작...응급실 비용까지 지원", "url": "http://www.k-health.com/news/articleView.html?idxno=91550", "date": "2026-04-13", "collected_at": "2026-04-14 13:53:13"}, {"keyword": "응급의료", "source": "bosa", "title": "응급의학회, 완도 화재 순직 소방관 조문…\"목숨 바친 헌신 깊이 추모\"", "url": "https://www.bosa.co.kr/news/articleView.html?idxno=3002988", "date": "2026-04-13", "collected_at": "2026-04-14 13:53:03"}, {"keyword": "응급실 뺑뺑이", "source": "segye", "title": "응급실 문턱 넘어도… 28년 전 낡은 ‘중증도 기준’에 골든타임 놓친다...", "url": "https://www.segye.com/newsView/20260412508028?OutUrl=naver", "date": "2026-04-13", "collected_at": "2026-04-14 13:53:48"}, {"keyword": "응급실 뺑뺑이", "source": "news1", "title": "대구 시민단체 \"응급실 뺑뺑이 막을 컨트롤타워 권한 강화해야\"", "url": "https://www.news1.kr/local/daegu-gyeongbuk/6134252", "date": "2026-04-13", "collected_at": "2026-04-14 13:53:48"}, {"keyword": "응급실", "source": "news", "title": "[이슈픽] “입맛 돋우려다 응급실행?”…‘독초 혼동’ 주의보", "url": "https://news.kbs.co.kr/news/pc/view/view.do?ncd=8534378&ref=A", "date": "2026-04-13", "collected_at": "2026-04-14 13:53:25"}, {"keyword": "응급실", "source": "news", "title": "우리복지시민연합, 대구 '응급실 뺑뺑이' 실질적 대책 요구", "url": "https://news.skbroadband.com/news/articleView.html?idxno=224077", "date": "2026-04-13", "collected_at": "2026-04-14 13:53:28"}, {"keyword": "응급실", "source": "monews", "title": "뇌졸중 응급환자 중증도 분류 KTAS 한계···개선 필요성에 한 목소리", "url": "https://www.monews.co.kr/news/articleView.html?idxno=410646", "date": "2026-04-13", "collected_at": "2026-04-14 13:53:30"}, {"keyword": "응급실", "source": "idaegu", "title": "시민단체, \"응급실 뺑뺑이 대책, 그래서 지금 가능한가\"", "url": "https://www.idaegu.co.kr/news/articleView.html?idxno=544831", "date": "2026-04-13", "collected_at": "2026-04-14 13:53:28"}]}; // auto-loaded
+
+// ── 드롭존 헬퍼 ──────────────────────────────────────────────────────────────
+function dzOver(e, type)  { e.preventDefault(); document.getElementById('dz-'+type).classList.add('drag'); }
+function dzLeave(type)    { document.getElementById('dz-'+type).classList.remove('drag'); }
+function dzDrop(e, type)  {
+  e.preventDefault(); dzLeave(type);
+  const f = e.dataTransfer.files[0];
+  if (f) loadFile(type, f);
+}
+
+// ── 파일 로드 ─────────────────────────────────────────────────────────────────
+function loadFile(type, file) {
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = ev => {
+    try {
+      const data = JSON.parse(ev.target.result);
+      store[type] = data;
+      // 전부 선택 상태로 추가
+      data.forEach((_, i) => checked.add(type+'-'+i));
+      // UI 업데이트
+      const dz = document.getElementById('dz-'+type);
+      dz.classList.remove('drag'); dz.classList.add('loaded');
+      document.getElementById('hint-'+type).textContent = file.name + ' (' + data.length + '건)';
+      document.getElementById('clr-'+type).classList.remove('hidden');
+      refresh();
+    } catch { alert('JSON 파싱 오류: ' + file.name); }
+  };
+  reader.readAsText(file, 'utf-8');
+}
+
+function clearData(e, type) {
+  e.stopPropagation();
+  store[type] = [];
+  // 해당 타입 checked 제거
+  [...checked].filter(k => k.startsWith(type+'-')).forEach(k => checked.delete(k));
+  document.getElementById('dz-'+type).classList.remove('loaded');
+  document.getElementById('hint-'+type).textContent = { assembly:'assembly_results_*.json', schedule:'schedule_results_*.json', news:'news_results_*.json' }[type];
+  document.getElementById('clr-'+type).classList.add('hidden');
+  document.getElementById('fi-'+type).value = '';
+  refresh();
+}
+
+// ── UI 갱신 ──────────────────────────────────────────────────────────────────
+function refresh() {
+  const hasAny = store.assembly.length || store.schedule.length || store.news.length;
+  ['cards','toolbar','bottom'].forEach(id => {
+    document.getElementById(id).classList.toggle('hidden', !hasAny);
+  });
+  renderAll();
+}
+
+function renderAll() {
+  const q = document.getElementById('qInput')?.value.trim().toLowerCase() || '';
+  const out = [];
+
+  if (store.assembly.length) out.push(renderAssembly(q));
+  if (store.schedule.length) out.push(renderSchedule(q));
+  if (store.news.length)     out.push(renderNews(q));
+
+  document.getElementById('mainList').innerHTML = out.join('');
+  updateStats();
+}
+
+// ── 의안 섹션 ────────────────────────────────────────────────────────────────
+function importanceAsm(item) {
+  if (item.legislative_notice && isNoticeActive(item.legislative_notice)) return '중요';
+  const s = item.status || '';
+  if (['위원회심사','본회의','공포'].some(x => s.includes(x))) return '중요';
+  return '보통';
+}
+function isNoticeActive(notice) {
+  const m = (notice||'').match(/~\s*(\d{4}-\d{2}-\d{2})/);
+  if (!m) return !!notice;
+  return new Date(m[1]) >= new Date(new Date().toDateString());
+}
+
+function renderAssembly(q) {
+  const items = store.assembly.map((a, i) => ({...a, _k:'assembly-'+i}))
+    .filter(a => !q || (a.bill_name||'').toLowerCase().includes(q));
+
+  const sel = items.filter(a => checked.has(a._k)).length;
+  const rows = items.length ? items.map(a => {
+    const lvl   = importanceAsm(a);
+    const on    = checked.has(a._k);
+    const name  = (a.bill_name||'').replace(' (새창 열림)','').trim();
+    const tagC  = lvl==='중요' ? 'tag-red' : 'tag-orange';
+    const notice = a.legislative_notice && isNoticeActive(a.legislative_notice) ? a.legislative_notice : '';
+    return `
+    <div class="item ${on?'':'off'}" id="item-${a._k}">
+      <input type="checkbox" ${on?'checked':''} onchange="toggle('${a._k}',this.checked)">
+      <div class="item-body">
+        <div class="item-title">
+          ${a.url ? `<a href="${esc(a.url)}" target="_blank">${esc(name)}</a>` : esc(name)}
+        </div>
+        <div class="item-meta">
+          <span class="tag ${tagC}">${lvl}</span>
+          <span class="tag tag-blue">${esc(a.keyword||'')}</span>
+          <span class="tag tag-gray">${esc(a.status||'')}</span>
+          ${notice ? `<span class="tag tag-orange">${esc(notice)}</span>` : ''}
+          <span>발의: ${esc(a.proposed_date||'')}</span>
+        </div>
+        ${a.summary ? `<div class="item-summary">${esc((a.summary||'').substring(0,180))}${a.summary.length>180?'…':''}</div>` : ''}
+      </div>
+    </div>`;
+  }).join('') : '<div class="empty">해당 항목이 없습니다.</div>';
+
+  return `
+  <div class="section">
+    <div class="sec-head assembly" onclick="toggleSec('sb-assembly')">
+      <span class="sec-icon">📋</span>
+      <span class="sec-title">의안 현황 (국회의안정보시스템)</span>
+      <span class="sec-badge" id="badge-assembly">${sel} / ${items.length}건 선택</span>
+      <span style="font-size:11px;opacity:.7">▼</span>
+    </div>
+    <div class="sec-body" id="sb-assembly">
+      <div class="sec-ctrl">
+        <a onclick="setSection('assembly',true)">전체 선택</a>
+        <a onclick="setSection('assembly',false)">전체 해제</a>
+      </div>
+      ${rows}
+    </div>
+  </div>`;
+}
+
+// ── 일정 섹션 ────────────────────────────────────────────────────────────────
+function renderSchedule(q) {
+  const items = store.schedule.map((a, i) => ({...a, _k:'schedule-'+i}))
+    .filter(a => !q || (a.title||'').toLowerCase().includes(q));
+
+  const sel = items.filter(a => checked.has(a._k)).length;
+  const rows = items.length ? items.map(a => {
+    const on      = checked.has(a._k);
+    const upcoming = a.is_upcoming;
+    return `
+    <div class="item ${on?'':'off'}" id="item-${a._k}">
+      <input type="checkbox" ${on?'checked':''} onchange="toggle('${a._k}',this.checked)">
+      <div class="item-body">
+        <div class="item-title">
+          ${a.url ? `<a href="${esc(a.url)}" target="_blank">${esc(a.title||'')}</a>` : esc(a.title||'')}
+        </div>
+        <div class="item-meta">
+          <span class="tag ${upcoming?'tag-red':'tag-gray'}">${upcoming?'예정':'과거'}</span>
+          <span class="tag tag-blue">${esc(a.event_type||'')}</span>
+          ${a.topic_keyword ? `<span class="tag tag-orange">★ ${esc(a.topic_keyword)}</span>` : ''}
+          <span>${esc(a.date||'')}</span>
+          <span>${esc(a.source||'')}</span>
+        </div>
+      </div>
+    </div>`;
+  }).join('') : '<div class="empty">해당 항목이 없습니다.</div>';
+
+  return `
+  <div class="section">
+    <div class="sec-head schedule" onclick="toggleSec('sb-schedule')">
+      <span class="sec-icon">📅</span>
+      <span class="sec-title">일정 현황 (보건복지위원회)</span>
+      <span class="sec-badge" id="badge-schedule">${sel} / ${items.length}건 선택</span>
+      <span style="font-size:11px;opacity:.7">▼</span>
+    </div>
+    <div class="sec-body" id="sb-schedule">
+      <div class="sec-ctrl">
+        <a onclick="setSection('schedule',true)">전체 선택</a>
+        <a onclick="setSection('schedule',false)">전체 해제</a>
+      </div>
+      ${rows}
+    </div>
+  </div>`;
+}
+
+// ── 뉴스 섹션 ────────────────────────────────────────────────────────────────
+function renderNews(q) {
+  const items = store.news.map((a, i) => ({...a, _k:'news-'+i}))
+    .filter(a => !q || (a.title||'').toLowerCase().includes(q)
+                    || (a.source||'').toLowerCase().includes(q));
+
+  // 키워드별 그룹
+  const groups = {};
+  for (const a of items) (groups[a.keyword] = groups[a.keyword]||[]).push(a);
+
+  const totalSel = items.filter(a => checked.has(a._k)).length;
+
+  const groupHTML = Object.entries(groups).map(([kw, grpItems]) => {
+    const gSel = grpItems.filter(a => checked.has(a._k)).length;
+    const rows  = grpItems.map(a => {
+      const on = checked.has(a._k);
+      return `
+      <div class="item ${on?'':'off'}" id="item-${a._k}" style="padding-left:28px;">
+        <input type="checkbox" ${on?'checked':''} onchange="toggle('${a._k}',this.checked)">
+        <div class="item-body">
+          <div class="item-title">
+            ${a.url ? `<a href="${esc(a.url)}" target="_blank">${esc(a.title||'')}</a>` : esc(a.title||'')}
+          </div>
+          <div class="item-meta">
+            <span class="tag tag-gray">${esc(a.source||'출처미상')}</span>
+            <span>${esc((a.date||'').substring(0,10))}</span>
+          </div>
+        </div>
+      </div>`;
+    }).join('');
+
+    return `
+    <div style="border-bottom:1px solid #EEF2F9;">
+      <div style="padding:7px 14px;background:#F4F7FC;display:flex;align-items:center;gap:8px;cursor:pointer;"
+           onclick="toggleSec('ng-${esc(kw)}')">
+        <span style="font-size:12px;font-weight:700;color:#1B3A6B;flex:1;">${esc(kw)}</span>
+        <span style="font-size:11px;color:#888;" id="ng-badge-${esc(kw)}">${gSel}/${grpItems.length}건</span>
+        <a style="font-size:11px;color:#2A5298;margin-left:8px;" onclick="setKw('${esc(kw)}',true,event)">전체선택</a>
+        <a style="font-size:11px;color:#2A5298;margin-left:4px;" onclick="setKw('${esc(kw)}',false,event)">전체해제</a>
+      </div>
+      <div id="ng-${esc(kw)}">${rows}</div>
+    </div>`;
+  }).join('');
+
+  return `
+  <div class="section">
+    <div class="sec-head news" onclick="toggleSec('sb-news')">
+      <span class="sec-icon">📰</span>
+      <span class="sec-title">언론 모니터링 (전일 기사)</span>
+      <span class="sec-badge" id="badge-news">${totalSel} / ${items.length}건 선택</span>
+      <span style="font-size:11px;opacity:.7">▼</span>
+    </div>
+    <div class="sec-body" id="sb-news">
+      <div class="sec-ctrl">
+        <a onclick="setSection('news',true)">전체 선택</a>
+        <a onclick="setSection('news',false)">전체 해제</a>
+      </div>
+      ${groupHTML || '<div class="empty">해당 항목이 없습니다.</div>'}
+    </div>
+  </div>`;
+}
+
+// ── 체크박스 제어 ─────────────────────────────────────────────────────────────
+function toggle(key, val) {
+  val ? checked.add(key) : checked.delete(key);
+  const el = document.getElementById('item-'+key);
+  if (el) el.className = 'item ' + (val ? '' : 'off');
+  updateStats();
+  updateBadges();
+}
+
+function setAll(val) {
+  ['assembly','schedule','news'].forEach(type =>
+    store[type].forEach((_, i) => val ? checked.add(type+'-'+i) : checked.delete(type+'-'+i))
+  );
+  renderAll();
+}
+
+function setSection(type, val) {
+  store[type].forEach((_, i) => val ? checked.add(type+'-'+i) : checked.delete(type+'-'+i));
+  renderAll();
+}
+
+function setKw(kw, val, e) {
+  e.stopPropagation();
+  store.news.forEach((a, i) => { if (a.keyword === kw) val ? checked.add('news-'+i) : checked.delete('news-'+i); });
+  renderAll();
+}
+
+function toggleSec(id) {
+  const el = document.getElementById(id);
+  if (el) el.classList.toggle('collapsed');
+}
+
+function updateStats() {
+  const asmSel  = store.assembly.filter((_,i) => checked.has('assembly-'+i)).length;
+  const schSel  = store.schedule.filter((_,i) => checked.has('schedule-'+i)).length;
+  const newsSel = store.news.filter((_,i) => checked.has('news-'+i)).length;
+  document.getElementById('cAsm').textContent   = asmSel;
+  document.getElementById('cSch').textContent   = schSel;
+  document.getElementById('cNews').textContent  = newsSel;
+  document.getElementById('cTotal').textContent = asmSel + schSel + newsSel;
+  document.getElementById('selInfo').textContent = `의안 ${asmSel}건 · 일정 ${schSel}건 · 기사 ${newsSel}건 선택`;
+}
+
+function updateBadges() {
+  const types = ['assembly','schedule','news'];
+  types.forEach(type => {
+    const badge = document.getElementById('badge-'+type);
+    if (!badge) return;
+    const total = store[type].length;
+    const sel   = store[type].filter((_,i) => checked.has(type+'-'+i)).length;
+    badge.textContent = `${sel} / ${total}건 선택`;
+  });
+  // 뉴스 키워드 배지
+  const kwGroups = {};
+  store.news.forEach((a, i) => (kwGroups[a.keyword] = kwGroups[a.keyword]||[]).push(i));
+  Object.entries(kwGroups).forEach(([kw, idxs]) => {
+    const b = document.getElementById('ng-badge-'+kw);
+    if (b) b.textContent = idxs.filter(i => checked.has('news-'+i)).length + '/' + idxs.length + '건';
+  });
+}
+
+// ── 보고서 생성 ───────────────────────────────────────────────────────────────
+function makeReport() {
+  const selAsm  = store.assembly.filter((_,i) => checked.has('assembly-'+i));
+  const selSch  = store.schedule.filter((_,i) => checked.has('schedule-'+i));
+  const selNews = store.news.filter((_,i) => checked.has('news-'+i));
+  const total   = selAsm.length + selSch.length + selNews.length;
+  if (!total) { alert('선택된 항목이 없습니다.'); return; }
+
+  const d = new Date();
+  const pad = n => String(n).padStart(2,'0');
+  const today    = `${d.getFullYear()}.${pad(d.getMonth()+1)}.${pad(d.getDate())}`;
+  const fileDate = `${d.getFullYear()}${pad(d.getMonth()+1)}${pad(d.getDate())}`;
+  const now      = d.toLocaleString('ko-KR');
+
+  // ── 의안 섹션 ─────────────────────────────────────────────────────────────
+  let asmHTML = '';
+  if (selAsm.length === 0) {
+    asmHTML = rptEmptyLine('📋 의안 현황', '해당 기간 내 수집된 의안이 없습니다.');
+  } else {
+    const cards = selAsm.map(a => {
+      const name   = (a.bill_name||'').replace(' (새창 열림)','').trim();
+      const lvl    = importanceAsm(a);
+      const bar    = lvl === '중요' ? '#DC3545' : '#E07B00';
+      const badge  = lvl === '중요' ? 'background:#DC3545;color:#fff' : 'background:#E07B00;color:#fff';
+      const notice = a.legislative_notice && isNoticeActive(a.legislative_notice) ? a.legislative_notice : '';
+      return `
+      <div style="border-left:4px solid ${bar};padding:6px 10px;margin-bottom:4px;background:#fff;border-radius:0 3px 3px 0;box-shadow:0 1px 2px rgba(0,0,0,.06)">
+        <div style="display:flex;align-items:baseline;gap:5px;margin-bottom:2px;flex-wrap:wrap">
+          <span style="${badge};font-size:10px;padding:1px 6px;border-radius:2px;font-weight:700;flex-shrink:0">${lvl}</span>
+          <span style="font-size:11px;font-weight:600;line-height:1.4">
+            ${a.url?`<a href="${esc(a.url)}" style="color:#1B3A6B;text-decoration:none">${esc(name)}</a>`:esc(name)}
+          </span>
+        </div>
+        <div style="font-size:10px;color:#888">
+          <span style="background:#EAF0FB;color:#1B3A6B;padding:1px 5px;border-radius:2px">${esc(a.keyword||'')}</span>
+          &nbsp;·&nbsp; ${esc(a.status||'')}
+          &nbsp;·&nbsp; 발의 ${esc(a.proposed_date||'')}
+          ${a.url?`&nbsp;·&nbsp; <a href="${esc(a.url)}" style="color:#2A5298">원문</a>`:''}
+        </div>
+        ${notice?`<div style="font-size:10px;color:#856404;margin-top:2px">★ ${esc(notice)}</div>`:''}
+      </div>`;
+    }).join('');
+    asmHTML = rptSection('📋 의안 현황', selAsm.length, cards);
+  }
+
+  // ── 일정 섹션 ─────────────────────────────────────────────────────────────
+  let schHTML = '';
+  if (selSch.length === 0) {
+    schHTML = rptEmptyLine('📅 일정 현황', '앞으로 14일 내 등록된 회의·공청회·토론회가 없습니다.');
+  } else {
+    const cards = selSch.map(a => {
+      const bar   = a.is_upcoming ? '#DC3545' : '#ADB5BD';
+      const badge = a.is_upcoming ? 'background:#DC3545;color:#fff' : 'background:#6C757D;color:#fff';
+      return `
+      <div style="border-left:4px solid ${bar};padding:6px 10px;margin-bottom:4px;background:#fff;border-radius:0 3px 3px 0;box-shadow:0 1px 2px rgba(0,0,0,.06)">
+        <div style="display:flex;align-items:baseline;gap:5px;margin-bottom:2px;flex-wrap:wrap">
+          <span style="${badge};font-size:10px;padding:1px 6px;border-radius:2px;font-weight:700;flex-shrink:0">${a.is_upcoming?'예정':'참고'}</span>
+          <span style="font-size:11px;font-weight:600;line-height:1.4">
+            ${a.url?`<a href="${esc(a.url)}" style="color:#1B3A6B;text-decoration:none">${esc(a.title||'')}</a>`:esc(a.title||'')}
+          </span>
+        </div>
+        <div style="font-size:10px;color:#888">
+          <span style="background:#EAF0FB;color:#1B3A6B;padding:1px 5px;border-radius:2px">${esc(a.event_type||'')}</span>
+          ${a.topic_keyword?`&nbsp;·&nbsp; <span style="color:#856404">★ ${esc(a.topic_keyword)}</span>`:''}
+          &nbsp;·&nbsp; ${esc((a.date||'').substring(0,10))}
+          ${a.url?`&nbsp;·&nbsp; <a href="${esc(a.url)}" style="color:#2A5298">원문</a>`:''}
+        </div>
+      </div>`;
+    }).join('');
+    schHTML = rptSection('📅 일정 현황', selSch.length, cards);
+  }
+
+  // ── 뉴스 섹션 (카드형, 언론사·날짜·링크 한 줄) ────────────────────────────
+  let newsHTML = '';
+  if (selNews.length === 0) {
+    newsHTML = rptEmptyLine('📰 언론 모니터링', '선택된 기사가 없습니다.');
+  } else {
+    const cards = selNews.map(a => `
+      <div style="border-left:4px solid #1D6E9E;padding:6px 10px;margin-bottom:4px;background:#fff;border-radius:0 3px 3px 0;box-shadow:0 1px 2px rgba(0,0,0,.06)">
+        <div style="font-size:11px;font-weight:600;color:#1B3A6B;line-height:1.4;margin-bottom:2px">
+          ${a.url?`<a href="${esc(a.url)}" style="color:#1B3A6B;text-decoration:none">${esc(a.title||'')}</a>`:esc(a.title||'')}
+        </div>
+        <div style="font-size:10px;color:#888">
+          <span style="background:#F1F3F5;color:#555;padding:1px 5px;border-radius:2px">${esc(a.source||'')}</span>
+          &nbsp;·&nbsp; ${esc((a.date||'').substring(0,10))}
+          ${a.url?`&nbsp;·&nbsp; <a href="${esc(a.url)}" style="color:#2A5298">원문</a>`:''}
+        </div>
+      </div>`).join('');
+    newsHTML = rptSection('📰 언론 모니터링', selNews.length, cards);
+  }
+
+  const html = `<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<title>의료정책 모니터링 보고서 (${today})</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:"Malgun Gothic","Apple SD Gothic Neo",sans-serif;color:#222;font-size:11px;line-height:1.5;background:#EEF2F9}
+a{color:#1B3A6B;text-decoration:none}
+@page{size:A4 portrait;margin:10mm 12mm}
+@media print{
+  *{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  html{zoom:0.87}
+}
+</style>
+</head>
+<body>
+<div style="max-width:186mm;margin:0 auto">
+
+  <!-- 헤더 -->
+  <div style="background:#1B3A6B;color:#fff;padding:8px 14px;border-radius:4px 4px 0 0">
+    <div style="display:flex;justify-content:space-between;align-items:center">
+      <div>
+        <div style="font-size:9px;letter-spacing:2px;opacity:.6;margin-bottom:2px">응급의료정책팀 &nbsp;·&nbsp; 자동 모니터링 보고서</div>
+        <div style="font-size:15px;font-weight:700;letter-spacing:.3px">의료정책 모니터링 보고서</div>
+      </div>
+      <div style="text-align:right">
+        <div style="font-size:13px;font-weight:700">${today}</div>
+        <div style="font-size:9px;opacity:.6">생성: ${now}</div>
+      </div>
+    </div>
+  </div>
+  <div style="height:3px;background:linear-gradient(90deg,#2A5298,#1D6E9E);margin-bottom:10px"></div>
+
+  <!-- 요약 카드 -->
+  <div style="display:flex;gap:6px;margin-bottom:10px">
+    ${[['계류 의안',selAsm.length,'#1B3A6B'],['예정 일정',selSch.length,'#17599A'],['언론 기사',selNews.length,'#1D6E9E'],['전체',total,'#495057']].map(([l,n,c])=>`
+    <div style="flex:1;padding:6px 10px;background:#fff;border-top:3px solid ${c};border-radius:0 0 3px 3px;box-shadow:0 1px 3px rgba(0,0,0,.08)">
+      <div style="font-size:20px;font-weight:700;color:${c};line-height:1.1">${n}</div>
+      <div style="font-size:9px;color:#666;margin-top:2px">${l}</div>
+    </div>`).join('')}
+  </div>
+
+  ${asmHTML}
+  ${schHTML}
+  ${newsHTML}
+
+  <!-- 푸터 -->
+  <div style="margin-top:8px;padding-top:5px;border-top:1px solid #D0D7E5;font-size:9px;color:#bbb;text-align:center">
+    본 보고서는 자동 수집·검토된 항목만 포함됩니다 &nbsp;|&nbsp; 중요 사항은 반드시 원문 확인 요망
+  </div>
+</div>
+</body></html>`;
+
+  // ── Flask 서버로 전송 → HTML+PDF 동시 생성 ───────────────────────────────
+  const btns = document.querySelectorAll('.btn-green');
+  btns.forEach(b => { b._orig = b.textContent; b.textContent = '⏳ 생성 중...'; b.disabled = true; });
+  const restoreBtns = () => btns.forEach(b => { b.textContent = b._orig; b.disabled = false; });
+
+  const ctrl   = new AbortController();
+  const tid    = setTimeout(() => ctrl.abort(), 90_000);
+
+  fetch('/save-report', {
+    method:  'POST',
+    headers: {'Content-Type': 'application/json'},
+    body:    JSON.stringify({html, filename: `보고서_${fileDate}.html`}),
+    signal:  ctrl.signal,
+  })
+  .then(r => { clearTimeout(tid); if (!r.ok) throw new Error('server'); return r.json(); })
+  .then(res => {
+    restoreBtns();
+    showToast(`✅ 보고서 생성 완료\nHTML : ${res.html_path}\nPDF  : ${res.pdf_path}`, 'ok');
+  })
+  .catch(() => {
+    clearTimeout(tid);
+    restoreBtns();
+    // 폴백: 파일 다운로드 + 인쇄 대화상자
+    const blob  = new Blob([html], {type:'text/html;charset=utf-8'});
+    const dlUrl = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = dlUrl; a.download = `보고서_${fileDate}.html`; a.click();
+    const win = window.open(dlUrl, '_blank');
+    if (win) win.onload = () => setTimeout(() => win.print(), 400);
+    showToast('⚠️ 서버 미연결\nHTML 다운로드 + 인쇄 대화상자로 대체됩니다.\n(run_all.py 실행 시 자동 연결됩니다)', 'warn');
+  });
+}
+
+function rptSection(title, count, inner) {
+  return `<div style="margin-bottom:6px">
+    <div style="background:#1B3A6B;color:#fff;padding:4px 10px;border-radius:3px 3px 0 0;display:flex;align-items:center;justify-content:space-between">
+      <span style="font-size:11px;font-weight:700">${title}</span>
+      <span style="font-size:9px;opacity:.75">총 ${count}건</span>
+    </div>
+    <div style="border:1px solid #D0D7E5;border-top:none;border-radius:0 0 3px 3px;padding:4px 6px">
+      ${inner}
+    </div>
+  </div>`;
+}
+
+function rptEmptyLine(title, msg) {
+  return `<div style="margin-bottom:6px;padding:5px 10px;background:#F8F9FA;border-radius:3px;border-left:3px solid #CBD3E0;display:flex;align-items:center;gap:8px">
+    <span style="font-size:11px;font-weight:700;color:#1B3A6B">${title}</span>
+    <span style="font-size:10px;color:#aaa">${msg}</span>
+  </div>`;
+}
+
+function showToast(msg, type = '') {
+  const t = document.createElement('div');
+  t.className = 'toast' + (type ? ' ' + type : '');
+  t.textContent = msg;
+  document.body.appendChild(t);
+  setTimeout(() => { t.style.transition = 'opacity .4s'; t.style.opacity = '0'; }, 4000);
+  setTimeout(() => t.remove(), 4500);
+}
+
+function esc(s) {
+  return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+// ── 프리로드 자동 초기화 (run_all.py 실행 시) ────────────────────────────────
+if (__PRELOADED__) {
+  ['assembly','schedule','news'].forEach(type => {
+    const data = __PRELOADED__[type] || [];
+    store[type] = data;
+    data.forEach((_, i) => checked.add(type+'-'+i));
+    if (data.length) {
+      const dz   = document.getElementById('dz-'+type);
+      const hint = document.getElementById('hint-'+type);
+      const clr  = document.getElementById('clr-'+type);
+      if (dz)   dz.classList.add('loaded');
+      if (hint) hint.textContent = '자동 로드 (' + data.length + '건)';
+      if (clr)  clr.classList.remove('hidden');
+    }
+  });
+  // 파일 로드 패널 축소
+  const panel = document.querySelector('.load-panel');
+  if (panel) {
+    panel.style.padding = '10px 24px';
+    const h3 = panel.querySelector('h3');
+    if (h3) h3.textContent = 'JSON 자동 로드 완료 — 파일을 교체하려면 각 칸을 클릭하세요';
+  }
+  refresh();
+}
+</script>
+</body>
+</html>

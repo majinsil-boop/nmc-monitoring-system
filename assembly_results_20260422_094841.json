@@ -1,0 +1,21 @@
+[
+  {
+    "bill_no": "2218371",
+    "bill_name": "의료법 일부개정법률안 (김남희의원 등 10인) (새창 열림)",
+    "proposer": "의원",
+    "proposed_date": "2026-04-16",
+    "vote_date": "",
+    "status": "소관위접수",
+    "url": "https://likms.assembly.go.kr/bill/bi/billDetailPage.do?billId=PRC_J2I6Q0Q4O0Q9O1O7N4V2V4T3U8S3T2",
+    "keyword": "의료법",
+    "status_changed_date": "2026-04-17",
+    "legislative_notice": "입법예고중(2026-04-17 ~ 2026-04-26)",
+    "committee": "보건복지위원회",
+    "summary": "의료관련감염이 국민 생명과 안전을 위협하고 사회적 부담을 가중시키는 가운데, 2020년 9월 질병관리청 신설로 관련 업무가 이관되었음에도 의료기관 준수사항 관리 규정이 이에 맞게 정비되지 않은 문제를 해결하기 위해 의료법 제47조를 개정하려는 것임. 이를 통해 질병관리청 중심의 의료관련감염 관리체계를 법적으로 명확히 하고, 의료기관의 감염 예방 및 관리 의무를 강화하고자 함.",
+    "prev_status": "소관위접수",
+    "status_change_label": "",
+    "status_changed": false,
+    "is_key_member": false,
+    "priority_mark": ""
+  }
+]
