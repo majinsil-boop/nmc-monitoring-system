@@ -37,18 +37,18 @@ for config in data_configs:
     latest = get_latest_file(config["pattern"])
     if latest:
         df = pd.read_json(latest)
-        # selection_mode 대신 최신 문법인 on_select="rerun"과 함께 사용
+        # 에러를 방지하기 위해 가장 표준적인 설정으로 변경합니다.
         event = st.dataframe(
             df,
             use_container_width=True,
             hide_index=True,
-            on_select="rerun", # 이 부분이 핵심입니다!
-            selection_mode="multi_row",
+            on_select="rerun", 
+            selection_mode=["multi_row", "multi_column"], # 리스트 형태로 명시
             key=config["title"]
         )
-        # 선택된 데이터 추출 로직
-        if hasattr(event, 'selection') and event.selection.rows:
-            all_selected_data.append(df.iloc[event.selection.rows])
+        # 선택된 행이 있는지 확인하는 안전한 방법
+        if event and hasattr(event, 'selection') and event.selection.get("rows"):
+            all_selected_data.append(df.iloc[event.selection["rows"]])
     st.markdown("---")
 
 # --- PDF 생성 함수 ---
