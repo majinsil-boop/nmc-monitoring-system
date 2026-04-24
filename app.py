@@ -404,6 +404,19 @@ else:
     st.sidebar.markdown("---")
     st.sidebar.markdown("### 📥 PDF 저장")
 
+    # 폰트 경로 확인 (문제 발생 시 사용)
+    if st.sidebar.button("🔍 폰트 경로 확인", use_container_width=True):
+        base_dir = os.path.dirname(os.path.abspath(__file__))
+        fonts_dir = os.path.join(base_dir, "fonts")
+        st.sidebar.code(
+            f"app.py 위치: {base_dir}\n"
+            f"fonts/ 폴더: {fonts_dir}\n"
+            f"fonts/ 존재: {os.path.exists(fonts_dir)}\n"
+            f"fonts/ 파일 목록: {os.listdir(fonts_dir) if os.path.exists(fonts_dir) else '폴더 없음'}\n"
+            f"\n탐색된 폰트(Regular): {_find_korean_font(bold=False)}\n"
+            f"탐색된 폰트(Bold):    {_find_korean_font(bold=True)}"
+        )
+
     if st.sidebar.button("📄 PDF 생성하기", use_container_width=True):
         with st.spinner("PDF 생성 중..."):
             try:
