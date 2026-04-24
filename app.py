@@ -12,7 +12,6 @@ st.set_page_config(page_title="NMC 보고서 생성기", layout="wide")
 class NMC_PDF(FPDF):
     def __init__(self):
         super().__init__()
-        # font.ttf 파일이 반드시 폴더에 있어야 합니다.
         if os.path.exists("font.ttf"):
             self.add_font("Korean", "", "font.ttf", uni=True)
             self.kfont = "Korean"
@@ -20,8 +19,7 @@ class NMC_PDF(FPDF):
             self.kfont = "Arial"
 
     def header(self):
-        # 보고서 상단 디자인
-        self.set_fill_color(0, 74, 153) # NMC 로고 색상 계열
+        self.set_fill_color(0, 74, 153) # NMC Blue
         self.rect(0, 0, 210, 40, 'F')
         self.set_text_color(255, 255, 255)
         self.set_font(self.kfont, size=20)
@@ -44,20 +42,17 @@ df_s = pd.read_json(latest_s) if latest_s else pd.DataFrame()
 df_n = pd.read_json(latest_n) if latest_n else pd.DataFrame()
 
 st.title("🚑 NMC 데일리 리포트 생성 시스템")
-st.write("보고서에 포함할 항목을 선택해 주세요.")
 
 # --- 항목 선택 섹션 ---
 selected_data = {'a': [], 's': [], 'n': []}
-
 col1, col2, col3 = st.columns(3)
 
 with col1:
     st.subheader("🏛️ 국회 의안")
     if not df_a.empty:
-        # 의안 데이터에 'bill_name'이 있는지 확인
-        name_key = 'bill_name' if 'bill_name' in df_a.columns else 'title'
+        key = 'bill_name' if 'bill_name' in df_a.columns else 'title'
         for i, row in df_a.iterrows():
-            if st.checkbox(f"{row.get(name_key)}", key=f"a_{i}"):
+            if st.checkbox(f"{row.get(key)}", key=f"a_{i}"):
                 selected_data['a'].append(row.to_dict())
 
 with col2:
@@ -76,10 +71,10 @@ with col3:
 
 st.markdown("---")
 
-# --- PDF 생성 및 다운로드 ---
+# --- PDF 생성 및 다운로드 (에러 수정 지점) ---
 if st.button("📥 선택 항목으로 PDF 보고서 만들기", use_container_width=True):
     if not any(selected_data.values()):
-        st.warning("선택된 항목이 없습니다. 항목을 먼저 체크해 주세요.")
+        st.warning("선택된 항목이 없습니다.")
     else:
         try:
             pdf = NMC_PDF()
@@ -96,9 +91,7 @@ if st.button("📥 선택 항목으로 PDF 보고서 만들기", use_container_w
                     pdf.set_font(pdf.kfont, size=11)
                     name = item.get('bill_name', item.get('title', '명칭 없음'))
                     pdf.multi_cell(0, 8, txt=f"• {name}")
-                    
-                    # 상세 링크 추가
-                    pdf.set_text_color(0, 0, 255) # 파란색 링크
+                    pdf.set_text_color(0, 0, 255)
                     pdf.set_font(pdf.kfont, size=9)
                     url = item.get('url', 'https://likms.assembly.go.kr')
                     pdf.cell(0, 8, txt="   [의안 상세정보 링크 클릭]", ln=True, link=url)
@@ -115,8 +108,6 @@ if st.button("📥 선택 항목으로 PDF 보고서 만들기", use_container_w
                 for item in selected_data['n']:
                     pdf.set_font(pdf.kfont, size=11)
                     pdf.multi_cell(0, 8, txt=f"• {item.get('title')} ({item.get('source', '뉴스')})")
-                    
-                    # 기사 링크 추가
                     pdf.set_text_color(0, 0, 255)
                     pdf.set_font(pdf.kfont, size=9)
                     url = item.get('url', '#')
@@ -124,21 +115,18 @@ if st.button("📥 선택 항목으로 PDF 보고서 만들기", use_container_w
                     pdf.set_text_color(0, 0, 0)
                     pdf.ln(2)
 
-            # PDF 출력
+            # PDF 데이터 준비
             pdf_bytes = pdf.output(dest='S')
+            
+            # 다운로드 버튼 (try 울타리 안에서 안전하게 생성)
             st.download_button(
                 label="💾 생성된 PDF 파일 다운로드",
-                data=bytes(pdf_bytes), # 데이터를 안전하게 변환
+                data=bytes(pdf_bytes),
                 file_name=f"NMC_Report_{datetime.now().strftime('%m%d')}.pdf",
                 mime="application/pdf"
             )
-st.download_button(
-    label="💾 생성된 PDF 파일 다운로드",
-    data=bytes(pdf_bytes), # 데이터를 안전하게 변환
-    file_name=f"NMC_Report_{datetime.now().strftime('%m%d')}.pdf",
-    mime="application/pdf"
-)
-            st.success("보고서 작성이 완료되었습니다! 위 버튼을 눌러 저장하세요.")
-            
+            st.success("보고서 작성이 완료되었습니다!")
+
         except Exception as e:
+            # try가 있으면 이 부분이 반드시 있어야 문법 에러가 안 납니다.
             st.error(f"PDF 생성 중 문제가 발생했습니다: {e}")
