@@ -99,7 +99,8 @@ if st.button("📥 선택한 항목으로 보고서(PDF) 발행", use_container_
             
             # 섹션 1: 의안 현황
             if selected_data['a']:
-                pdf.set_font(pdf.kfont, size=14, style='B')
+                # [수정] style='B'를 제거했습니다.
+                pdf.set_font(pdf.kfont, size=14) 
                 pdf.set_fill_color(240, 242, 246)
                 pdf.cell(0, 10, " 1. 의안 현황", ln=True, fill=True)
                 pdf.ln(3)
@@ -112,10 +113,10 @@ if st.button("📥 선택한 항목으로 보고서(PDF) 발행", use_container_
                     pdf.set_text_color(0, 0, 0)
                     pdf.ln(2)
 
-            # 섹션 2: 주요 일정 (누락되었던 부분 추가!)
+            # 섹션 2: 주요 일정
             if selected_data['s']:
                 pdf.ln(5)
-                pdf.set_font(pdf.kfont, size=14, style='B')
+                pdf.set_font(pdf.kfont, size=14) # [수정] style='B' 제거
                 pdf.set_fill_color(240, 242, 246)
                 pdf.cell(0, 10, " 2. 주요 일정", ln=True, fill=True)
                 pdf.ln(3)
@@ -127,7 +128,7 @@ if st.button("📥 선택한 항목으로 보고서(PDF) 발행", use_container_
             # 섹션 3: 언론 모니터링
             if selected_data['n']:
                 pdf.ln(5)
-                pdf.set_font(pdf.kfont, size=14, style='B')
+                pdf.set_font(pdf.kfont, size=14) # [수정] style='B' 제거
                 pdf.set_fill_color(240, 242, 246)
                 pdf.cell(0, 10, " 3. 언론 모니터링", ln=True, fill=True)
                 pdf.ln(3)
