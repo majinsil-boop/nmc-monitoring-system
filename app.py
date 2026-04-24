@@ -10,70 +10,71 @@ st.set_page_config(page_title="NMC 보고서", layout="wide")
 def _load_data(pattern):
     curr = os.path.dirname(os.path.abspath(__file__))
     f_path = os.path.join(curr, pattern)
-    fs = sorted(glob.glob(f_path))
-    if not fs: return []
+    files = sorted(glob.glob(f_path))
+    if not files: return []
     try:
-        with open(fs[-1], encoding="utf-8") as f:
+        with open(files[-1], encoding="utf-8") as f:
             return json.load(f)
     except: return []
 
-# [최종 무력 보정] 주소에 http가 없으면 무조건 강제로 삽입
+# [최종] 외부 링크 연결을 위한 가장 단순하고 확실한 로직
 def fix_url(u):
     if not u: return "#"
-    s = str(u).strip()
-    if s.startswith("http"): return s
-    # 점(.)이 포함된 도메인 형태면 무조건 https:// 강제 삽입
-    if "." in s: return "https://" + s
+    u = str(u).strip()
+    if u.startswith("http"): return u
+    # 주소에 점(.)이 있으면 외부 도메인으로 판단
+    if "." in u: return "https://" + u
     return "#"
 
-asm_raw = _load_data("assembly_results_*.json")
-sch_raw = _load_data("schedule_results_*.json")
-news_raw = _load_data("news_results_*.json")
+a_raw = _load_data("assembly_results_*.json")
+s_raw = _load_data("schedule_results_*.json")
+n_raw = _load_data("news_results_*.json")
 
 if "phase" not in st.session_state:
     st.session_state.phase = "SELECT"
 
+# [A] 선택 화면
 if st.session_state.phase == "SELECT":
-    st.title("🚑 NMC 보고서 생성기")
+    st.title("🚑 NMC 정책 보고서 생성기")
     sa, ss, sn = [], [], []
-    
+
     st.subheader("❶ 의안")
-    for i, r in enumerate(asm_raw):
+    for i, r in enumerate(a_raw):
         lk = fix_url(r.get("link") or r.get("bill_link"))
         st.markdown(f"**{r.get('bill_name','')}** [🔗원문]({lk})")
-        if st.checkbox("선택", key=f"ca{i}"): sa.append(r)
+        if st.checkbox("포함", key=f"ca{i}"): sa.append(r)
+        st.caption(f"요약: {r.get('summary','')}")
         st.write("---")
-        
+
     st.subheader("❷ 일정")
-    for i, r in enumerate(sch_raw):
+    for i, r in enumerate(s_raw):
         lk = fix_url(r.get("link"))
         st.markdown(f"📅 **{r.get('title','')}** [🔗원문]({lk})")
-        if st.checkbox("선택", key=f"cs{i}"): ss.append(r)
+        if st.checkbox("포함", key=f"cs{i}"): ss.append(r)
         st.write("---")
-        
+
     st.subheader("❸ 뉴스")
-    for i, r in enumerate(news_raw):
+    for i, r in enumerate(n_raw):
         lk = fix_url(r.get("link") or r.get("url"))
-        st.markdown(f"📰 **{r.get('title','')}** [🔗원문]({lk})")
-        if st.checkbox("선택", key=f"cn{i}"): sn.append(r)
+        st.markdown(f"📰 **{r.get('title','')}** [🔗기사]({lk})")
+        if st.checkbox("포함", key=f"cn{i}"): sn.append(r)
         st.write("---")
-        
+
     if st.button("✨ 보고서 발행"):
         st.session_state.sel_a, st.session_state.sel_s, st.session_state.sel_n = sa, ss, sn
-        st.session_state.phase = "REPORT"
-        st.rerun()
+        st.session_state.phase = "REPORT"; st.rerun()
 
+# [B] 보고서 화면 (HTML 분할 조립)
 else:
     t = datetime.now().strftime("%Y-%m-%d")
     st.sidebar.button("🔙 다시 선택", on_click=lambda: st.session_state.update({"phase":"SELECT"}))
-    st.markdown("<style>[data-testid='stHeader'] {display:none;} @media print {header, footer, .stButton, [data-testid='stSidebar'] {display:none !important;} .main {padding:0 !important;}}</style>", unsafe_allow_html=True)
+    st.markdown("<style>[data-testid='stHeader']{display:none;} @media print{header,footer,.stButton,[data-testid='stSidebar']{display:none !important;}.main{padding:0 !important;}}</style>", unsafe_allow_html=True)
     
     h = '<div style="background:#FBFBFB; padding:20px; font-family:sans-serif;">'
     h += '<div style="background:#1B3A6B; color:#fff; padding:20px 30px; display:flex; justify-content:space-between; align-items:flex-end; border-radius:10px; -webkit-print-color-adjust:exact;">'
     h += '<div><div style="font-size:10px; opacity:0.8;">응급의료정책연구팀</div><div style="font-size:22px; font-weight:800;">응급의료 동향 모니터링</div></div>'
     h += f'<div><div style="font-size:18px; font-weight:800;">{t}</div></div></div>'
     
-    # ❶ 의안 (파랑 선)
     if st.session_state.sel_a:
         h += '<div style="margin:20px 0 10px; font-size:16px; font-weight:800; color:#1B3A6B;">❶ 의안 현황</div>'
         for r in st.session_state.sel_a:
@@ -81,19 +82,17 @@ else:
             h += '<div style="background:#fff; border:1px solid #E2E8F0; border-left:6px solid #1B3A6B; padding:15px; border-radius:12px; margin-bottom:10px; -webkit-print-color-adjust:exact;">'
             h += '<div style="display:flex; justify-content:space-between; align-items:center;">'
             h += '<div style="font-size:14px; font-weight:800; color:#1B3A6B;">' + escape(r.get("bill_name","")) + '</div>'
-            h += '<a href="' + l + '" target="_blank" style="background:#1B3A6B; color:#fff; padding:3px 10px; border-radius:5px; font-size:10px; text-decoration:none;">원문보기 🔗</a></div>'
+            h += '<a href="' + l + '" target="_blank" style="background:#1B3A6B; color:#fff; padding:4px 10px; border-radius:5px; font-size:10px; text-decoration:none;">원문보기 🔗</a></div>'
             h += '<div style="font-size:11px; color:#444; margin-top:8px;">' + escape(r.get("summary","")) + '</div></div>'
 
-    # ❷ 일정 (초록 선)
     if st.session_state.sel_s:
         h += '<div style="margin:20px 0 10px; font-size:16px; font-weight:800; color:#1B3A6B;">❷ 주요 일정</div>'
         for r in st.session_state.sel_s:
             l = fix_url(r.get("link"))
             h += '<div style="background:#fff; border:1px solid #E2E8F0; border-left:6px solid #28A745; padding:12px 15px; margin-bottom:8px; display:flex; justify-content:space-between; align-items:center; -webkit-print-color-adjust:exact;">'
             h += '<div><div style="font-size:13px; font-weight:800; color:#333;">' + escape(r.get("title","")) + '</div></div>'
-            h += '<a href="' + l + '" target="_blank" style="background:#28A745; color:#fff; padding:4px 8px; border-radius:4px; font-size:10px; text-decoration:none;">상세보기 🔗</a></div>'
+            h += '<a href="' + l + '" target="_blank" style="background:#28A745; color:#fff; padding:4px 10px; border-radius:4px; font-size:10px; text-decoration:none;">상세보기 🔗</a></div>'
 
-    # ❸ 뉴스 (빨강 선)
     if st.session_state.sel_n:
         h += '<div style="margin:20px 0 10px; font-size:16px; font-weight:800; color:#1B3A6B;">❸ 언론 모니터링</div>'
         for r in st.session_state.sel_n:
