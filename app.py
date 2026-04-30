@@ -1,4 +1,4 @@
-﻿import streamlit as st
+import streamlit as st
 import glob
 import json
 import os
@@ -22,42 +22,40 @@ def get_link(record: dict, *keys) -> str:
             return fix_url(v)
     return "#"
 
+# ── otf → ttf 변환 (fpdf2는 ttf만 안정 지원) ──────────────────────────────────
+def _otf_to_ttf(otf_path: str) -> str:
+    """otf 파일을 /tmp 에 ttf로 변환해서 경로 반환. 이미 변환된 경우 재사용."""
+    ttf_path = os.path.join("/tmp", os.path.basename(otf_path).replace(".otf", ".ttf"))
+    if os.path.exists(ttf_path):
+        return ttf_path
+    try:
+        from fontTools.ttLib import TTFont
+        font = TTFont(otf_path)
+        font.save(ttf_path)
+        return ttf_path
+    except Exception:
+        return None
+
 # ── 한글 폰트 탐색 (repo 내장 → 시스템 순서로 탐색) ──────────────────────────
 def _find_korean_font(bold=False):
-    """
-    1순위: repo 내 fonts/ 폴더 (가장 확실)
-    2순위: 시스템 설치 경로 (로컬 개발 환경 대응)
-    """
     keyword = "Bold" if bold else "Regular"
-
-    # app.py 기준 상대 경로로 fonts/ 폴더 탐색
     base_dir = os.path.dirname(os.path.abspath(__file__))
     fonts_dir = os.path.join(base_dir, "fonts")
 
+    # 1순위: repo fonts/ 폴더의 ttf
     repo_candidates = [
-        os.path.join(fonts_dir, f"NotoSansCJKkr-{keyword}.otf"),
-        os.path.join(fonts_dir, f"NotoSansCJK-{keyword}.otf"),
+        # NanumKR (변환된 한글 전용 TTF)
+        os.path.join(fonts_dir, "NanumKR-Bold.ttf")   if bold else os.path.join(fonts_dir, "NanumKR-Regular.ttf"),
+        # 기타 폴백
         os.path.join(fonts_dir, f"NotoSansCJKkr-{keyword}.ttf"),
-        os.path.join(fonts_dir, f"NotoSansCJK-{keyword}.ttf"),
-        # bold 요청인데 없으면 Regular로 폴백
-        os.path.join(fonts_dir, "NotoSansCJKkr-Regular.otf"),
-        os.path.join(fonts_dir, "NotoSansCJK-Regular.otf"),
-        os.path.join(fonts_dir, "NotoSansCJKkr-Regular.ttf"),
+        os.path.join(fonts_dir, "NanumKR-Regular.ttf"),
     ]
 
-    for p in repo_candidates:
-        if os.path.exists(p):
-            return p
-
-    # 시스템 경로 폴백 (로컬 개발 환경)
-    system_candidates = [
+    # 3순위: 시스템 ttc (로컬 개발 환경)
+    for p in [
         f"/usr/share/fonts/opentype/noto/NotoSansCJK-{keyword}.ttc",
-        f"/usr/share/fonts/truetype/noto/NotoSansCJK-{keyword}.ttc",
-        f"/usr/share/fonts/noto/NotoSansCJK-{keyword}.ttc",
         "/usr/share/fonts/opentype/noto/NotoSansCJK-Regular.ttc",
-        "/usr/share/fonts/truetype/noto/NotoSansCJK-Regular.ttc",
-    ]
-    for p in system_candidates:
+    ]:
         if os.path.exists(p):
             return p
 
