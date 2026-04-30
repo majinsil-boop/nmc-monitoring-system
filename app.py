@@ -2,281 +2,341 @@ import streamlit as st
 import glob
 import json
 import os
-import io
-from datetime import datetime
+import re
+import tempfile
+from datetime import datetime, timedelta
 from html import escape
 
-# ── URL 보정 ───────────────────────────────────────────────────────────────────
+# ══════════════════════════════════════════════════════════════════════════════
+# URL 보정
+# ══════════════════════════════════════════════════════════════════════════════
 def fix_url(raw: str) -> str:
-    if not raw or raw == "#":
-        return "#"
+    if not raw or raw == "#": return "#"
     raw = raw.strip()
-    if raw.startswith(("http://", "https://")):
-        return raw
+    if raw.startswith(("http://", "https://")): return raw
     return "https://" + raw
 
 def get_link(record: dict, *keys) -> str:
     for k in keys:
         v = record.get(k, "")
-        if v and v != "#":
-            return fix_url(v)
+        if v and v != "#": return fix_url(v)
     return "#"
 
-# ── 폰트 탐색 ──────────────────────────────────────────────────────────────────
-def _find_font(bold=False):
-    base_dir  = os.path.dirname(os.path.abspath(__file__))
-    fonts_dir = os.path.join(base_dir, "fonts")
-    fname     = "NanumGothicBold.ttf" if bold else "NanumGothic.ttf"
-    for p in [
-        os.path.join(fonts_dir, fname),
-        os.path.join(base_dir,  fname),
-        f"/usr/share/fonts/truetype/nanum/{fname}",
-        "/usr/share/fonts/truetype/nanum/NanumGothic.ttf",
-    ]:
-        if os.path.exists(p):
-            return p
-    return None
+# ══════════════════════════════════════════════════════════════════════════════
+# gerate_report 의 HTML 빌더 (그대로 가져옴)
+# ══════════════════════════════════════════════════════════════════════════════
+_URGENT_NEWS_KW = {"응급의료", "응급실", "닥터헬기", "중증외상", "구급", "응급실 뺑뺑이"}
+_NORMAL_NEWS_KW = {"필수의료", "공공보건의료법", "구조", "외상"}
 
-def _debug_font_info():
-    base_dir  = os.path.dirname(os.path.abspath(__file__))
-    fonts_dir = os.path.join(base_dir, "fonts")
-    flist = os.listdir(fonts_dir) if os.path.exists(fonts_dir) else "폴더 없음"
+_BADGE_STYLE = {
+    "중요": "background:#DC3545;color:#fff;",
+    "보통": "background:#E07B00;color:#fff;",
+    "참고": "background:#6C757D;color:#fff;",
+}
+_BAR_COLOR = {
+    "중요": "#DC3545",
+    "보통": "#E07B00",
+    "참고": "#ADB5BD",
+}
+
+def _is_notice_active(notice: str) -> bool:
+    if not notice: return False
+    m = re.search(r"~\s*(\d{4}-\d{2}-\d{2})", notice)
+    if not m: return True
+    try:
+        end_date = datetime.strptime(m.group(1), "%Y-%m-%d")
+        today = datetime.now().replace(hour=0, minute=0, second=0, microsecond=0)
+        return end_date >= today
+    except ValueError:
+        return True
+
+def _importance_assembly(item: dict) -> str:
+    if item.get("legislative_notice") and _is_notice_active(item["legislative_notice"]):
+        return "중요"
+    status = item.get("status", "")
+    if any(s in status for s in ("위원회심사", "본회의", "공포")):
+        return "중요"
+    return "보통"
+
+def _importance_schedule(item: dict) -> str:
+    if item.get("is_upcoming"):
+        return "중요" if item.get("topic_keyword") else "보통"
+    return "참고"
+
+def _importance_news(item: dict) -> str:
+    kw = item.get("keyword", "")
+    if kw in _URGENT_NEWS_KW: return "중요"
+    if kw in _NORMAL_NEWS_KW: return "보통"
+    return "참고"
+
+def _dedup_assembly(items):
+    seen, out = set(), []
+    for r in items:
+        key = r.get("bill_no") or r.get("bill_name", "")
+        if key and key not in seen:
+            seen.add(key); out.append(r)
+    return out
+
+def _badge(level: str) -> str:
+    style = _BADGE_STYLE.get(level, "background:#6C757D;color:#fff;")
+    return (f'<span style="{style}padding:2px 9px;border-radius:3px;'
+            f'font-size:11px;font-weight:700;letter-spacing:.5px;white-space:nowrap;">'
+            f'{escape(level)}</span>')
+
+def _tag(text: str, bg: str, fg: str) -> str:
+    return (f'<span style="background:{bg};color:{fg};padding:2px 8px;'
+            f'border-radius:3px;font-size:11px;white-space:nowrap;">'
+            f'{escape(text)}</span>')
+
+def _bar_style(level: str) -> str:
+    color = _BAR_COLOR.get(level, "#ADB5BD")
+    return (f'border-left:5px solid {color};padding:11px 14px;margin-bottom:8px;'
+            f'background:#fff;border-radius:0 4px 4px 0;'
+            f'box-shadow:0 1px 3px rgba(0,0,0,.07);')
+
+def _link(url: str, text: str) -> str:
+    t = escape(text or "")
+    if url:
+        return (f'<a href="{escape(url)}" target="_blank" '
+                f'style="color:#1B3A6B;text-decoration:none;font-weight:600;">{t}</a>')
+    return f'<span style="font-weight:600;">{t}</span>'
+
+def _section_header(title: str, count: int, icon: str = "") -> str:
     return (
-        f"app.py 위치: {base_dir}\n"
-        f"fonts/ 존재: {os.path.exists(fonts_dir)}\n"
-        f"fonts/ 파일: {flist}\n"
-        f"Regular: {_find_font(False)}\n"
-        f"Bold:    {_find_font(True)}"
+        f'<div style="background:#1B3A6B;color:#fff;padding:10px 18px;'
+        f'border-radius:5px 5px 0 0;margin-top:28px;'
+        f'display:flex;align-items:center;justify-content:space-between;">'
+        f'<span style="font-size:15px;font-weight:700;">{icon}&nbsp;{escape(title)}</span>'
+        f'<span style="background:rgba(255,255,255,.2);padding:2px 12px;'
+        f'border-radius:20px;font-size:12px;">총 {count}건</span>'
+        f'</div>'
+        f'<div style="border:1px solid #D0D7E5;border-top:none;'
+        f'border-radius:0 0 5px 5px;padding:14px 14px 6px;">'
     )
 
-# ── PDF 생성 ───────────────────────────────────────────────────────────────────
-def generate_pdf_bytes(sel_a, sel_s, sel_n, today) -> bytes:
-    from reportlab.pdfgen import canvas
-    from reportlab.pdfbase import pdfmetrics
-    from reportlab.pdfbase.ttfonts import TTFont
-    from reportlab.lib.pagesizes import A4
-    from reportlab.lib.units import mm
-    from reportlab.lib import colors
+def _section_footer() -> str:
+    return "</div>"
 
-    FONT_REG  = _find_font(False)
-    FONT_BOLD = _find_font(True) or FONT_REG
-    if not FONT_REG:
-        raise FileNotFoundError("fonts/ 폴더에 NanumGothic.ttf, NanumGothicBold.ttf 를 넣어주세요.")
+def _empty(msg: str = "해당 기간 내 수집된 항목이 없습니다.") -> str:
+    return f'<p style="color:#999;font-size:13px;padding:8px 0;margin:0;">{escape(msg)}</p>'
 
-    pdfmetrics.registerFont(TTFont("KR",   FONT_REG))
-    pdfmetrics.registerFont(TTFont("KR-B", FONT_BOLD))
+def _card(label: str, value: int, sub: str = "", color: str = "#1B3A6B") -> str:
+    return (
+        f'<div style="flex:1;min-width:130px;background:#fff;border-radius:6px;'
+        f'border-top:4px solid {color};padding:14px 16px;'
+        f'box-shadow:0 1px 4px rgba(0,0,0,.1);text-align:center;">'
+        f'<div style="font-size:28px;font-weight:700;color:{color};">{value}</div>'
+        f'<div style="font-size:12px;color:#444;margin-top:3px;">{escape(label)}</div>'
+        + (f'<div style="font-size:11px;color:#999;margin-top:2px;">{escape(sub)}</div>' if sub else "")
+        + '</div>'
+    )
 
-    W, H = A4
-    M    = 14*mm
-    CW   = W - 2*M
+def _assembly_still_valid(item: dict) -> bool:
+    if _is_notice_active(item.get("legislative_notice", "")): return True
+    cutoff = (datetime.now() - timedelta(days=7)).strftime("%Y-%m-%d")
+    if (item.get("proposed_date") or "") >= cutoff: return True
+    if (item.get("status_changed_date") or "") >= cutoff: return True
+    return False
 
-    NAVY  = colors.HexColor("#1B3A6B")
-    GREEN = colors.HexColor("#28A745")
-    RED   = colors.HexColor("#DC3545")
-    WHITE = colors.white
-    EGRAY = colors.HexColor("#D0D7E5")
-    KW_COLOR = {
-        "중증응급":    colors.HexColor("#800000"),
-        "중증외상":    colors.HexColor("#6F42C1"),
-        "상급종합병원": colors.HexColor("#A52A2A"),
-    }
+def _build_assembly_section(items) -> str:
+    items = [r for r in items if _assembly_still_valid(r)]
+    items = _dedup_assembly(items)
+    html  = _section_header("의안 현황", len(items), "📋")
+    if not items:
+        html += _empty()
+    else:
+        order = {"중요": 0, "보통": 1, "참고": 2}
+        items.sort(key=lambda r: (
+            order.get(_importance_assembly(r), 9),
+            "0" if r.get("legislative_notice") else "1",
+            r.get("proposed_date", "") or "0000-00-00",
+        ))
+        for r in items:
+            lvl     = _importance_assembly(r)
+            name    = r.get("bill_name", "").replace(" (새창 열림)", "").strip()
+            date    = r.get("proposed_date", "") or r.get("vote_date", "")
+            status  = r.get("status", "")
+            notice  = r.get("legislative_notice", "")
+            summary = r.get("summary", "")
+            kw      = r.get("keyword", "")
+            url     = fix_url(r.get("url", ""))
+            html += f'<div style="{_bar_style(lvl)}">'
+            html += '<div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin-bottom:6px;">'
+            html += _badge(lvl)
+            html += _tag(kw, "#EAF0FB", "#1B3A6B")
+            html += _tag(status, "#F1F3F5", "#555")
+            if notice and _is_notice_active(notice):
+                html += _tag(notice, "#FFF3CD", "#856404")
+            html += '</div>'
+            html += f'<div style="font-size:14px;margin-bottom:5px;">{_link(url, name)}</div>'
+            if summary:
+                html += (f'<div style="font-size:12px;color:#555;line-height:1.5;'
+                         f'margin-bottom:5px;padding:6px 8px;background:#F8F9FA;border-radius:3px;">'
+                         f'{escape(summary[:200])}{"…" if len(summary) > 200 else ""}</div>')
+            html += f'<div style="font-size:11px;color:#888;">발의: {escape(date)}</div>'
+            html += '</div>'
+    html += _section_footer()
+    return html
 
-    buf = io.BytesIO()
-    cv  = canvas.Canvas(buf, pagesize=A4)
+def _build_schedule_section(items) -> str:
+    html = _section_header("주요 일정", len(items), "📅")
+    if not items:
+        html += _empty("앞으로 14일 내 등록된 회의·공청회·토론회가 없습니다.")
+    else:
+        for r in items:
+            lvl    = _importance_schedule(r)
+            title  = r.get("title", "")
+            date   = r.get("date", "")
+            etype  = r.get("event_type", "")
+            source = r.get("source", "")
+            url    = fix_url(r.get("url", ""))
+            html += f'<div style="{_bar_style(lvl)}">'
+            html += '<div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin-bottom:6px;">'
+            html += _badge(lvl)
+            html += _tag(etype, "#EAF0FB", "#1B3A6B")
+            html += _tag("예정", "#D4EDDA", "#155724")
+            html += '</div>'
+            html += f'<div style="font-size:14px;margin-bottom:5px;">{_link(url, title)}</div>'
+            html += f'<div style="font-size:11px;color:#888;">{escape(date)} &nbsp;·&nbsp; {escape(source)}</div>'
+            html += '</div>'
+    html += _section_footer()
+    return html
 
-    # 헤더
-    cv.setFillColor(NAVY)
-    cv.rect(M, H-42*mm, CW, 26*mm, fill=1, stroke=0)
-    cv.setFillColor(colors.HexColor("#2A5298"))
-    cv.rect(M+CW*0.55, H-42*mm, CW*0.45, 26*mm, fill=1, stroke=0)
-    cv.setFillColor(colors.HexColor("#8FA8C8"))
-    cv.setFont("KR", 7)
-    cv.drawString(M+4*mm, H-20*mm, "응급의료정책연구팀")
-    cv.setFillColor(WHITE)
-    cv.setFont("KR-B", 15)
-    cv.drawString(M+4*mm, H-31*mm, "응급의료 동향 모니터링")
-    cv.setFont("KR-B", 13)
-    cv.drawRightString(W-M-4*mm, H-25*mm, today)
-    cv.setFont("KR", 7.5)
-    cv.setFillColor(colors.HexColor("#8FA8C8"))
-    cv.drawRightString(W-M-4*mm, H-33*mm, "08:30 생성")
-
-    # 요약 카드
-    card_items = [
-        ("계류 의안", len(sel_a), "#EBF1F9", "#1B3A6B"),
-        ("예정 일정", len(sel_s), "#E8F5E9", "#28A745"),
-        ("언론 기사", len(sel_n), "#FDECEA", "#DC3545"),
-        ("전체",      len(sel_a)+len(sel_s)+len(sel_n), "#F3F4F6", "#495057"),
-    ]
-    cw4    = (CW - 9*mm) / 4
-    card_y = H - 60*mm
-    for i, (label, val, bg, fc) in enumerate(card_items):
-        cx = M + i*(cw4+3*mm)
-        cv.setFillColor(colors.HexColor(bg))
-        cv.roundRect(cx, card_y, cw4, 16*mm, 2*mm, fill=1, stroke=0)
-        cv.setFillColor(colors.HexColor(fc))
-        cv.setFont("KR-B", 16)
-        cv.drawCentredString(cx+cw4/2, card_y+8*mm, str(val))
-        cv.setFillColor(colors.HexColor("#555"))
-        cv.setFont("KR", 7)
-        cv.drawCentredString(cx+cw4/2, card_y+3.5*mm, label)
-
-    y = [H - 65*mm]
-
-    def _footer():
-        cv.setStrokeColor(colors.HexColor("#DDDDDD"))
-        cv.line(M, 17*mm, W-M, 17*mm)
-        cv.setFillColor(colors.HexColor("#AAAAAA"))
-        cv.setFont("KR", 6.5)
-        cv.drawString(M, 12*mm, "본 보고서는 자동 수집·검토된 항목만 포함됩니다. 중요 사항은 반드시 원문을 확인하십시오.")
-        cv.drawRightString(W-M, 12*mm, "응급의료정책연구팀")
-
-    def chk(need):
-        if y[0] - need < 22*mm:
-            _footer()
-            cv.showPage()
-            y[0] = H - 15*mm
-
-    def sec_title(title, count):
-        chk(18*mm)
-        y[0] -= 7*mm
-        cv.setFillColor(NAVY); cv.setFont("KR-B", 10.5)
-        cv.drawString(M, y[0], title)
-        bw = 20*mm
-        cv.setFillColor(NAVY)
-        cv.roundRect(W-M-bw, y[0]-1.5*mm, bw, 6*mm, 2*mm, fill=1, stroke=0)
-        cv.setFillColor(WHITE); cv.setFont("KR", 7.5)
-        cv.drawCentredString(W-M-bw/2, y[0]+0.5*mm, f"총 {count}건")
-        y[0] -= 7*mm
-
-    def draw_tag(x, ty, text, bg, fg="#fff"):
-        tw = len(text)*2.8*mm + 5*mm
-        cv.setFillColor(colors.HexColor(bg))
-        cv.roundRect(x, ty-1.8*mm, tw, 5.5*mm, 1.5*mm, fill=1, stroke=0)
-        cv.setFillColor(colors.HexColor(fg))
-        cv.setFont("KR", 7)
-        cv.drawCentredString(x+tw/2, ty+0.2*mm, text)
-        return tw + 1.5*mm
-
-    def card(bcolor, h, link, draw_fn):
-        chk(h)
-        cy2 = y[0] - h
-        cv.setFillColor(WHITE)
-        cv.rect(M, cy2, CW, h, fill=1, stroke=0)
-        cv.setFillColor(bcolor)
-        cv.rect(M, cy2, 3*mm, h, fill=1, stroke=0)
-        cv.setStrokeColor(EGRAY); cv.setLineWidth(0.4)
-        cv.rect(M, cy2, CW, h, fill=0, stroke=1)
-        if link and link != "#":
-            cv.linkURL(link, (M, cy2, M+CW, cy2+h))
-        draw_fn(cy2, h)
-        y[0] -= h + 2.5*mm
-
-    # ❶ 의안
-    if sel_a:
-        sec_title("❶ 의안 현황", len(sel_a))
-        for r in sel_a:
-            name   = r.get("bill_name", "")
-            summ   = r.get("summary", "")[:140]
-            notice = r.get("legislative_notice", "")
+def _build_news_section(items) -> str:
+    html = _section_header("언론 모니터링", len(items), "📰")
+    if not items:
+        html += _empty("수집된 관련 기사가 없습니다.")
+    else:
+        order = {"중요": 0, "보통": 1, "참고": 2}
+        items.sort(key=lambda r: (order.get(_importance_news(r), 9), r.get("date", "")))
+        for r in items:
+            lvl    = _importance_news(r)
+            title  = r.get("title", "")
             kw     = r.get("keyword", "")
-            status = r.get("status", "접수")
-            date   = r.get("proposed_date", "")
-            link   = get_link(r, "url", "bill_link", "link")
-            sl     = [summ[i:i+46] for i in range(0, len(summ), 46)]
-            h      = (6 + 6.5 + 5 + len(sl)*4.8 + 3)*mm
-
-            def draw_a(cy2, h, n=name, s=sl, no=notice, k=kw, st=status, d=date):
-                ty = cy2 + h - 6*mm
-                tx = M+4*mm
-                tx += draw_tag(tx, ty, k,  "#1B3A6B")
-                tx += draw_tag(tx, ty, st, "#1B3A6B")
-                if no:
-                    draw_tag(tx, ty, no[:30], "#FFF9E6", "#856404")
-                ty -= 6.5*mm
-                cv.setFillColor(NAVY); cv.setFont("KR-B", 9)
-                cv.drawString(M+4*mm, ty, n[:52]+("…" if len(n)>52 else ""))
-                ty -= 5*mm
-                cv.setFillColor(colors.HexColor("#888")); cv.setFont("KR", 7)
-                cv.drawString(M+4*mm, ty, f"발의: {d}")
-                ty -= 5*mm
-                if s:
-                    bg_h = len(s)*4.8*mm + 2*mm
-                    cv.setFillColor(colors.HexColor("#F8F9FA"))
-                    cv.rect(M+3.5*mm, ty - bg_h + 5*mm, CW-7*mm, bg_h, fill=1, stroke=0)
-                    cv.setFillColor(colors.HexColor("#444")); cv.setFont("KR", 7.5)
-                    for line in s:
-                        cv.drawString(M+5*mm, ty, line); ty -= 4.8*mm
-
-            card(NAVY, h, link, draw_a)
-
-    # ❷ 일정
-    if sel_s:
-        sec_title("❷ 주요 일정", len(sel_s))
-        for r in sel_s:
-            title  = r.get("title", "")
-            date   = r.get("date", "")
-            etype  = r.get("event_type", "토론회")
             source = r.get("source", "")
-            link   = get_link(r, "url", "link")
-            h      = 19*mm
+            date   = r.get("date", "")[:10]
+            url    = fix_url(r.get("url", ""))
+            html += f'<div style="{_bar_style(lvl)}">'
+            html += '<div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin-bottom:6px;">'
+            html += _badge(lvl)
+            html += _tag(kw, "#EAF0FB", "#1B3A6B")
+            html += _tag(source, "#F8F9FA", "#555")
+            html += '</div>'
+            html += f'<div style="font-size:14px;margin-bottom:5px;">{_link(url, title)}</div>'
+            html += f'<div style="font-size:11px;color:#888;">{escape(date)}</div>'
+            html += '</div>'
+    html += _section_footer()
+    return html
 
-            def draw_s(cy2, h, t=title, d=date, et=etype, src=source):
-                ty = cy2 + h - 5.5*mm
-                tx = M+4*mm
-                tx += draw_tag(tx, ty, et,    "#28A745")
-                draw_tag(tx, ty, "예정", "#28A745")
-                ty -= 6.5*mm
-                cv.setFillColor(colors.HexColor("#222")); cv.setFont("KR-B", 9)
-                cv.drawString(M+4*mm, ty, t[:48]+("…" if len(t)>48 else ""))
-                cv.setFillColor(NAVY); cv.setFont("KR-B", 9)
-                cv.drawRightString(W-M-3*mm, ty, d)
-                ty -= 5*mm
-                cv.setFillColor(colors.HexColor("#888")); cv.setFont("KR", 7)
-                cv.drawString(M+4*mm, ty, src)
+_TEMPLATE = """\
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<style>
+*{{box-sizing:border-box;margin:0;padding:0}}
+body{{font-family:"Malgun Gothic","Apple SD Gothic Neo","Noto Sans KR",sans-serif;
+     background:#EEF2F9;color:#222;font-size:13px;line-height:1.65}}
+.wrap{{max-width:920px;margin:0 auto;padding-bottom:48px}}
+a{{color:#1B3A6B;text-decoration:none}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<div style="background:linear-gradient(135deg,#1B3A6B 0%,#2A5298 100%);
+            color:#fff;padding:30px 28px 22px;border-radius:0 0 10px 10px;margin-bottom:22px;">
+  <div style="font-size:11px;letter-spacing:2.5px;opacity:.7;margin-bottom:8px;">
+    응급의료정책팀 &nbsp;|&nbsp; 자동 모니터링 보고서
+  </div>
+  <div style="font-size:23px;font-weight:700;margin-bottom:6px;">{title}</div>
+  <div style="font-size:12px;opacity:.75;">기준일: {base_date} &nbsp;·&nbsp; 생성: {generated_at}</div>
+</div>
+<div style="display:flex;gap:12px;flex-wrap:wrap;padding:0 16px;margin-bottom:8px;">
+  {cards}
+</div>
+<div style="padding:0 16px;">
+  {sections}
+</div>
+<div style="text-align:center;font-size:11px;color:#bbb;margin-top:36px;padding:0 16px;">
+  본 보고서는 자동 수집 결과입니다. 중요 사항은 반드시 원문 링크로 확인하십시오.
+</div>
+</div>
+</body>
+</html>
+"""
 
-            card(GREEN, h, link, draw_s)
+def build_html(sel_a, sel_s, sel_n, today) -> str:
+    generated = datetime.now().strftime("%Y-%m-%d %H:%M")
+    title     = f"의료정책 모니터링 보고서 ({today})"
+    asm_dedup = _dedup_assembly(sel_a)
+    asm_urgent = sum(1 for r in asm_dedup if _importance_assembly(r) == "중요")
+    news_urg   = sum(1 for r in sel_n if _importance_news(r) == "중요")
+    total      = len(asm_dedup) + len(sel_s) + len(sel_n)
+    cards = "".join([
+        _card("계류 의안", len(asm_dedup), f"중요 {asm_urgent}건", "#1B3A6B"),
+        _card("예정 일정", len(sel_s),     "14일 이내",            "#2A5298"),
+        _card("언론 기사", len(sel_n),     f"중요 {news_urg}건",   "#1B3A6B"),
+        _card("전체 항목", total,           "중복 제거",            "#495057"),
+    ])
+    sections = (
+        _build_assembly_section(sel_a)
+        + _build_schedule_section(sel_s)
+        + _build_news_section(sel_n)
+    )
+    return _TEMPLATE.format(
+        title        = escape(title),
+        base_date    = escape(today),
+        generated_at = escape(generated),
+        cards        = cards,
+        sections     = sections,
+    )
 
-    # ❸ 뉴스
-    if sel_n:
-        sec_title("❸ 언론 모니터링", len(sel_n))
-        for r in sel_n:
-            title  = r.get("title", "")
-            source = r.get("source", "")
-            date   = r.get("date", "")
-            kw     = r.get("keyword", "응급의료")
-            kc     = KW_COLOR.get(kw, RED)
-            link   = get_link(r, "url", "link")
-            h      = 15*mm
+# ══════════════════════════════════════════════════════════════════════════════
+# PDF 생성 (pdfkit + wkhtmltopdf)
+# ══════════════════════════════════════════════════════════════════════════════
+def generate_pdf_bytes(sel_a, sel_s, sel_n, today) -> bytes:
+    import pdfkit
+    html_str = build_html(sel_a, sel_s, sel_n, today)
+    options = {
+        "encoding": "UTF-8",
+        "quiet": "",
+        "page-size": "A4",
+        "margin-top":    "10mm",
+        "margin-bottom": "10mm",
+        "margin-left":   "12mm",
+        "margin-right":  "12mm",
+        "enable-local-file-access": "",
+    }
+    # wkhtmltopdf 경로
+    wk_path = None
+    for p in ["/usr/bin/wkhtmltopdf", "/usr/local/bin/wkhtmltopdf"]:
+        if os.path.exists(p):
+            wk_path = p; break
 
-            def draw_n(cy2, h, t=title, s=source, d=date, k=kw, kc=kc):
-                ty = cy2 + h - 5.5*mm
-                cv.setFillColor(NAVY); cv.setFont("KR-B", 9)
-                cv.drawString(M+4*mm, ty, t[:50]+("…" if len(t)>50 else ""))
-                kw_w = len(k)*2.8*mm + 6*mm
-                cv.setFillColor(kc)
-                cv.roundRect(W-M-kw_w-2*mm, ty-2*mm, kw_w, 6*mm, 2*mm, fill=1, stroke=0)
-                cv.setFillColor(WHITE); cv.setFont("KR", 7)
-                cv.drawCentredString(W-M-kw_w/2-2*mm, ty+0.3*mm, k)
-                ty -= 5.5*mm
-                cv.setFillColor(colors.HexColor("#888")); cv.setFont("KR", 7)
-                cv.drawString(M+4*mm, ty, f"{s} | {d}")
+    with tempfile.NamedTemporaryFile(suffix=".pdf", delete=False) as f:
+        tmp_path = f.name
 
-            card(RED, h, link, draw_n)
+    try:
+        if wk_path:
+            config = pdfkit.configuration(wkhtmltopdf=wk_path)
+            pdfkit.from_string(html_str, tmp_path, configuration=config, options=options)
+        else:
+            pdfkit.from_string(html_str, tmp_path, options=options)
+        with open(tmp_path, "rb") as f:
+            return f.read()
+    finally:
+        if os.path.exists(tmp_path):
+            os.unlink(tmp_path)
 
-    _footer()
-    cv.save()
-    return buf.getvalue()
-
-
-# ── 데이터 로드 ────────────────────────────────────────────────────────────────
+# ══════════════════════════════════════════════════════════════════════════════
+# 데이터 로드
+# ══════════════════════════════════════════════════════════════════════════════
 st.set_page_config(page_title="NMC 응급의료 모니터링", layout="wide")
 
 def _load_data(pattern):
     current_dir = os.path.dirname(os.path.abspath(__file__))
     files = sorted(glob.glob(os.path.join(current_dir, pattern)))
-    if not files:
-        return []
+    if not files: return []
     try:
         with open(files[-1], encoding="utf-8") as f:
             return json.load(f)
@@ -298,8 +358,7 @@ if st.session_state.phase == "SELECT":
     sel_a, sel_s, sel_n = [], [], []
 
     st.subheader("❶ 의안 현황")
-    if not asm_raw:
-        st.info("의안 데이터가 없습니다.")
+    if not asm_raw: st.info("의안 데이터가 없습니다.")
     for i, r in enumerate(asm_raw):
         link = get_link(r, "url", "bill_link", "link")
         c1, c2 = st.columns([0.82, 0.18])
@@ -312,8 +371,7 @@ if st.session_state.phase == "SELECT":
 
     st.write("---")
     st.subheader("❷ 주요 일정")
-    if not sch_raw:
-        st.info("일정 데이터가 없습니다.")
+    if not sch_raw: st.info("일정 데이터가 없습니다.")
     for i, r in enumerate(sch_raw):
         link = get_link(r, "url", "link")
         c1, c2 = st.columns([0.82, 0.18])
@@ -326,8 +384,7 @@ if st.session_state.phase == "SELECT":
 
     st.write("---")
     st.subheader("❸ 언론 모니터링")
-    if not news_raw:
-        st.info("뉴스 데이터가 없습니다.")
+    if not news_raw: st.info("뉴스 데이터가 없습니다.")
     for i, r in enumerate(news_raw):
         link = get_link(r, "url", "link")
         c1, c2 = st.columns([0.82, 0.18])
@@ -360,9 +417,6 @@ else:
     st.sidebar.markdown("---")
     st.sidebar.markdown("### 📥 PDF 저장")
 
-    if st.sidebar.button("🔍 폰트 경로 확인", use_container_width=True):
-        st.sidebar.code(_debug_font_info())
-
     if st.sidebar.button("📄 PDF 생성하기", use_container_width=True):
         with st.spinner("PDF 생성 중..."):
             try:
@@ -372,8 +426,8 @@ else:
                     st.session_state.get("sel_n", []),
                     today,
                 )
-                st.session_state.pdf_bytes  = pdf_bytes
-                st.session_state.pdf_ready  = True
+                st.session_state.pdf_bytes = pdf_bytes
+                st.session_state.pdf_ready = True
             except Exception as e:
                 st.sidebar.error(f"PDF 생성 실패: {e}")
 
@@ -397,85 +451,9 @@ else:
         unsafe_allow_html=True,
     )
 
-    # 화면 렌더링
-    na = len(st.session_state.get("sel_a", []))
-    ns = len(st.session_state.get("sel_s", []))
-    nn = len(st.session_state.get("sel_n", []))
-
-    html = '<div style="background:#FBFBFB;padding:20px;font-family:sans-serif;">'
-    html += (
-        f'<div style="background:#1B3A6B;color:#fff;padding:20px 30px;'
-        f'display:flex;justify-content:space-between;align-items:flex-end;border-radius:10px;">'
-        f'<div><div style="font-size:10px;opacity:.8;">응급의료정책연구팀</div>'
-        f'<div style="font-size:22px;font-weight:800;">응급의료 동향 모니터링</div></div>'
-        f'<div style="text-align:right;"><div style="font-size:18px;font-weight:800;">{today}</div></div></div>'
-    )
-    html += '<div style="display:flex;gap:10px;padding:15px 0;">'
-    for icon, label, val, bg, fc in [
-        ("📋","계류 의안",na,"#EBF1F9","#1B3A6B"),
-        ("📅","예정 일정",ns,"#E8F5E9","#28A745"),
-        ("📰","언론 기사",nn,"#FDECEA","#DC3545"),
-        ("📊","전체",na+ns+nn,"#F3F4F6","#495057"),
-    ]:
-        html += (f'<div style="flex:1;background:{bg};border-radius:10px;padding:12px;text-align:center;">'
-                 f'<div style="font-size:18px;">{icon}</div>'
-                 f'<div style="font-size:11px;font-weight:700;">{label}</div>'
-                 f'<div style="font-size:24px;font-weight:800;color:{fc};">{val}</div></div>')
-    html += '</div>'
-
-    def sec_title(text, count):
-        return (f'<div style="font-size:16px;font-weight:800;color:#1B3A6B;'
-                f'display:flex;justify-content:space-between;align-items:center;margin:14px 0 8px;">'
-                f'{text}<span style="background:#1B3A6B;color:#fff;font-size:11px;'
-                f'padding:2px 12px;border-radius:12px;">총 {count}건</span></div>')
-
-    if st.session_state.get("sel_a"):
-        html += sec_title("❶ 의안 현황", na)
-        for r in st.session_state.sel_a:
-            link   = get_link(r, "url", "bill_link", "link")
-            name   = escape(r.get("bill_name",""))
-            summ   = escape(r.get("summary",""))
-            notice = escape(r.get("legislative_notice",""))
-            kw     = escape(r.get("keyword",""))
-            status = escape(r.get("status","접수"))
-            a_tag  = f'<a href="{link}" target="_blank" rel="noopener noreferrer" style="text-decoration:none;font-size:14px;font-weight:800;color:#1B3A6B;">{name} 🔗</a>'
-            html += (f'<div style="background:#fff;border:1px solid #E2E8F0;border-left:6px solid #1B3A6B;padding:15px;border-radius:12px;margin-bottom:10px;">'
-                     f'<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">{a_tag}'
-                     f'<span style="background:#1B3A6B;color:#fff;padding:2px 10px;border-radius:12px;font-size:10px;">{status}</span></div>'
-                     f'<div style="margin-bottom:6px;"><span style="background:#1B3A6B;color:#fff;padding:2px 8px;border-radius:4px;font-size:10px;font-weight:700;margin-right:4px;">{kw}</span>'
-                     + (f'<span style="background:#FFF9E6;border:1px solid #FFD966;color:#856404;padding:2px 8px;border-radius:4px;font-size:10px;font-weight:700;">{notice}</span>' if notice else '')
-                     + f'</div><div style="font-size:11px;color:#444;line-height:1.5;background:#F8F9FA;padding:8px;border-radius:4px;">{summ}</div></div>')
-
-    if st.session_state.get("sel_s"):
-        html += sec_title("❷ 주요 일정", ns)
-        for r in st.session_state.sel_s:
-            link   = get_link(r, "url", "link")
-            title  = escape(r.get("title",""))
-            date   = escape(r.get("date",""))
-            etype  = escape(r.get("event_type","토론회"))
-            source = escape(r.get("source",""))
-            a_tag  = f'<a href="{link}" target="_blank" rel="noopener noreferrer" style="text-decoration:none;font-size:13px;font-weight:800;color:#333;">{title} 🔗</a>'
-            html += (f'<div style="background:#fff;border:1px solid #E2E8F0;border-left:6px solid #28A745;padding:12px 15px;margin-bottom:8px;display:flex;justify-content:space-between;align-items:center;">'
-                     f'<div>{a_tag}<div style="margin-top:4px;"><span style="background:#E8F5E9;color:#1B5E20;padding:1px 6px;border-radius:4px;font-size:10px;font-weight:700;">{etype}</span>&nbsp;'
-                     f'<span style="background:#E8F5E9;color:#1B5E20;padding:1px 6px;border-radius:4px;font-size:10px;font-weight:700;">예정</span>'
-                     f'<div style="font-size:10px;color:#777;margin-top:2px;">{source}</div></div></div>'
-                     f'<div style="font-size:12px;font-weight:800;margin-left:12px;">{date}</div></div>')
-
-    if st.session_state.get("sel_n"):
-        KW_COLOR = {"중증응급":"#800000","중증외상":"#6F42C1","상급종합병원":"#A52A2A"}
-        html += sec_title("❸ 언론 모니터링", nn)
-        for r in st.session_state.sel_n:
-            link   = get_link(r, "url", "link")
-            title  = escape(r.get("title",""))
-            source = escape(r.get("source",""))
-            date   = escape(r.get("date",""))
-            kw     = r.get("keyword","응급의료")
-            c_hex  = KW_COLOR.get(kw, "#DC3545")
-            kw_esc = escape(kw)
-            a_tag  = f'<a href="{link}" target="_blank" rel="noopener noreferrer" style="text-decoration:none;font-size:13px;font-weight:800;color:#1B3A6B;">{title} 🔗</a>'
-            html += (f'<div style="background:#fff;border:1px solid #E2E8F0;border-left:6px solid #DC3545;padding:12px 15px;margin-bottom:8px;display:flex;justify-content:space-between;align-items:center;">'
-                     f'<div>{a_tag}<div style="font-size:10px;color:#777;margin-top:3px;">{source} | {date}</div></div>'
-                     f'<div style="background:{c_hex};color:#fff;padding:2px 10px;border-radius:12px;font-size:10px;font-weight:700;white-space:nowrap;margin-left:10px;">{kw_esc}</div></div>')
-
-    html += '</div>'
+    # 화면 렌더링 (HTML 그대로)
+    sel_a = st.session_state.get("sel_a", [])
+    sel_s = st.session_state.get("sel_s", [])
+    sel_n = st.session_state.get("sel_n", [])
+    html  = build_html(sel_a, sel_s, sel_n, today)
     st.markdown(html, unsafe_allow_html=True)
