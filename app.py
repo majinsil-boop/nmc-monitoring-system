@@ -22,40 +22,34 @@ def get_link(record: dict, *keys) -> str:
             return fix_url(v)
     return "#"
 
-# ── 폰트 경로 탐색 ─────────────────────────────────────────────────────────────
+# ── 폰트 탐색 ──────────────────────────────────────────────────────────────────
 def _find_font(bold=False):
-    base_dir = os.path.dirname(os.path.abspath(__file__))
+    base_dir  = os.path.dirname(os.path.abspath(__file__))
     fonts_dir = os.path.join(base_dir, "fonts")
-    fname = "NanumGothicBold.ttf" if bold else "NanumGothic.ttf"
-
-    candidates = [
+    fname     = "NanumGothicBold.ttf" if bold else "NanumGothic.ttf"
+    for p in [
         os.path.join(fonts_dir, fname),
         os.path.join(base_dir,  fname),
         f"/usr/share/fonts/truetype/nanum/{fname}",
-        f"/usr/share/fonts/truetype/nanum/NanumGothic.ttf",
-    ]
-    for p in candidates:
+        "/usr/share/fonts/truetype/nanum/NanumGothic.ttf",
+    ]:
         if os.path.exists(p):
             return p
     return None
 
-# ── 폰트 경로 확인용 ───────────────────────────────────────────────────────────
 def _debug_font_info():
-    base_dir = os.path.dirname(os.path.abspath(__file__))
+    base_dir  = os.path.dirname(os.path.abspath(__file__))
     fonts_dir = os.path.join(base_dir, "fonts")
-    reg  = _find_font(bold=False)
-    bold = _find_font(bold=True)
     flist = os.listdir(fonts_dir) if os.path.exists(fonts_dir) else "폴더 없음"
     return (
         f"app.py 위치: {base_dir}\n"
-        f"fonts/ 폴더: {fonts_dir}\n"
         f"fonts/ 존재: {os.path.exists(fonts_dir)}\n"
-        f"fonts/ 파일 목록: {flist}\n\n"
-        f"탐색된 폰트(Regular): {reg}\n"
-        f"탐색된 폰트(Bold):    {bold}"
+        f"fonts/ 파일: {flist}\n"
+        f"Regular: {_find_font(False)}\n"
+        f"Bold:    {_find_font(True)}"
     )
 
-# ── PDF 생성 (reportlab) ───────────────────────────────────────────────────────
+# ── PDF 생성 ───────────────────────────────────────────────────────────────────
 def generate_pdf_bytes(sel_a, sel_s, sel_n, today) -> bytes:
     from reportlab.pdfgen import canvas
     from reportlab.pdfbase import pdfmetrics
@@ -64,27 +58,23 @@ def generate_pdf_bytes(sel_a, sel_s, sel_n, today) -> bytes:
     from reportlab.lib.units import mm
     from reportlab.lib import colors
 
-    FONT_REG  = _find_font(bold=False)
-    FONT_BOLD = _find_font(bold=True) or FONT_REG
+    FONT_REG  = _find_font(False)
+    FONT_BOLD = _find_font(True) or FONT_REG
     if not FONT_REG:
-        raise FileNotFoundError(
-            "한글 폰트를 찾을 수 없습니다.\n"
-            "fonts/ 폴더에 NanumGothic.ttf, NanumGothicBold.ttf 를 넣어주세요."
-        )
+        raise FileNotFoundError("fonts/ 폴더에 NanumGothic.ttf, NanumGothicBold.ttf 를 넣어주세요.")
 
     pdfmetrics.registerFont(TTFont("KR",   FONT_REG))
     pdfmetrics.registerFont(TTFont("KR-B", FONT_BOLD))
 
     W, H = A4
-    M = 15*mm   # margin
-    CW = W - 2*M
+    M    = 14*mm
+    CW   = W - 2*M
 
     NAVY  = colors.HexColor("#1B3A6B")
     GREEN = colors.HexColor("#28A745")
     RED   = colors.HexColor("#DC3545")
     WHITE = colors.white
-    LGRAY = colors.HexColor("#F8F9FA")
-    EGRAY = colors.HexColor("#E2E8F0")
+    EGRAY = colors.HexColor("#D0D7E5")
     KW_COLOR = {
         "중증응급":    colors.HexColor("#800000"),
         "중증외상":    colors.HexColor("#6F42C1"),
@@ -94,233 +84,187 @@ def generate_pdf_bytes(sel_a, sel_s, sel_n, today) -> bytes:
     buf = io.BytesIO()
     cv  = canvas.Canvas(buf, pagesize=A4)
 
-    # ── 헤더 (그라데이션 효과: 두 사각형 겹치기) ──────────────────────
+    # 헤더
     cv.setFillColor(NAVY)
-    cv.rect(M, H-46*mm, CW, 30*mm, fill=1, stroke=0)
+    cv.rect(M, H-42*mm, CW, 26*mm, fill=1, stroke=0)
     cv.setFillColor(colors.HexColor("#2A5298"))
-    cv.rect(M + CW*0.5, H-46*mm, CW*0.5, 30*mm, fill=1, stroke=0)
-
+    cv.rect(M+CW*0.55, H-42*mm, CW*0.45, 26*mm, fill=1, stroke=0)
     cv.setFillColor(colors.HexColor("#8FA8C8"))
-    cv.setFont("KR", 7.5)
-    cv.drawString(M+5*mm, H-22*mm, "응급의료정책연구팀")
+    cv.setFont("KR", 7)
+    cv.drawString(M+4*mm, H-20*mm, "응급의료정책연구팀")
     cv.setFillColor(WHITE)
-    cv.setFont("KR-B", 16)
-    cv.drawString(M+5*mm, H-33*mm, "응급의료 동향 모니터링")
-    cv.setFont("KR-B", 14)
-    cv.drawRightString(W-M-4*mm, H-27*mm, today)
-    cv.setFont("KR", 8)
+    cv.setFont("KR-B", 15)
+    cv.drawString(M+4*mm, H-31*mm, "응급의료 동향 모니터링")
+    cv.setFont("KR-B", 13)
+    cv.drawRightString(W-M-4*mm, H-25*mm, today)
+    cv.setFont("KR", 7.5)
     cv.setFillColor(colors.HexColor("#8FA8C8"))
-    cv.drawRightString(W-M-4*mm, H-36*mm, "08:30 생성")
+    cv.drawRightString(W-M-4*mm, H-33*mm, "08:30 생성")
 
-    # ── 요약 카드 ────────────────────────────────────────────────────
-    card_data = [
+    # 요약 카드
+    card_items = [
         ("계류 의안", len(sel_a), "#EBF1F9", "#1B3A6B"),
         ("예정 일정", len(sel_s), "#E8F5E9", "#28A745"),
         ("언론 기사", len(sel_n), "#FDECEA", "#DC3545"),
         ("전체",      len(sel_a)+len(sel_s)+len(sel_n), "#F3F4F6", "#495057"),
     ]
-    cw4 = (CW - 9*mm) / 4
-    card_y = H - 67*mm
-    for i, (label, val, bg, fc) in enumerate(card_data):
+    cw4    = (CW - 9*mm) / 4
+    card_y = H - 60*mm
+    for i, (label, val, bg, fc) in enumerate(card_items):
         cx = M + i*(cw4+3*mm)
         cv.setFillColor(colors.HexColor(bg))
-        cv.roundRect(cx, card_y, cw4, 19*mm, 3*mm, fill=1, stroke=0)
-        # 상단 컬러 강조선
+        cv.roundRect(cx, card_y, cw4, 16*mm, 2*mm, fill=1, stroke=0)
         cv.setFillColor(colors.HexColor(fc))
-        cv.roundRect(cx, card_y+16*mm, cw4, 3*mm, 1*mm, fill=1, stroke=0)
-        cv.setFont("KR-B", 18)
+        cv.setFont("KR-B", 16)
         cv.drawCentredString(cx+cw4/2, card_y+8*mm, str(val))
-        cv.setFillColor(colors.HexColor("#555555"))
-        cv.setFont("KR", 7.5)
-        cv.drawCentredString(cx+cw4/2, card_y+3*mm, label)
-
-    y = H - 75*mm
-
-    def new_page():
-        nonlocal y
-        # 푸터
-        cv.setStrokeColor(colors.HexColor("#DDDDDD"))
-        cv.line(M, 18*mm, W-M, 18*mm)
-        cv.setFillColor(colors.HexColor("#AAAAAA"))
+        cv.setFillColor(colors.HexColor("#555"))
         cv.setFont("KR", 7)
-        cv.drawString(M, 13*mm, "본 보고서는 자동 수집·검토된 항목만 포함됩니다. 중요 사항은 반드시 원문을 확인하십시오.")
-        cv.drawRightString(W-M, 13*mm, "응급의료정책연구팀")
-        cv.showPage()
-        y = H - 15*mm
+        cv.drawCentredString(cx+cw4/2, card_y+3.5*mm, label)
 
-    def section_title(title, count):
-        nonlocal y
-        y -= 8*mm
-        if y < 35*mm:
-            new_page()
-        cv.setFillColor(NAVY)
-        cv.setFont("KR-B", 11)
-        cv.drawString(M, y, title)
-        bw = 22*mm
-        cv.setFillColor(NAVY)
-        cv.roundRect(W-M-bw, y-2*mm, bw, 7*mm, 2*mm, fill=1, stroke=0)
-        cv.setFillColor(WHITE)
-        cv.setFont("KR", 8)
-        cv.drawCentredString(W-M-bw/2, y+0.5*mm, f"총 {count}건")
-        y -= 8*mm
+    y = [H - 65*mm]
 
-    def draw_tag(x, ty, text, bg, fg="#ffffff"):
-        tw = len(text)*3.0*mm + 6*mm
+    def _footer():
+        cv.setStrokeColor(colors.HexColor("#DDDDDD"))
+        cv.line(M, 17*mm, W-M, 17*mm)
+        cv.setFillColor(colors.HexColor("#AAAAAA"))
+        cv.setFont("KR", 6.5)
+        cv.drawString(M, 12*mm, "본 보고서는 자동 수집·검토된 항목만 포함됩니다. 중요 사항은 반드시 원문을 확인하십시오.")
+        cv.drawRightString(W-M, 12*mm, "응급의료정책연구팀")
+
+    def chk(need):
+        if y[0] - need < 22*mm:
+            _footer()
+            cv.showPage()
+            y[0] = H - 15*mm
+
+    def sec_title(title, count):
+        chk(18*mm)
+        y[0] -= 7*mm
+        cv.setFillColor(NAVY); cv.setFont("KR-B", 10.5)
+        cv.drawString(M, y[0], title)
+        bw = 20*mm
+        cv.setFillColor(NAVY)
+        cv.roundRect(W-M-bw, y[0]-1.5*mm, bw, 6*mm, 2*mm, fill=1, stroke=0)
+        cv.setFillColor(WHITE); cv.setFont("KR", 7.5)
+        cv.drawCentredString(W-M-bw/2, y[0]+0.5*mm, f"총 {count}건")
+        y[0] -= 7*mm
+
+    def draw_tag(x, ty, text, bg, fg="#fff"):
+        tw = len(text)*2.8*mm + 5*mm
         cv.setFillColor(colors.HexColor(bg))
-        cv.roundRect(x, ty-2*mm, tw, 6*mm, 2*mm, fill=1, stroke=0)
+        cv.roundRect(x, ty-1.8*mm, tw, 5.5*mm, 1.5*mm, fill=1, stroke=0)
         cv.setFillColor(colors.HexColor(fg))
-        cv.setFont("KR", 7.5)
-        cv.drawCentredString(x+tw/2, ty+0.3*mm, text)
-        return tw + 2*mm
+        cv.setFont("KR", 7)
+        cv.drawCentredString(x+tw/2, ty+0.2*mm, text)
+        return tw + 1.5*mm
 
-    def card_box(bcolor, height):
-        nonlocal y
-        if y - height < 25*mm:
-            new_page()
-        cy2 = y - height
+    def card(bcolor, h, link, draw_fn):
+        chk(h)
+        cy2 = y[0] - h
         cv.setFillColor(WHITE)
-        cv.rect(M, cy2, CW, height, fill=1, stroke=0)
+        cv.rect(M, cy2, CW, h, fill=1, stroke=0)
         cv.setFillColor(bcolor)
-        cv.rect(M, cy2, 3*mm, height, fill=1, stroke=0)
-        cv.setStrokeColor(colors.HexColor("#D0D7E5"))
-        cv.setLineWidth(0.5)
-        cv.rect(M, cy2, CW, height, fill=0, stroke=1)
-        return cy2
+        cv.rect(M, cy2, 3*mm, h, fill=1, stroke=0)
+        cv.setStrokeColor(EGRAY); cv.setLineWidth(0.4)
+        cv.rect(M, cy2, CW, h, fill=0, stroke=1)
+        if link and link != "#":
+            cv.linkURL(link, (M, cy2, M+CW, cy2+h))
+        draw_fn(cy2, h)
+        y[0] -= h + 2.5*mm
 
-    def add_link(x, y2, w, h2, url):
-        """클릭 가능한 링크 영역 추가"""
-        if url and url != "#":
-            from reportlab.lib.colors import HexColor
-            cv.linkURL(url, (x, y2, x+w, y2+h2), relative=0)
-
-    # ── ❶ 의안 ──────────────────────────────────────────────────────
+    # ❶ 의안
     if sel_a:
-        section_title("❶ 의안 현황", len(sel_a))
+        sec_title("❶ 의안 현황", len(sel_a))
         for r in sel_a:
             name   = r.get("bill_name", "")
-            summ   = r.get("summary", "")
+            summ   = r.get("summary", "")[:140]
             notice = r.get("legislative_notice", "")
             kw     = r.get("keyword", "")
             status = r.get("status", "접수")
             date   = r.get("proposed_date", "")
             link   = get_link(r, "url", "bill_link", "link")
+            sl     = [summ[i:i+46] for i in range(0, len(summ), 46)]
+            h      = (6 + 6.5 + 5 + len(sl)*4.8 + 3)*mm
 
-            summ_lines = [summ[i:i+50] for i in range(0, min(len(summ), 150), 50)]
-            h = (7 + 7 + 6 + len(summ_lines)*5 + 4)*mm
+            def draw_a(cy2, h, n=name, s=sl, no=notice, k=kw, st=status, d=date):
+                ty = cy2 + h - 6*mm
+                tx = M+4*mm
+                tx += draw_tag(tx, ty, k,  "#1B3A6B")
+                tx += draw_tag(tx, ty, st, "#1B3A6B")
+                if no:
+                    draw_tag(tx, ty, no[:30], "#FFF9E6", "#856404")
+                ty -= 6.5*mm
+                cv.setFillColor(NAVY); cv.setFont("KR-B", 9)
+                cv.drawString(M+4*mm, ty, n[:52]+("…" if len(n)>52 else ""))
+                ty -= 5*mm
+                cv.setFillColor(colors.HexColor("#888")); cv.setFont("KR", 7)
+                cv.drawString(M+4*mm, ty, f"발의: {d}")
+                ty -= 5*mm
+                if s:
+                    bg_h = len(s)*4.8*mm + 2*mm
+                    cv.setFillColor(colors.HexColor("#F8F9FA"))
+                    cv.rect(M+3.5*mm, ty - bg_h + 5*mm, CW-7*mm, bg_h, fill=1, stroke=0)
+                    cv.setFillColor(colors.HexColor("#444")); cv.setFont("KR", 7.5)
+                    for line in s:
+                        cv.drawString(M+5*mm, ty, line); ty -= 4.8*mm
 
-            cy2 = card_box(NAVY, h)
-            ty  = cy2 + h - 7*mm
+            card(NAVY, h, link, draw_a)
 
-            # 태그
-            tx = M+5*mm
-            tx += draw_tag(tx, ty, kw, "#1B3A6B")
-            tx += draw_tag(tx, ty, status, "#1B3A6B")
-            if notice:
-                draw_tag(tx, ty, notice[:30], "#FFF9E6", "#856404")
-            ty -= 7*mm
-
-            # 법안명 (링크)
-            cv.setFillColor(NAVY)
-            cv.setFont("KR-B", 9.5)
-            cv.drawString(M+5*mm, ty, name[:52]+("…" if len(name)>52 else ""))
-            add_link(M, cy2, CW, h, link)
-            ty -= 6*mm
-
-            # 발의일
-            cv.setFillColor(colors.HexColor("#888888"))
-            cv.setFont("KR", 7.5)
-            cv.drawString(M+5*mm, ty, f"발의: {date}")
-            ty -= 6*mm
-
-            # 요약 (배경)
-            if summ_lines:
-                bg_h = len(summ_lines)*5*mm + 3*mm
-                cv.setFillColor(colors.HexColor("#F8F9FA"))
-                cv.rect(M+4*mm, ty-bg_h+4*mm, CW-8*mm, bg_h, fill=1, stroke=0)
-                cv.setFillColor(colors.HexColor("#444444"))
-                cv.setFont("KR", 8)
-                for line in summ_lines:
-                    cv.drawString(M+6*mm, ty, line)
-                    ty -= 5*mm
-
-            y -= h + 3*mm
-
-    # ── ❷ 일정 ──────────────────────────────────────────────────────
+    # ❷ 일정
     if sel_s:
-        section_title("❷ 주요 일정", len(sel_s))
+        sec_title("❷ 주요 일정", len(sel_s))
         for r in sel_s:
             title  = r.get("title", "")
             date   = r.get("date", "")
             etype  = r.get("event_type", "토론회")
             source = r.get("source", "")
             link   = get_link(r, "url", "link")
-            h = 21*mm
+            h      = 19*mm
 
-            cy2 = card_box(GREEN, h)
-            ty  = cy2 + h - 6*mm
+            def draw_s(cy2, h, t=title, d=date, et=etype, src=source):
+                ty = cy2 + h - 5.5*mm
+                tx = M+4*mm
+                tx += draw_tag(tx, ty, et,    "#28A745")
+                draw_tag(tx, ty, "예정", "#28A745")
+                ty -= 6.5*mm
+                cv.setFillColor(colors.HexColor("#222")); cv.setFont("KR-B", 9)
+                cv.drawString(M+4*mm, ty, t[:48]+("…" if len(t)>48 else ""))
+                cv.setFillColor(NAVY); cv.setFont("KR-B", 9)
+                cv.drawRightString(W-M-3*mm, ty, d)
+                ty -= 5*mm
+                cv.setFillColor(colors.HexColor("#888")); cv.setFont("KR", 7)
+                cv.drawString(M+4*mm, ty, src)
 
-            tx = M+5*mm
-            tx += draw_tag(tx, ty, etype, "#28A745")
-            draw_tag(tx, ty, "예정", "#28A745")
-            ty -= 7*mm
+            card(GREEN, h, link, draw_s)
 
-            cv.setFillColor(colors.HexColor("#222222"))
-            cv.setFont("KR-B", 9.5)
-            cv.drawString(M+5*mm, ty, title[:48]+("…" if len(title)>48 else ""))
-            cv.setFillColor(NAVY)
-            cv.setFont("KR-B", 10)
-            cv.drawRightString(W-M-4*mm, ty, date)
-            add_link(M, cy2, CW, h, link)
-            ty -= 5*mm
-
-            cv.setFillColor(colors.HexColor("#888888"))
-            cv.setFont("KR", 7.5)
-            cv.drawString(M+5*mm, ty, source)
-            y -= h + 3*mm
-
-    # ── ❸ 뉴스 ──────────────────────────────────────────────────────
+    # ❸ 뉴스
     if sel_n:
-        section_title("❸ 언론 모니터링", len(sel_n))
+        sec_title("❸ 언론 모니터링", len(sel_n))
         for r in sel_n:
             title  = r.get("title", "")
             source = r.get("source", "")
             date   = r.get("date", "")
             kw     = r.get("keyword", "응급의료")
-            kw_col = KW_COLOR.get(kw, RED)
+            kc     = KW_COLOR.get(kw, RED)
             link   = get_link(r, "url", "link")
-            h = 17*mm
+            h      = 15*mm
 
-            cy2 = card_box(RED, h)
-            ty  = cy2 + h - 6*mm
+            def draw_n(cy2, h, t=title, s=source, d=date, k=kw, kc=kc):
+                ty = cy2 + h - 5.5*mm
+                cv.setFillColor(NAVY); cv.setFont("KR-B", 9)
+                cv.drawString(M+4*mm, ty, t[:50]+("…" if len(t)>50 else ""))
+                kw_w = len(k)*2.8*mm + 6*mm
+                cv.setFillColor(kc)
+                cv.roundRect(W-M-kw_w-2*mm, ty-2*mm, kw_w, 6*mm, 2*mm, fill=1, stroke=0)
+                cv.setFillColor(WHITE); cv.setFont("KR", 7)
+                cv.drawCentredString(W-M-kw_w/2-2*mm, ty+0.3*mm, k)
+                ty -= 5.5*mm
+                cv.setFillColor(colors.HexColor("#888")); cv.setFont("KR", 7)
+                cv.drawString(M+4*mm, ty, f"{s} | {d}")
 
-            # 제목
-            cv.setFillColor(NAVY)
-            cv.setFont("KR-B", 9.5)
-            cv.drawString(M+5*mm, ty, title[:48]+("…" if len(title)>48 else ""))
-            add_link(M, cy2, CW, h, link)
+            card(RED, h, link, draw_n)
 
-            # 키워드 배지
-            kw_w = len(kw)*3.0*mm + 6*mm
-            cv.setFillColor(kw_col)
-            cv.roundRect(W-M-kw_w-3*mm, ty-2*mm, kw_w, 6*mm, 2*mm, fill=1, stroke=0)
-            cv.setFillColor(WHITE)
-            cv.setFont("KR", 7.5)
-            cv.drawCentredString(W-M-kw_w/2-3*mm, ty+0.3*mm, kw)
-            ty -= 6*mm
-
-            cv.setFillColor(colors.HexColor("#888888"))
-            cv.setFont("KR", 7.5)
-            cv.drawString(M+5*mm, ty, f"{source} | {date}")
-            y -= h + 3*mm
-
-    # ── 푸터 ────────────────────────────────────────────────────────
-    cv.setStrokeColor(colors.HexColor("#DDDDDD"))
-    cv.line(M, 18*mm, W-M, 18*mm)
-    cv.setFillColor(colors.HexColor("#AAAAAA"))
-    cv.setFont("KR", 7)
-    cv.drawString(M, 13*mm, "본 보고서는 자동 수집·검토된 항목만 포함됩니다. 중요 사항은 반드시 원문을 확인하십시오.")
-    cv.drawRightString(W-M, 13*mm, "응급의료정책연구팀")
-
+    _footer()
     cv.save()
     return buf.getvalue()
 
@@ -358,11 +302,11 @@ if st.session_state.phase == "SELECT":
         st.info("의안 데이터가 없습니다.")
     for i, r in enumerate(asm_raw):
         link = get_link(r, "url", "bill_link", "link")
-        col_chk, col_link = st.columns([0.82, 0.18])
-        with col_chk:
-            if st.checkbox(f"[{r.get('status','접수')}] {r.get('bill_name','')}", key=f"check_a_{i}"):
+        c1, c2 = st.columns([0.82, 0.18])
+        with c1:
+            if st.checkbox(f"[{r.get('status','접수')}] {r.get('bill_name','')}", key=f"a{i}"):
                 sel_a.append(r)
-        with col_link:
+        with c2:
             if link != "#":
                 st.markdown(f'<a href="{link}" target="_blank" style="font-size:13px;color:#1B3A6B;text-decoration:none;">🔗 원문보기</a>', unsafe_allow_html=True)
 
@@ -372,11 +316,11 @@ if st.session_state.phase == "SELECT":
         st.info("일정 데이터가 없습니다.")
     for i, r in enumerate(sch_raw):
         link = get_link(r, "url", "link")
-        col_chk, col_link = st.columns([0.82, 0.18])
-        with col_chk:
-            if st.checkbox(f"📅 [{r.get('date','')}] {r.get('title','')}", key=f"check_s_{i}"):
+        c1, c2 = st.columns([0.82, 0.18])
+        with c1:
+            if st.checkbox(f"📅 [{r.get('date','')}] {r.get('title','')}", key=f"s{i}"):
                 sel_s.append(r)
-        with col_link:
+        with c2:
             if link != "#":
                 st.markdown(f'<a href="{link}" target="_blank" style="font-size:13px;color:#1B3A6B;text-decoration:none;">🔗 원문보기</a>', unsafe_allow_html=True)
 
@@ -386,11 +330,11 @@ if st.session_state.phase == "SELECT":
         st.info("뉴스 데이터가 없습니다.")
     for i, r in enumerate(news_raw):
         link = get_link(r, "url", "link")
-        col_chk, col_link = st.columns([0.82, 0.18])
-        with col_chk:
-            if st.checkbox(f"📰 [{r.get('source','')}] {r.get('title','')}", key=f"check_n_{i}"):
+        c1, c2 = st.columns([0.82, 0.18])
+        with c1:
+            if st.checkbox(f"📰 [{r.get('source','')}] {r.get('title','')}", key=f"n{i}"):
                 sel_n.append(r)
-        with col_link:
+        with c2:
             if link != "#":
                 st.markdown(f'<a href="{link}" target="_blank" style="font-size:13px;color:#1B3A6B;text-decoration:none;">🔗 기사보기</a>', unsafe_allow_html=True)
 
@@ -428,17 +372,16 @@ else:
                     st.session_state.get("sel_n", []),
                     today,
                 )
-                st.session_state.pdf_bytes = pdf_bytes
-                st.session_state.pdf_ready = True
+                st.session_state.pdf_bytes  = pdf_bytes
+                st.session_state.pdf_ready  = True
             except Exception as e:
                 st.sidebar.error(f"PDF 생성 실패: {e}")
 
     if st.session_state.get("pdf_ready"):
-        filename = f"응급의료_모니터링_{today.replace('-','')}.pdf"
         st.sidebar.download_button(
             label="⬇️ PDF 다운로드",
             data=st.session_state.pdf_bytes,
-            file_name=filename,
+            file_name=f"응급의료_모니터링_{today.replace('-','')}.pdf",
             mime="application/pdf",
             use_container_width=True,
         )
@@ -454,7 +397,7 @@ else:
         unsafe_allow_html=True,
     )
 
-    # ── 화면 렌더링 ────────────────────────────────────────────────────────────
+    # 화면 렌더링
     na = len(st.session_state.get("sel_a", []))
     ns = len(st.session_state.get("sel_s", []))
     nn = len(st.session_state.get("sel_n", []))
@@ -465,8 +408,7 @@ else:
         f'display:flex;justify-content:space-between;align-items:flex-end;border-radius:10px;">'
         f'<div><div style="font-size:10px;opacity:.8;">응급의료정책연구팀</div>'
         f'<div style="font-size:22px;font-weight:800;">응급의료 동향 모니터링</div></div>'
-        f'<div style="text-align:right;"><div style="font-size:18px;font-weight:800;">{today}</div></div>'
-        f'</div>'
+        f'<div style="text-align:right;"><div style="font-size:18px;font-weight:800;">{today}</div></div></div>'
     )
     html += '<div style="display:flex;gap:10px;padding:15px 0;">'
     for icon, label, val, bg, fc in [
