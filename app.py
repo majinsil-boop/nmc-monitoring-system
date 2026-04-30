@@ -4,7 +4,6 @@ import json
 import os
 import re
 import subprocess
-import tempfile
 from datetime import datetime, timedelta
 from html import escape
 
@@ -31,21 +30,10 @@ def get_link(record: dict, *keys) -> str:
     return "#"
 
 # ══════════════════════════════════════════════════════════════════════════════
-# gerate_report 의 HTML 빌더 (그대로 가져옴)
+# 중요도 판단
 # ══════════════════════════════════════════════════════════════════════════════
-_URGENT_NEWS_KW = {"응급의료", "응급실", "닥터헬기", "중증외상", "구급", "응급실 뺑뺑이"}
-_NORMAL_NEWS_KW = {"필수의료", "공공보건의료법", "구조", "외상"}
-
-_BADGE_STYLE = {
-    "중요": "background:#DC3545;color:#fff;",
-    "보통": "background:#E07B00;color:#fff;",
-    "참고": "background:#6C757D;color:#fff;",
-}
-_BAR_COLOR = {
-    "중요": "#DC3545",
-    "보통": "#E07B00",
-    "참고": "#ADB5BD",
-}
+_URGENT_NEWS_KW = {"응급의료", "응급실", "닥터헬기", "중증외상", "구급", "응급실 뺑뺑이", "중증응급"}
+_NORMAL_NEWS_KW = {"필수의료", "공공보건의료법", "구조", "외상", "상급종합병원"}
 
 def _is_notice_active(notice: str) -> bool:
     if not notice: return False
@@ -53,26 +41,16 @@ def _is_notice_active(notice: str) -> bool:
     if not m: return True
     try:
         end_date = datetime.strptime(m.group(1), "%Y-%m-%d")
-        today = datetime.now().replace(hour=0, minute=0, second=0, microsecond=0)
-        return end_date >= today
-    except ValueError:
-        return True
+        return end_date >= datetime.now().replace(hour=0, minute=0, second=0, microsecond=0)
+    except: return True
 
-def _importance_assembly(item: dict) -> str:
-    if item.get("legislative_notice") and _is_notice_active(item["legislative_notice"]):
-        return "중요"
-    status = item.get("status", "")
-    if any(s in status for s in ("위원회심사", "본회의", "공포")):
-        return "중요"
+def _importance_assembly(item):
+    if item.get("legislative_notice") and _is_notice_active(item["legislative_notice"]): return "중요"
+    if any(s in item.get("status","") for s in ("위원회심사","본회의","공포")): return "중요"
     return "보통"
 
-def _importance_schedule(item: dict) -> str:
-    if item.get("is_upcoming"):
-        return "중요" if item.get("topic_keyword") else "보통"
-    return "참고"
-
-def _importance_news(item: dict) -> str:
-    kw = item.get("keyword", "")
+def _importance_news(item):
+    kw = item.get("keyword","")
     if kw in _URGENT_NEWS_KW: return "중요"
     if kw in _NORMAL_NEWS_KW: return "보통"
     return "참고"
@@ -80,233 +58,231 @@ def _importance_news(item: dict) -> str:
 def _dedup_assembly(items):
     seen, out = set(), []
     for r in items:
-        key = r.get("bill_no") or r.get("bill_name", "")
+        key = r.get("bill_no") or r.get("bill_name","")
         if key and key not in seen:
             seen.add(key); out.append(r)
     return out
 
-def _badge(level: str) -> str:
-    style = _BADGE_STYLE.get(level, "background:#6C757D;color:#fff;")
-    return (f'<span style="{style}padding:2px 9px;border-radius:3px;'
-            f'font-size:11px;font-weight:700;letter-spacing:.5px;white-space:nowrap;">'
-            f'{escape(level)}</span>')
+# ══════════════════════════════════════════════════════════════════════════════
+# HTML 빌더 (보고서_20260430.html 디자인 그대로)
+# ══════════════════════════════════════════════════════════════════════════════
+# 키워드별 보더 색상
+_KW_BORDER = {
+    "중증응급":    "#f4a8a8",
+    "중증외상":    "#f0b8b0",
+    "응급의료":    "#f0aaaa",
+    "응급실":      "#f4a8a8",
+    "응급실 뺑뺑이": "#f4a8a8",
+    "닥터헬기":    "#f0b8b0",
+    "상급종합병원": "#ecc0b8",
+    "필수의료":    "#f0b8b0",
+}
+_KW_BADGE_BG = {
+    "중증응급":    "#8B0000",
+    "중증외상":    "#6C3483",
+    "응급의료":    "#1B3A6B",
+    "응급실":      "#C0392B",
+    "응급실 뺑뺑이": "#C0392B",
+    "닥터헬기":    "#1B3A6B",
+    "상급종합병원": "#A52A2A",
+    "필수의료":    "#1B3A6B",
+}
 
-def _tag(text: str, bg: str, fg: str) -> str:
-    return (f'<span style="background:{bg};color:{fg};padding:2px 8px;'
-            f'border-radius:3px;font-size:11px;white-space:nowrap;">'
-            f'{escape(text)}</span>')
+def _importance_badge_color(lvl):
+    return {"중요":"#DC3545","보통":"#E07B00","참고":"#6C757D"}.get(lvl,"#6C757D")
 
-def _bar_style(level: str) -> str:
-    color = _BAR_COLOR.get(level, "#ADB5BD")
-    return (f'border-left:4px solid {color};padding:7px 10px;margin-bottom:6px;'
-            f'background:#fff;border-radius:0 3px 3px 0;'
-            f'box-shadow:0 1px 2px rgba(0,0,0,.06);'
-            f'-webkit-print-color-adjust:exact;print-color-adjust:exact;')
+def build_html(sel_a, sel_s, sel_n, today) -> str:
+    generated = datetime.now().strftime("%H:%M")
+    today_fmt  = today.replace("-",".")
 
-def _link(url: str, text: str) -> str:
-    t = escape(text or "")
-    if url:
-        return (f'<a href="{escape(url)}" target="_blank" '
-                f'style="color:#1B3A6B;text-decoration:none;font-weight:600;">{t}</a>')
-    return f'<span style="font-weight:600;">{t}</span>'
+    na = len(_dedup_assembly(sel_a))
+    ns = len(sel_s)
+    nn = len(sel_n)
+    total = na + ns + nn
 
-def _section_header(title: str, count: int, icon: str = "") -> str:
-    return (
-        f'<div style="background:#1B3A6B;color:#fff;padding:10px 18px;'
-        f'border-radius:5px 5px 0 0;margin-top:28px;'
-        f'display:flex;align-items:center;justify-content:space-between;">'
-        f'<span style="font-size:15px;font-weight:700;">{icon}&nbsp;{escape(title)}</span>'
-        f'<span style="background:rgba(255,255,255,.2);padding:2px 12px;'
-        f'border-radius:20px;font-size:12px;">총 {count}건</span>'
-        f'</div>'
-        f'<div style="border:1px solid #D0D7E5;border-top:none;'
-        f'border-radius:0 0 5px 5px;padding:14px 14px 6px;">'
-    )
+    # ── 카드 섹션 ──────────────────────────────────────────────────────────
+    cards_html = f"""
+    <div style="flex:1;background:#e8edf8;border-radius:10px;padding:10px 14px;border-top:3px solid #1B3A6B;box-shadow:0 1px 5px rgba(0,0,0,.07);text-align:center">
+      <div style="font-size:15px;margin-bottom:3px">📋</div>
+      <div style="font-size:24px;font-weight:900;color:#0d2a5e;line-height:1.1">{na}</div>
+      <div style="font-size:9.5px;color:#0d2a5e;opacity:.7;margin-top:3px;font-weight:600">계류 의안</div>
+    </div>
+    <div style="flex:1;background:#e8f5ee;border-radius:10px;padding:10px 14px;border-top:3px solid #1a6e35;box-shadow:0 1px 5px rgba(0,0,0,.07);text-align:center">
+      <div style="font-size:15px;margin-bottom:3px">📅</div>
+      <div style="font-size:24px;font-weight:900;color:#0d4a22;line-height:1.1">{ns}</div>
+      <div style="font-size:9.5px;color:#0d4a22;opacity:.7;margin-top:3px;font-weight:600">예정 일정</div>
+    </div>
+    <div style="flex:1;background:#fdeaea;border-radius:10px;padding:10px 14px;border-top:3px solid #C0392B;box-shadow:0 1px 5px rgba(0,0,0,.07);text-align:center">
+      <div style="font-size:15px;margin-bottom:3px">📰</div>
+      <div style="font-size:24px;font-weight:900;color:#6b0000;line-height:1.1">{nn}</div>
+      <div style="font-size:9.5px;color:#6b0000;opacity:.7;margin-top:3px;font-weight:600">언론 기사</div>
+    </div>
+    <div style="flex:1;background:#f0ede8;border-radius:10px;padding:10px 14px;border-top:3px solid #888;box-shadow:0 1px 5px rgba(0,0,0,.07);text-align:center">
+      <div style="font-size:15px;margin-bottom:3px">📊</div>
+      <div style="font-size:24px;font-weight:900;color:#2a2a2a;line-height:1.1">{total}</div>
+      <div style="font-size:9.5px;color:#2a2a2a;opacity:.7;margin-top:3px;font-weight:600">전체</div>
+    </div>"""
 
-def _section_footer() -> str:
-    return "</div>"
+    def sec_header(num, title, count):
+        return f"""
+    <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px">
+      <span style="display:inline-flex;align-items:center;justify-content:center;width:24px;height:24px;background:#0d2a5e;color:#fff;border-radius:50%;font-size:13px;font-weight:900;flex-shrink:0;line-height:1">{num}</span>
+      <span style="font-size:13px;font-weight:800;color:#0d2a5e;flex:1;letter-spacing:.1px">{title}</span>
+      <span style="background:#0d2a5e;color:#fff;padding:2px 11px;border-radius:20px;font-size:9px;font-weight:700">총 {count}건</span>
+    </div>"""
 
-def _empty(msg: str = "해당 기간 내 수집된 항목이 없습니다.") -> str:
-    return f'<p style="color:#999;font-size:13px;padding:8px 0;margin:0;">{escape(msg)}</p>'
-
-def _card(label: str, value: int, sub: str = "", color: str = "#1B3A6B") -> str:
-    return (
-        f'<div style="flex:1;min-width:60px;background:#fff;border-radius:5px;'
-        f'border-top:3px solid {color};padding:8px 10px;'
-        f'box-shadow:0 1px 3px rgba(0,0,0,.1);text-align:center;'
-        f'-webkit-print-color-adjust:exact;print-color-adjust:exact;">'
-        f'<div style="font-size:20px;font-weight:700;color:{color};">{value}</div>'
-        f'<div style="font-size:10px;color:#444;margin-top:2px;">{escape(label)}</div>'
-        + (f'<div style="font-size:9px;color:#999;margin-top:1px;">{escape(sub)}</div>' if sub else "")
-        + '</div>'
-    )
-
-def _assembly_still_valid(item: dict) -> bool:
-    if _is_notice_active(item.get("legislative_notice", "")): return True
-    cutoff = (datetime.now() - timedelta(days=7)).strftime("%Y-%m-%d")
-    if (item.get("proposed_date") or "") >= cutoff: return True
-    if (item.get("status_changed_date") or "") >= cutoff: return True
-    return False
-
-def _build_assembly_section(items) -> str:
-    items = [r for r in items if _assembly_still_valid(r)]
-    items = _dedup_assembly(items)
-    html  = _section_header("의안 현황", len(items), "📋")
-    if not items:
-        html += _empty()
+    # ── 의안 섹션 ──────────────────────────────────────────────────────────
+    asm_items = _dedup_assembly(sel_a)
+    asm_html  = f'<div style="margin-bottom:16px;padding:0 8px">{sec_header(1,"의안 현황",len(asm_items))}'
+    if not asm_items:
+        asm_html += '<p style="padding:14px;text-align:center;color:#aaa;font-size:11px">해당 기간 내 수집된 의안이 없습니다.</p>'
     else:
-        order = {"중요": 0, "보통": 1, "참고": 2}
-        items.sort(key=lambda r: (
-            order.get(_importance_assembly(r), 9),
-            "0" if r.get("legislative_notice") else "1",
-            r.get("proposed_date", "") or "0000-00-00",
-        ))
-        for r in items:
-            lvl     = _importance_assembly(r)
-            name    = r.get("bill_name", "").replace(" (새창 열림)", "").strip()
-            date    = r.get("proposed_date", "") or r.get("vote_date", "")
-            status  = r.get("status", "")
-            notice  = r.get("legislative_notice", "")
-            summary = r.get("summary", "")
-            kw      = r.get("keyword", "")
-            url     = fix_url(r.get("url", ""))
-            html += f'<div style="{_bar_style(lvl)}">'
-            html += '<div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin-bottom:6px;">'
-            html += _badge(lvl)
-            html += _tag(kw, "#EAF0FB", "#1B3A6B")
-            html += _tag(status, "#F1F3F5", "#555")
+        for r in asm_items:
+            name   = r.get("bill_name","").replace(" (새창 열림)","").strip()
+            summ   = r.get("summary","")
+            notice = r.get("legislative_notice","")
+            kw     = r.get("keyword","")
+            status = r.get("status","")
+            date   = r.get("proposed_date","")
+            url    = fix_url(r.get("url",""))
+            lvl    = _importance_assembly(r)
+            bc     = _importance_badge_color(lvl)
+
+            tags = ""
+            if kw:   tags += f'<span style="background:#dce4f5;color:#1B3A6B;padding:1px 7px;border-radius:4px;font-size:9px;font-weight:600">{escape(kw)}</span> '
+            if status: tags += f'<span style="background:#f0f0f0;color:#555;padding:1px 7px;border-radius:4px;font-size:9px;font-weight:600">{escape(status)}</span> '
             if notice and _is_notice_active(notice):
-                html += _tag(notice, "#FFF3CD", "#856404")
-            html += '</div>'
-            html += f'<div style="font-size:14px;margin-bottom:5px;">{_link(url, name)}</div>'
-            if summary:
-                html += (f'<div style="font-size:12px;color:#555;line-height:1.5;'
-                         f'margin-bottom:5px;padding:6px 8px;background:#F8F9FA;border-radius:3px;">'
-                         f'{escape(summary[:200])}{"…" if len(summary) > 200 else ""}</div>')
-            html += f'<div style="font-size:11px;color:#888;">발의: {escape(date)}</div>'
-            html += '</div>'
-    html += _section_footer()
-    return html
+                tags += f'<span style="background:#fff3cd;color:#856404;padding:1px 7px;border-radius:4px;font-size:9px;font-weight:600">{escape(notice)}</span>'
 
-def _build_schedule_section(items) -> str:
-    html = _section_header("주요 일정", len(items), "📅")
-    if not items:
-        html += _empty("앞으로 14일 내 등록된 회의·공청회·토론회가 없습니다.")
+            summ_html = ""
+            if summ:
+                summ_html = f'<div style="font-size:10px;color:#555;line-height:1.5;margin-top:5px;padding:5px 8px;background:#f8f9fa;border-radius:4px">{escape(summ[:200])}{"…" if len(summ)>200 else ""}</div>'
+
+            asm_html += f"""
+    <div style="background:#fff;border-radius:10px;border-left:5px solid #7a9fd4;box-shadow:0 1px 6px rgba(0,0,0,.07);padding:10px 14px;margin-bottom:8px;page-break-inside:avoid">
+      <div style="display:flex;align-items:flex-start;gap:8px;margin-bottom:5px">
+        <span style="background:{bc};color:#fff;padding:1px 7px;border-radius:20px;font-size:9px;font-weight:700;flex-shrink:0">{lvl}</span>
+        <div style="flex:1;font-size:11px;font-weight:700;color:#0d2a5e;line-height:1.4">
+          <a href="{escape(url)}" style="color:#0d2a5e;text-decoration:none">{escape(name)}</a>
+        </div>
+      </div>
+      <div style="margin-bottom:4px">{tags}</div>
+      {summ_html}
+      <div style="font-size:9.5px;color:#888;margin-top:5px">발의: {escape(date)}</div>
+    </div>"""
+    asm_html += "</div>"
+
+    # ── 일정 섹션 ──────────────────────────────────────────────────────────
+    sch_html = f'<div style="margin-bottom:16px;padding:0 8px">{sec_header(2,"주요 일정",len(sel_s))}'
+    if not sel_s:
+        sch_html += '<p style="padding:14px;text-align:center;color:#aaa;font-size:11px">예정된 일정이 없습니다.</p>'
     else:
-        for r in items:
-            lvl    = _importance_schedule(r)
-            title  = r.get("title", "")
-            date   = r.get("date", "")
-            etype  = r.get("event_type", "")
-            source = r.get("source", "")
-            url    = fix_url(r.get("url", ""))
-            html += f'<div style="{_bar_style(lvl)}">'
-            html += '<div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin-bottom:6px;">'
-            html += _badge(lvl)
-            html += _tag(etype, "#EAF0FB", "#1B3A6B")
-            html += _tag("예정", "#D4EDDA", "#155724")
-            html += '</div>'
-            html += f'<div style="font-size:14px;margin-bottom:5px;">{_link(url, title)}</div>'
-            html += f'<div style="font-size:11px;color:#888;">{escape(date)} &nbsp;·&nbsp; {escape(source)}</div>'
-            html += '</div>'
-    html += _section_footer()
-    return html
+        for r in sel_s:
+            title  = r.get("title","")
+            date   = r.get("date","")
+            etype  = r.get("event_type","토론회")
+            source = r.get("source","")
+            url    = fix_url(r.get("url",""))
+            sch_html += f"""
+    <div style="background:#fff;border-radius:10px;border-left:5px solid #98d4a8;box-shadow:0 1px 6px rgba(0,0,0,.07);padding:10px 14px;margin-bottom:8px;display:flex;align-items:flex-start;gap:10px;page-break-inside:avoid">
+      <div style="flex:1;min-width:0">
+        <div style="font-size:11px;font-weight:700;color:#0d3a1e;line-height:1.45;margin-bottom:4px">
+          <a href="{escape(url)}" style="color:#0d3a1e;text-decoration:none">{escape(title)}</a>
+        </div>
+        <div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap">
+          <span style="background:#d4f0dd;color:#155724;padding:1px 7px;border-radius:4px;font-size:9px;font-weight:600">{escape(etype)}</span>
+          <span style="font-size:9.5px;color:#666">{escape(source)}</span>
+        </div>
+      </div>
+      <div style="flex-shrink:0;text-align:right">
+        <div style="background:#1a7a3c;color:#fff;font-size:9px;font-weight:700;padding:2px 9px;border-radius:20px;margin-bottom:4px">예정</div>
+        <div style="font-size:10.5px;font-weight:700;color:#1a4a2a">{escape(date)}</div>
+      </div>
+    </div>"""
+    sch_html += "</div>"
 
-def _build_news_section(items) -> str:
-    html = _section_header("언론 모니터링", len(items), "📰")
-    if not items:
-        html += _empty("수집된 관련 기사가 없습니다.")
+    # ── 뉴스 섹션 ──────────────────────────────────────────────────────────
+    # 키워드 태그 모음
+    kw_set = list(dict.fromkeys(r.get("keyword","") for r in sel_n if r.get("keyword","")))
+    kw_tags = " ".join(f'<span style="display:inline-block;background:#e8e4dc;color:#555;padding:1px 9px;border-radius:20px;font-size:9px;font-weight:600">{escape(k)}</span>' for k in kw_set)
+
+    news_html = f'<div style="margin-bottom:16px;padding:0 8px">{sec_header(3,"언론 모니터링",len(sel_n))}'
+    if kw_tags:
+        news_html += f'<div style="margin-bottom:8px;display:flex;gap:5px;flex-wrap:wrap">{kw_tags}</div>'
+    if not sel_n:
+        news_html += '<p style="padding:14px;text-align:center;color:#aaa;font-size:11px">수집된 기사가 없습니다.</p>'
     else:
-        order = {"중요": 0, "보통": 1, "참고": 2}
-        items.sort(key=lambda r: (order.get(_importance_news(r), 9), r.get("date", "")))
-        for r in items:
-            lvl    = _importance_news(r)
-            title  = r.get("title", "")
-            kw     = r.get("keyword", "")
-            source = r.get("source", "")
-            date   = r.get("date", "")[:10]
-            url    = fix_url(r.get("url", ""))
-            html += f'<div style="{_bar_style(lvl)}">'
-            html += '<div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin-bottom:6px;">'
-            html += _badge(lvl)
-            html += _tag(kw, "#EAF0FB", "#1B3A6B")
-            html += _tag(source, "#F8F9FA", "#555")
-            html += '</div>'
-            html += f'<div style="font-size:14px;margin-bottom:5px;">{_link(url, title)}</div>'
-            html += f'<div style="font-size:11px;color:#888;">{escape(date)}</div>'
-            html += '</div>'
-    html += _section_footer()
-    return html
+        for r in sel_n:
+            title  = r.get("title","")
+            source = r.get("source","")
+            date   = r.get("date","")[:10]
+            kw     = r.get("keyword","응급의료")
+            url    = fix_url(r.get("url",""))
+            border = _KW_BORDER.get(kw, "#f0aaaa")
+            badge_bg = _KW_BADGE_BG.get(kw, "#1B3A6B")
+            news_html += f"""
+    <a href="{escape(url)}" style="display:block;color:inherit;text-decoration:none;background:#fff;border-radius:10px;border-left:5px solid {border};box-shadow:0 1px 6px rgba(0,0,0,.07);padding:9px 14px;margin-bottom:8px;page-break-inside:avoid">
+      <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:10px">
+        <div style="flex:1;min-width:0">
+          <div style="font-size:11px;font-weight:700;color:#6b0000;line-height:1.45;margin-bottom:3px">{escape(title)}</div>
+          <div style="font-size:9.5px;color:#888">
+            <span style="font-weight:600;color:#555">{escape(source)}</span><span style="margin-left:6px">{escape(date)}</span>
+          </div>
+        </div>
+        <span style="flex-shrink:0;background:{badge_bg};color:#fff;padding:2px 9px;border-radius:20px;font-size:9px;font-weight:700;white-space:nowrap;margin-top:2px">{escape(kw)}</span>
+      </div>
+    </a>"""
+    news_html += "</div>"
 
-_TEMPLATE = """\
-<!DOCTYPE html>
+    # ── 전체 조립 ──────────────────────────────────────────────────────────
+    return f"""<!DOCTYPE html>
 <html lang="ko">
 <head>
 <meta charset="UTF-8">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;600;700;900&display=swap" rel="stylesheet">
 <style>
 *{{box-sizing:border-box;margin:0;padding:0}}
-body{{
-  font-family:"Noto Sans CJK KR","Noto Sans KR","Apple SD Gothic Neo","Malgun Gothic",sans-serif;
-  background:#fff;color:#222;font-size:11px;line-height:1.6;
-  -webkit-print-color-adjust:exact;print-color-adjust:exact;
+body{{font-family:'Noto Sans KR','Malgun Gothic',sans-serif;color:#1a1a1a;font-size:11px;line-height:1.6;background:#fdfcf9}}
+a{{text-decoration:none;color:inherit}}
+@page{{size:A4 portrait;margin:6mm 6mm}}
+@media print{{
+  *{{-webkit-print-color-adjust:exact;print-color-adjust:exact}}
+  html{{zoom:0.86}}
+  body{{background:#fdfcf9;margin:0;padding:0}}
+  a[href]:after{{content:none !important}}
 }}
-.wrap{{max-width:100%;margin:0;padding:8px 14px 20px;}}
-a{{color:#1B3A6B;text-decoration:none;}}
 </style>
 </head>
 <body>
-<div class="wrap">
-<div style="background:linear-gradient(135deg,#1B3A6B 0%,#2A5298 100%);
-            color:#fff;padding:16px 18px 14px;border-radius:0 0 8px 8px;margin-bottom:12px;
-            -webkit-print-color-adjust:exact;print-color-adjust:exact;">
-  <div style="font-size:9px;letter-spacing:2px;opacity:.75;margin-bottom:5px;">
-    응급의료정책팀 &nbsp;|&nbsp; 자동 모니터링 보고서
-  </div>
-  <div style="font-size:18px;font-weight:700;margin-bottom:4px;">{title}</div>
-  <div style="font-size:10px;opacity:.75;">기준일: {base_date} &nbsp;·&nbsp; 생성: {generated_at}</div>
-</div>
-<div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:8px;">
-  {cards}
-</div>
-<div>
-  {sections}
-</div>
-<div style="text-align:center;font-size:9px;color:#bbb;margin-top:16px;">
-  본 보고서는 자동 수집 결과입니다. 중요 사항은 반드시 원문 링크로 확인하십시오.
-</div>
-</div>
-</body>
-</html>
-"""
+<div style="width:100%;margin:0 auto;padding:0">
 
-def build_html(sel_a, sel_s, sel_n, today) -> str:
-    generated = datetime.now().strftime("%Y-%m-%d %H:%M")
-    title     = f"의료정책 모니터링 보고서 ({today})"
-    asm_dedup = _dedup_assembly(sel_a)
-    asm_urgent = sum(1 for r in asm_dedup if _importance_assembly(r) == "중요")
-    news_urg   = sum(1 for r in sel_n if _importance_news(r) == "중요")
-    total      = len(asm_dedup) + len(sel_s) + len(sel_n)
-    cards = "".join([
-        _card("계류 의안", len(asm_dedup), f"중요 {asm_urgent}건", "#1B3A6B"),
-        _card("예정 일정", len(sel_s),     "14일 이내",            "#2A5298"),
-        _card("언론 기사", len(sel_n),     f"중요 {news_urg}건",   "#1B3A6B"),
-        _card("전체 항목", total,           "중복 제거",            "#495057"),
-    ])
-    sections = (
-        _build_assembly_section(sel_a)
-        + _build_schedule_section(sel_s)
-        + _build_news_section(sel_n)
-    )
-    return _TEMPLATE.format(
-        title        = escape(title),
-        base_date    = escape(today),
-        generated_at = escape(generated),
-        cards        = cards,
-        sections     = sections,
-    )
+  <div style="background:linear-gradient(135deg,#0d2a5e 0%,#1B3A6B 60%,#2A5298 100%);color:#fff;padding:14px 20px;border-radius:0;display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;box-shadow:0 3px 12px rgba(13,42,94,.22)">
+    <div>
+      <div style="font-size:9px;letter-spacing:2px;opacity:.6;margin-bottom:5px">응급의료정책연구팀</div>
+      <div style="font-size:19px;font-weight:900;letter-spacing:-.3px;line-height:1.2">응급의료 동향 모니터링</div>
+    </div>
+    <div style="text-align:right">
+      <div style="font-size:18px;font-weight:700;letter-spacing:.5px">{today_fmt}</div>
+      <div style="font-size:9px;opacity:.55;margin-top:3px">{generated} 생성</div>
+    </div>
+  </div>
+
+  <div style="padding:0 8px">
+    <div style="display:flex;gap:8px;margin-bottom:14px">{cards_html}</div>
+    {asm_html}
+    {sch_html}
+    {news_html}
+    <div style="margin-top:12px;padding-top:8px;border-top:1px solid #ddd;display:flex;justify-content:space-between;align-items:center">
+      <span style="font-size:9px;color:#999">본 보고서는 자동 수집·검토된 항목만 포함됩니다. 중요 사항은 반드시 원문을 확인하십시오.</span>
+      <span style="font-size:9px;color:#999;font-weight:600">응급의료정책연구팀</span>
+    </div>
+  </div>
+</div>
+</body></html>"""
 
 # ══════════════════════════════════════════════════════════════════════════════
-# PDF 생성 (playwright + chromium)
+# PDF 생성 (playwright)
 # ══════════════════════════════════════════════════════════════════════════════
 def generate_pdf_bytes(sel_a, sel_s, sel_n, today) -> bytes:
     from playwright.sync_api import sync_playwright
@@ -319,7 +295,7 @@ def generate_pdf_bytes(sel_a, sel_s, sel_n, today) -> bytes:
         pdf_bytes = page.pdf(
             format="A4",
             print_background=True,
-            scale=0.72,
+            scale=0.82,
             margin={"top":"8mm","right":"10mm","bottom":"8mm","left":"10mm"},
         )
         browser.close()
@@ -337,8 +313,7 @@ def _load_data(pattern):
     try:
         with open(files[-1], encoding="utf-8") as f:
             return json.load(f)
-    except:
-        return []
+    except: return []
 
 asm_raw  = _load_data("assembly_results_*.json")
 sch_raw  = _load_data("schedule_results_*.json")
@@ -448,9 +423,11 @@ else:
         unsafe_allow_html=True,
     )
 
-    # 화면 렌더링 (HTML 그대로)
-    sel_a = st.session_state.get("sel_a", [])
-    sel_s = st.session_state.get("sel_s", [])
-    sel_n = st.session_state.get("sel_n", [])
-    html  = build_html(sel_a, sel_s, sel_n, today)
+    # 화면 렌더링
+    html = build_html(
+        st.session_state.get("sel_a", []),
+        st.session_state.get("sel_s", []),
+        st.session_state.get("sel_n", []),
+        today,
+    )
     st.markdown(html, unsafe_allow_html=True)
