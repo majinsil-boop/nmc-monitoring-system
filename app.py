@@ -98,9 +98,10 @@ def _tag(text: str, bg: str, fg: str) -> str:
 
 def _bar_style(level: str) -> str:
     color = _BAR_COLOR.get(level, "#ADB5BD")
-    return (f'border-left:5px solid {color};padding:11px 14px;margin-bottom:8px;'
-            f'background:#fff;border-radius:0 4px 4px 0;'
-            f'box-shadow:0 1px 3px rgba(0,0,0,.07);')
+    return (f'border-left:4px solid {color};padding:7px 10px;margin-bottom:6px;'
+            f'background:#fff;border-radius:0 3px 3px 0;'
+            f'box-shadow:0 1px 2px rgba(0,0,0,.06);'
+            f'-webkit-print-color-adjust:exact;print-color-adjust:exact;')
 
 def _link(url: str, text: str) -> str:
     t = escape(text or "")
@@ -130,12 +131,13 @@ def _empty(msg: str = "해당 기간 내 수집된 항목이 없습니다.") -> 
 
 def _card(label: str, value: int, sub: str = "", color: str = "#1B3A6B") -> str:
     return (
-        f'<div style="flex:1;min-width:130px;background:#fff;border-radius:6px;'
-        f'border-top:4px solid {color};padding:14px 16px;'
-        f'box-shadow:0 1px 4px rgba(0,0,0,.1);text-align:center;">'
-        f'<div style="font-size:28px;font-weight:700;color:{color};">{value}</div>'
-        f'<div style="font-size:12px;color:#444;margin-top:3px;">{escape(label)}</div>'
-        + (f'<div style="font-size:11px;color:#999;margin-top:2px;">{escape(sub)}</div>' if sub else "")
+        f'<div style="flex:1;min-width:60px;background:#fff;border-radius:5px;'
+        f'border-top:3px solid {color};padding:8px 10px;'
+        f'box-shadow:0 1px 3px rgba(0,0,0,.1);text-align:center;'
+        f'-webkit-print-color-adjust:exact;print-color-adjust:exact;">'
+        f'<div style="font-size:20px;font-weight:700;color:{color};">{value}</div>'
+        f'<div style="font-size:10px;color:#444;margin-top:2px;">{escape(label)}</div>'
+        + (f'<div style="font-size:9px;color:#999;margin-top:1px;">{escape(sub)}</div>' if sub else "")
         + '</div>'
     )
 
@@ -243,29 +245,33 @@ _TEMPLATE = """\
 <meta charset="UTF-8">
 <style>
 *{{box-sizing:border-box;margin:0;padding:0}}
-body{{font-family:"Malgun Gothic","Apple SD Gothic Neo","Noto Sans KR",sans-serif;
-     background:#EEF2F9;color:#222;font-size:13px;line-height:1.65}}
-.wrap{{max-width:920px;margin:0 auto;padding-bottom:48px}}
-a{{color:#1B3A6B;text-decoration:none}}
+body{{
+  font-family:"Noto Sans CJK KR","Noto Sans KR","Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+  background:#fff;color:#222;font-size:11px;line-height:1.6;
+  -webkit-print-color-adjust:exact;print-color-adjust:exact;
+}}
+.wrap{{max-width:100%;margin:0;padding:8px 14px 20px;}}
+a{{color:#1B3A6B;text-decoration:none;}}
 </style>
 </head>
 <body>
 <div class="wrap">
 <div style="background:linear-gradient(135deg,#1B3A6B 0%,#2A5298 100%);
-            color:#fff;padding:30px 28px 22px;border-radius:0 0 10px 10px;margin-bottom:22px;">
-  <div style="font-size:11px;letter-spacing:2.5px;opacity:.7;margin-bottom:8px;">
+            color:#fff;padding:16px 18px 14px;border-radius:0 0 8px 8px;margin-bottom:12px;
+            -webkit-print-color-adjust:exact;print-color-adjust:exact;">
+  <div style="font-size:9px;letter-spacing:2px;opacity:.75;margin-bottom:5px;">
     응급의료정책팀 &nbsp;|&nbsp; 자동 모니터링 보고서
   </div>
-  <div style="font-size:23px;font-weight:700;margin-bottom:6px;">{title}</div>
-  <div style="font-size:12px;opacity:.75;">기준일: {base_date} &nbsp;·&nbsp; 생성: {generated_at}</div>
+  <div style="font-size:18px;font-weight:700;margin-bottom:4px;">{title}</div>
+  <div style="font-size:10px;opacity:.75;">기준일: {base_date} &nbsp;·&nbsp; 생성: {generated_at}</div>
 </div>
-<div style="display:flex;gap:12px;flex-wrap:wrap;padding:0 16px;margin-bottom:8px;">
+<div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:8px;">
   {cards}
 </div>
-<div style="padding:0 16px;">
+<div>
   {sections}
 </div>
-<div style="text-align:center;font-size:11px;color:#bbb;margin-top:36px;padding:0 16px;">
+<div style="text-align:center;font-size:9px;color:#bbb;margin-top:16px;">
   본 보고서는 자동 수집 결과입니다. 중요 사항은 반드시 원문 링크로 확인하십시오.
 </div>
 </div>
