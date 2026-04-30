@@ -1,4 +1,3 @@
 ﻿streamlit>=1.37.0
 pandas
-fpdf2
-fonttools
+reportlab
