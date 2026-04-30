@@ -314,12 +314,13 @@ def generate_pdf_bytes(sel_a, sel_s, sel_n, today) -> bytes:
     with sync_playwright() as p:
         browser = p.chromium.launch()
         page = browser.new_page()
+        page.emulate_media(media="screen")
         page.set_content(html_str, wait_until="networkidle")
         pdf_bytes = page.pdf(
             format="A4",
-            margin={"top":"8mm","bottom":"8mm","left":"8mm","right":"8mm"},
             print_background=True,
-            scale=0.75,
+            scale=0.82,
+            margin={"top":"8mm","right":"10mm","bottom":"8mm","left":"10mm"},
         )
         browser.close()
     return pdf_bytes
