@@ -3,9 +3,17 @@ import glob
 import json
 import os
 import re
+import subprocess
 import tempfile
 from datetime import datetime, timedelta
 from html import escape
+
+# playwright 브라우저 자동 설치
+@st.cache_resource
+def _install_playwright():
+    subprocess.run(["playwright", "install", "chromium"], check=False)
+
+_install_playwright()
 
 # ══════════════════════════════════════════════════════════════════════════════
 # URL 보정
