@@ -292,41 +292,22 @@ def build_html(sel_a, sel_s, sel_n, today) -> str:
     )
 
 # ══════════════════════════════════════════════════════════════════════════════
-# PDF 생성 (pdfkit + wkhtmltopdf)
+# PDF 생성 (playwright + chromium)
 # ══════════════════════════════════════════════════════════════════════════════
 def generate_pdf_bytes(sel_a, sel_s, sel_n, today) -> bytes:
-    import pdfkit
+    from playwright.sync_api import sync_playwright
     html_str = build_html(sel_a, sel_s, sel_n, today)
-    options = {
-        "encoding": "UTF-8",
-        "quiet": "",
-        "page-size": "A4",
-        "margin-top":    "10mm",
-        "margin-bottom": "10mm",
-        "margin-left":   "12mm",
-        "margin-right":  "12mm",
-        "enable-local-file-access": "",
-    }
-    # wkhtmltopdf 경로
-    wk_path = None
-    for p in ["/usr/bin/wkhtmltopdf", "/usr/local/bin/wkhtmltopdf"]:
-        if os.path.exists(p):
-            wk_path = p; break
-
-    with tempfile.NamedTemporaryFile(suffix=".pdf", delete=False) as f:
-        tmp_path = f.name
-
-    try:
-        if wk_path:
-            config = pdfkit.configuration(wkhtmltopdf=wk_path)
-            pdfkit.from_string(html_str, tmp_path, configuration=config, options=options)
-        else:
-            pdfkit.from_string(html_str, tmp_path, options=options)
-        with open(tmp_path, "rb") as f:
-            return f.read()
-    finally:
-        if os.path.exists(tmp_path):
-            os.unlink(tmp_path)
+    with sync_playwright() as p:
+        browser = p.chromium.launch()
+        page = browser.new_page()
+        page.set_content(html_str, wait_until="networkidle")
+        pdf_bytes = page.pdf(
+            format="A4",
+            margin={"top":"10mm","bottom":"10mm","left":"12mm","right":"12mm"},
+            print_background=True,
+        )
+        browser.close()
+    return pdf_bytes
 
 # ══════════════════════════════════════════════════════════════════════════════
 # 데이터 로드
