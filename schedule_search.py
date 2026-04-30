@@ -16,7 +16,7 @@ from playwright.async_api import async_playwright, TimeoutError as PlaywrightTim
 BASE_URL     = "https://health.na.go.kr"
 ASSEMBLY_BASE_URL = "https://www.assembly.go.kr"
 
-EVENT_TYPES    = ["토론회", "공청회", "세미나", "간담회", "청문회", "소위원회", "회의", "전체회의"]
+EVENT_TYPES    = ["토론회", "공청회", "세미나", "간담회", "청문회", "소위원회", "전체회의", "회의"]
 TOPIC_KEYWORDS = ["응급의료", "응급", "구급", "구조", "응급실", "외상", "중증", "응급처치", "응급환자"]
 
 # assembly.go.kr 전용 필터 (보건복지위 외 전체 위원회 대상)
@@ -128,6 +128,20 @@ def _abs(href: str) -> str:
     return href if href.startswith("http") else BASE_URL + (href if href.startswith("/") else "/" + href)
 
 
+def _parse_schl_url(href: str) -> str:
+    """JavaScript fnView/goView 링크에서 cmtSchSn 추출해 상세 URL 반환."""
+    if not href:
+        return ""
+    href = href.strip()
+    if "javascript" not in href.lower():
+        return _abs(href)
+    m = re.search(r"['\"](\d{5,})['\"]", href)
+    if m:
+        return (f"{BASE_URL}/cmmit/schl/cmitSchl/view.do"
+                f"?menuNo=2000048&cmtSchSn={m.group(1)}")
+    return ""
+
+
 def _make(title: str, date_str: str, url: str, source: str,
           category: str = "") -> dict:
     return {
@@ -204,17 +218,23 @@ async def _scrape_calendar(page) -> list[dict]:
                         continue
                     date_str = dt.strftime("%Y-%m-%d")
 
-                    # 나머지 줄이 이벤트 라벨
-                    for label in lines[1:]:
-                        if _is_junk(label):
+                    # a 태그 기준으로 이벤트 라벨과 상세 링크 추출
+                    anchors = await cell.query_selector_all("a")
+                    for a_el in anchors:
+                        a_text = (await a_el.inner_text()).strip()
+                        if not a_text or re.match(r"^\d{1,2}$", a_text):
+                            continue
+                        # 다중 줄 텍스트를 '-'로 결합 (예: "전체회의\n제1차 전체회의")
+                        parts = [p.strip() for p in a_text.split("\n") if p.strip()]
+                        label = "-".join(parts) if len(parts) > 1 else (parts[0] if parts else "")
+                        if not label or _is_junk(label):
                             continue
                         if not _is_actual_meeting(label):
                             continue
                         if not _in_window(date_str):
                             continue
-                        # 링크 탐색
-                        a = await cell.query_selector("a")
-                        link = _abs((await a.get_attribute("href")) or "") if a else url
+                        href = (await a_el.get_attribute("href")) or ""
+                        link = _parse_schl_url(href) or url
                         items.append(_make(label, date_str, link, "달력/일정목록"))
 
     # cmitSchlListTable: AJAX 로딩 시도 (날짜 범위 파라미터로 재요청)
@@ -223,9 +243,14 @@ async def _scrape_calendar(page) -> list[dict]:
     to_date   = (today + timedelta(days=UPCOMING_DAYS)).strftime("%Y%m%d")
     ajax_url  = (f"{BASE_URL}/cmmit/schl/cmitSchl/schlList.do"
                  f"?menuNo=2000048&fromDate={from_date}&toDate={to_date}")
+    ajax_items: list[dict] = []
     try:
-        await page.goto(ajax_url, wait_until="networkidle", timeout=20000)
-        await asyncio.sleep(2)
+        await page.goto(ajax_url, wait_until="networkidle", timeout=30000)
+        await asyncio.sleep(3)
+        try:
+            await page.wait_for_selector("table.cmitSchlListTable", timeout=10000)
+        except Exception:
+            pass
         schl_table = await page.query_selector("table.cmitSchlListTable tbody")
         if schl_table:
             rows = await schl_table.query_selector_all("tr")
@@ -239,15 +264,36 @@ async def _scrape_calendar(page) -> list[dict]:
                 title = (await cols[title_col].inner_text()).strip()
                 date_str = (await cols[date_col].inner_text()).strip()
                 a = await cols[title_col].query_selector("a")
-                link = _abs((await a.get_attribute("href")) or "") if a else url
+                if a:
+                    href = (await a.get_attribute("href")) or ""
+                    link = _parse_schl_url(href) or ajax_url
+                else:
+                    link = ajax_url
 
                 if _is_junk(title) or not _in_window(date_str):
                     continue
                 if not _is_actual_meeting(title):
                     continue
-                items.append(_make(title, date_str, link, "일정목록"))
+
+                # 전체 제목에 회의 유형 접두어가 없으면 자동으로 붙임
+                ev_type = next((ev for ev in EVENT_TYPES if ev in title), "")
+                if ev_type and not title.startswith(ev_type):
+                    display_title = f"{ev_type}-{title}"
+                else:
+                    display_title = title
+
+                ajax_items.append(_make(display_title, date_str, link, "일정목록"))
+        else:
+            print("  cmitSchlListTable 없음 (AJAX 미로드)")
     except Exception as e:
         print(f"  AJAX 시도 실패: {e}")
+
+    # AJAX 항목이 있으면 달력 항목 중 동일 날짜+회의유형 중복 제거
+    if ajax_items:
+        ajax_keys = {(it["date"], it["event_type"]) for it in ajax_items}
+        items = [it for it in items
+                 if (it["date"], it["event_type"]) not in ajax_keys]
+    items.extend(ajax_items)
 
     print(f"  수집: {len(items)}건 (달력 이벤트 + 일정 테이블)")
     return items
