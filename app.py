@@ -319,7 +319,7 @@ def generate_pdf_bytes(sel_a, sel_s, sel_n, today) -> bytes:
         pdf_bytes = page.pdf(
             format="A4",
             print_background=True,
-            scale=0.82,
+            scale=0.72,
             margin={"top":"8mm","right":"10mm","bottom":"8mm","left":"10mm"},
         )
         browser.close()
