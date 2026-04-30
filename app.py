@@ -44,14 +44,15 @@ def _find_korean_font(bold=False):
 
     # 1순위: repo fonts/ 폴더의 ttf
     repo_candidates = [
-        # NanumKR (변환된 한글 전용 TTF)
-        os.path.join(fonts_dir, "NanumKR-Bold.ttf")   if bold else os.path.join(fonts_dir, "NanumKR-Regular.ttf"),
-        # 기타 폴백
+        os.path.join(fonts_dir, "NanumKR-Bold.ttf") if bold else os.path.join(fonts_dir, "NanumKR-Regular.ttf"),
         os.path.join(fonts_dir, f"NotoSansCJKkr-{keyword}.ttf"),
         os.path.join(fonts_dir, "NanumKR-Regular.ttf"),
     ]
+    for p in repo_candidates:
+        if os.path.exists(p):
+            return p
 
-    # 3순위: 시스템 ttc (로컬 개발 환경)
+    # 2순위: 시스템 ttc (로컬 개발 환경)
     for p in [
         f"/usr/share/fonts/opentype/noto/NotoSansCJK-{keyword}.ttc",
         "/usr/share/fonts/opentype/noto/NotoSansCJK-Regular.ttc",
