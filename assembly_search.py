@@ -1239,7 +1239,7 @@ async def main():
 
         browser = await p.chromium.launch(
 
-            headless=False,
+            headless=True,
 
         )
 
