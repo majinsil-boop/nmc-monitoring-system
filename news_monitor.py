@@ -912,7 +912,7 @@ async def main():
 
     async with async_playwright() as p:
         browser = await p.chromium.launch(
-            headless=False,
+            headless=True,
             slow_mo=100,
         )
         context = await browser.new_context(
