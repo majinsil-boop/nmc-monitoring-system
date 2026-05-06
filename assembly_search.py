@@ -491,6 +491,10 @@ def _passes_content_filter(bill: dict) -> bool:
         print(f"    → [보건복지위] 입법예고 중 의안 포함: {name[:40]}")
         return True
 
+    if _is_notice_active(bill.get("legislative_notice", "")):
+        print(f"    → [입법예고 중] 포함: {name[:40]}")
+        return True
+
     return False
 
 
@@ -822,7 +826,7 @@ async def _fetch_bill_detail(page, url: str) -> tuple[str, str, str, str]:
 
         print(f"  상세 페이지 오류({url[-30:]}): {e}")
 
-        return "", "", ""
+        return "", "", "", ""
 
 
 
@@ -1309,7 +1313,13 @@ async def main():
 
         # ── 2. 목록 페이지 1차 필터: 날짜 조건 통과한 것만 상세 방문 ──────
 
-        to_detail = [r for r in all_results if _is_recent(r)]
+        to_detail =  [
+            r for r in all_results
+            if _is_recent(r)
+            or "의료" in r.get("bill_name", "")
+            or "응급" in r.get("bill_name", "")
+            or "보건" in r.get("bill_name", "")
+]
 
         # history_db에 입법예고 기간 중으로 기록된 의안 → 목록에 없어도 재방문
         to_detail_keys = {r.get("bill_no") or r.get("url", "") for r in to_detail}
@@ -1432,81 +1442,46 @@ async def main():
 
 
 
-    # ── 4. Claude 요약 (순차 처리 — subprocess 블로킹) ───────────────────
-
-    print(f"\n[Claude 요약] {len(to_detail)}건 요약 생성 중...")
-
+# ── 3.5. _raw_summary를 summary에 임시 할당 (필터용) ──
     for bill in to_detail:
+        bill["summary"] = bill.get("_raw_summary", "")
 
-        raw = bill.pop("_raw_summary", "")
-
-        if raw:
-
-            print(f"  → {bill.get('bill_name','')[:40]} 요약 중...")
-
-            bill["summary"] = _summarize_with_claude(raw, bill.get("bill_name", ""))
-
-        else:
-
-            bill["summary"] = ""
-
-
-
+    # ── 상태변경 레이블 적용 ──
     for bill in all_results:
-
-        bill.pop("_raw_summary", None)
-
-        bill.setdefault("summary", "")
-
-
-
-    # ── 상태변경 레이블 적용 (전체) ──────────────────────────────────────
-
-    for bill in all_results:
-
         _apply_status_change_label(bill, history)
 
-
-
-    # ── history_db.xlsx: 필터 전 전체 수집 의안 누적 저장 ────────────────
-
+    # ── history_db.xlsx 저장 ──
     _save_history(all_results, history)
 
-
-
-    # ── 최종 필터: 발의일 7일 이내 OR 심사변경일 7일 이내 OR 입법예고 중 ──
-
+    # ── 최종 필터 ──
     before = len(all_results)
-
     all_results = [
-
         r for r in all_results
-
         if _is_recent(r)
-
         or _is_recent_status(r.get("status_changed_date", ""))
-
         or _is_notice_active(r.get("legislative_notice", ""))
-
     ]
+    print(f"\n[최종 필터] {before}건 → {len(all_results)}건")
 
-    print(f"\n[최종 필터] {before}건 → {len(all_results)}건 "
-
-          f"(발의일·심사변경 7일 이내, 또는 입법예고 기간 중)")
-
-
-
-    # ── 추가 필터: 키워드별 콘텐츠 조건 적용 ────────────────────────────────
-
+    # ── 콘텐츠 필터 ──
     before_narrow = len(all_results)
-
     all_results = [r for r in all_results if _passes_content_filter(r)]
-
     if before_narrow != len(all_results):
-
         print(f"[필터] 콘텐츠 필터: {before_narrow}건 → {len(all_results)}건")
 
+    # ── Claude 요약 (최종 확정된 의안만) ──
+    print(f"\n[Claude 요약] {len(all_results)}건 요약 생성 중...")
+    for bill in all_results:
+        raw = bill.pop("_raw_summary", "")
+        if raw:
+            print(f"  → {bill.get('bill_name','')[:40]} 요약 중...")
+            bill["summary"] = _summarize_with_claude(raw, bill.get("bill_name", ""))
+        else:
+            bill.setdefault("summary", "")
 
+    for bill in all_results:
+        bill.pop("_raw_summary", None)
+        bill.setdefault("summary", "")
 
     # ── 우선순위 의원 ★ 표시 추가 ────────────────────────────────────
 

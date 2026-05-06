@@ -1,4 +1,4 @@
-"""
+﻿"""
 보건복지위원회 일정 자동 검색 스크립트
 대상: health.na.go.kr (국회 보건복지위원회)
 검색 범위: 앞으로 2주 이내 응급의료 관련 토론회·공청회·세미나·간담회
@@ -16,7 +16,7 @@ from playwright.async_api import async_playwright, TimeoutError as PlaywrightTim
 BASE_URL     = "https://health.na.go.kr"
 ASSEMBLY_BASE_URL = "https://www.assembly.go.kr"
 
-EVENT_TYPES    = ["토론회", "공청회", "세미나", "간담회", "청문회", "소위원회", "전체회의", "회의"]
+EVENT_TYPES    = ["토론회", "공청회", "세미나", "간담회", "청문회", "소위원회", "회의", "전체회의"]
 TOPIC_KEYWORDS = ["응급의료", "응급", "구급", "구조", "응급실", "외상", "중증", "응급처치", "응급환자"]
 
 # assembly.go.kr 전용 필터 (보건복지위 외 전체 위원회 대상)
@@ -128,18 +128,64 @@ def _abs(href: str) -> str:
     return href if href.startswith("http") else BASE_URL + (href if href.startswith("/") else "/" + href)
 
 
-def _parse_schl_url(href: str) -> str:
-    """JavaScript fnView/goView 링크에서 cmtSchSn 추출해 상세 URL 반환."""
-    if not href:
-        return ""
-    href = href.strip()
-    if "javascript" not in href.lower():
-        return _abs(href)
-    m = re.search(r"['\"](\d{5,})['\"]", href)
+def _detail_or_fallback(href: str, date_str: str) -> str:
+    """javascript: href → cmtSchSn 추출해 view.do URL, 없으면 날짜별 목록 URL."""
+    resolved = _abs(href)
+    if resolved:
+        return resolved
+    # onclick/href 에서 cmtSchSn(숫자 ID) 추출 (예: fn_view('10121095'))
+    m = re.search(r"['\"](\d{4,})['\"]", href or "")
     if m:
         return (f"{BASE_URL}/cmmit/schl/cmitSchl/view.do"
                 f"?menuNo=2000048&cmtSchSn={m.group(1)}")
-    return ""
+    dp = (date_str or "").replace("-", "")
+    if dp:
+        return (f"{BASE_URL}/cmmit/schl/cmitSchl/schlList.do"
+                f"?menuNo=2000048&fromDate={dp}&toDate={dp}")
+    return f"{BASE_URL}/cmmit/schl/cmitSchl/schlList.do?menuNo=2000048"
+
+
+async def _scrape_detail_title(page, url: str) -> str:
+    """
+    view.do 상세 페이지에서 회의 제목을 추출한다.
+    예: "제423회국회(임시회) 제1차 법안심사소위원회"
+    """
+    if not url or "view.do" not in url:
+        return ""
+    try:
+        await page.goto(url, wait_until="domcontentloaded", timeout=15000)
+        await asyncio.sleep(0.8)
+        title = await page.evaluate("""
+            () => {
+                const candidates = [
+                    // 보건복지위원회 사이트 공통 뷰 셀렉터
+                    '.view-tit', '.subject', 'h3.tit', 'h2.tit',
+                    '.board-view-wrap .tit', '.view_title',
+                    'table.view-table td.subject',
+                    'table.cmit-view-table th',
+                    '.cmit-view h3', '.con-area h3',
+                    // 테이블 뷰: 제목 행 두 번째 td
+                    'table.board-view tr:first-child td:nth-child(2)',
+                    'table.view tr td.subj',
+                    // fallback: 페이지 <title>
+                    null
+                ];
+                for (const sel of candidates) {
+                    if (!sel) break;
+                    const el = document.querySelector(sel);
+                    if (el) {
+                        const t = (el.innerText || '').trim();
+                        if (t.length > 5 && t.length < 200) return t;
+                    }
+                }
+                // <title> fallback
+                const pt = (document.title || '').split('|')[0].trim();
+                return pt.length > 5 ? pt : '';
+            }
+        """)
+        return (title or "").strip()
+    except Exception:
+        return ""
 
 
 def _make(title: str, date_str: str, url: str, source: str,
@@ -218,24 +264,39 @@ async def _scrape_calendar(page) -> list[dict]:
                         continue
                     date_str = dt.strftime("%Y-%m-%d")
 
-                    # a 태그 기준으로 이벤트 라벨과 상세 링크 추출
-                    anchors = await cell.query_selector_all("a")
-                    for a_el in anchors:
-                        a_text = (await a_el.inner_text()).strip()
-                        if not a_text or re.match(r"^\d{1,2}$", a_text):
-                            continue
-                        # 다중 줄 텍스트를 '-'로 결합 (예: "전체회의\n제1차 전체회의")
-                        parts = [p.strip() for p in a_text.split("\n") if p.strip()]
-                        label = "-".join(parts) if len(parts) > 1 else (parts[0] if parts else "")
-                        if not label or _is_junk(label):
+                    # 셀 내 모든 링크 미리 수집 (이벤트별 링크·세부 제목 탐색)
+                    cell_links = await cell.query_selector_all("a")
+                    link_info: list[tuple[str, str, str]] = []
+                    for _a in cell_links:
+                        _inner   = (await _a.inner_text()).strip()
+                        _href    = (await _a.get_attribute("href") or "").strip()
+                        _onclick = (await _a.get_attribute("onclick") or "").strip()
+                        _title   = (await _a.get_attribute("title") or "").strip()
+                        link_info.append((_inner, _href or _onclick, _title))
+
+                    # 나머지 줄이 이벤트 라벨
+                    for label in lines[1:]:
+                        if _is_junk(label):
                             continue
                         if not _is_actual_meeting(label):
                             continue
                         if not _in_window(date_str):
                             continue
-                        href = (await a_el.get_attribute("href")) or ""
-                        link = _parse_schl_url(href) or url
-                        items.append(_make(label, date_str, link, "달력/일정목록"))
+
+                        full_title = label
+                        link = ""
+                        for a_text, a_href, a_title in link_info:
+                            if (label in a_text or a_text in label
+                                    or (a_title and label in a_title)):
+                                link = _detail_or_fallback(a_href, date_str)
+                                # <a title="..."> 에 세부 제목이 있으면 사용
+                                if a_title and len(a_title) > len(full_title):
+                                    full_title = a_title
+                                break
+                        if not link:
+                            link = _detail_or_fallback("", date_str)
+
+                        items.append(_make(full_title, date_str, link, "달력/일정목록"))
 
     # cmitSchlListTable: AJAX 로딩 시도 (날짜 범위 파라미터로 재요청)
     today = datetime.now()
@@ -243,14 +304,9 @@ async def _scrape_calendar(page) -> list[dict]:
     to_date   = (today + timedelta(days=UPCOMING_DAYS)).strftime("%Y%m%d")
     ajax_url  = (f"{BASE_URL}/cmmit/schl/cmitSchl/schlList.do"
                  f"?menuNo=2000048&fromDate={from_date}&toDate={to_date}")
-    ajax_items: list[dict] = []
     try:
-        await page.goto(ajax_url, wait_until="networkidle", timeout=30000)
-        await asyncio.sleep(3)
-        try:
-            await page.wait_for_selector("table.cmitSchlListTable", timeout=10000)
-        except Exception:
-            pass
+        await page.goto(ajax_url, wait_until="networkidle", timeout=20000)
+        await asyncio.sleep(2)
         schl_table = await page.query_selector("table.cmitSchlListTable tbody")
         if schl_table:
             rows = await schl_table.query_selector_all("tr")
@@ -261,39 +317,46 @@ async def _scrape_calendar(page) -> list[dict]:
                     continue
                 # 헤더: 번호/위원회명/제목/회기/회의일자
                 title_col = 2; date_col = 4
-                title = (await cols[title_col].inner_text()).strip()
                 date_str = (await cols[date_col].inner_text()).strip()
                 a = await cols[title_col].query_selector("a")
                 if a:
-                    href = (await a.get_attribute("href")) or ""
-                    link = _parse_schl_url(href) or ajax_url
+                    raw_inner = (await a.inner_text()).strip()
+                    a_title   = (await a.get_attribute("title") or "").strip()
+                    a_href    = (await a.get_attribute("href") or "").strip()
+                    a_onclick = (await a.get_attribute("onclick") or "").strip()
+                    title = a_title if (a_title and len(a_title) > len(raw_inner)) else raw_inner
+                    link  = _detail_or_fallback(a_href or a_onclick, date_str)
                 else:
-                    link = ajax_url
+                    title = (await cols[title_col].inner_text()).strip()
+                    link  = _detail_or_fallback("", date_str)
 
                 if _is_junk(title) or not _in_window(date_str):
                     continue
                 if not _is_actual_meeting(title):
                     continue
-
-                # 전체 제목에 회의 유형 접두어가 없으면 자동으로 붙임
-                ev_type = next((ev for ev in EVENT_TYPES if ev in title), "")
-                if ev_type and not title.startswith(ev_type):
-                    display_title = f"{ev_type}-{title}"
-                else:
-                    display_title = title
-
-                ajax_items.append(_make(display_title, date_str, link, "일정목록"))
-        else:
-            print("  cmitSchlListTable 없음 (AJAX 미로드)")
+                items.append(_make(title, date_str, link, "일정목록"))
     except Exception as e:
         print(f"  AJAX 시도 실패: {e}")
 
-    # AJAX 항목이 있으면 달력 항목 중 동일 날짜+회의유형 중복 제거
-    if ajax_items:
-        ajax_keys = {(it["date"], it["event_type"]) for it in ajax_items}
-        items = [it for it in items
-                 if (it["date"], it["event_type"]) not in ajax_keys]
-    items.extend(ajax_items)
+    # ── 상세 페이지(view.do)에서 실제 제목 보완 ──────────────────────────────
+    # view.do?cmtSchSn=... URL이 있는 항목만 방문 (중복 URL 제외)
+    enriched_urls: set[str] = set()
+    for item in items:
+        item_url = item.get("url", "")
+        if "view.do" in item_url and "cmtSchSn" in item_url and item_url not in enriched_urls:
+            enriched_urls.add(item_url)
+            detail_title = await _scrape_detail_title(page, item_url)
+            if detail_title and detail_title != item["title"]:
+                print(f"  제목 보완: [{item['date']}] {item['title']!r} → {detail_title!r}")
+                item["title"] = detail_title
+                item["event_type"] = next(
+                    (ev for ev in EVENT_TYPES if ev in detail_title),
+                    item["event_type"]
+                )
+                item["topic_keyword"] = next(
+                    (kw for kw in TOPIC_KEYWORDS if kw in detail_title),
+                    item["topic_keyword"]
+                )
 
     print(f"  수집: {len(items)}건 (달력 이벤트 + 일정 테이블)")
     return items
@@ -508,7 +571,15 @@ async def _nanet_search_keyword(page, keyword: str, from_str: str, end_str: str)
     """nanet에서 키워드 검색 후 결과 반환 (페이지네이션 포함)."""
     items: list[dict] = []
     # 날짜 입력 및 키워드 검색 실행
-    try:
+try:
+        # 오버레이/팝업 강제 숨김
+        await page.evaluate("""
+            () => {
+                document.querySelectorAll(
+                    '.topContainer.off-notice, .off-notice, .privacy-pop, .pop-wrap, .layer-pop'
+                ).forEach(el => el.style.display = 'none');
+            }
+        """)
         await page.evaluate(f"""
             () => {{
                 document.getElementById('fromDate').value = '{from_str}';
@@ -519,7 +590,15 @@ async def _nanet_search_keyword(page, keyword: str, from_str: str, end_str: str)
                 if (st) st.value = 'title';
             }}
         """)
-        await page.click(".btn_green.btn_search, button.btn_search, button[class*='btn_search']")
+        # JS로 직접 클릭 (오버레이 영향 없음)
+        await page.evaluate("""
+            () => {
+                const btn = document.querySelector(
+                    '.btn_green.btn_search, button.btn_search, button[class*="btn_search"]'
+                );
+                if (btn) btn.click();
+            }
+        """)
         await asyncio.sleep(2)
     except Exception as e:
         print(f"    검색 실패 ({keyword}): {e}")
