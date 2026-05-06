@@ -835,7 +835,7 @@ async def main():
     all_results: list[dict] = []
 
     async with async_playwright() as p:
-        browser = await p.chromium.launch(headless=False, slow_mo=100)
+        browser = await p.chromium.launch(headless=True, slow_mo=100)
         ctx_health = await browser.new_context(
             viewport={"width": 1280, "height": 900},
             locale="ko-KR",
