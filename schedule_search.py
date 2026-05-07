@@ -571,7 +571,7 @@ async def _nanet_search_keyword(page, keyword: str, from_str: str, end_str: str)
     """nanet에서 키워드 검색 후 결과 반환 (페이지네이션 포함)."""
     items: list[dict] = []
     # 날짜 입력 및 키워드 검색 실행
-try:
+        try:
         # 오버레이/팝업 강제 숨김
         await page.evaluate("""
             () => {
