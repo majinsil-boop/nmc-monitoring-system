@@ -600,7 +600,7 @@ try:
             }
         """)
         await asyncio.sleep(2)
-    except Exception as e:
+        except Exception as e:
         print(f"    검색 실패 ({keyword}): {e}")
         return items
 
