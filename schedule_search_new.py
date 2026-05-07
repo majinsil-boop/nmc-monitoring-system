@@ -26,9 +26,9 @@ ASSEMBLY_TOPIC_KEYWORDS = ["응급의료", "응급실", "응급", "구급", "중
 UPCOMING_DAYS = 14   # 앞으로 N일
 LOOKBACK_DAYS = 0    # 예정 일정만 수집 (과거 제외)
 
-# 실제 회의/행사 판단 — 이 키워드가 있어야 포함
+# 실제 회의/행사 판단 ? 이 키워드가 있어야 포함
 _MEETING_TYPES = {"회의", "공청회", "토론회", "간담회", "청문회", "소위원회", "전체회의", "심사"}
-# 문서/게시물 제목 패턴 — 이 키워드가 있으면 무조건 제외
+# 문서/게시물 제목 패턴 ? 이 키워드가 있으면 무조건 제외
 _DOC_EXCLUDE   = {
     "자료집", "자료실", "보도자료", "활동소식", "결과보고", "보고서",
     "게시물", "첨부", ".hwp", ".pdf", ".docx", ".xlsx", ".zip",
@@ -405,7 +405,7 @@ async def _scrape_estn(page) -> list[dict]:
             if _is_junk(title) or not _in_window(date_str):
                 continue
 
-            # 응급의료 키워드 체크 (없어도 일단 포함 – 별도 필드로 표기)
+            # 응급의료 키워드 체크 (없어도 일단 포함 ? 별도 필드로 표기)
             page_items.append(_make(title, date_str, link, "자료실", category))
 
         items.extend(page_items)
@@ -648,7 +648,7 @@ try:
 
 
 async def _scrape_nanet_seminar(page) -> list[dict]:
-    """국회도서관 세미나 목록 (ampos.nanet.go.kr) 스크래핑 — 키워드별 검색."""
+    """국회도서관 세미나 목록 (ampos.nanet.go.kr) 스크래핑 ? 키워드별 검색."""
     today    = datetime.now()
     end      = today + timedelta(days=UPCOMING_DAYS)
     from_str = today.strftime("%Y-%m-%d")
@@ -835,7 +835,7 @@ async def main():
     all_results: list[dict] = []
 
     async with async_playwright() as p:
-        browser = await p.chromium.launch(headless=False, slow_mo=100)
+        browser = await p.chromium.launch(headless=True, slow_mo=100)
         ctx_health = await browser.new_context(
             viewport={"width": 1280, "height": 900},
             locale="ko-KR",
