@@ -600,7 +600,7 @@ async def _nanet_search_keyword(page, keyword: str, from_str: str, end_str: str)
             }
         """)
         await asyncio.sleep(2)
-        except Exception as e:
+    except Exception as e:
         print(f"    검색 실패 ({keyword}): {e}")
         return items
 
