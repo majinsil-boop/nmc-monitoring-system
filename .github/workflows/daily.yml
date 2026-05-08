@@ -26,7 +26,7 @@ jobs:
 
       - name: 패키지 설치
         run: |
-          pip install playwright openpyxl
+          pip install playwright openpyxl holidays
           playwright install chromium
 
       - name: 데이터 수집
