@@ -383,31 +383,37 @@ else:
         st.session_state.phase = "SELECT"
         st.rerun()
 
-    st.sidebar.markdown("---")
-    st.sidebar.markdown("### 📥 PDF 저장")
-
-    if st.sidebar.button("📄 PDF 생성하기", use_container_width=True):
-        with st.spinner("PDF 생성 중..."):
-            try:
-                pdf_bytes = generate_pdf_bytes(
-                    st.session_state.get("sel_a", []),
-                    st.session_state.get("sel_s", []),
-                    st.session_state.get("sel_n", []),
-                    today,
-                )
-                st.session_state.pdf_bytes = pdf_bytes
-                st.session_state.pdf_ready = True
-            except Exception as e:
-                st.sidebar.error(f"PDF 생성 실패: {e}")
-
-    if st.session_state.get("pdf_ready"):
-        st.sidebar.download_button(
-            label="⬇️ PDF 다운로드",
-            data=st.session_state.pdf_bytes,
-            file_name=f"응급의료_모니터링_{today.replace('-','')}.pdf",
-            mime="application/pdf",
-            use_container_width=True,
-        )
+    # 상단 버튼 행
+    col1, col2, col3 = st.columns([1, 1, 1])
+    with col1:
+        if st.button("🔙 다시 선택하기", use_container_width=True, key="back_main"):
+            st.session_state.phase = "SELECT"
+            st.rerun()
+    with col2:
+        if st.button("📄 PDF 생성하기", use_container_width=True):
+            with st.spinner("PDF 생성 중..."):
+                try:
+                    pdf_bytes = generate_pdf_bytes(
+                        st.session_state.get("sel_a", []),
+                        st.session_state.get("sel_s", []),
+                        st.session_state.get("sel_n", []),
+                        today,
+                    )
+                    st.session_state.pdf_bytes = pdf_bytes
+                    st.session_state.pdf_ready = True
+                except Exception as e:
+                    st.error(f"PDF 생성 실패: {e}")
+    with col3:
+        if st.session_state.get("pdf_ready"):
+            st.download_button(
+                label="⬇️ PDF 다운로드",
+                data=st.session_state.pdf_bytes,
+                file_name=f"응급의료_모니터링_{today.replace('-','')}.pdf",
+                mime="application/pdf",
+                use_container_width=True,
+            )
+        else:
+            st.info("PDF 생성 후 다운로드")
 
     if not (st.session_state.get("sel_a") or st.session_state.get("sel_s") or st.session_state.get("sel_n")):
         st.warning("선택된 항목이 없습니다. '다시 선택하기'를 눌러 항목을 체크해 주세요.")
