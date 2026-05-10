@@ -1,0 +1,666 @@
+[
+  {
+    "keyword": "중증응급",
+    "source": "youthdaily",
+    "title": "[청년발언대] 건강보험의 선택과 집중…필수의료 강화와 재정 효율화",
+    "url": "https://www.youthdaily.co.kr/news/article.html?no=218827",
+    "date": "20260510",
+    "collected_at": "2026-05-10 23:20:56"
+  },
+  {
+    "keyword": "중증응급",
+    "source": "whosaeng",
+    "title": "“응급실에서 곧바로 중환자실로”…부산백병원, 응급중환자실 개소",
+    "url": "http://www.whosaeng.com/170437",
+    "date": "20260510",
+    "collected_at": "2026-05-10 23:20:53"
+  },
+  {
+    "keyword": "중증응급",
+    "source": "kgnews",
+    "title": "구리소방서-강동경희대학교병원, 지역응급의료체계 개선을 위한 업무협...",
+    "url": "https://www.kgnews.co.kr/news/article.html?no=894890",
+    "date": "20260510",
+    "collected_at": "2026-05-10 23:20:50"
+  },
+  {
+    "keyword": "중증응급",
+    "source": "joongang",
+    "title": "“열경련 아이 7월부터 못받게 생겼다”…응급실 초비상, 무슨일",
+    "url": "https://www.joongang.co.kr/article/25426935",
+    "date": "20260510",
+    "collected_at": "2026-05-10 23:20:56"
+  },
+  {
+    "keyword": "중증응급",
+    "source": "gukjenews",
+    "title": "응급의료 협력 논의…10개 기관 한자리에 모였다",
+    "url": "https://www.gukjenews.com/news/articleView.html?idxno=3577796",
+    "date": "20260510",
+    "collected_at": "2026-05-10 23:20:47"
+  },
+  {
+    "keyword": "중증응급",
+    "source": "bosa",
+    "title": "중증 천식도 '일반질환' 분류...알레르기질환, 상급종합병원서 소외 우...",
+    "url": "https://www.bosa.co.kr/news/articleView.html?idxno=3004325",
+    "date": "20260510",
+    "collected_at": "2026-05-10 23:20:53"
+  },
+  {
+    "keyword": "중증외상",
+    "source": "thepublic",
+    "title": "부산시, 외상환자 대응체계 구축… 권역외상센터·거점병원 연계 강화",
+    "url": "https://www.thepublic.kr/news/articleView.html?idxno=303696",
+    "date": "20260510",
+    "collected_at": "2026-05-10 23:20:12"
+  },
+  {
+    "keyword": "중증외상",
+    "source": "munhwa",
+    "title": "‘외상환자 골든타임’ 확보… 부산형 응급의료체계 구축",
+    "url": "https://www.munhwa.com/article/11587638?ref=naver",
+    "date": "20260510",
+    "collected_at": "2026-05-10 23:20:18"
+  },
+  {
+    "keyword": "중증외상",
+    "source": "kihoilbo",
+    "title": "경기도, 골든 타임 확보 필수 '119 구급차 3인 탑승' 전국 하위권",
+    "url": "https://www.kihoilbo.co.kr/news/articleView.html?idxno=3022222",
+    "date": "20260510",
+    "collected_at": "2026-05-10 23:20:12"
+  },
+  {
+    "keyword": "중증외상",
+    "source": "gocj",
+    "title": "장종태 의원, 응급구조사 법정단체화 추진 '응급의료법'개정안 대표발의",
+    "url": "http://www.gocj.net/news/articleView.html?idxno=148151",
+    "date": "20260510",
+    "collected_at": "2026-05-10 23:20:15"
+  },
+  {
+    "keyword": "중앙응급의료센터",
+    "source": "yonhapnewstv",
+    "title": "국민의힘, '공소취소 대응 TF' 다음주 발족",
+    "url": "http://www.yonhapnewstv.co.kr/news/AKR20260509140933uFG",
+    "date": "20260510",
+    "collected_at": "2026-05-10 23:21:40"
+  },
+  {
+    "keyword": "중앙응급의료센터",
+    "source": "korea",
+    "title": "인구 대응 체계 개편·소아응급의료 강화…복지부 소관 3개 법안 의결",
+    "url": "https://www.korea.kr/news/policyNewsView.do?newsId=148964087&call_from=naver_news",
+    "date": "20260510",
+    "collected_at": "2026-05-10 23:21:43"
+  },
+  {
+    "keyword": "중앙응급의료센터",
+    "source": "bosa",
+    "title": "민주당 TF, 모자의료 역량 상급종병 평가 반영 강화 시사",
+    "url": "https://www.bosa.co.kr/news/articleView.html?idxno=3004309",
+    "date": "20260510",
+    "collected_at": "2026-05-10 23:21:43"
+  },
+  {
+    "keyword": "의료분쟁",
+    "source": "docdocdoc",
+    "title": "'무과실 배상' 필수의료 거쳐 \"전 진료과로 확대하자\"",
+    "url": "http://www.docdocdoc.co.kr/news/articleView.html?idxno=3039016",
+    "date": "20260510",
+    "collected_at": "2026-05-10 23:24:19"
+  },
+  {
+    "keyword": "응급이송",
+    "source": "idaegu",
+    "title": "포항해경, 영덕 먼바다 응급환자 긴급 이송",
+    "url": "https://www.idaegu.co.kr/news/articleView.html?idxno=547463",
+    "date": "20260510",
+    "collected_at": "2026-05-10 23:23:07"
+  },
+  {
+    "keyword": "응급의료법",
+    "source": "rapportian",
+    "title": "의료계 \"응급의학과 전공의 유죄 선고 강한 유감...역대급 판결\"",
+    "url": "https://www.rapportian.com/news/articleView.html?idxno=235723",
+    "date": "20260510",
+    "collected_at": "2026-05-10 23:24:03"
+  },
+  {
+    "keyword": "응급의료법",
+    "source": "munhwa",
+    "title": "‘의료분쟁 조정법’ 국회 통과했는데… 의사·환자 측 모두 반발 왜?",
+    "url": "https://www.munhwa.com/article/11587678?ref=naver",
+    "date": "20260510",
+    "collected_at": "2026-05-10 23:24:03"
+  },
+  {
+    "keyword": "응급의료법",
+    "source": "medipana",
+    "title": "응급의학회 \"음주 뇌경색 유죄 판결 우려…젊은 의사 떠날 것\"",
+    "url": "https://www.medipana.com/news/articleView.html?idxno=410985",
+    "date": "20260510",
+    "collected_at": "2026-05-10 23:24:06"
+  },
+  {
+    "keyword": "응급의료법",
+    "source": "medipana",
+    "title": "응급의학과醫 ,\"진단 못했다고 형사처벌…응급의료 사망선고\"",
+    "url": "https://www.medipana.com/news/articleView.html?idxno=410983",
+    "date": "20260510",
+    "collected_at": "2026-05-10 23:24:06"
+  },
+  {
+    "keyword": "응급의료법",
+    "source": "medigatenews",
+    "title": "\"돈만 준다고 의료진 '필수의료' 돌아오지 않아…사법 리스크 낮춰야\"",
+    "url": "https://www.medigatenews.com/news/2732735143",
+    "date": "20260510",
+    "collected_at": "2026-05-10 23:24:09"
+  },
+  {
+    "keyword": "응급의료법",
+    "source": "medicalworldnews",
+    "title": "음주 뇌경색 환자 전공의 유죄판결…대한응급의학의사회·서울시의사회...",
+    "url": "https://medicalworldnews.co.kr/news/view.php?idx=1510974571",
+    "date": "20260510",
+    "collected_at": "2026-05-10 23:23:57"
+  },
+  {
+    "keyword": "응급의료법",
+    "source": "magazine",
+    "title": "\"필수의료 붕괴, 역대급 판결\"···의료계 거센 후폭풍",
+    "url": "https://magazine.hankyung.com/business/article/202605084272b",
+    "date": "20260510",
+    "collected_at": "2026-05-10 23:24:03"
+  },
+  {
+    "keyword": "응급의료법",
+    "source": "ggmedinews",
+    "title": "음주 뇌경색 환자 유죄판결… \"우리나라 응급의료 시스템에 내린 사망선...",
+    "url": "http://www.ggmedinews.com/news/articleView.html?idxno=6489",
+    "date": "20260510",
+    "collected_at": "2026-05-10 23:24:03"
+  },
+  {
+    "keyword": "응급의료법",
+    "source": "doctorstimes",
+    "title": "서울시醫, 응급의학과 전공의 유죄 판결에 강한 '유감'",
+    "url": "http://www.doctorstimes.com/news/articleView.html?idxno=237989",
+    "date": "20260510",
+    "collected_at": "2026-05-10 23:24:00"
+  },
+  {
+    "keyword": "응급의료법",
+    "source": "doctorsnews",
+    "title": "\"응급실 진료가 범죄인가\" 부산시의사회 반발",
+    "url": "http://www.doctorsnews.co.kr/news/articleView.html?idxno=164493",
+    "date": "20260510",
+    "collected_at": "2026-05-10 23:23:57"
+  },
+  {
+    "keyword": "응급의료법",
+    "source": "doctorsnews",
+    "title": "서울시의사회 \"사법의학 폭력 아래 응급의료 현장 한계 도달\"",
+    "url": "http://www.doctorsnews.co.kr/news/articleView.html?idxno=164492",
+    "date": "20260510",
+    "collected_at": "2026-05-10 23:24:00"
+  },
+  {
+    "keyword": "응급의료법",
+    "source": "doctorsnews",
+    "title": "\"도대체 응급실에서 얼마나 주의를 기울여야 위반아닌가?\" 분노",
+    "url": "http://www.doctorsnews.co.kr/news/articleView.html?idxno=164488",
+    "date": "20260510",
+    "collected_at": "2026-05-10 23:24:06"
+  },
+  {
+    "keyword": "응급의료법",
+    "source": "docdocdoc",
+    "title": "\"예측불가 상황 진단 못한 전공의 형사처벌? 응급의료 사망선고\"",
+    "url": "http://www.docdocdoc.co.kr/news/articleView.html?idxno=3039010",
+    "date": "20260510",
+    "collected_at": "2026-05-10 23:24:06"
+  },
+  {
+    "keyword": "응급의료법",
+    "source": "dailymedi",
+    "title": "\"응급의학과 전공의 유죄 판결, 강력 유감\"",
+    "url": "https://www.dailymedi.com/news/news_view.php?wr_id=936318",
+    "date": "20260510",
+    "collected_at": "2026-05-10 23:24:00"
+  },
+  {
+    "keyword": "응급의료법",
+    "source": "bosa",
+    "title": "부산시의사회, 사법 잣대로 의사 단죄 '향후 응급의료'는?",
+    "url": "https://www.bosa.co.kr/news/articleView.html?idxno=3004320",
+    "date": "20260510",
+    "collected_at": "2026-05-10 23:23:57"
+  },
+  {
+    "keyword": "응급의료법",
+    "source": "bokuennews",
+    "title": "서울시의사회, 응급의학과 전공의 유죄 판결 '강력 반발'",
+    "url": "http://www.bokuennews.com/news/article.html?no=277884",
+    "date": "20260510",
+    "collected_at": "2026-05-10 23:24:00"
+  },
+  {
+    "keyword": "응급의료법",
+    "source": "biz",
+    "title": "서울시의사회, 응급의학과 전공의 유죄에 \"필수의료 붕괴 가속\"",
+    "url": "https://biz.sbs.co.kr/article_hub/20000309144?division=NAVER",
+    "date": "20260510",
+    "collected_at": "2026-05-10 23:24:00"
+  },
+  {
+    "keyword": "응급의료 취약지역",
+    "source": "ohmynews",
+    "title": "임상 현장 혼란...응급실 필수 약이 사라지고 있다",
+    "url": "https://www.ohmynews.com/NWS_Web/View/at_pg.aspx?CNTN_CD=A0003230969&CMPT_CD=P0010&utm_source=naver&utm_medium=newsearch&utm_campaign=naver_news",
+    "date": "20260510",
+    "collected_at": "2026-05-10 23:21:03"
+  },
+  {
+    "keyword": "응급의료 취약지역",
+    "source": "newsis",
+    "title": "\"무너진 필수의료 대안\"…의사도 반했다[의료AI 뜬다①]",
+    "url": "https://www.newsis.com/view/NISX20260507_0003620700",
+    "date": "20260510",
+    "collected_at": "2026-05-10 23:21:00"
+  },
+  {
+    "keyword": "응급의료",
+    "source": "yna",
+    "title": "10일 정은경 보건복지부 장관이 충청남도 천안 소아전문응급의료센터 및 달빛어린이병원을 방문해 소아의료체계 현장 점검을 하고 있다. 2026.5.10 [보건복지부 제공. 재판매 및 DB 금지]",
+    "url": "https://www.yna.co.kr/view/PYH20260510088400013?input=1196m",
+    "date": "20260510",
+    "collected_at": "2026-05-10 23:19:26"
+  },
+  {
+    "keyword": "응급의료",
+    "source": "yna",
+    "title": "정은경 보건복지부 장관이 10일 충청남도 천안 소아전문응급의료센터 및 달빛어린이병원을 방문해 소아의료체계 현장 점검을 하고 있다. 2026.5.10 [보건복지부 제공. 재판매 및 DB 금지]",
+    "url": "https://www.yna.co.kr/view/PYH20260510088500013?input=1196m",
+    "date": "20260510",
+    "collected_at": "2026-05-10 23:19:26"
+  },
+  {
+    "keyword": "응급의료",
+    "source": "news1",
+    "title": "소아응급·지역모자의료센터 현장방문 나선 정은경 장관",
+    "url": "https://www.news1.kr/photos/7898363",
+    "date": "20260510",
+    "collected_at": "2026-05-10 23:19:23"
+  },
+  {
+    "keyword": "응급의료",
+    "source": "news1",
+    "title": "정은경 장관, 소아응급·지역모자의료센터 현장방문",
+    "url": "https://www.news1.kr/photos/7898365",
+    "date": "20260510",
+    "collected_at": "2026-05-10 23:19:23"
+  },
+  {
+    "keyword": "응급의료",
+    "source": "news1",
+    "title": "정은경 보건복지부 장관이 10일 충청남도 천안 소아전문응급의료센터 및 달빛어린이병원을 방문해 소아의료체계 현장 점검을 하고 있다. (보건복지부 제공. 재판매 및 DB 금지) 2026.5.10/뉴스1",
+    "url": "https://www.news1.kr/photos/7898364",
+    "date": "20260510",
+    "collected_at": "2026-05-10 23:19:23"
+  },
+  {
+    "keyword": "응급의료",
+    "source": "mt",
+    "title": "\"응급실 의사 다 체포해라\" 뿔난 의사들...전공의 '유죄' 판결에 '부글'",
+    "url": "https://www.mt.co.kr/thebio/2026/05/10/2026051014025075980",
+    "date": "20260510",
+    "collected_at": "2026-05-10 23:19:35"
+  },
+  {
+    "keyword": "응급의료",
+    "source": "kookje",
+    "title": "강서구 유일 응급실, 적자로 문 닫는다…최소 1년 반 공백",
+    "url": "http://www.kookje.co.kr/news2011/asp/newsbody.asp?code=0300&key=20260511.22008002337",
+    "date": "20260510",
+    "collected_at": "2026-05-10 23:19:29"
+  },
+  {
+    "keyword": "응급실 뺑뺑이",
+    "source": "sedaily",
+    "title": "‘응급실 뺑뺑이’ 태아 사망에…당정 “특단 대책 마련”",
+    "url": "https://www.sedaily.com/article/20041883?ref=naver",
+    "date": "20260510",
+    "collected_at": "2026-05-10 23:20:31"
+  },
+  {
+    "keyword": "응급실 뺑뺑이",
+    "source": "ntoday",
+    "title": "산부인과 기피에 분만체계 흔들…모자의료센터 인력 절반 '미달'",
+    "url": "https://www.ntoday.co.kr/news/articleView.html?idxno=126983",
+    "date": "20260510",
+    "collected_at": "2026-05-10 23:20:34"
+  },
+  {
+    "keyword": "응급실 뺑뺑이",
+    "source": "news1",
+    "title": "당정 \"산모·신생아 사망없게 특단 대책…상급종합병원 역량 평가\"(종합...",
+    "url": "https://www.news1.kr/politics/assembly/6160904",
+    "date": "20260510",
+    "collected_at": "2026-05-10 23:20:34"
+  },
+  {
+    "keyword": "응급실 뺑뺑이",
+    "source": "news1",
+    "title": "당정 \"응급실 뺑뺑이로 산모·신생아 사망 없게 특단 대책 마련\"",
+    "url": "https://www.news1.kr/politics/assembly/6160854",
+    "date": "20260510",
+    "collected_at": "2026-05-10 23:20:34"
+  },
+  {
+    "keyword": "응급실 뺑뺑이",
+    "source": "hani",
+    "title": "‘응급실 뺑뺑이’로 산모·신생아 희생 없게…당정 “특단 대책 마련”",
+    "url": "https://www.hani.co.kr/arti/politics/politics_general/1257852.html",
+    "date": "20260510",
+    "collected_at": "2026-05-10 23:20:31"
+  },
+  {
+    "keyword": "응급실 뺑뺑이",
+    "source": "fpn119",
+    "title": "동작소방서, 중앙대병원과 ‘중증 응급환자 1차 진료권 보장’ 업무협약",
+    "url": "http://fpn119.co.kr/250817",
+    "date": "20260510",
+    "collected_at": "2026-05-10 23:20:34"
+  },
+  {
+    "keyword": "응급실 뺑뺑이",
+    "source": "chosun",
+    "title": "응급실 뺑뺑이, 현 정부의 대책은 적절한가",
+    "url": "https://www.chosun.com/national/weekend/2026/05/09/UG27YMTNFRGFDD6BWBVK2ZLZQQ/?utm_source=naver&utm_medium=referral&utm_campaign=naver-news",
+    "date": "20260510",
+    "collected_at": "2026-05-10 23:20:31"
+  },
+  {
+    "keyword": "응급실 뺑뺑이",
+    "source": "biz",
+    "title": "응급실 전공의 유죄에 들끓는 의료계 … '방어진료·뺑뺑이 가속화' 우...",
+    "url": "https://biz.newdaily.co.kr/site/data/html/2026/05/08/2026050800222.html",
+    "date": "20260510",
+    "collected_at": "2026-05-10 23:20:34"
+  },
+  {
+    "keyword": "응급실",
+    "source": "view",
+    "title": "휴일 소아응급실 찾은 정은경 장관…\"안심하고 진료받는 환경 만들 것\"",
+    "url": "https://view.asiae.co.kr/article/2026050817410731092",
+    "date": "20260510",
+    "collected_at": "2026-05-10 23:20:05"
+  },
+  {
+    "keyword": "응급실",
+    "source": "tbc",
+    "title": "대체할 약 없는데...응급실 필수약 '아티반' 공급 중단",
+    "url": "https://www.tbc.co.kr/news/view?pno=20260508155348AE09529&id=206259",
+    "date": "20260510",
+    "collected_at": "2026-05-10 23:19:56"
+  },
+  {
+    "keyword": "응급실",
+    "source": "rapportian",
+    "title": "부산시의사회 \"응급실 진료가 민형사상 책임으로 돌아와\"",
+    "url": "https://www.rapportian.com/news/articleView.html?idxno=235743",
+    "date": "20260510",
+    "collected_at": "2026-05-10 23:19:56"
+  },
+  {
+    "keyword": "응급실",
+    "source": "newstomato",
+    "title": "뺑뺑이 도는 환자, 면허박탈 떠는 의사…'응급실 비극' 악순환",
+    "url": "http://www.newstomato.com/ReadNews.aspx?no=1300326&inflow=N",
+    "date": "20260510",
+    "collected_at": "2026-05-10 23:20:02"
+  },
+  {
+    "keyword": "응급실",
+    "source": "jhealthmedia",
+    "title": "진통제·항생제가 독으로?…응급실행 부르는 '약물과민반응'",
+    "url": "https://jhealthmedia.joins.com/news/articleView.html?idxno=32505",
+    "date": "20260510",
+    "collected_at": "2026-05-10 23:20:05"
+  },
+  {
+    "keyword": "상급종합병원",
+    "source": "womaneconomy",
+    "title": "중증 천식·고관절 골절도 경증 취급?···상급종합병원 구조전환 역설",
+    "url": "https://www.womaneconomy.co.kr/news/articleView.html?idxno=253501",
+    "date": "20260510",
+    "collected_at": "2026-05-10 23:21:32"
+  },
+  {
+    "keyword": "상급종합병원",
+    "source": "medicalworldnews",
+    "title": "상급종합병원 구조 전환 과정, 중증 알레르기 질환 ‘소외’",
+    "url": "https://medicalworldnews.co.kr/news/view.php?idx=1510974583",
+    "date": "20260510",
+    "collected_at": "2026-05-10 23:21:27"
+  },
+  {
+    "keyword": "법안소위",
+    "source": "polinews",
+    "title": "[김능구·차재원의 정국진단 5월②][전문] \"공소취소 특검법에 보수 결...",
+    "url": "https://www.polinews.co.kr/news/articleView.html?idxno=730587",
+    "date": "20260510",
+    "collected_at": "2026-05-10 23:25:34"
+  },
+  {
+    "keyword": "모자의료",
+    "source": "ytn",
+    "title": "권역모자의료센터 20곳 중 11곳, 산과 전문의 필수인력 부족",
+    "url": "https://www.ytn.co.kr/_ln/0103_202605081437374505",
+    "date": "20260510",
+    "collected_at": "2026-05-10 23:22:54"
+  },
+  {
+    "keyword": "모자보건",
+    "source": "yna",
+    "title": "고위험산모 진료 위한 권역모자의료센터, 절반이 산과의사 부족",
+    "url": "https://www.yna.co.kr/view/AKR20260508051400530?input=1195m",
+    "date": "20260510",
+    "collected_at": "2026-05-10 23:22:41"
+  },
+  {
+    "keyword": "모자보건",
+    "source": "newsis",
+    "title": "고위험산모 위한 권역모자의료센터, 절반이 전문의 부족",
+    "url": "https://www.newsis.com/view/NISX20260508_0003621679",
+    "date": "20260510",
+    "collected_at": "2026-05-10 23:22:38"
+  },
+  {
+    "keyword": "모자보건",
+    "source": "news",
+    "title": "부산권 모자의료센터 2곳, 산과 전문의 ‘미달’",
+    "url": "https://news.kbs.co.kr/news/pc/view/view.do?ncd=8556610&ref=A",
+    "date": "20260510",
+    "collected_at": "2026-05-10 23:22:32"
+  },
+  {
+    "keyword": "모자보건",
+    "source": "kyeonggi",
+    "title": "권역모자의료센터 60% 인력 기준 ‘미달’… 분만 인프라 고사 위기",
+    "url": "https://www.kyeonggi.com/article/20260508580079",
+    "date": "20260510",
+    "collected_at": "2026-05-10 23:22:41"
+  },
+  {
+    "keyword": "모자보건",
+    "source": "imnews",
+    "title": "고위험산모 진료 위한 권역모자의료센터, 절반이 산과의사 기준 미충족",
+    "url": "https://imnews.imbc.com/news/2026/society/article/6820900_36918.html",
+    "date": "20260510",
+    "collected_at": "2026-05-10 23:22:41"
+  },
+  {
+    "keyword": "모자보건",
+    "source": "headlinejeju",
+    "title": "서귀포시, 의료취약지역 '찾아가는 산부인과' 본격 운영",
+    "url": "https://www.headlinejeju.co.kr/news/articleView.html?idxno=592231",
+    "date": "20260510",
+    "collected_at": "2026-05-10 23:22:38"
+  },
+  {
+    "keyword": "모자보건",
+    "source": "enewstoday",
+    "title": "\"애 낳을 병원이 없다\"···태아 사망 비극 뒤 숨은 '지방 필수의료' 잔...",
+    "url": "http://www.enewstoday.co.kr/news/articleView.html?idxno=2427745",
+    "date": "20260510",
+    "collected_at": "2026-05-10 23:22:29"
+  },
+  {
+    "keyword": "모자보건",
+    "source": "breaknews",
+    "title": "전남도, ‘온열질환 응급실 감시체계’ 본격 가동… 폭염 피해 최소화 ...",
+    "url": "http://www.breaknews.com/1205711",
+    "date": "20260510",
+    "collected_at": "2026-05-10 23:22:41"
+  },
+  {
+    "keyword": "닥터헬기",
+    "source": "the-biz",
+    "title": "추미애 민주당 경기도지사 후보 '도내 어디서든 고 수준 응급의료 체계...",
+    "url": "http://www.the-biz.co.kr/news/articleView.html?idxno=720248",
+    "date": "20260510",
+    "collected_at": "2026-05-10 23:19:40"
+  },
+  {
+    "keyword": "닥터헬기",
+    "source": "newsis",
+    "title": "경기남부 외상센터 간 추미애 \"응급의료체계 확대 노력\"",
+    "url": "https://www.newsis.com/view/NISX20260508_0003621821",
+    "date": "20260510",
+    "collected_at": "2026-05-10 23:19:46"
+  },
+  {
+    "keyword": "닥터헬기",
+    "source": "kyeongin",
+    "title": "추미애 “응급실 뺑뺑이 없을 것” 아주대병원 권역외상센터 방문",
+    "url": "https://www.kyeongin.com/article/1763248",
+    "date": "20260510",
+    "collected_at": "2026-05-10 23:19:43"
+  },
+  {
+    "keyword": "닥터헬기",
+    "source": "kyeonggi",
+    "title": "추미애, 아주대 권역외상센터 찾아 “필수의료 지원 강화해야”",
+    "url": "https://www.kyeonggi.com/article/20260508580300",
+    "date": "20260510",
+    "collected_at": "2026-05-10 23:19:46"
+  },
+  {
+    "keyword": "닥터헬기",
+    "source": "kihoilbo",
+    "title": "추미애, 아주대 권역외상센터 방문…\"응급의료체계 확대 지원 필요\"",
+    "url": "https://www.kihoilbo.co.kr/news/articleView.html?idxno=3022124",
+    "date": "20260510",
+    "collected_at": "2026-05-10 23:19:43"
+  },
+  {
+    "keyword": "닥터헬기",
+    "source": "kgnews",
+    "title": "추미애 “경기도형 응급의료 체계 구축…‘뺑뺑이 사고’ 원천 차단”",
+    "url": "https://www.kgnews.co.kr/news/article.html?no=894860",
+    "date": "20260510",
+    "collected_at": "2026-05-10 23:19:43"
+  },
+  {
+    "keyword": "닥터헬기",
+    "source": "gukjenews",
+    "title": "추미애, \"산모 뺑뺑이 사고 안타깝다\" 외상센터 찾아 필수의료 확충 방...",
+    "url": "https://www.gukjenews.com/news/articleView.html?idxno=3577167",
+    "date": "20260510",
+    "collected_at": "2026-05-10 23:19:40"
+  },
+  {
+    "keyword": "공소제한",
+    "source": "view",
+    "title": "한동훈 \"李 대통령, 공소취소하면 탄핵해야\"",
+    "url": "https://view.asiae.co.kr/article/2026050916131720561",
+    "date": "20260510",
+    "collected_at": "2026-05-10 23:24:48"
+  },
+  {
+    "keyword": "공소제한",
+    "source": "newsverse",
+    "title": "이 대통령, '공소 취소'의 취소를 선언해야",
+    "url": "https://www.newsverse.kr/news/articleView.html?idxno=10403",
+    "date": "20260510",
+    "collected_at": "2026-05-10 23:24:57"
+  },
+  {
+    "keyword": "공소제한",
+    "source": "newsis",
+    "title": "한동훈 \"李대통령, 실제로 공소취소 추진하면 탄핵해야\"(종합)",
+    "url": "https://www.newsis.com/view/NISX20260509_0003622870",
+    "date": "20260510",
+    "collected_at": "2026-05-10 23:24:48"
+  },
+  {
+    "keyword": "공소제한",
+    "source": "newsis",
+    "title": "한동훈, 출마 기자회견…\"李 대통령, 실제로 공소취소 추진하면 탄핵해...",
+    "url": "https://www.newsis.com/view/NISX20260509_0003622817",
+    "date": "20260510",
+    "collected_at": "2026-05-10 23:24:51"
+  },
+  {
+    "keyword": "공소제한",
+    "source": "news",
+    "title": "한동훈 “이 대통령, 공소 취소하면 탄핵…국회서 폭주 막겠다”",
+    "url": "https://news.kbs.co.kr/news/pc/view/view.do?ncd=8556844&ref=A",
+    "date": "20260510",
+    "collected_at": "2026-05-10 23:24:48"
+  },
+  {
+    "keyword": "공소제한",
+    "source": "newdaily",
+    "title": "설화에 개헌 독주·공소 취소 특검까지 … 민주당發 삼재에 흔들리는 선...",
+    "url": "https://www.newdaily.co.kr/site/data/html/2026/05/08/2026050800111.html",
+    "date": "20260510",
+    "collected_at": "2026-05-10 23:24:57"
+  },
+  {
+    "keyword": "공소제한",
+    "source": "kmib",
+    "title": "한동훈 “李대통령, 실제로 공소취소 추진하면 탄핵해야”",
+    "url": "https://www.kmib.co.kr/article/view.asp?arcid=0029796334&code=61111711&cp=nv",
+    "date": "20260510",
+    "collected_at": "2026-05-10 23:24:51"
+  },
+  {
+    "keyword": "공소제한",
+    "source": "dt",
+    "title": "한동훈 “윤석열 계엄도 이재명 공소취소도 탄핵…정의·유능보수 재건...",
+    "url": "https://www.dt.co.kr/article/12061555?ref=naver",
+    "date": "20260510",
+    "collected_at": "2026-05-10 23:24:45"
+  },
+  {
+    "keyword": "공소제한",
+    "source": "daejonilbo",
+    "title": "[뉴스 즉설]완전 잘못 건드린 '공소취소법', 전재수·김부겸·김경수 초...",
+    "url": "https://www.daejonilbo.com/news/articleView.html?idxno=2273798",
+    "date": "20260510",
+    "collected_at": "2026-05-10 23:24:57"
+  },
+  {
+    "keyword": "고위험산모",
+    "source": "news",
+    "title": "병협 \"소아·분만 필수의료 정상화 TF 구성…정부와 공동 대응\"",
+    "url": "https://news.tvchosun.com/site/data/html_dir/2026/05/08/2026050890161.html",
+    "date": "20260510",
+    "collected_at": "2026-05-10 23:23:23"
+  }
+]
