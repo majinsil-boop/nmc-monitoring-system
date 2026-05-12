@@ -1,0 +1,874 @@
+[
+  {
+    "keyword": "필수의료",
+    "source": "medicalworldnews",
+    "title": "내가 사는 지역의 필수의료, 어떻게 살릴 것인가?…시민패널 300인 모집",
+    "url": "https://medicalworldnews.co.kr/news/view.php?idx=1510974648",
+    "date": "20260512",
+    "collected_at": "2026-05-12 23:42:12"
+  },
+  {
+    "keyword": "필수의료",
+    "source": "mdtoday",
+    "title": "정부 “주사기 등 필수의료제품 공급 안정세”",
+    "url": "https://mdtoday.co.kr/news/view/1065609282725021",
+    "date": "20260512",
+    "collected_at": "2026-05-12 23:42:15"
+  },
+  {
+    "keyword": "중증응급",
+    "source": "yna",
+    "title": "강원소방, 춘천성심병원·강원대병원과 응급의료 협력체계 구축",
+    "url": "https://www.yna.co.kr/view/AKR20260512148500062?input=1195m",
+    "date": "20260512",
+    "collected_at": "2026-05-12 23:40:42"
+  },
+  {
+    "keyword": "중증응급",
+    "source": "rapportian",
+    "title": "국립중앙의료원 중앙응급의료센터, 전국 응급의료지원단 운영 경험 공유",
+    "url": "https://www.rapportian.com/news/articleView.html?idxno=235880",
+    "date": "20260512",
+    "collected_at": "2026-05-12 23:40:39"
+  },
+  {
+    "keyword": "중증응급",
+    "source": "news1",
+    "title": "전국 응급의료지원단, 중앙센터에 모여 체계 발전 방향 논의",
+    "url": "https://www.news1.kr/bio/welfare-medical/6164334",
+    "date": "20260512",
+    "collected_at": "2026-05-12 23:40:42"
+  },
+  {
+    "keyword": "중증외상",
+    "source": "widedaily",
+    "title": "\"몇분 차이로 생사 좌우\"…중증응급 거점 '이 병원'",
+    "url": "https://www.widedaily.com/news/articleView.html?idxno=293821",
+    "date": "20260512",
+    "collected_at": "2026-05-12 23:40:08"
+  },
+  {
+    "keyword": "중증외상",
+    "source": "whosaeng",
+    "title": "서해안권 넘어 전국으로… 중앙대광명병원, 중증응급 치료 허브 부상",
+    "url": "http://www.whosaeng.com/170504",
+    "date": "20260512",
+    "collected_at": "2026-05-12 23:40:14"
+  },
+  {
+    "keyword": "중증외상",
+    "source": "rapportian",
+    "title": "중앙대광명병원, 중증응급 치료 역량 주목...급성 대동맥박리 등 수술 ...",
+    "url": "https://www.rapportian.com/news/articleView.html?idxno=235831",
+    "date": "20260512",
+    "collected_at": "2026-05-12 23:40:11"
+  },
+  {
+    "keyword": "중증외상",
+    "source": "newsis",
+    "title": "車에 깔린 女 위중…'병원밖 응급실' 119메딕원이 살렸다",
+    "url": "https://www.newsis.com/view/NISX20260512_0003625942",
+    "date": "20260512",
+    "collected_at": "2026-05-12 23:40:11"
+  },
+  {
+    "keyword": "중증외상",
+    "source": "newsis",
+    "title": "\"몇분 차이로 생사 좌우\"…중증응급 거점 '이 병원'",
+    "url": "https://www.newsis.com/view/NISX20260512_0003625704",
+    "date": "20260512",
+    "collected_at": "2026-05-12 23:40:14"
+  },
+  {
+    "keyword": "중증외상",
+    "source": "medicalworldnews",
+    "title": "필수의료 배상보험료 국가지원 확대…모자의료·응급 전문의로 확대",
+    "url": "https://medicalworldnews.co.kr/news/view.php?idx=1510974619",
+    "date": "20260512",
+    "collected_at": "2026-05-12 23:40:17"
+  },
+  {
+    "keyword": "중증외상",
+    "source": "kihoilbo",
+    "title": "경기소방 119메딕원 구급대, 출범 15일만에 중증외상환자 5명 생명 살려",
+    "url": "https://www.kihoilbo.co.kr/news/articleView.html?idxno=3022504",
+    "date": "20260512",
+    "collected_at": "2026-05-12 23:40:08"
+  },
+  {
+    "keyword": "중증외상",
+    "source": "insnews",
+    "title": "분만·응급 필수의료 배상보험료 국가 지원 대상 확대",
+    "url": "https://www.insnews.co.kr/news/articleView.html?idxno=90749",
+    "date": "20260512",
+    "collected_at": "2026-05-12 23:40:08"
+  },
+  {
+    "keyword": "중증외상",
+    "source": "doctorstimes",
+    "title": "서해안권 넘어 전국으로···중앙대광명병원 중증응급 치료역량 주목",
+    "url": "http://www.doctorstimes.com/news/articleView.html?idxno=238026",
+    "date": "20260512",
+    "collected_at": "2026-05-12 23:40:14"
+  },
+  {
+    "keyword": "중증외상",
+    "source": "busan",
+    "title": "분만·응급 필수의료 의료진 배상보험료 지원 늘린다",
+    "url": "https://www.busan.com/view/busan/view.php?code=2026051210172306853",
+    "date": "20260512",
+    "collected_at": "2026-05-12 23:40:14"
+  },
+  {
+    "keyword": "중증외상",
+    "source": "bokuennews",
+    "title": "중앙대광명병원, 전국 중증응급환자 '골든타임 최전선' 부상",
+    "url": "http://www.bokuennews.com/news/article.html?no=278002",
+    "date": "20260512",
+    "collected_at": "2026-05-12 23:40:14"
+  },
+  {
+    "keyword": "중앙응급의료센터",
+    "source": "whosaeng",
+    "title": "지역 응급의료지원단 현황 공유·발전 방향 논의",
+    "url": "http://www.whosaeng.com/170500",
+    "date": "20260512",
+    "collected_at": "2026-05-12 23:41:39"
+  },
+  {
+    "keyword": "중앙응급의료센터",
+    "source": "whosaeng",
+    "title": "국립중앙의료원, 제4기 응급의료 서포터즈 발대",
+    "url": "http://www.whosaeng.com/170447",
+    "date": "20260512",
+    "collected_at": "2026-05-12 23:41:46"
+  },
+  {
+    "keyword": "중앙응급의료센터",
+    "source": "whosaeng",
+    "title": "은평성모병원, 응급·필수의료 기반 중증 치료 거점병원 도약",
+    "url": "http://www.whosaeng.com/170444",
+    "date": "20260512",
+    "collected_at": "2026-05-12 23:41:50"
+  },
+  {
+    "keyword": "중앙응급의료센터",
+    "source": "rapportian",
+    "title": "국립중앙의료원, 4기 응급의료 서포터즈 발대...전국 대학생 19개팀",
+    "url": "https://www.rapportian.com/news/articleView.html?idxno=235748",
+    "date": "20260512",
+    "collected_at": "2026-05-12 23:41:50"
+  },
+  {
+    "keyword": "중앙응급의료센터",
+    "source": "joongang",
+    "title": "[단독] ‘CT 정상’ 음주 환자 퇴원 유죄…그날 응급실의 진실",
+    "url": "https://www.joongang.co.kr/article/25427501",
+    "date": "20260512",
+    "collected_at": "2026-05-12 23:41:43"
+  },
+  {
+    "keyword": "중앙응급의료센터",
+    "source": "fnnews",
+    "title": "응급의료지원단 3년 운영 점검...지역 응급의료체계 고도화 논의 본격화",
+    "url": "http://www.fnnews.com/news/202605120839572760",
+    "date": "20260512",
+    "collected_at": "2026-05-12 23:41:39"
+  },
+  {
+    "keyword": "이송 지연",
+    "source": "whosaeng",
+    "title": "강동경희대병원, 경기 동부권 4개 소방서와 응급의료 협력 강화",
+    "url": "http://www.whosaeng.com/170477",
+    "date": "20260512",
+    "collected_at": "2026-05-12 23:43:49"
+  },
+  {
+    "keyword": "이송 지연",
+    "source": "newsis",
+    "title": "\"응급의료 강화\"…강동경희·경기동부권 소방 '맞손'",
+    "url": "https://www.newsis.com/view/NISX20260511_0003624389",
+    "date": "20260512",
+    "collected_at": "2026-05-12 23:43:49"
+  },
+  {
+    "keyword": "이송 지연",
+    "source": "medigatenews",
+    "title": "응급실 전공의 '금고형' 사건, 민사 판결문 살펴보니…",
+    "url": "https://www.medigatenews.com/news/2623274723",
+    "date": "20260512",
+    "collected_at": "2026-05-12 23:43:52"
+  },
+  {
+    "keyword": "이송 지연",
+    "source": "chungnamilbo",
+    "title": "제천소방서, 응급환자 신속한 병원 이송 위한 'pre-KTAS' 운영",
+    "url": "http://www.chungnamilbo.co.kr/news/articleView.html?idxno=887904",
+    "date": "20260512",
+    "collected_at": "2026-05-12 23:43:46"
+  },
+  {
+    "keyword": "이송 지연",
+    "source": "ccdailynews",
+    "title": "제천소방서, '응급환자 중증도 분류체계'로 골든타임 '확보'",
+    "url": "https://www.ccdailynews.com/news/articleView.html?idxno=2415642",
+    "date": "20260512",
+    "collected_at": "2026-05-12 23:43:43"
+  },
+  {
+    "keyword": "의료분쟁",
+    "source": "dailymedi",
+    "title": "수술·시술보다 '대응'…의료분쟁 '법적 책임' 가늠",
+    "url": "https://www.dailymedi.com/news/news_view.php?wr_id=936148",
+    "date": "20260512",
+    "collected_at": "2026-05-12 23:44:27"
+  },
+  {
+    "keyword": "응급이송",
+    "source": "yonhapnewstv",
+    "title": "응급 환자 없는데도 과속…10대 숨지게 한 구급차 기사 구속 영장",
+    "url": "http://www.yonhapnewstv.co.kr/news/AKR20260512180044rzo",
+    "date": "20260512",
+    "collected_at": "2026-05-12 23:43:17"
+  },
+  {
+    "keyword": "응급이송",
+    "source": "newsfreezone",
+    "title": "목포해경, 섬 지역과 해상에서 응급환자 5명 육지로 잇따라 이송",
+    "url": "https://www.newsfreezone.co.kr/news/articleView.html?idxno=689357",
+    "date": "20260512",
+    "collected_at": "2026-05-12 23:43:14"
+  },
+  {
+    "keyword": "응급이송",
+    "source": "news1",
+    "title": "길걷던 원주 중학생 사망사고…사설 구급차 운전자 구속영장 신청",
+    "url": "https://www.news1.kr/local/kangwon/6164507",
+    "date": "20260512",
+    "collected_at": "2026-05-12 23:43:17"
+  },
+  {
+    "keyword": "응급이송",
+    "source": "mk",
+    "title": "“응급환자 없었다” 사설구급차 과속 질주…중학생 사망에 구속영장",
+    "url": "https://www.mk.co.kr/article/12044830",
+    "date": "20260512",
+    "collected_at": "2026-05-12 23:43:20"
+  },
+  {
+    "keyword": "응급이송",
+    "source": "kado",
+    "title": "경찰, 인도 걷던 중학생 덮쳐 숨지게한 사설구급차 운전자 구속영장 신...",
+    "url": "https://www.kado.net/news/articleView.html?idxno=2049721",
+    "date": "20260512",
+    "collected_at": "2026-05-12 23:43:20"
+  },
+  {
+    "keyword": "응급의료법",
+    "source": "yna",
+    "title": "응급 아닌데 과속 질주…10대 숨지게 한 사설 구급차 기사 영장",
+    "url": "https://www.yna.co.kr/view/AKR20260512125800062?input=1195m",
+    "date": "20260512",
+    "collected_at": "2026-05-12 23:44:14"
+  },
+  {
+    "keyword": "응급의료법",
+    "source": "yna",
+    "title": "대법, 중대재해법 양형기준 신설한다…응급의료방해 기준도 마련",
+    "url": "https://www.yna.co.kr/view/AKR20260511157800004?input=1195m",
+    "date": "20260512",
+    "collected_at": "2026-05-12 23:44:20"
+  },
+  {
+    "keyword": "응급의료법",
+    "source": "seoul",
+    "title": "대법, 중대재해처벌법 양형기준 마련…응급실 난동·구급방해도 기준 신...",
+    "url": "https://www.seoul.co.kr/news/society/law/2026/05/11/20260511500275?wlog_tag3=naver",
+    "date": "20260512",
+    "collected_at": "2026-05-12 23:44:20"
+  },
+  {
+    "keyword": "응급의료법",
+    "source": "ppss",
+    "title": "환자 없이 시속 90km...중학생 숨지게 한 사설 구급차 운전자 구속영장",
+    "url": "https://www.ppss.kr/news/articleView.html?idxno=295765",
+    "date": "20260512",
+    "collected_at": "2026-05-12 23:44:10"
+  },
+  {
+    "keyword": "응급의료법",
+    "source": "newspicom",
+    "title": "대법, 중대재해법 양형기준 만든다…응급의료 방해 기준 신설",
+    "url": "https://www.newspim.com/news/view/20260511001323",
+    "date": "20260512",
+    "collected_at": "2026-05-12 23:44:17"
+  },
+  {
+    "keyword": "응급의료법",
+    "source": "news1",
+    "title": "대법, 중대재해법 양형기준 만든다…응급의료 방해 기준도 신설",
+    "url": "https://www.news1.kr/society/court-prosecution/6163248",
+    "date": "20260512",
+    "collected_at": "2026-05-12 23:44:20"
+  },
+  {
+    "keyword": "응급의료법",
+    "source": "news",
+    "title": "인도 걷던 중학생 덮쳐 참변…사설구급차엔 환자 없었다",
+    "url": "https://news.sbs.co.kr/news/endPage.do?news_id=N1008557726&plink=ORI&cooper=NAVER",
+    "date": "20260512",
+    "collected_at": "2026-05-12 23:44:14"
+  },
+  {
+    "keyword": "응급의료법",
+    "source": "mt",
+    "title": "대법, '아리셀 감형'에 중처법 양형기준 마련…응급의료 방해 기준도",
+    "url": "https://www.mt.co.kr/society/2026/05/11/2026051119490016053",
+    "date": "20260512",
+    "collected_at": "2026-05-12 23:44:17"
+  },
+  {
+    "keyword": "응급의료법",
+    "source": "mdtoday",
+    "title": "“야간·휴일 응급실 맡길 의사 없어서”…‘아르바이트 의사’ 불법 고...",
+    "url": "https://mdtoday.co.kr/news/view/1065578549811706",
+    "date": "20260512",
+    "collected_at": "2026-05-12 23:44:17"
+  },
+  {
+    "keyword": "응급의료법",
+    "source": "joongang",
+    "title": "응급환자 없는데 과속하다 ‘쾅’…10대 숨지게 한 구급차 기사 결국",
+    "url": "https://www.joongang.co.kr/article/25427701",
+    "date": "20260512",
+    "collected_at": "2026-05-12 23:44:10"
+  },
+  {
+    "keyword": "응급의료법",
+    "source": "jnilbo",
+    "title": "환자 없이 과속 질주…중학생 사망 사고 낸 사설 구급차 기사 구속영장",
+    "url": "https://www.jnilbo.com/news/articleView.html?idxno=90000034636",
+    "date": "20260512",
+    "collected_at": "2026-05-12 23:44:10"
+  },
+  {
+    "keyword": "응급의료법",
+    "source": "imaeil",
+    "title": "'응급환자 없는데 시속 90km'…원주 중학생 사망사고 구급차 운전자 구...",
+    "url": "https://www.imaeil.com/page/view/2026051215280128027",
+    "date": "20260512",
+    "collected_at": "2026-05-12 23:44:10"
+  },
+  {
+    "keyword": "응급의료법",
+    "source": "edaily",
+    "title": "\"응급 환자 없었다\"…중학생 숨지게 한 사설 구급차 기사 영장",
+    "url": "http://www.edaily.co.kr/news/newspath.asp?newsid=05477606645448264",
+    "date": "20260512",
+    "collected_at": "2026-05-12 23:44:10"
+  },
+  {
+    "keyword": "응급의료법",
+    "source": "biz",
+    "title": "과속 질주하다 승용차와 충돌…길가던 중학생 숨지게 한 사설 구급차 기...",
+    "url": "https://biz.heraldcorp.com/article/10736288?ref=naver",
+    "date": "20260512",
+    "collected_at": "2026-05-12 23:44:10"
+  },
+  {
+    "keyword": "응급의료 취약지역",
+    "source": "pressian",
+    "title": "\"섬 주민 생명 지켰다\"…목포해경, 밤샘 응급환자 5명 긴급 이송",
+    "url": "https://www.pressian.com/pages/articles/2026051209335740301?utm_source=naver&utm_medium=search",
+    "date": "20260512",
+    "collected_at": "2026-05-12 23:40:53"
+  },
+  {
+    "keyword": "응급의료 취약지역",
+    "source": "kbsnet",
+    "title": "울진군 의료원, 민간 구급차량 의료진 교육...응급처치 역량 표준화",
+    "url": "https://www.kbsm.net/news/view.php?idx=519175",
+    "date": "20260512",
+    "collected_at": "2026-05-12 23:40:50"
+  },
+  {
+    "keyword": "응급의료 취약지역",
+    "source": "enewstoday",
+    "title": "의료 취약지역 찾아간다…정선군, '농촌 왕진버스' 운영",
+    "url": "http://www.enewstoday.co.kr/news/articleView.html?idxno=2428068",
+    "date": "20260512",
+    "collected_at": "2026-05-12 23:40:53"
+  },
+  {
+    "keyword": "응급의료",
+    "source": "kwnews",
+    "title": "강원소방본부·춘천성심병원·강원대병원, 응급의료 협력체계 구축",
+    "url": "https://www.kwnews.co.kr/page/view/2026051250120700000",
+    "date": "20260512",
+    "collected_at": "2026-05-12 23:39:25"
+  },
+  {
+    "keyword": "응급의료",
+    "source": "hankookilbo",
+    "title": "\"시속 90km 질주\" 인도 걷던 중학생 숨지게 한 구급차 운전자 영장",
+    "url": "https://www.hankookilbo.com/news/article/A2026051217390005852?did=NA",
+    "date": "20260512",
+    "collected_at": "2026-05-12 23:39:31"
+  },
+  {
+    "keyword": "응급의료",
+    "source": "g1tv",
+    "title": "경찰, 사설구급차-승용차 충돌..구급차 운전자 영장",
+    "url": "https://www.g1tv.co.kr/news?mid=1_207_6&newsid=343437",
+    "date": "20260512",
+    "collected_at": "2026-05-12 23:39:25"
+  },
+  {
+    "keyword": "응급의료",
+    "source": "dailymedi",
+    "title": "중앙응급의료센터, 전국 응급의료지원단 간담회",
+    "url": "https://www.dailymedi.com/news/news_view.php?wr_id=936412",
+    "date": "20260512",
+    "collected_at": "2026-05-12 23:39:18"
+  },
+  {
+    "keyword": "응급실 뺑뺑이",
+    "source": "newskr",
+    "title": "조국혁신당 명창환 여수시장 후보 \"'응급실 뺑뺑이' 반드시 개선돼야.....",
+    "url": "http://www.newskr.kr/news/articleView.html?idxno=104439",
+    "date": "20260512",
+    "collected_at": "2026-05-12 23:40:21"
+  },
+  {
+    "keyword": "응급실 뺑뺑이",
+    "source": "mk",
+    "title": "“CPR 환자 아니면 안 된다고”... 고현정도 ‘응급실 뺑뺑이’ 당했다",
+    "url": "https://www.mk.co.kr/article/12044822",
+    "date": "20260512",
+    "collected_at": "2026-05-12 23:40:21"
+  },
+  {
+    "keyword": "응급실 뺑뺑이",
+    "source": "medigatenews",
+    "title": "응급의학과는 소아진료 기피·소청과는 응급실 근무 부담…\"소아응급 전...",
+    "url": "https://www.medigatenews.com/news/151630559",
+    "date": "20260512",
+    "collected_at": "2026-05-12 23:40:25"
+  },
+  {
+    "keyword": "응급실 뺑뺑이",
+    "source": "ggmedinews",
+    "title": "[칼럼] 의료분쟁조정법 - 필수의료에 박는 마지막 대못, '결과론적 처벌...",
+    "url": "http://www.ggmedinews.com/news/articleView.html?idxno=6497",
+    "date": "20260512",
+    "collected_at": "2026-05-12 23:40:21"
+  },
+  {
+    "keyword": "응급실 뺑뺑이",
+    "source": "docdocdoc",
+    "title": "응급실 '정당 수용 거부' 결국 대법원으로…계명대 하급심 왜 엇갈렸나",
+    "url": "http://www.docdocdoc.co.kr/news/articleView.html?idxno=3039018",
+    "date": "20260512",
+    "collected_at": "2026-05-12 23:40:25"
+  },
+  {
+    "keyword": "응급실",
+    "source": "ytn",
+    "title": "\"응급실 갔다\" 쪽지 남기고 잠적...본사 직원의 상습 '배달 먹튀범' 추적...",
+    "url": "https://www.ytn.co.kr/_ln/0103_202605121740021424",
+    "date": "20260512",
+    "collected_at": "2026-05-12 23:39:57"
+  },
+  {
+    "keyword": "응급실",
+    "source": "sports",
+    "title": "소유 “뮤비 찍다 추락사고…응급실행”",
+    "url": "https://sports.khan.co.kr/article/202605121742003?pt=nv",
+    "date": "20260512",
+    "collected_at": "2026-05-12 23:39:57"
+  },
+  {
+    "keyword": "응급실",
+    "source": "seoul",
+    "title": "소유, 뮤비 촬영 중 사고…에스컬레이터에서 굴러 ‘응급실행’",
+    "url": "https://www.seoul.co.kr/news/entertainment/starinterN/2026/05/12/20260512500246?wlog_tag3=naver",
+    "date": "20260512",
+    "collected_at": "2026-05-12 23:40:00"
+  },
+  {
+    "keyword": "응급실",
+    "source": "segye",
+    "title": "소유, 뮤비 촬영 중 추락 사고에 응급실… \"놀라서 기억도 안나\"",
+    "url": "https://www.segye.com/newsView/20260512517121?OutUrl=naver",
+    "date": "20260512",
+    "collected_at": "2026-05-12 23:39:50"
+  },
+  {
+    "keyword": "응급실",
+    "source": "mdtoday",
+    "title": "필수의료 배상보험료 국가지원 확대…모자의료센터·응급의료기관 전담...",
+    "url": "https://mdtoday.co.kr/news/view/1065593502920754",
+    "date": "20260512",
+    "collected_at": "2026-05-12 23:39:53"
+  },
+  {
+    "keyword": "응급실",
+    "source": "joongang",
+    "title": "공급 중단됐던 응급실 필수약 생산 재개된다...식약처 “공급 지속 예정...",
+    "url": "https://www.joongang.co.kr/article/25427700",
+    "date": "20260512",
+    "collected_at": "2026-05-12 23:40:00"
+  },
+  {
+    "keyword": "응급실",
+    "source": "hidomin",
+    "title": "포항시, 여름철 폭염 대비 '온열질환 응급실 감시체계' 본격 가동",
+    "url": "https://www.hidomin.com/news/articleView.html?idxno=704994",
+    "date": "20260512",
+    "collected_at": "2026-05-12 23:40:00"
+  },
+  {
+    "keyword": "응급실",
+    "source": "enews",
+    "title": "소유, 뮤비 촬영 중 추락 사고…\"응급실行\"",
+    "url": "http://enews.imbc.com/News/RetrieveNewsInfo/504685",
+    "date": "20260512",
+    "collected_at": "2026-05-12 23:40:00"
+  },
+  {
+    "keyword": "상급종합병원",
+    "source": "medicopharma",
+    "title": "이토베비, 상급종합병원 처방권 안착…실제 환자 접근성은 '과제'",
+    "url": "https://www.medicopharma.co.kr/news/articleView.html?idxno=68055",
+    "date": "20260512",
+    "collected_at": "2026-05-12 23:41:25"
+  },
+  {
+    "keyword": "미수용",
+    "source": "whosaeng",
+    "title": "필수의료 배상보험료 국가지원 확대, 중증 산모·응급환자 대상",
+    "url": "http://www.whosaeng.com/sub_read.html?uid=170473&section=sc1",
+    "date": "20260512",
+    "collected_at": "2026-05-12 23:41:07"
+  },
+  {
+    "keyword": "미수용",
+    "source": "view",
+    "title": "필수의료 배상보험료 국가지원 확대…\"응급·분만 현장 지킨다\"",
+    "url": "https://view.asiae.co.kr/article/2026051113511950131",
+    "date": "20260512",
+    "collected_at": "2026-05-12 23:41:10"
+  },
+  {
+    "keyword": "미수용",
+    "source": "seoul",
+    "title": "사법 리스크 덜어 필수의료 살린다…의료사고 배상보험 지원 대폭 확대",
+    "url": "https://www.seoul.co.kr/news/society/2026/05/11/20260511500134?wlog_tag3=naver",
+    "date": "20260512",
+    "collected_at": "2026-05-12 23:41:07"
+  },
+  {
+    "keyword": "미수용",
+    "source": "rapportian",
+    "title": "필수의료 배상보험료 부담 완화…전문의 1인당 연간 175만원 지원",
+    "url": "https://www.rapportian.com/news/articleView.html?idxno=235802",
+    "date": "20260512",
+    "collected_at": "2026-05-12 23:41:04"
+  },
+  {
+    "keyword": "미수용",
+    "source": "nocutnews",
+    "title": "필수의료 고액배상보험 지원 확대…\"응급실 미수용 막는다\"",
+    "url": "https://www.nocutnews.co.kr/news/6515066?utm_source=naver&utm_medium=article&utm_campaign=20260511020056",
+    "date": "20260512",
+    "collected_at": "2026-05-12 23:41:07"
+  },
+  {
+    "keyword": "미수용",
+    "source": "newsis",
+    "title": "의료사고 고액 배상보험 확대…응급실 미수용 막는다",
+    "url": "https://www.newsis.com/view/NISX20260511_0003624260",
+    "date": "20260512",
+    "collected_at": "2026-05-12 23:41:10"
+  },
+  {
+    "keyword": "미수용",
+    "source": "mt",
+    "title": "\"중증 산모·응급환자 지킨다\"…필수의료 배상보험료 국가지원 확대",
+    "url": "https://www.mt.co.kr/thebio/2026/05/11/2026051109444361374",
+    "date": "20260512",
+    "collected_at": "2026-05-12 23:41:10"
+  },
+  {
+    "keyword": "미수용",
+    "source": "medisobizanews",
+    "title": "필수의료 배상보험료 국가지원, 중증 산모·응급환자로 확대",
+    "url": "http://www.medisobizanews.com/news/articleView.html?idxno=138471",
+    "date": "20260512",
+    "collected_at": "2026-05-12 23:41:04"
+  },
+  {
+    "keyword": "미수용",
+    "source": "medipana",
+    "title": "政, 모자의료센터·응급실 전문의까지 '배상보험료' 지원 확대",
+    "url": "https://www.medipana.com/news/articleView.html?idxno=411101",
+    "date": "20260512",
+    "collected_at": "2026-05-12 23:41:07"
+  },
+  {
+    "keyword": "미수용",
+    "source": "medigatenews",
+    "title": "분당 28주차 산모 '응급실 미수용'…\"수도권도 고위험 산모 진료 인프라...",
+    "url": "https://www.medigatenews.com/news/1336802371",
+    "date": "20260512",
+    "collected_at": "2026-05-12 23:41:04"
+  },
+  {
+    "keyword": "미수용",
+    "source": "medicaltimes",
+    "title": "필수의료 배상보험 지원 확대…소아·응급 전문의 포함",
+    "url": "https://www.medicaltimes.com/Main/News/NewsView.html?ID=1168670&ref=naverpc",
+    "date": "20260512",
+    "collected_at": "2026-05-12 23:41:07"
+  },
+  {
+    "keyword": "미수용",
+    "source": "joongang",
+    "title": "필수의료 의사에 배상보험료 175만원 지원…응급 전담 전문의 등 대상도...",
+    "url": "https://www.joongang.co.kr/article/25427276",
+    "date": "20260512",
+    "collected_at": "2026-05-12 23:41:10"
+  },
+  {
+    "keyword": "미수용",
+    "source": "etnews",
+    "title": "응급·소아 전문의까지 '필수의료 배상보험' 국가 지원 확대",
+    "url": "https://www.etnews.com/20260511000169",
+    "date": "20260512",
+    "collected_at": "2026-05-12 23:41:10"
+  },
+  {
+    "keyword": "미수용",
+    "source": "edaily",
+    "title": "필수의료 의료진 배상보험 지원 확대…응급·분만 분야 강화",
+    "url": "http://www.edaily.co.kr/news/newspath.asp?newsid=03414486645447936",
+    "date": "20260512",
+    "collected_at": "2026-05-12 23:41:07"
+  },
+  {
+    "keyword": "미수용",
+    "source": "doctorstimes",
+    "title": "政, 필수의료 배상보험료 국가지원 확대",
+    "url": "http://www.doctorstimes.com/news/articleView.html?idxno=238021",
+    "date": "20260512",
+    "collected_at": "2026-05-12 23:41:04"
+  },
+  {
+    "keyword": "미수용",
+    "source": "doctorsnews",
+    "title": "필수의료 배상보험 확대…소청과·응급의료기관 전담전문의 포함",
+    "url": "http://www.doctorsnews.co.kr/news/articleView.html?idxno=164514",
+    "date": "20260512",
+    "collected_at": "2026-05-12 23:41:07"
+  },
+  {
+    "keyword": "미수용",
+    "source": "docdocdoc",
+    "title": "필수의료 배상보험 지원, '응급·모자의료 전문의'까지 확대",
+    "url": "http://www.docdocdoc.co.kr/news/articleView.html?idxno=3039072",
+    "date": "20260512",
+    "collected_at": "2026-05-12 23:41:07"
+  },
+  {
+    "keyword": "미수용",
+    "source": "dailian",
+    "title": "응급실 미수용·분만 기피 겨냥…필수의료 보험 지원 확대",
+    "url": "https://www.dailian.co.kr/news/view/1642834/?sc=Naver",
+    "date": "20260512",
+    "collected_at": "2026-05-12 23:41:10"
+  },
+  {
+    "keyword": "미수용",
+    "source": "biz",
+    "title": "응급실·분만 의료진 의료사고 부담 덜어준다…배상보험 국가지원 확대",
+    "url": "https://biz.chosun.com/science-chosun/medicine-health/2026/05/11/MTLOFY23KVHDZLGCHHNDNNEO4E/?utm_source=naver&utm_medium=original&utm_campaign=biz",
+    "date": "20260512",
+    "collected_at": "2026-05-12 23:41:07"
+  },
+  {
+    "keyword": "미수용",
+    "source": "biz",
+    "title": "분만·응급으로 필수의료 배상보험 지원 확대",
+    "url": "https://biz.sbs.co.kr/article_hub/20000309408?division=NAVER",
+    "date": "20260512",
+    "collected_at": "2026-05-12 23:41:10"
+  },
+  {
+    "keyword": "모자보건",
+    "source": "viva100",
+    "title": "순천향대천안병원, 정은경 보건복지부 장관 방문…모자의료 국가안전망...",
+    "url": "https://www.viva100.com/article/20260512500427",
+    "date": "20260512",
+    "collected_at": "2026-05-12 23:42:36"
+  },
+  {
+    "keyword": "모자보건",
+    "source": "nongmin",
+    "title": "“분만·응급 의료분쟁 부담 던다”…필수의료 ‘배상보험’ 통큰 지원",
+    "url": "https://www.nongmin.com/article/20260511500702",
+    "date": "20260512",
+    "collected_at": "2026-05-12 23:42:43"
+  },
+  {
+    "keyword": "모자보건",
+    "source": "newsfreezone",
+    "title": "정은경 장관 순천향대천안병원 방문, 정부가 주목한 천안의 '필수의료 ...",
+    "url": "https://www.newsfreezone.co.kr/news/articleView.html?idxno=689049",
+    "date": "20260512",
+    "collected_at": "2026-05-12 23:42:46"
+  },
+  {
+    "keyword": "모자보건",
+    "source": "newscj",
+    "title": "정은경 복지부 장관, 순천향대 천안병원 방문… 소아응급·모자의료 현...",
+    "url": "https://www.newscj.com/news/articleView.html?idxno=3400025",
+    "date": "20260512",
+    "collected_at": "2026-05-12 23:42:43"
+  },
+  {
+    "keyword": "모자보건",
+    "source": "mdtoday",
+    "title": "분만 현장 떠나는 산부인과 의사들…권역모자의료센터 절반 인력 기준 ...",
+    "url": "https://mdtoday.co.kr/news/view/1065599744406856",
+    "date": "20260512",
+    "collected_at": "2026-05-12 23:42:39"
+  },
+  {
+    "keyword": "모자보건",
+    "source": "ktv",
+    "title": "필수의료 배상보험사 공모···\"응급·분만 사법 부담 완화\"",
+    "url": "https://www.ktv.go.kr/content/view?content_id=754302",
+    "date": "20260512",
+    "collected_at": "2026-05-12 23:42:46"
+  },
+  {
+    "keyword": "모자보건",
+    "source": "imnews",
+    "title": "분만·응급 필수의료 배상보험료 국가 지원 대상 확대",
+    "url": "https://imnews.imbc.com/news/2026/society/article/6821540_36918.html",
+    "date": "20260512",
+    "collected_at": "2026-05-12 23:42:46"
+  },
+  {
+    "keyword": "모자보건",
+    "source": "dongascience",
+    "title": "필수의료 배상보험 지원 확대…응급 전담 전문의도 대상",
+    "url": "https://www.dongascience.com/news/view/77834",
+    "date": "20260512",
+    "collected_at": "2026-05-12 23:42:46"
+  },
+  {
+    "keyword": "모자보건",
+    "source": "donga",
+    "title": "분만 등 필수의료 배상보험 정부 지원 확대",
+    "url": "https://www.donga.com/news/Society/article/all/20260511/133901970/2",
+    "date": "20260512",
+    "collected_at": "2026-05-12 23:42:39"
+  },
+  {
+    "keyword": "모자보건",
+    "source": "donga",
+    "title": "의료사고 부담 덜어주려…응급실 전담의 전원 배상보험료 지원",
+    "url": "https://www.donga.com/news/Society/article/all/20260511/133898483/1",
+    "date": "20260512",
+    "collected_at": "2026-05-12 23:42:46"
+  },
+  {
+    "keyword": "닥터헬기",
+    "source": "thefairnews",
+    "title": "\"하늘길로 생명 살린다\"…장수군 닥터헬기 연계체계 본격 가동",
+    "url": "https://www.thefairnews.co.kr/news/articleView.html?idxno=76582",
+    "date": "20260512",
+    "collected_at": "2026-05-12 23:39:40"
+  },
+  {
+    "keyword": "닥터헬기",
+    "source": "sjbnews",
+    "title": "장수군보건의료원-원강대학교병원, 닥터헬기 연계 업무협약 체결",
+    "url": "https://sjbnews.com/news/news.php?number=878133",
+    "date": "20260512",
+    "collected_at": "2026-05-12 23:39:36"
+  },
+  {
+    "keyword": "닥터헬기",
+    "source": "jjn",
+    "title": "장수군 응급환자 골든타임 사수",
+    "url": "http://www.jjn.co.kr/news/articleView.html?idxno=1040464",
+    "date": "20260512",
+    "collected_at": "2026-05-12 23:39:40"
+  },
+  {
+    "keyword": "닥터헬기",
+    "source": "jeollailbo",
+    "title": "장수군보건의료원-원광대학교병원, 닥터헬기 연계 업무협약 체결",
+    "url": "http://www.jeollailbo.com/news/articleView.html?idxno=799754",
+    "date": "20260512",
+    "collected_at": "2026-05-12 23:39:40"
+  },
+  {
+    "keyword": "공소제한",
+    "source": "viva100",
+    "title": "민주 ‘공소취소 특검’에 보수 결집 조짐…지선 변수 될까",
+    "url": "https://www.viva100.com/article/20260512500482",
+    "date": "20260512",
+    "collected_at": "2026-05-12 23:45:02"
+  },
+  {
+    "keyword": "공소제한",
+    "source": "newspicom",
+    "title": "송언석 \"공소취소 특검, 李 재판 없애는 것에 더해 보복 수사도 포함\"",
+    "url": "https://www.newspim.com/news/view/20260512000364",
+    "date": "20260512",
+    "collected_at": "2026-05-12 23:45:06"
+  },
+  {
+    "keyword": "공소제한",
+    "source": "news",
+    "title": "野 정점식 \"'공소취소 특검법' 여야 토론하자…자신 없다면, 법 철회해...",
+    "url": "https://news.tvchosun.com/site/data/html_dir/2026/05/12/2026051290171.html",
+    "date": "20260512",
+    "collected_at": "2026-05-12 23:45:06"
+  },
+  {
+    "keyword": "공소제한",
+    "source": "etoday",
+    "title": "송언석 \"공소취소 특검, 범죄 지우기 동시에 정치보복 목적\"",
+    "url": "https://www.etoday.co.kr/news/view/2583533",
+    "date": "20260512",
+    "collected_at": "2026-05-12 23:45:06"
+  },
+  {
+    "keyword": "고위험산모",
+    "source": "m-i",
+    "title": "政, 태아사망사고에 모자의료체계 손질… 醫 \"필수의료 기피 원인부터 ...",
+    "url": "https://www.m-i.kr/news/articleView.html?idxno=1371282",
+    "date": "20260512",
+    "collected_at": "2026-05-12 23:43:31"
+  },
+  {
+    "keyword": "고위험산모",
+    "source": "kukinews",
+    "title": "필수의료 배상보험료 지원 확대…분만·응급 의료진 부담 낮춘다",
+    "url": "https://www.kukinews.com/article/view/kuk202605110075",
+    "date": "20260512",
+    "collected_at": "2026-05-12 23:43:31"
+  },
+  {
+    "keyword": "필수의료",
+    "source": "보건복지부",
+    "title": "새글\n내가 사는 지역의 필수의료, 어떻게 살릴 것인가 시민 참여 숙의 절차 본격 시작",
+    "url": "https://www.mohw.go.krboard.es?mid=a10503010100&bid=0027&act=view&list_no=1490485&tag=&nPage=1",
+    "date": "2026-05-12",
+    "collected_at": "2026-05-12 23:47:54"
+  }
+]
