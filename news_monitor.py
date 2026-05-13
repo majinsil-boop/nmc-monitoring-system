@@ -51,7 +51,8 @@ def _days_back_count(now: datetime) -> int:
         else:
             return count
 
-_days_back = _days_back_count(_NOW)
+_days_back = 3 if _NOW.weekday() == 0 else 1
+
 DATE_FROM  = (_NOW - timedelta(days=_days_back)).replace(
                  hour=18, minute=0, second=0, microsecond=0)
 DATE_TO    = _NOW
