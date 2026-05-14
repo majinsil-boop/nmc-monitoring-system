@@ -1,0 +1,40 @@
+[
+  {
+    "bill_no": "2218824",
+    "bill_name": "응급의료에 관한 법률 일부개정법률안 (장종태의원 등 11인) (새창 열림)",
+    "proposer": "의원",
+    "proposed_date": "2026-05-06",
+    "vote_date": "",
+    "status": "소관위접수",
+    "url": "https://likms.assembly.go.kr/bill/bi/billDetailPage.do?billId=PRC_Y2W6X0W4W2E7D0D9B0C0A4B7J4H0I8",
+    "keyword": "응급의료",
+    "status_changed_date": "2026-05-08",
+    "legislative_notice": "입법예고중(2026-05-08 ~ 2026-05-17)",
+    "committee": "보건복지위원회",
+    "summary": "",
+    "prev_status": "",
+    "status_change_label": "",
+    "status_changed": false,
+    "is_key_member": false,
+    "priority_mark": ""
+  },
+  {
+    "bill_no": "2218825",
+    "bill_name": "의료·요양 등 지역 돌봄의 통합지원에 관한 법률 일부개정법률안 (안상훈의원 등 11인) (새창 열림)",
+    "proposer": "의원",
+    "proposed_date": "2026-05-06",
+    "vote_date": "",
+    "status": "소관위접수",
+    "url": "https://likms.assembly.go.kr/bill/bi/billDetailPage.do?billId=PRC_V2W6U0V4T2U1C1C3A2Z6A5Y8Y7G7H1",
+    "keyword": "의료",
+    "status_changed_date": "2026-05-08",
+    "legislative_notice": "입법예고중(2026-05-08 ~ 2026-05-17)",
+    "committee": "보건복지위원회",
+    "summary": "",
+    "prev_status": "",
+    "status_change_label": "",
+    "status_changed": false,
+    "is_key_member": false,
+    "priority_mark": ""
+  }
+]
