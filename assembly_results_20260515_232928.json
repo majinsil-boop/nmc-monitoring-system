@@ -1,0 +1,40 @@
+[
+  {
+    "bill_no": "2218824",
+    "bill_name": "응급의료에 관한 법률 일부개정법률안 (장종태의원 등 11인) (새창 열림)",
+    "proposer": "의원",
+    "proposed_date": "2026-05-06",
+    "vote_date": "",
+    "status": "소관위접수",
+    "url": "https://likms.assembly.go.kr/bill/bi/billDetailPage.do?billId=PRC_Y2W6X0W4W2E7D0D9B0C0A4B7J4H0I8",
+    "keyword": "응급의료",
+    "status_changed_date": "2026-05-08",
+    "legislative_notice": "입법예고중(2026-05-08 ~ 2026-05-17)",
+    "committee": "보건복지위원회",
+    "summary": "",
+    "prev_status": "",
+    "status_change_label": "",
+    "status_changed": false,
+    "is_key_member": false,
+    "priority_mark": ""
+  },
+  {
+    "bill_no": "2218825",
+    "bill_name": "의료·요양 등 지역 돌봄의 통합지원에 관한 법률 일부개정법률안 (안상훈의원 등 11인) (새창 열림)",
+    "proposer": "의원",
+    "proposed_date": "2026-05-06",
+    "vote_date": "",
+    "status": "소관위접수",
+    "url": "https://likms.assembly.go.kr/bill/bi/billDetailPage.do?billId=PRC_V2W6U0V4T2U1C1C3A2Z6A5Y8Y7G7H1",
+    "keyword": "의료",
+    "status_changed_date": "2026-05-07",
+    "legislative_notice": "입법예고중(2026-05-08 ~ 2026-05-17)",
+    "committee": "보건복지위원회",
+    "summary": "및 주요내용 제안이유 및 주요내용 우리나라는 전체 주민등록 인구 중 65세 이상 비중이 20%를 넘는 초고령사회에 진입하였으며, 급속한 고령화와 의학기술의 발달로 자연스러운 죽음이 점차 멀어짐에 따라 죽음의 질과 삶의 자기결정권에 대한 사회적 관심이 높아지고 있음. 현행법은 노쇠ㆍ장애ㆍ질병 등으로 일상생활에 어려움을 겪는 사람이 거주하던 곳에서 지속적으로",
+    "prev_status": "",
+    "status_change_label": "",
+    "status_changed": false,
+    "is_key_member": false,
+    "priority_mark": ""
+  }
+]
