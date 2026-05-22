@@ -33,7 +33,10 @@ KEYWORDS = [
     "보건복지위", "법안소위",
 ]
 
-_NOW      = datetime.now()
+from datetime import timezone
+import zoneinfo
+_KST = zoneinfo.ZoneInfo("Asia/Seoul")
+_NOW      = datetime.now(_KST).replace(tzinfo=None)
 YESTERDAY = _NOW - timedelta(days=1)
 
 import holidays  # pip install holidays
