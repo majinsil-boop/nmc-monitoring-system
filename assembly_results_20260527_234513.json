@@ -1,0 +1,40 @@
+[
+  {
+    "bill_no": "2219035",
+    "bill_name": "119구조·구급에 관한 법률 일부개정법률안 (양부남의원 등 10인) (새창 열림)",
+    "proposer": "의원",
+    "proposed_date": "2026-05-21",
+    "vote_date": "",
+    "status": "소관위접수",
+    "url": "https://likms.assembly.go.kr/bill/bi/billDetailPage.do?billId=PRC_V2C6D0C5C1A2B1A5H4I8G0H1F5E4E6",
+    "keyword": "119구조구급",
+    "status_changed_date": "2026-05-22",
+    "legislative_notice": "입법예고중(2026-05-26 ~ 2026-06-04)",
+    "committee": "행정안전위원회",
+    "summary": "및 주요내용 제안이유 및 주요내용 현행법은 119구급대원에게 응급환자 이송 등에 관한 정보를 효율적으로 제공하기 위하여 소방청과 시ㆍ도 소방본부에 119구급상황관리센터를 설치ㆍ운영하도록 하고 있음. 그러나 현재 119구급상황관리센터는 환자의 응급 여부를 판단하지 않아 응급상황이 아님에도 불구하고 119구급대가 불필요하게 출동하는 사례가 빈번하게 발생하고 있",
+    "prev_status": "",
+    "status_change_label": "",
+    "status_changed": false,
+    "is_key_member": false,
+    "priority_mark": ""
+  },
+  {
+    "bill_no": "2219038",
+    "bill_name": "필수의료 강화 지원 및 지역 간 의료격차 해소를 위한 특별법 일부개정법률안 (김윤의원 등 14인) (새창 열림)",
+    "proposer": "의원",
+    "proposed_date": "2026-05-21",
+    "vote_date": "",
+    "status": "소관위접수",
+    "url": "https://likms.assembly.go.kr/bill/bi/billDetailPage.do?billId=PRC_S2A6A0Y5Z1X2Y1W0X3F8D2E5C6D8B3",
+    "keyword": "필수의료",
+    "status_changed_date": "2026-05-22",
+    "legislative_notice": "입법예고중(2026-05-22 ~ 2026-05-31)",
+    "committee": "보건복지위원회",
+    "summary": "",
+    "prev_status": "",
+    "status_change_label": "",
+    "status_changed": false,
+    "is_key_member": false,
+    "priority_mark": ""
+  }
+]
