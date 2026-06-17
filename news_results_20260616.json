@@ -1,0 +1,914 @@
+[
+  {
+    "keyword": "형사특례",
+    "source": "whosaeng",
+    "title": "응급의학과의사회, 현실 외면한 간보기식 수사·표적 기소 강력 규탄",
+    "url": "http://www.whosaeng.com/171357",
+    "date": "20260617",
+    "collected_at": "2026-06-17 00:06:24"
+  },
+  {
+    "keyword": "형사특례",
+    "source": "news1",
+    "title": "대구 '응급실 뺑뺑이' 사건 의사 2명 송치…의료현장 '불기소' 촉구",
+    "url": "https://www.news1.kr/bio/welfare-medical/6198908",
+    "date": "20260617",
+    "collected_at": "2026-06-17 00:06:27"
+  },
+  {
+    "keyword": "형사특례",
+    "source": "medigatenews",
+    "title": "“환자 못 받는 응급실 현실 외면한 희생양 찾기”…응급의사회, 대구 ...",
+    "url": "https://www.medigatenews.com/news/2090718954",
+    "date": "20260617",
+    "collected_at": "2026-06-17 00:06:27"
+  },
+  {
+    "keyword": "필수의료",
+    "source": "doctorstimes",
+    "title": "환자단체 \"탈모 급여화 논의, 필수의료 흔들어\"",
+    "url": "http://www.doctorstimes.com/news/articleView.html?idxno=238594",
+    "date": "20260617",
+    "collected_at": "2026-06-17 00:04:07"
+  },
+  {
+    "keyword": "필수의료",
+    "source": "doctorstimes",
+    "title": "\"검체검사 위·수탁 개편, 필수의료 기반 흔들 수 있다\"",
+    "url": "http://www.doctorstimes.com/news/articleView.html?idxno=238597",
+    "date": "20260617",
+    "collected_at": "2026-06-17 00:04:07"
+  },
+  {
+    "keyword": "중증응급",
+    "source": "medicalworldnews",
+    "title": "대구 응급실 미수용 사망 의료진 검찰 송치…의료계 일제히 반발",
+    "url": "https://medicalworldnews.co.kr/news/view.php?idx=1510975336",
+    "date": "20260617",
+    "collected_at": "2026-06-17 00:02:40"
+  },
+  {
+    "keyword": "중증응급",
+    "source": "m-i",
+    "title": "구리소방서, 2분기 '지역응급의료협의체 회의' 개최",
+    "url": "https://www.m-i.kr/news/articleView.html?idxno=1382181",
+    "date": "20260617",
+    "collected_at": "2026-06-17 00:02:44"
+  },
+  {
+    "keyword": "중증응급",
+    "source": "iusco",
+    "title": "[이슈진단] \"울산서 끝내자\"…지역 완결형 필수의료체계 구축 시동",
+    "url": "https://www.iusm.co.kr/news/articleView.html?idxno=1064175",
+    "date": "20260617",
+    "collected_at": "2026-06-17 00:02:37"
+  },
+  {
+    "keyword": "중증응급",
+    "source": "doctorsnews",
+    "title": "의협, '응급실 미수용' 사망사건 의료진 검찰 송치 강력 비판",
+    "url": "http://www.doctorsnews.co.kr/news/articleView.html?idxno=165007",
+    "date": "20260617",
+    "collected_at": "2026-06-17 00:02:44"
+  },
+  {
+    "keyword": "중증외상",
+    "source": "wowtv",
+    "title": "백남종 서울대병원장 \"국가 필수의료 컨트롤 타워 되겠다\"",
+    "url": "http://www.wowtv.co.kr/NewsCenter/News/Read?articleId=A202606160385&t=NN",
+    "date": "20260617",
+    "collected_at": "2026-06-17 00:02:04"
+  },
+  {
+    "keyword": "중증외상",
+    "source": "sentv",
+    "title": "백남종 서울대병원장 \"국가 필수의료 완결…미래의학 기준 세울 것\"",
+    "url": "https://www.sentv.co.kr/article/view/sentv202606160130",
+    "date": "20260617",
+    "collected_at": "2026-06-17 00:02:01"
+  },
+  {
+    "keyword": "중증외상",
+    "source": "newsmp",
+    "title": "국립대병원, 복지부 이관 앞두고 지역필수의료 거점 역할 구체화",
+    "url": "http://www.newsmp.com/news/articleView.html?idxno=254720",
+    "date": "20260617",
+    "collected_at": "2026-06-17 00:02:10"
+  },
+  {
+    "keyword": "중증외상",
+    "source": "newsgn",
+    "title": "국립대학병원 육성으로 지역 필수의료 위기 돌파한다",
+    "url": "https://www.newsgn.com/news/articleView.html?idxno=557193",
+    "date": "20260617",
+    "collected_at": "2026-06-17 00:02:07"
+  },
+  {
+    "keyword": "중증외상",
+    "source": "news1",
+    "title": "\"병원 전 응급환자 이송 때부터 중증도 분류 매우 중요\"",
+    "url": "https://www.news1.kr/bio/welfare-medical/6198946",
+    "date": "20260617",
+    "collected_at": "2026-06-17 00:02:07"
+  },
+  {
+    "keyword": "중증외상",
+    "source": "news1",
+    "title": "\"필수의료 지키고 AI로 연결한다\"…백남종號 서울대병원 새 항로",
+    "url": "https://www.news1.kr/bio/general/6198683",
+    "date": "20260617",
+    "collected_at": "2026-06-17 00:02:10"
+  },
+  {
+    "keyword": "중증외상",
+    "source": "medigatenews",
+    "title": "교육부 떠나 복지부로 가는 국립대병원…정부, 지역 필수의료 ‘대형병...",
+    "url": "https://www.medigatenews.com/news/3608230804",
+    "date": "20260617",
+    "collected_at": "2026-06-17 00:02:04"
+  },
+  {
+    "keyword": "중증외상",
+    "source": "mdtoday",
+    "title": "정부, 국립대학병원을 지역‧필수의료 살리는 지역 핵심병원으로 육성...",
+    "url": "https://www.mdtoday.co.kr/news/articleView.html?idxno=600989",
+    "date": "20260617",
+    "collected_at": "2026-06-17 00:02:04"
+  },
+  {
+    "keyword": "중증외상",
+    "source": "kormedi",
+    "title": "대구시의사회, “10대 응급환자 사망 책임, 현장 의사에게 떠넘기지 말...",
+    "url": "https://kormedi.com/?p=2825393",
+    "date": "20260617",
+    "collected_at": "2026-06-17 00:02:04"
+  },
+  {
+    "keyword": "중증외상",
+    "source": "khan",
+    "title": "백남종 서울대병원장, 국가 필수의료 강조··· “지역·필수·공공의료...",
+    "url": "https://www.khan.co.kr/article/202606161643001",
+    "date": "20260617",
+    "collected_at": "2026-06-17 00:02:04"
+  },
+  {
+    "keyword": "중증외상",
+    "source": "joongang",
+    "title": "‘대구 응급실 뺑뺑이’ 10대 사망 사건…의사 2명 검찰 송치",
+    "url": "https://www.joongang.co.kr/article/25437184",
+    "date": "20260617",
+    "collected_at": "2026-06-17 00:02:07"
+  },
+  {
+    "keyword": "중증외상",
+    "source": "imaeil",
+    "title": "대구시의사회 \"응급의료 붕괴 책임, 현장 의사에게 떠넘기지 말라\"",
+    "url": "https://www.imaeil.com/page/view/2026061614484963885",
+    "date": "20260617",
+    "collected_at": "2026-06-17 00:02:07"
+  },
+  {
+    "keyword": "중증외상",
+    "source": "idaegu",
+    "title": "'대구 응급실 뺑뺑이 10대 사망 사건' 3년 만에 수사 가닥…의사 2명 검...",
+    "url": "https://www.idaegu.co.kr/news/articleView.html?idxno=551193",
+    "date": "20260617",
+    "collected_at": "2026-06-17 00:02:01"
+  },
+  {
+    "keyword": "중증외상",
+    "source": "idaegu",
+    "title": "대구시의사회, \"응급환자 사망 책임 의사 개인에 전가 말라\"",
+    "url": "https://www.idaegu.co.kr/news/articleView.html?idxno=551171",
+    "date": "20260617",
+    "collected_at": "2026-06-17 00:02:07"
+  },
+  {
+    "keyword": "중증외상",
+    "source": "hani",
+    "title": "3년 전 ‘응급실 뺑뺑이’ 환자 수용 거부 의사 검찰 송치",
+    "url": "https://www.hani.co.kr/arti/area/yeongnam/1263817.html",
+    "date": "20260617",
+    "collected_at": "2026-06-17 00:02:04"
+  },
+  {
+    "keyword": "중증외상",
+    "source": "fpn119",
+    "title": "의령소방서 “비응급 상황에서 119구급차 이용은 멈춰주세요”",
+    "url": "http://fpn119.co.kr/252541",
+    "date": "20260617",
+    "collected_at": "2026-06-17 00:02:04"
+  },
+  {
+    "keyword": "중증외상",
+    "source": "ekn",
+    "title": "[전문센터 특화진료] 年 4만명 응급환자 몰려도 ‘뺑뺑이’ 없는 응급실",
+    "url": "https://www.ekn.kr/web/view.php?key=20260616028153502",
+    "date": "20260617",
+    "collected_at": "2026-06-17 00:02:01"
+  },
+  {
+    "keyword": "중증외상",
+    "source": "doctorsnews",
+    "title": "\"응급의료 붕괴 책임 의사에게 전가 수사·처벌 즉각 중단하라\"",
+    "url": "http://www.doctorsnews.co.kr/news/articleView.html?idxno=165010",
+    "date": "20260617",
+    "collected_at": "2026-06-17 00:02:01"
+  },
+  {
+    "keyword": "중증외상",
+    "source": "docdocdoc",
+    "title": "3년 만에 전공의까지 송치…응급의학과 의사들 \"불기소 처분해야\"",
+    "url": "http://www.docdocdoc.co.kr/news/articleView.html?idxno=3040094",
+    "date": "20260617",
+    "collected_at": "2026-06-17 00:02:10"
+  },
+  {
+    "keyword": "중증외상",
+    "source": "dkilbo",
+    "title": "대구시의사회, '응급실 문은 의사 한 명이 여닫지 않는다'",
+    "url": "https://www.dkilbo.com/news/articleView.html?idxno=546286",
+    "date": "20260617",
+    "collected_at": "2026-06-17 00:02:07"
+  },
+  {
+    "keyword": "중증외상",
+    "source": "busan",
+    "title": "동남권 권역외상센터 투자 확대",
+    "url": "https://www.busan.com/view/busan/view.php?code=2026061618211758266",
+    "date": "20260617",
+    "collected_at": "2026-06-17 00:02:01"
+  },
+  {
+    "keyword": "중증외상",
+    "source": "bosa",
+    "title": "응급실 수용 못해 환자 사망...의사 검찰 송치로 의료계 반발",
+    "url": "https://www.bosa.co.kr/news/articleView.html?idxno=3006371",
+    "date": "20260617",
+    "collected_at": "2026-06-17 00:02:04"
+  },
+  {
+    "keyword": "중증외상",
+    "source": "bokuennews",
+    "title": "대구시의사회 \"응급의료 붕괴 책임, 현장 의사에 떠넘기지 말라\"",
+    "url": "http://www.bokuennews.com/news/article.html?no=279870",
+    "date": "20260617",
+    "collected_at": "2026-06-17 00:02:01"
+  },
+  {
+    "keyword": "중증외상",
+    "source": "akomnews",
+    "title": "국립대병원, 지역 필수의료·연구·교육 거점으로 육성",
+    "url": "https://www.akomnews.com/bbs/board.php?bo_table=news&wr_id=67467",
+    "date": "20260617",
+    "collected_at": "2026-06-17 00:02:10"
+  },
+  {
+    "keyword": "중앙응급의료센터",
+    "source": "whosaeng",
+    "title": "NMC, 응급의료종사자 중증도 분류 교육",
+    "url": "http://www.whosaeng.com/171336",
+    "date": "20260617",
+    "collected_at": "2026-06-17 00:03:38"
+  },
+  {
+    "keyword": "중앙응급의료센터",
+    "source": "tournews21",
+    "title": "구급차 안에서 갈리는 골든타임…국립중앙의료원, 현장 중증도 분류 교...",
+    "url": "https://www.tournews21.com/news/articleView.html?idxno=136656",
+    "date": "20260617",
+    "collected_at": "2026-06-17 00:03:38"
+  },
+  {
+    "keyword": "중앙응급의료센터",
+    "source": "rapportian",
+    "title": "국립중앙의료원 중앙응급의료센터, 'Pre-KTAS' 교육 본격 시행",
+    "url": "https://www.rapportian.com/news/articleView.html?idxno=237089",
+    "date": "20260617",
+    "collected_at": "2026-06-17 00:03:38"
+  },
+  {
+    "keyword": "중앙응급의료센터",
+    "source": "mdtoday",
+    "title": "국립중앙의료원 중앙응급의료센터, 6월부터 8월까지 Pre-KTAS 교육 시행",
+    "url": "https://www.mdtoday.co.kr/news/articleView.html?idxno=600943",
+    "date": "20260617",
+    "collected_at": "2026-06-17 00:03:32"
+  },
+  {
+    "keyword": "중앙응급의료센터",
+    "source": "edu",
+    "title": "교육부-복지부, 국립대학병원 지역 필수의료 거점으로 육성",
+    "url": "https://edu.chosun.com/site/data/html_dir/2026/06/16/2026061680016.html",
+    "date": "20260617",
+    "collected_at": "2026-06-17 00:03:43"
+  },
+  {
+    "keyword": "중앙응급의료센터",
+    "source": "docdocdoc",
+    "title": "국립대병원을 지역 필수의료 거점으로…政, 육성방안 발표",
+    "url": "http://www.docdocdoc.co.kr/news/articleView.html?idxno=3040067",
+    "date": "20260617",
+    "collected_at": "2026-06-17 00:03:43"
+  },
+  {
+    "keyword": "중앙응급의료센터",
+    "source": "bosa",
+    "title": "국립중앙의료원, 응급환자 중증도 분류 교육 실시",
+    "url": "https://www.bosa.co.kr/news/articleView.html?idxno=3006319",
+    "date": "20260617",
+    "collected_at": "2026-06-17 00:03:38"
+  },
+  {
+    "keyword": "이송 지연",
+    "source": "news",
+    "title": "경북도, 응급환자 3단계 이송 체계 도입",
+    "url": "https://news.kbs.co.kr/news/pc/view/view.do?ncd=8587206&ref=A",
+    "date": "20260617",
+    "collected_at": "2026-06-17 00:05:26"
+  },
+  {
+    "keyword": "이송 지연",
+    "source": "chungnamilbo",
+    "title": "서산소방서, 119구급차 비응급 신고 자제 당부",
+    "url": "http://www.chungnamilbo.co.kr/news/articleView.html?idxno=893814",
+    "date": "20260617",
+    "collected_at": "2026-06-17 00:05:26"
+  },
+  {
+    "keyword": "의료분쟁",
+    "source": "doctorstimes",
+    "title": "의협 의료배상공제조합, '2026 상반기 의료분쟁예방 연수교육' 27일(토) ...",
+    "url": "http://www.doctorstimes.com/news/articleView.html?idxno=238580",
+    "date": "20260617",
+    "collected_at": "2026-06-17 00:06:07"
+  },
+  {
+    "keyword": "의료분쟁",
+    "source": "doctorsnews",
+    "title": "의료배상공제조합 6월 27일 '의료분쟁예방' 연수교육 실시",
+    "url": "http://www.doctorsnews.co.kr/news/articleView.html?idxno=164990",
+    "date": "20260617",
+    "collected_at": "2026-06-17 00:06:07"
+  },
+  {
+    "keyword": "응급이송",
+    "source": "docdocdoc",
+    "title": "'음주운전 사각지대' 사설구급차…운전자 관리 의무 추진",
+    "url": "http://www.docdocdoc.co.kr/news/articleView.html?idxno=3040109",
+    "date": "20260617",
+    "collected_at": "2026-06-17 00:05:08"
+  },
+  {
+    "keyword": "응급의료",
+    "source": "sidae",
+    "title": "대구 응급환자 전원사망 사건 의사 2명 검찰 송치",
+    "url": "https://www.sidae.com/article/2026061705470559549",
+    "date": "20260617",
+    "collected_at": "2026-06-17 00:01:20"
+  },
+  {
+    "keyword": "응급의료",
+    "source": "segye",
+    "title": "‘대구 응급실 뺑뺑이 10대 사망’ 의사 2명 불구속 송치",
+    "url": "https://www.segye.com/newsView/20260616515248?OutUrl=naver",
+    "date": "20260617",
+    "collected_at": "2026-06-17 00:01:23"
+  },
+  {
+    "keyword": "응급의료",
+    "source": "sedaily",
+    "title": "‘응급실 뺑뺑이→10대 사망’ 의사 2명 송치…의료계 일제히 비판",
+    "url": "https://www.sedaily.com/article/20056560?ref=naver",
+    "date": "20260617",
+    "collected_at": "2026-06-17 00:01:26"
+  },
+  {
+    "keyword": "응급의료",
+    "source": "newsmp",
+    "title": "대구 응급실 미수용 의사 송치에 의료계 규탄 봇물",
+    "url": "http://www.newsmp.com/news/articleView.html?idxno=254746",
+    "date": "20260617",
+    "collected_at": "2026-06-17 00:01:23"
+  },
+  {
+    "keyword": "응급의료",
+    "source": "medipana",
+    "title": "응급실 미수용 의사 송치 논란…서울시醫 \"결과책임주의\"",
+    "url": "https://www.medipana.com/news/articleView.html?idxno=413036",
+    "date": "20260617",
+    "collected_at": "2026-06-17 00:01:29"
+  },
+  {
+    "keyword": "응급의료",
+    "source": "medipana",
+    "title": "응급실 미수용 의사 송치 논란…의협 \"구조적 책임 전가\"",
+    "url": "https://www.medipana.com/news/articleView.html?idxno=413035",
+    "date": "20260617",
+    "collected_at": "2026-06-17 00:01:29"
+  },
+  {
+    "keyword": "응급의료",
+    "source": "medipana",
+    "title": "대구 응급의료진 송치 논란…응급의학醫 \"현장 판단 범죄화\"",
+    "url": "https://www.medipana.com/news/articleView.html?idxno=413032",
+    "date": "20260617",
+    "collected_at": "2026-06-17 00:01:29"
+  },
+  {
+    "keyword": "응급의료",
+    "source": "mdtoday",
+    "title": "사설 구급차 운전자에 대한 관리·감독 의무화 추진…응급이송 안전망 ...",
+    "url": "https://www.mdtoday.co.kr/news/articleView.html?idxno=600999",
+    "date": "20260617",
+    "collected_at": "2026-06-17 00:01:17"
+  },
+  {
+    "keyword": "응급의료",
+    "source": "health",
+    "title": "온천물 입에 넣었다가 응급실… 5세 여아가 겪은 뜻밖의 감염",
+    "url": "https://health.chosun.com/site/data/html_dir/2026/06/16/2026061602300.html",
+    "date": "20260617",
+    "collected_at": "2026-06-17 00:01:29"
+  },
+  {
+    "keyword": "응급의료",
+    "source": "doctorstimes",
+    "title": "[기자수첩] 탈모 치료 급여 논의, 지역·필수의료보다 앞설 수 있나",
+    "url": "http://www.doctorstimes.com/news/articleView.html?idxno=238588",
+    "date": "20260617",
+    "collected_at": "2026-06-17 00:01:17"
+  },
+  {
+    "keyword": "응급의료",
+    "source": "doctorstimes",
+    "title": "서울시醫 \"응급의료를 범죄로 만드는 사법적 폭주 규탄\"",
+    "url": "http://www.doctorstimes.com/news/articleView.html?idxno=238592",
+    "date": "20260617",
+    "collected_at": "2026-06-17 00:01:17"
+  },
+  {
+    "keyword": "응급의료",
+    "source": "dailymedi",
+    "title": "효과 확인 '응급실 자살시도자 사후관리' 확대",
+    "url": "https://www.dailymedi.com/news/news_view.php?wr_id=937442",
+    "date": "20260617",
+    "collected_at": "2026-06-17 00:01:20"
+  },
+  {
+    "keyword": "응급의료",
+    "source": "bokuennews",
+    "title": "\"검체검사 깎아 필수의료 못 살려\"… 개편안 전면 재검토 촉구",
+    "url": "http://www.bokuennews.com/news/article.html?no=279871",
+    "date": "20260617",
+    "collected_at": "2026-06-17 00:01:23"
+  },
+  {
+    "keyword": "응급실 뺑뺑이",
+    "source": "yonhapnewstv",
+    "title": "'응급실 뺑뺑이' 사망 사고 의사 송치에 의료계 비판 목소리",
+    "url": "http://www.yonhapnewstv.co.kr/news/AKR20260616165737R5F",
+    "date": "20260617",
+    "collected_at": "2026-06-17 00:02:21"
+  },
+  {
+    "keyword": "응급실 뺑뺑이",
+    "source": "sisajournal",
+    "title": "\"문제 떠넘기기\"…의료계, 3년 전 '응급실 뺑뺑이 사망' 의사 송치에 발...",
+    "url": "https://www.sisajournal.com/news/articleView.html?idxno=376681",
+    "date": "20260617",
+    "collected_at": "2026-06-17 00:02:21"
+  },
+  {
+    "keyword": "응급실 뺑뺑이",
+    "source": "seoul",
+    "title": "대구 ‘응급실 뺑뺑이’ 사망 사건…치료 거부 의사 2명, 3년 만에 검찰...",
+    "url": "https://www.seoul.co.kr/news/society/2026/06/16/20260616500199?wlog_tag3=naver",
+    "date": "20260617",
+    "collected_at": "2026-06-17 00:02:27"
+  },
+  {
+    "keyword": "응급실 뺑뺑이",
+    "source": "segye",
+    "title": "대구시의사회 \"결과 나쁘면 다 의사 죄? 누가 응급실 지키겠나\"",
+    "url": "https://www.segye.com/newsView/20260616514164?OutUrl=naver",
+    "date": "20260617",
+    "collected_at": "2026-06-17 00:02:24"
+  },
+  {
+    "keyword": "응급실 뺑뺑이",
+    "source": "queen",
+    "title": "대구 '응급실 뺑뺑이' 사망 사건 의사 2명 송치 … 의료계 \"검찰 '혐의없...",
+    "url": "http://www.queen.co.kr/news/articleView.html?idxno=458702",
+    "date": "20260617",
+    "collected_at": "2026-06-17 00:02:24"
+  },
+  {
+    "keyword": "응급실 뺑뺑이",
+    "source": "newsis",
+    "title": "'응급실 뺑뺑이' 의사 송치…\"구조적 문제를 개인에 전가\"",
+    "url": "https://www.newsis.com/view/NISX20260616_0003671397",
+    "date": "20260617",
+    "collected_at": "2026-06-17 00:02:24"
+  },
+  {
+    "keyword": "응급실 뺑뺑이",
+    "source": "newsis",
+    "title": "대구시의사회 \"응급실 뺑뺑이, 현장 의사에 떠넘기지 말라\"",
+    "url": "https://www.newsis.com/view/NISX20260616_0003671355",
+    "date": "20260617",
+    "collected_at": "2026-06-17 00:02:27"
+  },
+  {
+    "keyword": "응급실 뺑뺑이",
+    "source": "news1",
+    "title": "대구시의사회 \"응급실 뺑뺑이 사망사고 현장 의사에 책임 전가 안돼\"",
+    "url": "https://www.news1.kr/local/daegu-gyeongbuk/6199264",
+    "date": "20260617",
+    "collected_at": "2026-06-17 00:02:21"
+  },
+  {
+    "keyword": "응급실 뺑뺑이",
+    "source": "news",
+    "title": "[자막뉴스] \"왜 이제 와서?\" '응급실 뺑뺑이' 의사들 3년 만에 검찰 송치...",
+    "url": "https://news.sbs.co.kr/news/endPage.do?news_id=N1008613195&plink=ORI&cooper=NAVER",
+    "date": "20260617",
+    "collected_at": "2026-06-17 00:02:21"
+  },
+  {
+    "keyword": "응급실 뺑뺑이",
+    "source": "news",
+    "title": "응급의학회, 3년 전 ‘뺑뺑이 사고’ 의사 처벌에 반발",
+    "url": "https://news.kbs.co.kr/news/pc/view/view.do?ncd=8587554&ref=A",
+    "date": "20260617",
+    "collected_at": "2026-06-17 00:02:24"
+  },
+  {
+    "keyword": "응급실 뺑뺑이",
+    "source": "mt",
+    "title": "'대구 응급실 뺑뺑이' 사망 사건 의사 2명 검찰 송치",
+    "url": "https://www.mt.co.kr/society/2026/06/16/2026061615181513120",
+    "date": "20260617",
+    "collected_at": "2026-06-17 00:02:27"
+  },
+  {
+    "keyword": "응급실 뺑뺑이",
+    "source": "mt",
+    "title": "'응급실 뺑뺑이→10대 사망' 의사 2명 송치...의료계 \"구조적 문제\" 반발",
+    "url": "https://www.mt.co.kr/thebio/2026/06/16/2026061615301659843",
+    "date": "20260617",
+    "collected_at": "2026-06-17 00:02:27"
+  },
+  {
+    "keyword": "응급실 뺑뺑이",
+    "source": "medical-tribune",
+    "title": "대구 응급실 의사 송치, 대한응급의학의사회 \"희생양 찾기\"",
+    "url": "http://www.medical-tribune.co.kr/news/articleView.html?idxno=214275",
+    "date": "20260617",
+    "collected_at": "2026-06-17 00:02:18"
+  },
+  {
+    "keyword": "응급실 뺑뺑이",
+    "source": "kyeonggi",
+    "title": "'응급실 뺑뺑이' 의사 2명 송치에 의료계 반발…\"구조적 문제 외면\"",
+    "url": "https://www.kyeonggi.com/article/20260616580470",
+    "date": "20260617",
+    "collected_at": "2026-06-17 00:02:21"
+  },
+  {
+    "keyword": "응급실 뺑뺑이",
+    "source": "kukinews",
+    "title": "대구 ‘응급실 뺑뺑이’ 의사, 3년 만에 송치…의료계 반발",
+    "url": "https://www.kukinews.com/article/view/kuk202606160167",
+    "date": "20260617",
+    "collected_at": "2026-06-17 00:02:21"
+  },
+  {
+    "keyword": "응급실 뺑뺑이",
+    "source": "kookje",
+    "title": "'대구 응급실 뺑뺑이 10대 사망' 의사 2명, 3년 만에 검찰 송치",
+    "url": "http://www.kookje.co.kr/news2011/asp/newsbody.asp?code=0300&key=20260616.99099004677",
+    "date": "20260617",
+    "collected_at": "2026-06-17 00:02:27"
+  },
+  {
+    "keyword": "응급실 뺑뺑이",
+    "source": "kgnews",
+    "title": "대구 '응급실 뺑뺑이' 사망 사고 의사 2명 검찰 송치…의학계 나란히 비...",
+    "url": "https://www.kgnews.co.kr/news/article.html?no=900218",
+    "date": "20260617",
+    "collected_at": "2026-06-17 00:02:21"
+  },
+  {
+    "keyword": "응급실 뺑뺑이",
+    "source": "kbmaeil",
+    "title": "AI가 응급실 뺑뺑이 막는다…대구, 스마트 응급환자 이송체계 첫 도입",
+    "url": "https://www.kbmaeil.com/article/20260616500385",
+    "date": "20260617",
+    "collected_at": "2026-06-17 00:02:24"
+  },
+  {
+    "keyword": "응급실 뺑뺑이",
+    "source": "joongang",
+    "title": "3년전 뺑뺑이 사망 사건 의사 송치...“응급실 무너질 것” 의료계 반발",
+    "url": "https://www.joongang.co.kr/article/25437267",
+    "date": "20260617",
+    "collected_at": "2026-06-17 00:02:18"
+  },
+  {
+    "keyword": "응급실 뺑뺑이",
+    "source": "imnews",
+    "title": "응급의학계, 3년 전 '대구 응급실 뺑뺑이' 사망 사고 의사 송치 비판",
+    "url": "https://imnews.imbc.com/news/2026/society/article/6830596_36918.html",
+    "date": "20260617",
+    "collected_at": "2026-06-17 00:02:24"
+  },
+  {
+    "keyword": "응급실 뺑뺑이",
+    "source": "health",
+    "title": "대구 ‘응급실 뺑뺑이’ 의사 송치… 의료계, “구조 문제를 개인에게 ...",
+    "url": "https://health.chosun.com/site/data/html_dir/2026/06/16/2026061602355.html",
+    "date": "20260617",
+    "collected_at": "2026-06-17 00:02:21"
+  },
+  {
+    "keyword": "응급실 뺑뺑이",
+    "source": "doctorsnews",
+    "title": "\"경찰이 국민-의료계 응급의료 신뢰 깨뜨렸다\" 비판…왜?",
+    "url": "http://www.doctorsnews.co.kr/news/articleView.html?idxno=165008",
+    "date": "20260617",
+    "collected_at": "2026-06-17 00:02:18"
+  },
+  {
+    "keyword": "응급실 뺑뺑이",
+    "source": "dailymedi",
+    "title": "“응급실 의료진 검찰 송치, 응급의료 악영향”",
+    "url": "https://www.dailymedi.com/news/news_view.php?wr_id=937429",
+    "date": "20260617",
+    "collected_at": "2026-06-17 00:02:27"
+  },
+  {
+    "keyword": "응급실 뺑뺑이",
+    "source": "bosa",
+    "title": "대구 응급실 뺑뺑이 의사 송치…응급의학계 \"응급의료 위축 우려\"",
+    "url": "https://www.bosa.co.kr/news/articleView.html?idxno=3006365",
+    "date": "20260617",
+    "collected_at": "2026-06-17 00:02:27"
+  },
+  {
+    "keyword": "응급실 뺑뺑이",
+    "source": "biz",
+    "title": "‘응급실 치료 거부’에 숨진 10대, 의사 2명 송치…의사 단체 반발",
+    "url": "https://biz.heraldcorp.com/article/10773003?ref=naver",
+    "date": "20260617",
+    "collected_at": "2026-06-17 00:02:21"
+  },
+  {
+    "keyword": "응급실 뺑뺑이",
+    "source": "biz",
+    "title": "대구 '응급실 미수용' 의사 검찰송치 결정에 … 醫 \"뺑뺑이 문제를 의료...",
+    "url": "https://biz.newdaily.co.kr/site/data/html/2026/06/16/2026061600229.html",
+    "date": "20260617",
+    "collected_at": "2026-06-17 00:02:27"
+  },
+  {
+    "keyword": "응급실",
+    "source": "ytn",
+    "title": "'대구 응급실 뺑뺑이' 의사 2명 검찰 송치...응급의학계 반발",
+    "url": "https://www.ytn.co.kr/_ln/0115_202606162147047257",
+    "date": "20260617",
+    "collected_at": "2026-06-17 00:01:50"
+  },
+  {
+    "keyword": "응급실",
+    "source": "ytn",
+    "title": "'대구 응급실 뺑뺑이' 의사 2명 검찰 송치...응급의학계 반발",
+    "url": "https://www.ytn.co.kr/_ln/0115_202606161957064562",
+    "date": "20260617",
+    "collected_at": "2026-06-17 00:01:54"
+  },
+  {
+    "keyword": "응급실",
+    "source": "yeongnacom",
+    "title": "응급환자 돌려보낸 의사 2명 검찰로…“현장 책임” vs “구조적 한계”",
+    "url": "https://www.yeongnam.com/web/view.php?key=20260616029380333",
+    "date": "20260617",
+    "collected_at": "2026-06-17 00:01:50"
+  },
+  {
+    "keyword": "응급실",
+    "source": "tbc",
+    "title": "응급실 뺑뺑이 의사 2명 송치...\"누가 응급실 지키나\"",
+    "url": "https://www.tbc.co.kr/news/view?pno=20260616152605AE01149&id=207399",
+    "date": "20260617",
+    "collected_at": "2026-06-17 00:01:50"
+  },
+  {
+    "keyword": "응급실",
+    "source": "news",
+    "title": "‘응급실 뺑뺑이 10대 사망’ 의사 2명 송치",
+    "url": "https://news.kbs.co.kr/news/pc/view/view.do?ncd=8587979&ref=A",
+    "date": "20260617",
+    "collected_at": "2026-06-17 00:01:47"
+  },
+  {
+    "keyword": "응급실",
+    "source": "news",
+    "title": "‘응급실 뺑뺑이 10대 사망’ 의사 2명 송치",
+    "url": "https://news.kbs.co.kr/news/pc/view/view.do?ncd=8587813&ref=A",
+    "date": "20260617",
+    "collected_at": "2026-06-17 00:01:50"
+  },
+  {
+    "keyword": "응급실",
+    "source": "medipana",
+    "title": "응급실 뺑뺑이 의사 송치…응급의학회 \"현장 위축 우려\"",
+    "url": "https://www.medipana.com/news/articleView.html?idxno=413018",
+    "date": "20260617",
+    "collected_at": "2026-06-17 00:01:50"
+  },
+  {
+    "keyword": "응급실",
+    "source": "mdtoday",
+    "title": "고대안산병원, 심혈관계중환자실 개소… 심혈관 응급의료 체계 강화",
+    "url": "https://www.mdtoday.co.kr/news/articleView.html?idxno=601008",
+    "date": "20260617",
+    "collected_at": "2026-06-17 00:01:54"
+  },
+  {
+    "keyword": "응급실",
+    "source": "kmib",
+    "title": "대구 ‘응급실 뺑뺑이’ 의사들 검찰 송치",
+    "url": "https://www.kmib.co.kr/article/view.asp?arcid=1781594677&code=11131419&cp=nv",
+    "date": "20260617",
+    "collected_at": "2026-06-17 00:01:54"
+  },
+  {
+    "keyword": "응급실",
+    "source": "jejunews",
+    "title": "제주응급의료단 핫라인...'반쪽 운영' 논란",
+    "url": "http://www.jejunews.com/news/articleView.html?idxno=2226147",
+    "date": "20260617",
+    "collected_at": "2026-06-17 00:01:54"
+  },
+  {
+    "keyword": "응급실",
+    "source": "imaeil",
+    "title": "대구 '응급실 뺑뺑이' 10대 여성 사망 …치료 거부 의사들 3년만에 검찰...",
+    "url": "https://www.imaeil.com/page/view/2026061619055981119",
+    "date": "20260617",
+    "collected_at": "2026-06-17 00:01:54"
+  },
+  {
+    "keyword": "응급실",
+    "source": "edaily",
+    "title": "‘응급실 뺑뺑이’ 의사 송치에 의료계 반발",
+    "url": "https://www.edaily.co.kr/news/newspath.asp?newsid=05392326645482376",
+    "date": "20260617",
+    "collected_at": "2026-06-17 00:01:50"
+  },
+  {
+    "keyword": "응급실",
+    "source": "bokuennews",
+    "title": "\"응급실 사망사건 의사 송치\"… 의료계, 구조적 문제 외면한 책임 전가",
+    "url": "http://www.bokuennews.com/news/article.html?no=279872",
+    "date": "20260617",
+    "collected_at": "2026-06-17 00:01:54"
+  },
+  {
+    "keyword": "심뇌센터",
+    "source": "doctorstimes",
+    "title": "정부, 국립대병원 지역·필수의료 핵심 거점으로 육성",
+    "url": "http://www.doctorstimes.com/news/articleView.html?idxno=238584",
+    "date": "20260617",
+    "collected_at": "2026-06-17 00:04:24"
+  },
+  {
+    "keyword": "상급종합병원",
+    "source": "segye",
+    "title": "백남종 신임 서울대병원장 “필수의료 완결… 초일류 병원으로 도약”",
+    "url": "https://www.segye.com/newsView/20260616515199?OutUrl=naver",
+    "date": "20260617",
+    "collected_at": "2026-06-17 00:03:18"
+  },
+  {
+    "keyword": "상급종합병원",
+    "source": "sedaily",
+    "title": "백남종 서울대병원장 “초격차 디지털 전환으로 필수의료 위기 돌파”",
+    "url": "https://www.sedaily.com/article/20056271?ref=naver",
+    "date": "20260617",
+    "collected_at": "2026-06-17 00:03:28"
+  },
+  {
+    "keyword": "법안소위",
+    "source": "siminilbo",
+    "title": "[고하승 칼럼] 공소취소 특검 vs 선관위 특검",
+    "url": "https://www.siminilbo.co.kr/news/newsview.php?ncode=1160282932716954",
+    "date": "20260617",
+    "collected_at": "2026-06-17 00:07:14"
+  },
+  {
+    "keyword": "법안소위",
+    "source": "newsis",
+    "title": "국힘 \"與, 공소취소 특검 위해 법사위 고집…견제·균형 원칙 훼손\"",
+    "url": "https://www.newsis.com/view/NISX20260616_0003670696",
+    "date": "20260617",
+    "collected_at": "2026-06-17 00:07:17"
+  },
+  {
+    "keyword": "법안소위",
+    "source": "mt",
+    "title": "국민의힘 \"민주당, 공소취소 특검 통과시키려 법사위 고집\"",
+    "url": "https://www.mt.co.kr/politics/2026/06/16/2026061610421490877",
+    "date": "20260617",
+    "collected_at": "2026-06-17 00:07:14"
+  },
+  {
+    "keyword": "미수용",
+    "source": "yna",
+    "title": "대구시의사회 \"응급의료 붕괴 책임, 현장의료진에 넘겨선 안 돼\"",
+    "url": "https://www.yna.co.kr/view/AKR20260616121100053?input=1195m",
+    "date": "20260617",
+    "collected_at": "2026-06-17 00:03:08"
+  },
+  {
+    "keyword": "미수용",
+    "source": "yna",
+    "title": "응급의학계, 3년 전 '뺑뺑이' 사망 사고 의사 송치 일제히 비판",
+    "url": "https://www.yna.co.kr/view/AKR20260616106800530?input=1195m",
+    "date": "20260617",
+    "collected_at": "2026-06-17 00:03:08"
+  },
+  {
+    "keyword": "미수용",
+    "source": "medigatenews",
+    "title": "'응급실 미수용' 검찰 송치에 응급의학회 반발…\"검찰, 반드시 불기소\"",
+    "url": "https://www.medigatenews.com/news/815654670",
+    "date": "20260617",
+    "collected_at": "2026-06-17 00:03:08"
+  },
+  {
+    "keyword": "미수용",
+    "source": "medigatenews",
+    "title": "대구 '응급실 미수용' 사건, 전공의 포함 의사 2명 검찰 송치",
+    "url": "https://www.medigatenews.com/news/535358260",
+    "date": "20260617",
+    "collected_at": "2026-06-17 00:03:08"
+  },
+  {
+    "keyword": "미수용",
+    "source": "idaegu",
+    "title": "'대구 응급실 뺑뺑이 사망' 의사 2명 검찰 송치… '정당한 사유' 두고 법...",
+    "url": "https://www.idaegu.com/news/articleView.html?idxno=663650",
+    "date": "20260617",
+    "collected_at": "2026-06-17 00:03:08"
+  },
+  {
+    "keyword": "미수용",
+    "source": "doctorsnews",
+    "title": "대구 '응급실 미수용' 사망사건 '의사 탓'?…서울시醫 \"사법 폭주\"",
+    "url": "http://www.doctorsnews.co.kr/news/articleView.html?idxno=165004",
+    "date": "20260617",
+    "collected_at": "2026-06-17 00:03:01"
+  },
+  {
+    "keyword": "미수용",
+    "source": "dgmbc",
+    "title": "\"응급의료 붕괴 책임, 의사 개인에 전가하는 수사·처벌 시도 중단하라...",
+    "url": "https://dgmbc.com/NewsArticle/846036",
+    "date": "20260617",
+    "collected_at": "2026-06-17 00:03:05"
+  },
+  {
+    "keyword": "닥터헬기",
+    "source": "kyeonggi",
+    "title": "인천 공공의료 확충 ‘제자리’…제2의료원·닥터헬기 계류장 줄줄이 표...",
+    "url": "https://www.kyeonggi.com/article/20260616580263",
+    "date": "20260617",
+    "collected_at": "2026-06-17 00:01:34"
+  },
+  {
+    "keyword": "공소제한",
+    "source": "viewsnnews",
+    "title": "\"민주당 지지율 급락은 투표용지 사태, 공소취소, 명청대전 때문\"",
+    "url": "https://www.viewsnnews.com/article?q=236516",
+    "date": "20260617",
+    "collected_at": "2026-06-17 00:06:38"
+  },
+  {
+    "keyword": "공소제한",
+    "source": "siminilbo",
+    "title": "정점식 “시급한 건 공소취소 특검 아니라 선관위 특검”",
+    "url": "https://www.siminilbo.co.kr/news/newsview.php?ncode=1160287703717512",
+    "date": "20260617",
+    "collected_at": "2026-06-17 00:06:38"
+  },
+  {
+    "keyword": "공소제한",
+    "source": "edaily",
+    "title": "국힘 지지율 상승 원인?…“선관위·공소취소·민주당 내분”",
+    "url": "https://www.edaily.co.kr/news/newspath.asp?newsid=03181606645482376",
+    "date": "20260617",
+    "collected_at": "2026-06-17 00:06:38"
+  }
+]
