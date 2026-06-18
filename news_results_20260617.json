@@ -1,0 +1,786 @@
+[
+  {
+    "keyword": "필수의료",
+    "source": "press9",
+    "title": "의협·의료배상공제조합, 의료분쟁 대응 해법 제시…27일 온라인 연수교...",
+    "url": "http://www.press9.kr/news/articleView.html?idxno=78069",
+    "date": "20260618",
+    "collected_at": "2026-06-18 00:04:53"
+  },
+  {
+    "keyword": "중증응급",
+    "source": "newsis",
+    "title": "CT·MRI 검사 수가 낮추고 지역·필수의료 보상 높인다(종합)",
+    "url": "https://www.newsis.com/view/NISX20260617_0003672717",
+    "date": "20260618",
+    "collected_at": "2026-06-18 00:03:43"
+  },
+  {
+    "keyword": "중증응급",
+    "source": "medicalworldnews",
+    "title": "건강보험 수가구조 혁신 공청회…지역·필수의료 보상 강화, 검사수가 ...",
+    "url": "https://medicalworldnews.co.kr/news/view.php?idx=1510975364",
+    "date": "20260618",
+    "collected_at": "2026-06-18 00:03:37"
+  },
+  {
+    "keyword": "중증응급",
+    "source": "koreahealthlog",
+    "title": "'상급종합병원'→'중증종합병원' 추진…최보윤 의원, 의료법개정안 발의",
+    "url": "https://www.koreahealthlog.com/news/articleView.html?idxno=57660",
+    "date": "20260618",
+    "collected_at": "2026-06-18 00:03:43"
+  },
+  {
+    "keyword": "중증응급",
+    "source": "fnnews",
+    "title": "CT·MRI 수가 낮춰 과잉 진료 차단… 지역·필수의료도 육성",
+    "url": "http://www.fnnews.com/news/202606171818422015",
+    "date": "20260618",
+    "collected_at": "2026-06-18 00:03:40"
+  },
+  {
+    "keyword": "중증외상",
+    "source": "ulsanpress",
+    "title": "울산권역 공공보건의료, 지역필수의료법 대응 협력 강화",
+    "url": "https://www.ulsanpress.net/news/articleView.html?idxno=577389",
+    "date": "20260618",
+    "collected_at": "2026-06-18 00:02:56"
+  },
+  {
+    "keyword": "중증외상",
+    "source": "segye",
+    "title": "‘대구 응급실 뺑뺑이 10대 사망’ 의사 2명 불구속 송치",
+    "url": "https://www.segye.com/newsView/20260616515248?OutUrl=naver",
+    "date": "20260618",
+    "collected_at": "2026-06-18 00:03:06"
+  },
+  {
+    "keyword": "중증외상",
+    "source": "newsgn",
+    "title": "\"비응급 상황, 119구급차 이용 멈춰주세요\"",
+    "url": "https://www.newsgn.com/news/articleView.html?idxno=557301",
+    "date": "20260618",
+    "collected_at": "2026-06-18 00:03:06"
+  },
+  {
+    "keyword": "중증외상",
+    "source": "kbmaeil",
+    "title": "추경호 대구시장 당선인, 시니어·아동·응급의료 현장 잇단 방문…“촘...",
+    "url": "https://www.kbmaeil.com/article/20260617500467",
+    "date": "20260618",
+    "collected_at": "2026-06-18 00:02:59"
+  },
+  {
+    "keyword": "중증외상",
+    "source": "isplus",
+    "title": "김무열 ‘참교육’, ‘중증외상센터’ 넘었다…‘오겜’ 향한 질주 시작...",
+    "url": "https://isplus.com/article/view/isp202606170039",
+    "date": "20260618",
+    "collected_at": "2026-06-18 00:03:06"
+  },
+  {
+    "keyword": "중증외상",
+    "source": "gndomin",
+    "title": "의령소방서 \"비응급 상황 119구급차 이용은 멈춰\"",
+    "url": "http://www.gndomin.com/news/articleView.html?idxno=479058",
+    "date": "20260618",
+    "collected_at": "2026-06-18 00:02:59"
+  },
+  {
+    "keyword": "중증외상",
+    "source": "doctorstimes",
+    "title": "대구시醫, \"응급의료 붕괴의 책임 현장 의사 개인에게 넘겨선 안돼\"",
+    "url": "http://www.doctorstimes.com/news/articleView.html?idxno=238611",
+    "date": "20260618",
+    "collected_at": "2026-06-18 00:03:03"
+  },
+  {
+    "keyword": "중증외상",
+    "source": "docdocdoc",
+    "title": "의료계 다시 뒤흔든 '대구 응급실 뺑뺑이'…\"제도 실패를 의사에게 떠넘...",
+    "url": "http://www.docdocdoc.co.kr/news/articleView.html?idxno=3040129",
+    "date": "20260618",
+    "collected_at": "2026-06-18 00:03:06"
+  },
+  {
+    "keyword": "중증외상",
+    "source": "bosa",
+    "title": "대구시의사회, \"응급환자 사망 책임 현장 의사에 전가 말라\"",
+    "url": "https://www.bosa.co.kr/news/articleView.html?idxno=3006382",
+    "date": "20260618",
+    "collected_at": "2026-06-18 00:03:03"
+  },
+  {
+    "keyword": "중앙응급의료센터",
+    "source": "yakup",
+    "title": "지역·필수의료, '수술·입원 높이고 검사 줄이는' 수가로 혁신 돌파구...",
+    "url": "https://www.yakup.com/news/index.html?mode=view&cat=11&nid=328641",
+    "date": "20260618",
+    "collected_at": "2026-06-18 00:04:26"
+  },
+  {
+    "keyword": "이송 지연",
+    "source": "chungnamilbo",
+    "title": "태안소방서, 응급환자 골든타임 위해 비응급 환자 119신고 자제 당부",
+    "url": "http://www.chungnamilbo.co.kr/news/articleView.html?idxno=894067",
+    "date": "20260618",
+    "collected_at": "2026-06-18 00:06:21"
+  },
+  {
+    "keyword": "의료분쟁",
+    "source": "joongang",
+    "title": "신생아학회 \"의료분쟁조정법 개정안, 신생아중환자실 특수성 반영해야...",
+    "url": "https://www.joongang.co.kr/article/25437616",
+    "date": "20260618",
+    "collected_at": "2026-06-18 00:07:05"
+  },
+  {
+    "keyword": "응급이송",
+    "source": "khan",
+    "title": "인하대병원, 대청도 섬마을 찾아 의료봉사··· 귀항 선내 응급환자도...",
+    "url": "https://www.khan.co.kr/article/202606171720001",
+    "date": "20260618",
+    "collected_at": "2026-06-18 00:06:00"
+  },
+  {
+    "keyword": "응급이송",
+    "source": "gnnews",
+    "title": "거제소방서-대우병원, 응급의료 협력체계 강화 업무협약",
+    "url": "https://www.gnnews.co.kr/news/articleView.html?idxno=639187",
+    "date": "20260618",
+    "collected_at": "2026-06-18 00:05:54"
+  },
+  {
+    "keyword": "응급이송",
+    "source": "dynews",
+    "title": "보은소방서, 올바른 구급차 이용 문화 정착 캠페인",
+    "url": "http://www.dynews.co.kr/news/articleView.html?idxno=854533",
+    "date": "20260618",
+    "collected_at": "2026-06-18 00:05:54"
+  },
+  {
+    "keyword": "응급의료법",
+    "source": "sidae",
+    "title": "대구 응급환자 전원사망 사건 의사 2명 검찰 송치",
+    "url": "https://www.sidae.com/article/2026061705470559549",
+    "date": "20260618",
+    "collected_at": "2026-06-18 00:06:51"
+  },
+  {
+    "keyword": "응급의료법",
+    "source": "rapportian",
+    "title": "'상급종합병원' 명칭 '중증종합병원'으로 변경 법개정 추진",
+    "url": "https://www.rapportian.com/news/articleView.html?idxno=237173",
+    "date": "20260618",
+    "collected_at": "2026-06-18 00:06:45"
+  },
+  {
+    "keyword": "응급의료법",
+    "source": "news1",
+    "title": "'상급종합병원'→'중증종합병원'…최보윤 '의료법' 개정안 발의",
+    "url": "https://www.news1.kr/bio/welfare-medical/6200177",
+    "date": "20260618",
+    "collected_at": "2026-06-18 00:06:45"
+  },
+  {
+    "keyword": "응급의료법",
+    "source": "news",
+    "title": "최보윤 의원, '상급종합병원' → '중증종합병원'…명칭 변경 의료법 개...",
+    "url": "https://news.tvchosun.com/site/data/html_dir/2026/06/17/2026061790189.html",
+    "date": "20260618",
+    "collected_at": "2026-06-18 00:06:45"
+  },
+  {
+    "keyword": "응급의료법",
+    "source": "mjmedi",
+    "title": "최보윤 의원, '상급종합병원' 명칭 '중증종합병원' 변경 개정안 대표발...",
+    "url": "http://www.mjmedi.com/news/articleView.html?idxno=62687",
+    "date": "20260618",
+    "collected_at": "2026-06-18 00:06:45"
+  },
+  {
+    "keyword": "응급의료법",
+    "source": "medigatenews",
+    "title": "의료계 \"대구 응급실 전공의 검찰 송치…의사 개인 아닌 구조적 문제\"",
+    "url": "https://www.medigatenews.com/news/964194701",
+    "date": "20260618",
+    "collected_at": "2026-06-18 00:06:48"
+  },
+  {
+    "keyword": "응급의료법",
+    "source": "doctorstimes",
+    "title": "서울시醫 \"응급의료를 범죄로 만드는 사법적 폭주 규탄\"",
+    "url": "http://www.doctorstimes.com/news/articleView.html?idxno=238592",
+    "date": "20260618",
+    "collected_at": "2026-06-18 00:06:48"
+  },
+  {
+    "keyword": "응급의료법",
+    "source": "doctorsnews",
+    "title": "'상급종합병원→중증종합병원' 최보윤 의원, 의료전달체계 정상화 법안...",
+    "url": "http://www.doctorsnews.co.kr/news/articleView.html?idxno=165020",
+    "date": "20260618",
+    "collected_at": "2026-06-18 00:06:45"
+  },
+  {
+    "keyword": "응급의료법",
+    "source": "dailymedi",
+    "title": "'상급종합병원→중증종합병원' 명칭 변경 추진",
+    "url": "https://www.dailymedi.com/news/news_view.php?wr_id=937465",
+    "date": "20260618",
+    "collected_at": "2026-06-18 00:06:45"
+  },
+  {
+    "keyword": "응급의료법",
+    "source": "bosa",
+    "title": "응급의료 시스템 실패 책임 의사에게 돌리지 말라!",
+    "url": "https://www.bosa.co.kr/news/articleView.html?idxno=3006431",
+    "date": "20260618",
+    "collected_at": "2026-06-18 00:06:48"
+  },
+  {
+    "keyword": "응급의료법",
+    "source": "ablenews",
+    "title": "최보윤 의원, '상급종합병원→중증종합병원' 명칭 변경 입법화",
+    "url": "https://www.ablenews.co.kr/news/articleView.html?idxno=231506",
+    "date": "20260618",
+    "collected_at": "2026-06-18 00:06:45"
+  },
+  {
+    "keyword": "응급의료 취약지역",
+    "source": "whosaeng",
+    "title": "필수의료에 건보재정 재투자…수가체계 20년 만에 대수술 시동",
+    "url": "http://www.whosaeng.com/171387",
+    "date": "20260618",
+    "collected_at": "2026-06-18 00:03:51"
+  },
+  {
+    "keyword": "응급의료 취약지역",
+    "source": "whosaeng",
+    "title": "검사 수가 낮추고 필수의료 보상 늘린다…건보 수가체계 대수술",
+    "url": "http://www.whosaeng.com/sub_read.html?uid=171385&section=sc1",
+    "date": "20260618",
+    "collected_at": "2026-06-18 00:03:51"
+  },
+  {
+    "keyword": "응급의료 취약지역",
+    "source": "news",
+    "title": "보건복지부, 지역·필수의료 보상 높이고 검사 수가 합리화한다",
+    "url": "https://news.tvchosun.com/site/data/html_dir/2026/06/17/2026061790190.html",
+    "date": "20260618",
+    "collected_at": "2026-06-18 00:03:47"
+  },
+  {
+    "keyword": "응급의료 취약지역",
+    "source": "doctorstimes",
+    "title": "정부, \"지역·필수의료 보상 높이고 검체검사·CT·MRI 수가 낮춘다\"",
+    "url": "http://www.doctorstimes.com/news/articleView.html?idxno=238612",
+    "date": "20260618",
+    "collected_at": "2026-06-18 00:03:47"
+  },
+  {
+    "keyword": "응급의료 취약지역",
+    "source": "docdocdoc",
+    "title": "검사 수가 손질해 2조원 확보→필수의료로…정부, 보상체계 대수술",
+    "url": "http://www.docdocdoc.co.kr/news/articleView.html?idxno=3040121",
+    "date": "20260618",
+    "collected_at": "2026-06-18 00:03:51"
+  },
+  {
+    "keyword": "응급의료 취약지역",
+    "source": "bokuennews",
+    "title": "\"검체검사 깎아 필수의료 못 살려\"… 개편안 전면 재검토 촉구",
+    "url": "http://www.bokuennews.com/news/article.html?no=279871",
+    "date": "20260618",
+    "collected_at": "2026-06-18 00:03:51"
+  },
+  {
+    "keyword": "응급의료 취약지역",
+    "source": "biz",
+    "title": "CT·MRI·피검사 수가 낮춰 연 2조원 절감…지역·필수의료에 투입",
+    "url": "https://biz.sbs.co.kr/article_hub/20000317123?division=NAVER",
+    "date": "20260618",
+    "collected_at": "2026-06-18 00:03:47"
+  },
+  {
+    "keyword": "응급의료",
+    "source": "whosaeng",
+    "title": "지역·필수의료에 '초대형 재정 투입'…의원급 진찰료도 20년 만에 오른...",
+    "url": "http://www.whosaeng.com/sub_read.html?uid=171412&section=sc1",
+    "date": "20260618",
+    "collected_at": "2026-06-18 00:02:15"
+  },
+  {
+    "keyword": "응급의료",
+    "source": "nbntv",
+    "title": "[데스크 칼럼] '응급실 뺑뺑이' 진범은 누구인가",
+    "url": "https://www.nbntv.co.kr/news/articleView.html?idxno=4022394",
+    "date": "20260618",
+    "collected_at": "2026-06-18 00:02:24"
+  },
+  {
+    "keyword": "응급의료",
+    "source": "medipana",
+    "title": "필수의료 살리려는 수가개혁…기대와 신중론 교차",
+    "url": "https://www.medipana.com/news/articleView.html?idxno=413085",
+    "date": "20260618",
+    "collected_at": "2026-06-18 00:02:24"
+  },
+  {
+    "keyword": "응급의료",
+    "source": "mdtoday",
+    "title": "복지부, CT·MRI 수가 낮추고 필수의료 보상 높인다",
+    "url": "https://www.mdtoday.co.kr/news/articleView.html?idxno=601167",
+    "date": "20260618",
+    "collected_at": "2026-06-18 00:02:18"
+  },
+  {
+    "keyword": "응급의료",
+    "source": "kpanews",
+    "title": "'상급종합병원' 명칭 바뀔까? 관련 법 개정 움직임",
+    "url": "https://www.kpanews.co.kr/news/articleView.html?idxno=536936",
+    "date": "20260618",
+    "collected_at": "2026-06-18 00:02:15"
+  },
+  {
+    "keyword": "응급의료",
+    "source": "hitnews",
+    "title": "ARPA-H 응급의료 AI 플랫폼, 구급부터 응급실까지 실시간 연계",
+    "url": "https://www.hitnews.co.kr/news/articleView.html?idxno=76956",
+    "date": "20260618",
+    "collected_at": "2026-06-18 00:02:18"
+  },
+  {
+    "keyword": "응급의료",
+    "source": "doctorstimes",
+    "title": "\"응급의료 본질은 생명 구조\"···서울고법 판결에 환자단체 '환영'",
+    "url": "http://www.doctorstimes.com/news/articleView.html?idxno=238616",
+    "date": "20260618",
+    "collected_at": "2026-06-18 00:02:15"
+  },
+  {
+    "keyword": "응급의료",
+    "source": "docdocdoc",
+    "title": "\"더 우월한 병원 아냐\"… '상급종합병원→중증종합병원' 변경 추진",
+    "url": "http://www.docdocdoc.co.kr/news/articleView.html?idxno=3040139",
+    "date": "20260618",
+    "collected_at": "2026-06-18 00:02:24"
+  },
+  {
+    "keyword": "응급실 뺑뺑이",
+    "source": "sedaily",
+    "title": "‘응급실 뺑뺑이→10대 사망’ 의사 2명 송치…의료계 일제히 비판",
+    "url": "https://www.sedaily.com/article/20056560?ref=naver",
+    "date": "20260618",
+    "collected_at": "2026-06-18 00:03:23"
+  },
+  {
+    "keyword": "응급실 뺑뺑이",
+    "source": "science",
+    "title": "'대구 응급실 뺑뺑이' 의사 2명 검찰 송치...응급의학계 반발",
+    "url": "https://science.ytn.co.kr/program/view.php?mcd=0082&hcd=&key=202606171600246949",
+    "date": "20260618",
+    "collected_at": "2026-06-18 00:03:19"
+  },
+  {
+    "keyword": "응급실 뺑뺑이",
+    "source": "nocutnews",
+    "title": "추경호 대구시장 당선인, 복지·필수의료 현장 점검",
+    "url": "https://www.nocutnews.co.kr/news/6534562?utm_source=naver&utm_medium=article&utm_campaign=20260617042016",
+    "date": "20260618",
+    "collected_at": "2026-06-18 00:03:19"
+  },
+  {
+    "keyword": "응급실 뺑뺑이",
+    "source": "news1",
+    "title": "추경호 \"'응급실 뺑뺑이' 막는 골든타임 확보\"",
+    "url": "https://www.news1.kr/local/daegu-gyeongbuk/6200459",
+    "date": "20260618",
+    "collected_at": "2026-06-18 00:03:16"
+  },
+  {
+    "keyword": "응급실 뺑뺑이",
+    "source": "mt",
+    "title": "\"적정 진료 없었다\" vs \"의사만 범죄자 취급\"…해묵은 '응급실 책임론'",
+    "url": "https://www.mt.co.kr/thebio/2026/06/18/2026061709133412353",
+    "date": "20260618",
+    "collected_at": "2026-06-18 00:03:19"
+  },
+  {
+    "keyword": "응급실 뺑뺑이",
+    "source": "ilyosisa",
+    "title": "<조석주 교수의 우리 병원은 지금…> 외래 환자엔 축복, 응급환자 재앙...",
+    "url": "https://www.ilyosisa.co.kr/news/article.html?no=256473",
+    "date": "20260618",
+    "collected_at": "2026-06-18 00:03:19"
+  },
+  {
+    "keyword": "응급실",
+    "source": "ohmynews",
+    "title": "'응급실 뺑뺑이' 관련 의사 검찰 송치에 의료계 반발",
+    "url": "https://www.ohmynews.com/NWS_Web/View/at_pg.aspx?CNTN_CD=A0003244144&CMPT_CD=P0010&utm_source=naver&utm_medium=newsearch&utm_campaign=naver_news",
+    "date": "20260618",
+    "collected_at": "2026-06-18 00:02:52"
+  },
+  {
+    "keyword": "응급실",
+    "source": "namdonews",
+    "title": "\"응급의료 사고 책임, 의사 개인에 전가 말아야\"",
+    "url": "https://www.namdonews.com/news/articleView.html?idxno=913973",
+    "date": "20260618",
+    "collected_at": "2026-06-18 00:02:52"
+  },
+  {
+    "keyword": "응급실",
+    "source": "kyongbuk",
+    "title": "추경호 당선인, 노인·아동·응급의료 현장서 사회안전망 강화 행보",
+    "url": "https://www.kyongbuk.co.kr/news/articleView.html?idxno=4075847",
+    "date": "20260618",
+    "collected_at": "2026-06-18 00:02:52"
+  },
+  {
+    "keyword": "응급실",
+    "source": "idaegu",
+    "title": "추경호 \"실시간 통합관제로 응급실 뺑뺑이 없앨 것\"",
+    "url": "https://www.idaegu.co.kr/news/articleView.html?idxno=551378",
+    "date": "20260618",
+    "collected_at": "2026-06-18 00:02:49"
+  },
+  {
+    "keyword": "응급실",
+    "source": "gukjenews",
+    "title": "추경호 대구광역시장 당선인, 시니어·아동·응급의료 현장 점검...현장...",
+    "url": "https://www.gukjenews.com/news/articleView.html?idxno=3610970",
+    "date": "20260618",
+    "collected_at": "2026-06-18 00:02:52"
+  },
+  {
+    "keyword": "응급실",
+    "source": "edaily",
+    "title": "추경호, 노인·아동·응급의료 현장 잇단 방문…\"시민 삶 지키는 안전망...",
+    "url": "https://www.edaily.co.kr/news/newspath.asp?newsid=05346406645482704",
+    "date": "20260618",
+    "collected_at": "2026-06-18 00:02:49"
+  },
+  {
+    "keyword": "상급종합병원",
+    "source": "welfarenews",
+    "title": "최보윤 의원, '상급종합병원' 명칭 '중증종합병원'으로 바꾸는 의료법 ...",
+    "url": "https://www.welfarenews.net/news/articleView.html?idxno=207645",
+    "date": "20260618",
+    "collected_at": "2026-06-18 00:04:15"
+  },
+  {
+    "keyword": "상급종합병원",
+    "source": "medipana",
+    "title": "'상급종합병원' 명칭, '중증종합병원'으로 바꾸는 법안 발의돼",
+    "url": "https://www.medipana.com/news/articleView.html?idxno=413080",
+    "date": "20260618",
+    "collected_at": "2026-06-18 00:04:21"
+  },
+  {
+    "keyword": "상급종합병원",
+    "source": "medigatenews",
+    "title": "상급종합병원이 더 우월한 병원 아니야…'상급' 명칭 '중증'종합병원으...",
+    "url": "https://www.medigatenews.com/news/262443924",
+    "date": "20260618",
+    "collected_at": "2026-06-18 00:04:18"
+  },
+  {
+    "keyword": "상급종합병원",
+    "source": "kmedinfo",
+    "title": "상급종합병원 80% 확보한 레몬헬스케어, IPO 이후 의료데이터 활용 사업...",
+    "url": "http://www.kmedinfo.co.kr/news/articleView.html?idxno=96332",
+    "date": "20260618",
+    "collected_at": "2026-06-18 00:04:21"
+  },
+  {
+    "keyword": "상급종합병원",
+    "source": "akomnews",
+    "title": "‘상급종합병원’→‘중증종합병원’ 명칭 변경 추진…의료전달체계 정...",
+    "url": "https://www.akomnews.com/bbs/board.php?bo_table=news&wr_id=67483",
+    "date": "20260618",
+    "collected_at": "2026-06-18 00:04:18"
+  },
+  {
+    "keyword": "보건복지위",
+    "source": "tournews21",
+    "title": "강석주 서울시의원,제11대 보건복지위 4년 활동 '서울 공공의료 발전' 초...",
+    "url": "https://www.tournews21.com/news/articleView.html?idxno=136767",
+    "date": "20260618",
+    "collected_at": "2026-06-18 00:07:57"
+  },
+  {
+    "keyword": "보건복지위",
+    "source": "seoul",
+    "title": "강석주 서울시의원 “보건복지위 4년, 공공의료 전문성 높였지만 의료기...",
+    "url": "https://www.seoul.co.kr/news/publicnews/local_govern/smc_movement/2026/06/17/20260617500058?wlog_tag3=naver",
+    "date": "20260618",
+    "collected_at": "2026-06-18 00:07:57"
+  },
+  {
+    "keyword": "미수용",
+    "source": "newspicom",
+    "title": "정은경 복지부 장관 \"건강보험 수가 혁신, 지역·필수의료 전념하는 첫...",
+    "url": "https://www.newspim.com/news/view/20260617000462",
+    "date": "20260618",
+    "collected_at": "2026-06-18 00:03:58"
+  },
+  {
+    "keyword": "미수용",
+    "source": "newsmp",
+    "title": "대구 응급실 미수용 의사 송치에 의료계 규탄 봇물",
+    "url": "http://www.newsmp.com/news/articleView.html?idxno=254746",
+    "date": "20260618",
+    "collected_at": "2026-06-18 00:04:02"
+  },
+  {
+    "keyword": "미수용",
+    "source": "medipana",
+    "title": "\"검사 줄이고 필수의료 늘린다\"…건보 수가체계 대수술",
+    "url": "https://www.medipana.com/news/articleView.html?idxno=413060",
+    "date": "20260618",
+    "collected_at": "2026-06-18 00:03:58"
+  },
+  {
+    "keyword": "미수용",
+    "source": "joongang",
+    "title": "‘과보상’ 검사비 2조원 깎아 필수의료에 재투자…정부 건보 개편 방향...",
+    "url": "https://www.joongang.co.kr/article/25437579",
+    "date": "20260618",
+    "collected_at": "2026-06-18 00:03:58"
+  },
+  {
+    "keyword": "미수용",
+    "source": "edaily",
+    "title": "AI가 병원 찾는다…대구·경북 응급 이송체계 대수술",
+    "url": "https://www.edaily.co.kr/news/newspath.asp?newsid=04037686645482704",
+    "date": "20260618",
+    "collected_at": "2026-06-18 00:03:58"
+  },
+  {
+    "keyword": "미수용",
+    "source": "doctorsnews",
+    "title": "응급실 미수용 사건 의료진 검찰 송치에 의료계 '공분'",
+    "url": "http://www.doctorsnews.co.kr/news/articleView.html?idxno=165013",
+    "date": "20260618",
+    "collected_at": "2026-06-18 00:03:58"
+  },
+  {
+    "keyword": "미수용",
+    "source": "dailymedi",
+    "title": "\"검체·CT·MRI 수가 손질, 年 2조 필수의료 투입\"",
+    "url": "https://www.dailymedi.com/news/news_view.php?wr_id=937457",
+    "date": "20260618",
+    "collected_at": "2026-06-18 00:03:58"
+  },
+  {
+    "keyword": "미수용",
+    "source": "1conomynews",
+    "title": "[현장+] 정부, 지역·필수의료 공백 메꾼다…1인 가구 진료 사각지대 없...",
+    "url": "https://www.1conomynews.co.kr/news/articleView.html?idxno=49126",
+    "date": "20260618",
+    "collected_at": "2026-06-18 00:03:58"
+  },
+  {
+    "keyword": "모자의료",
+    "source": "widedaily",
+    "title": "지역·필수의료 보상 높이고 CT·MRI 검사 수가 낮춘다",
+    "url": "https://www.widedaily.com/news/articleView.html?idxno=295910",
+    "date": "20260618",
+    "collected_at": "2026-06-18 00:05:43"
+  },
+  {
+    "keyword": "모자의료",
+    "source": "rapportian",
+    "title": "검체검사·MRI 수가 낮추고 지역·필수의료 보상 확대",
+    "url": "https://www.rapportian.com/news/articleView.html?idxno=237151",
+    "date": "20260618",
+    "collected_at": "2026-06-18 00:05:43"
+  },
+  {
+    "keyword": "모자의료",
+    "source": "nocutnews",
+    "title": "CT·혈액검사 수가 낮추고 필수의료 보상 높인다",
+    "url": "https://www.nocutnews.co.kr/news/6534261?utm_source=naver&utm_medium=article&utm_campaign=20260617105314",
+    "date": "20260618",
+    "collected_at": "2026-06-18 00:05:43"
+  },
+  {
+    "keyword": "모자의료",
+    "source": "medipana",
+    "title": "필수의료 중심 수가개편 공감대…\"환산지수·재정확충은 과제\"",
+    "url": "https://www.medipana.com/news/articleView.html?idxno=413064",
+    "date": "20260618",
+    "collected_at": "2026-06-18 00:05:43"
+  },
+  {
+    "keyword": "모자의료",
+    "source": "fnnews",
+    "title": "\"구급차 분만도 완벽대비\" 울산소방본부 실전 훈련",
+    "url": "http://www.fnnews.com/news/202606171859521228",
+    "date": "20260618",
+    "collected_at": "2026-06-18 00:05:30"
+  },
+  {
+    "keyword": "모자보건",
+    "source": "viva100",
+    "title": "지역·필수의료 보상 강화하고, 검체·CT·MRI는 조정한다",
+    "url": "https://www.viva100.com/article/20260617500654",
+    "date": "20260618",
+    "collected_at": "2026-06-18 00:05:23"
+  },
+  {
+    "keyword": "모자보건",
+    "source": "startuptoday",
+    "title": "[포커스] 검체검사·MRI '과보상' 만지작...아낀 건보료, 필수의료에 쓴...",
+    "url": "https://www.startuptoday.co.kr/news/articleView.html?idxno=803856",
+    "date": "20260618",
+    "collected_at": "2026-06-18 00:05:23"
+  },
+  {
+    "keyword": "모자보건",
+    "source": "sedaily",
+    "title": "정부, ‘건보 과다 지출’ CT·MRI 급여 줄인다... 지역·필수의료 보상...",
+    "url": "https://www.sedaily.com/article/20056859?ref=naver",
+    "date": "20260618",
+    "collected_at": "2026-06-18 00:05:20"
+  },
+  {
+    "keyword": "모자보건",
+    "source": "news1",
+    "title": "정은경 \"검사 수가 조정해 필수의료 강화\"…건보 구조개혁 시동(종합)",
+    "url": "https://www.news1.kr/bio/general/6199969",
+    "date": "20260618",
+    "collected_at": "2026-06-18 00:05:23"
+  },
+  {
+    "keyword": "모자보건",
+    "source": "munhwa",
+    "title": "CT·MRI 수가 대폭 인하… 年2조 줄여 필수의료 강화",
+    "url": "https://www.munhwa.com/article/11596184?ref=naver",
+    "date": "20260618",
+    "collected_at": "2026-06-18 00:05:26"
+  },
+  {
+    "keyword": "모자보건",
+    "source": "medicaltimes",
+    "title": "검체·영상검사 수가 손질해 지역·필수의료 보상한다",
+    "url": "https://www.medicaltimes.com/Main/News/NewsView.html?ID=1169305&ref=naverpc",
+    "date": "20260618",
+    "collected_at": "2026-06-18 00:05:23"
+  },
+  {
+    "keyword": "모자보건",
+    "source": "kukinews",
+    "title": "“과잉보상 검사 줄이고, 저보상 필수의료 살린다”…연 2조원 절감 기...",
+    "url": "https://www.kukinews.com/article/view/kuk202606170075",
+    "date": "20260618",
+    "collected_at": "2026-06-18 00:05:26"
+  },
+  {
+    "keyword": "모자보건",
+    "source": "imnews",
+    "title": "CT·MRI 수가 조정으로 연 2조 원 절감‥필수의료 재투자 확대",
+    "url": "https://imnews.imbc.com/news/2026/society/article/6830846_36918.html",
+    "date": "20260618",
+    "collected_at": "2026-06-18 00:05:23"
+  },
+  {
+    "keyword": "모자보건",
+    "source": "hankookilbo",
+    "title": "CT·MRI 수가 낮춰 절약한 2조원, 필수의료에 쓴다",
+    "url": "https://www.hankookilbo.com/news/article/A2026061715320004206?did=NA",
+    "date": "20260618",
+    "collected_at": "2026-06-18 00:05:16"
+  },
+  {
+    "keyword": "모자보건",
+    "source": "etnews",
+    "title": "“지역·필수의료 보상 높이고 검사 수가 합리화”…복지부, 건강보험 ...",
+    "url": "https://www.etnews.com/20260617000405",
+    "date": "20260618",
+    "collected_at": "2026-06-18 00:05:16"
+  },
+  {
+    "keyword": "모자보건",
+    "source": "docdocdoc",
+    "title": "검사수가 깎아 필수의료 투자…의료계 \"재정 재분배만으론 한계\"",
+    "url": "http://www.docdocdoc.co.kr/news/articleView.html?idxno=3040131",
+    "date": "20260618",
+    "collected_at": "2026-06-18 00:05:23"
+  },
+  {
+    "keyword": "모자보건",
+    "source": "dnews",
+    "title": "검체·영상 수가 깎아 필수의료 투입…건강보험 구조 개혁 시동",
+    "url": "https://www.dnews.co.kr/uhtml/view.jsp?idxno=202606171433178150727",
+    "date": "20260618",
+    "collected_at": "2026-06-18 00:05:20"
+  },
+  {
+    "keyword": "모자보건",
+    "source": "apsk",
+    "title": "지역·필수의료에 2조 재투자…정부, CT·MRI·검체검사 수가 대수술",
+    "url": "https://www.apsk.co.kr/news/articleView.html?idxno=539605",
+    "date": "20260618",
+    "collected_at": "2026-06-18 00:05:16"
+  },
+  {
+    "keyword": "닥터헬기",
+    "source": "jeollailbo",
+    "title": "원광대병원, 고압산소치료 1만례 달성…권역 응급의료 거점 역할 강화",
+    "url": "http://www.jeollailbo.com/news/articleView.html?idxno=802994",
+    "date": "20260618",
+    "collected_at": "2026-06-18 00:02:32"
+  },
+  {
+    "keyword": "닥터헬기",
+    "source": "gukjenews",
+    "title": "원광대학교병원, 고압산소치료 누적 1만례 달성… 권역 응급의료 거점 ...",
+    "url": "https://www.gukjenews.com/news/articleView.html?idxno=3610514",
+    "date": "20260618",
+    "collected_at": "2026-06-18 00:02:32"
+  },
+  {
+    "keyword": "공소제한",
+    "source": "nocutnews",
+    "title": "대검 감찰부장, 헌법소원…\"공소청 출범하면 해임돼\"",
+    "url": "https://www.nocutnews.co.kr/news/6534373?utm_source=naver&utm_medium=article&utm_campaign=20260617125614",
+    "date": "20260618",
+    "collected_at": "2026-06-18 00:07:33"
+  },
+  {
+    "keyword": "공소제한",
+    "source": "mk",
+    "title": "“공소청 되면 공무원 신분 잃어” …김성동 대검 감찰부장, 헌법소원 ...",
+    "url": "https://www.mk.co.kr/article/12076741",
+    "date": "20260618",
+    "collected_at": "2026-06-18 00:07:26"
+  },
+  {
+    "keyword": "공소제한",
+    "source": "joongang",
+    "title": "대검 감찰부장 “공소청법 시행 땐 나만 임기 중 해임”…헌법소원 청구",
+    "url": "https://www.joongang.co.kr/article/25437528",
+    "date": "20260618",
+    "collected_at": "2026-06-18 00:07:33"
+  },
+  {
+    "keyword": "고위험산모",
+    "source": "news1",
+    "title": "CT·MRI·혈액검사 수가 손본다…절감 재원은 지역·필수의료에 투입",
+    "url": "https://www.news1.kr/bio/general/6199683",
+    "date": "20260618",
+    "collected_at": "2026-06-18 00:06:10"
+  },
+  {
+    "keyword": "필수의료",
+    "source": "청년의사",
+    "title": "1 검사 수가 손질해 2조원 확보→필수의료로…정부, 보상체계 대수술",
+    "url": "https://www.docdocdoc.co.krnews/articleView.html?idxno=3040121",
+    "date": "2026-06-17",
+    "collected_at": "2026-06-18 00:08:20"
+  }
+]
