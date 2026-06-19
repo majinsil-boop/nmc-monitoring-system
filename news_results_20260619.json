@@ -1,0 +1,658 @@
+[
+  {
+    "keyword": "필수의료",
+    "source": "kado",
+    "title": "강원도지사직 인수위, 의료소위 긴급 구성…지역·필수의료 공약 점검",
+    "url": "https://www.kado.net/news/articleView.html?idxno=2056707",
+    "date": "20260620",
+    "collected_at": "2026-06-19 23:41:12"
+  },
+  {
+    "keyword": "중증응급",
+    "source": "ytn",
+    "title": "\"소아암 아들 태우고 응급실 가는데\"…홍대 무단횡단 사고 논란",
+    "url": "https://www.ytn.co.kr/_ln/0103_202606191602332864",
+    "date": "20260620",
+    "collected_at": "2026-06-19 23:39:44"
+  },
+  {
+    "keyword": "중증외상",
+    "source": "weeklytoday",
+    "title": "[단독] \"의사 없어 안 돼\" 구급차 속에서 멈춘 골든타임",
+    "url": "http://www.weeklytoday.com/news/articleView.html?idxno=780825",
+    "date": "20260620",
+    "collected_at": "2026-06-19 23:39:18"
+  },
+  {
+    "keyword": "중증외상",
+    "source": "newsis",
+    "title": "정선군 유일 야간 응급실 중단 위기…8차례 채용 무산",
+    "url": "https://www.newsis.com/view/NISX20260619_0003676039",
+    "date": "20260620",
+    "collected_at": "2026-06-19 23:39:18"
+  },
+  {
+    "keyword": "중증외상",
+    "source": "gosiweek",
+    "title": "최재천 교수·'중증외상센터' 이낙준 작가 만난다…서울진로직업박람회...",
+    "url": "https://www.gosiweek.com/article/1065600689918065",
+    "date": "20260620",
+    "collected_at": "2026-06-19 23:39:18"
+  },
+  {
+    "keyword": "중증외상",
+    "source": "dailymedi",
+    "title": "상급종합병원 지정평가 '역대급 반전' 촉각",
+    "url": "https://www.dailymedi.com/news/news_view.php?wr_id=937477",
+    "date": "20260620",
+    "collected_at": "2026-06-19 23:39:22"
+  },
+  {
+    "keyword": "중앙응급",
+    "source": "medical-tribune",
+    "title": "퇴근길 지하철 응급상황…중학생 도운 응급의학과 전문의",
+    "url": "http://www.medical-tribune.co.kr/news/articleView.html?idxno=214309",
+    "date": "20260620",
+    "collected_at": "2026-06-19 23:40:50"
+  },
+  {
+    "keyword": "중앙응급",
+    "source": "lawtalknews",
+    "title": "소아암 아들 태우고 응급실 가던 중 '쾅'…홍대 무단횡단 보행자 친 운...",
+    "url": "https://lawtalknews.co.kr/article/AJBIW6IV49CJ",
+    "date": "20260620",
+    "collected_at": "2026-06-19 23:40:59"
+  },
+  {
+    "keyword": "이송 지연",
+    "source": "whosaeng",
+    "title": "응급환자 이송체계 시범사업 성과 확인…“응급실 미수용 사례 0건”",
+    "url": "http://www.whosaeng.com/171466",
+    "date": "20260620",
+    "collected_at": "2026-06-19 23:42:12"
+  },
+  {
+    "keyword": "이송 지연",
+    "source": "sportsworldi",
+    "title": "메리놀병원, 새벽 응급 복막염 환자 수술 대응… 필수의료 공백 속 중증...",
+    "url": "https://www.sportsworldi.com/newsView/20260619504276",
+    "date": "20260620",
+    "collected_at": "2026-06-19 23:42:12"
+  },
+  {
+    "keyword": "이송 지연",
+    "source": "mk",
+    "title": "“소아암 아들 패혈증 의심돼 응급실 가던 중인데”…홍대 무단횡단 사...",
+    "url": "https://www.mk.co.kr/article/12078082",
+    "date": "20260620",
+    "collected_at": "2026-06-19 23:42:12"
+  },
+  {
+    "keyword": "이송 지연",
+    "source": "bosa",
+    "title": "응급의학회 \"호남권 이송체계 혁신 성과 전국 확산 환영\"",
+    "url": "https://www.bosa.co.kr/news/articleView.html?idxno=3006603",
+    "date": "20260620",
+    "collected_at": "2026-06-19 23:42:12"
+  },
+  {
+    "keyword": "의료분쟁",
+    "source": "rapportian",
+    "title": "대전협 \"응급실 미수용 사건은 시스템 실패...전공의에 책임 떠넘겨선 ...",
+    "url": "https://www.rapportian.com/news/articleView.html?idxno=237258",
+    "date": "20260620",
+    "collected_at": "2026-06-19 23:42:59"
+  },
+  {
+    "keyword": "응급이송",
+    "source": "발언하는 정은경 보건복지부 장관",
+    "title": "정은경 보건복지부 장관이 19일 전남 순천시 동부지역본부에서 열린 '응급환자 이송체계 혁신 시범사업 최종 간담회'에 참석해 발언하고 있다. (사진=보건복지부 제공) 2026.06.19. photo@newsis.com *재판매 및 DB 금지",
+    "url": "https://www.newsis.com/view/NISI20260619_0021327713",
+    "date": "20260620",
+    "collected_at": "2026-06-19 23:41:56"
+  },
+  {
+    "keyword": "응급이송",
+    "source": "yonhapnewstv",
+    "title": "응급 아닌데도 '신호 무시 질주'…환자 사망사고 사설 구급차 운전자 입...",
+    "url": "http://www.yonhapnewstv.co.kr/news/AKR20260619175428qrE",
+    "date": "20260620",
+    "collected_at": "2026-06-19 23:41:47"
+  },
+  {
+    "keyword": "응급이송",
+    "source": "newsis",
+    "title": "응급환자 이송체계 혁신 시범사업 최종 간담회",
+    "url": "https://www.newsis.com/view/NISI20260619_0021327711",
+    "date": "20260620",
+    "collected_at": "2026-06-19 23:41:56"
+  },
+  {
+    "keyword": "응급이송",
+    "source": "news1",
+    "title": "신호위반 사설구급차 신호위반 사고로 환자 숨져…운전자 입건",
+    "url": "https://www.news1.kr/local/incheon/6202824",
+    "date": "20260620",
+    "collected_at": "2026-06-19 23:41:50"
+  },
+  {
+    "keyword": "응급이송",
+    "source": "jibs",
+    "title": "해상 응급환자 잇따라...병원 긴급 이송",
+    "url": "https://www.jibs.co.kr/news/articles/articlesDetail/62587?feed=na",
+    "date": "20260620",
+    "collected_at": "2026-06-19 23:41:53"
+  },
+  {
+    "keyword": "응급의료법",
+    "source": "medipana",
+    "title": "대전협 \"응급실 미수용은 시스템 실패\"…전공의 보호 촉구",
+    "url": "https://www.medipana.com/news/articleView.html?idxno=413214",
+    "date": "20260620",
+    "collected_at": "2026-06-19 23:42:47"
+  },
+  {
+    "keyword": "응급의료법",
+    "source": "medigatenews",
+    "title": "대한응급의학회, 호남권 응급이송 시범사업 긍정 평가…“전국 확대·제...",
+    "url": "https://www.medigatenews.com/news/1728996251",
+    "date": "20260620",
+    "collected_at": "2026-06-19 23:42:47"
+  },
+  {
+    "keyword": "응급의료법",
+    "source": "mdtoday",
+    "title": "상급종합병원, 중증종합병원으로 명칭 바뀔까…중증질환 치료 중심 기능...",
+    "url": "https://www.mdtoday.co.kr/news/articleView.html?idxno=601401",
+    "date": "20260620",
+    "collected_at": "2026-06-19 23:42:47"
+  },
+  {
+    "keyword": "응급의료법",
+    "source": "doctorstimes",
+    "title": "대전협 \"응급실 미수용은 시스템 실패···전공의 처벌 아닌 보호 절실...",
+    "url": "http://www.doctorstimes.com/news/articleView.html?idxno=238655",
+    "date": "20260620",
+    "collected_at": "2026-06-19 23:42:47"
+  },
+  {
+    "keyword": "응급의료법",
+    "source": "doctorsnews",
+    "title": "응급실 미수용 검찰 송치…대전협 \"미래의료 희망 불씨 꺼드렸다\"",
+    "url": "http://www.doctorsnews.co.kr/news/articleView.html?idxno=165047",
+    "date": "20260620",
+    "collected_at": "2026-06-19 23:42:44"
+  },
+  {
+    "keyword": "응급의료법",
+    "source": "docdocdoc",
+    "title": "대구 응급환자 미수용 사망 사건 송치에 전공의들 \"가혹하고 부당\"",
+    "url": "http://www.docdocdoc.co.kr/news/articleView.html?idxno=3040206",
+    "date": "20260620",
+    "collected_at": "2026-06-19 23:42:44"
+  },
+  {
+    "keyword": "응급의료법",
+    "source": "docdocdoc",
+    "title": "'응급이송 혁신 시범사업' 전국 확대 두고…응급의학계 '이견'",
+    "url": "http://www.docdocdoc.co.kr/news/articleView.html?idxno=3040204",
+    "date": "20260620",
+    "collected_at": "2026-06-19 23:42:47"
+  },
+  {
+    "keyword": "응급의료법",
+    "source": "bosa",
+    "title": "대전협, 응급실 미수용 사건 \"전공의 검찰 송치 과도\"",
+    "url": "https://www.bosa.co.kr/news/articleView.html?idxno=3006625",
+    "date": "20260620",
+    "collected_at": "2026-06-19 23:42:44"
+  },
+  {
+    "keyword": "응급의료 취약지역",
+    "source": "cbci",
+    "title": "[정치家] 정은경 보건복지부 장관 ⑤ㅣ탈모약 논쟁 속 필수의료·연금 ...",
+    "url": "https://www.cbci.co.kr/news/articleView.html?idxno=583047",
+    "date": "20260620",
+    "collected_at": "2026-06-19 23:39:54"
+  },
+  {
+    "keyword": "응급의료",
+    "source": "view",
+    "title": "'응급실 뺑뺑이' 사망사고 의사 송치에 의사·전공의단체 반발",
+    "url": "https://view.asiae.co.kr/article/2026061917584399376",
+    "date": "20260620",
+    "collected_at": "2026-06-19 23:38:49"
+  },
+  {
+    "keyword": "응급의료",
+    "source": "sportsseoul",
+    "title": "“권역응급의료센터도 못 받은 환자 살렸다”… 예수병원, 고압산소치료...",
+    "url": "https://www.sportsseoul.com/news/read/1617350?ref=naver",
+    "date": "20260620",
+    "collected_at": "2026-06-19 23:38:40"
+  },
+  {
+    "keyword": "응급의료",
+    "source": "newsmp",
+    "title": "대전협 \"응급실 미수용은 시스템 실패, 전공의 검찰 송치 철회하라\"",
+    "url": "http://www.newsmp.com/news/articleView.html?idxno=254964",
+    "date": "20260620",
+    "collected_at": "2026-06-19 23:38:37"
+  },
+  {
+    "keyword": "응급의료",
+    "source": "news",
+    "title": "영유아 수족구병, 한 달 새 5.6배 급증...응급실 가야 할 증상은?",
+    "url": "https://news.hidoc.co.kr/news/articleView.html?idxno=63881",
+    "date": "20260620",
+    "collected_at": "2026-06-19 23:38:37"
+  },
+  {
+    "keyword": "응급의료",
+    "source": "medicalworldnews",
+    "title": "응급환자 이송체계 혁신 시범사업 ‘미수용 0건’ 9월 전국 확산…의료...",
+    "url": "https://medicalworldnews.co.kr/news/view.php?idx=1510975414",
+    "date": "20260620",
+    "collected_at": "2026-06-19 23:38:40"
+  },
+  {
+    "keyword": "응급의료",
+    "source": "medicalworldnews",
+    "title": "대구 응급실 미수용 사건 의료진 검찰 송치…의료계·환자단체 “불기소...",
+    "url": "https://medicalworldnews.co.kr/news/view.php?idx=1510975412",
+    "date": "20260620",
+    "collected_at": "2026-06-19 23:38:43"
+  },
+  {
+    "keyword": "응급의료",
+    "source": "gukjenews",
+    "title": "충북도, 필수의료 분야 협력방안 마련",
+    "url": "https://www.gukjenews.com/news/articleView.html?idxno=3612511",
+    "date": "20260620",
+    "collected_at": "2026-06-19 23:38:46"
+  },
+  {
+    "keyword": "응급의료",
+    "source": "dailymedi",
+    "title": "소아·모자 필수의료 '정밀 보상' 본격화",
+    "url": "https://www.dailymedi.com/news/news_view.php?wr_id=937537",
+    "date": "20260620",
+    "collected_at": "2026-06-19 23:38:37"
+  },
+  {
+    "keyword": "응급실 뺑뺑이",
+    "source": "yna",
+    "title": "\"호남권 응급환자 이송혁신 시범사업기간 응급실 미수용 0건\"",
+    "url": "https://www.yna.co.kr/view/AKR20260619074200530?input=1195m",
+    "date": "20260620",
+    "collected_at": "2026-06-19 23:39:31"
+  },
+  {
+    "keyword": "응급실 뺑뺑이",
+    "source": "sisajournal",
+    "title": "'대구 응급실 뺑뺑이 사망' 의사 송치에 의료계 반발 지속…\"가혹하고 ...",
+    "url": "https://www.sisajournal.com/news/articleView.html?idxno=377114",
+    "date": "20260620",
+    "collected_at": "2026-06-19 23:39:28"
+  },
+  {
+    "keyword": "응급실 뺑뺑이",
+    "source": "ohmynews",
+    "title": "응급환자 이송체계 시범사업해보니 '뺑뺑이 0건', 이유는?",
+    "url": "https://www.ohmynews.com/NWS_Web/View/at_pg.aspx?CNTN_CD=A0003244701&CMPT_CD=P0010&utm_source=naver&utm_medium=newsearch&utm_campaign=naver_news",
+    "date": "20260620",
+    "collected_at": "2026-06-19 23:39:28"
+  },
+  {
+    "keyword": "응급실 뺑뺑이",
+    "source": "newsis",
+    "title": "'응급실 뺑뺑이' 전공의 송치…대전협 \"깊은 유감\"",
+    "url": "https://www.newsis.com/view/NISX20260619_0003675783",
+    "date": "20260620",
+    "collected_at": "2026-06-19 23:39:31"
+  },
+  {
+    "keyword": "응급실 뺑뺑이",
+    "source": "news1",
+    "title": "복지부 \"호남권 응급환자 이송지침, 현장에서 작동…미수용 0건\"",
+    "url": "https://www.news1.kr/bio/welfare-medical/6202445",
+    "date": "20260620",
+    "collected_at": "2026-06-19 23:39:31"
+  },
+  {
+    "keyword": "응급실 뺑뺑이",
+    "source": "news1",
+    "title": "\"젊은 의사들 떠날 것\"…'대구 응급실 뺑뺑이' 의료진 송치에 반발",
+    "url": "https://www.news1.kr/bio/general/6202379",
+    "date": "20260620",
+    "collected_at": "2026-06-19 23:39:31"
+  },
+  {
+    "keyword": "응급실 뺑뺑이",
+    "source": "mt",
+    "title": "'응급실 뺑뺑이' 10대 사망→의사 송치...대전협 \"처벌 아닌 보호해야\"",
+    "url": "https://www.mt.co.kr/thebio/2026/06/19/2026061910125314396",
+    "date": "20260620",
+    "collected_at": "2026-06-19 23:39:28"
+  },
+  {
+    "keyword": "응급실 뺑뺑이",
+    "source": "mk",
+    "title": "‘응급실 뺑뺑이’ 의사 송치에... 전공의들 “이러니 의사들 떠나는 것...",
+    "url": "https://www.mk.co.kr/article/12078548",
+    "date": "20260620",
+    "collected_at": "2026-06-19 23:39:28"
+  },
+  {
+    "keyword": "응급실 뺑뺑이",
+    "source": "kukinews",
+    "title": "대구 응급실 사망사건 의료진 검찰 송치…의협·대전협 “전공의에 책임...",
+    "url": "https://www.kukinews.com/article/view/kuk202606190038",
+    "date": "20260620",
+    "collected_at": "2026-06-19 23:39:31"
+  },
+  {
+    "keyword": "응급실 뺑뺑이",
+    "source": "imnews",
+    "title": "복지부 \"호남권 응급환자 이송혁신 시범사업기간 응급실 미수용 0건\"",
+    "url": "https://imnews.imbc.com/news/2026/society/article/6831462_36918.html",
+    "date": "20260620",
+    "collected_at": "2026-06-19 23:39:28"
+  },
+  {
+    "keyword": "응급실 뺑뺑이",
+    "source": "hemophilia",
+    "title": "\"호남권 응급환자 이송체계 효과 입증…\"응급실 뺑뺑이 한 건도 없었다...",
+    "url": "http://www.hemophilia.co.kr/news/articleView.html?idxno=42707",
+    "date": "20260620",
+    "collected_at": "2026-06-19 23:39:28"
+  },
+  {
+    "keyword": "응급실 뺑뺑이",
+    "source": "dongascience",
+    "title": "대전협 \"응급실 미수용, 시스템 실패 탓…전공의 책임전가 말아야\"",
+    "url": "https://www.dongascience.com/news/view/78514",
+    "date": "20260620",
+    "collected_at": "2026-06-19 23:39:28"
+  },
+  {
+    "keyword": "응급실 뺑뺑이",
+    "source": "biz",
+    "title": "220억 'AI 구급차'가 응급실 뺑뺑이 잡는다? … 현장선 \"면피용 예산낭비...",
+    "url": "https://biz.newdaily.co.kr/site/data/html/2026/06/18/2026061800272.html",
+    "date": "20260620",
+    "collected_at": "2026-06-19 23:39:31"
+  },
+  {
+    "keyword": "응급실",
+    "source": "ysmbc",
+    "title": "호남서 '응급실 미수용 0건'‥사업 전국 확대",
+    "url": "https://ysmbc.co.kr/NewsArticle/1523932",
+    "date": "20260620",
+    "collected_at": "2026-06-19 23:39:06"
+  },
+  {
+    "keyword": "응급실",
+    "source": "kjmbc",
+    "title": "호남지역 '응급실 미수용 0건'‥ 사업 전국 확대",
+    "url": "https://kjmbc.co.kr/NewsArticle/1523878",
+    "date": "20260620",
+    "collected_at": "2026-06-19 23:39:14"
+  },
+  {
+    "keyword": "응급실",
+    "source": "idsn",
+    "title": "복지부, 응급환자 이송체계 시범사업 9월 전국 확대",
+    "url": "https://idsn.co.kr/news/view/1065600789363331",
+    "date": "20260620",
+    "collected_at": "2026-06-19 23:39:11"
+  },
+  {
+    "keyword": "응급실",
+    "source": "ichannela",
+    "title": "응급실 가다가 튀어나온 여성과 ‘쾅’…무슨 일?",
+    "url": "https://www.ichannela.com/news/main/news_detailPage.do?publishId=000000535417",
+    "date": "20260620",
+    "collected_at": "2026-06-19 23:39:09"
+  },
+  {
+    "keyword": "상급종합병원",
+    "source": "vop",
+    "title": "보건의료노조 \"간호간병통합서비스 비수도권 상급종합병원 확대 환영\"",
+    "url": "https://vop.co.kr/A00001695278.html",
+    "date": "20260620",
+    "collected_at": "2026-06-19 23:40:30"
+  },
+  {
+    "keyword": "상급종합병원",
+    "source": "bosa",
+    "title": "최보윤 의원, 상급종합병원→중증종합병원 명칭 변경 추진",
+    "url": "https://www.bosa.co.kr/news/articleView.html?idxno=3006443",
+    "date": "20260620",
+    "collected_at": "2026-06-19 23:40:30"
+  },
+  {
+    "keyword": "미수용",
+    "source": "ysmbc",
+    "title": "호남서 '응급실 미수용 0건'‥사업 전국 확대",
+    "url": "https://ysmbc.co.kr/NewsArticle/1523857",
+    "date": "20260620",
+    "collected_at": "2026-06-19 23:40:06"
+  },
+  {
+    "keyword": "미수용",
+    "source": "yna",
+    "title": "대전협 \"응급실 미수용, 시스템 실패…전공의에 책임전가 중단\"",
+    "url": "https://www.yna.co.kr/view/AKR20260619078500530?input=1195m",
+    "date": "20260620",
+    "collected_at": "2026-06-19 23:40:15"
+  },
+  {
+    "keyword": "미수용",
+    "source": "newsis",
+    "title": "복지부 \"호남 이송체계 시범사업, 응급실 미수용 한 건도 없어\"",
+    "url": "https://www.newsis.com/view/NISX20260619_0003675823",
+    "date": "20260620",
+    "collected_at": "2026-06-19 23:40:09"
+  },
+  {
+    "keyword": "미수용",
+    "source": "news",
+    "title": "'응급실 미수용' 의사 송치…대전협 \"책임 전가 중단해야\"",
+    "url": "https://news.tvchosun.com/site/data/html_dir/2026/06/19/2026061990206.html",
+    "date": "20260620",
+    "collected_at": "2026-06-19 23:40:03"
+  },
+  {
+    "keyword": "미수용",
+    "source": "mt",
+    "title": "광주·전라 '응급실 미수용' 0건…\"시범사업 통했다\"",
+    "url": "https://www.mt.co.kr/thebio/2026/06/19/2026061913320513983",
+    "date": "20260620",
+    "collected_at": "2026-06-19 23:40:09"
+  },
+  {
+    "keyword": "미수용",
+    "source": "monews",
+    "title": "대전협, 응급실 미수용 전공의 검찰 송치 깊은 유감 표명",
+    "url": "https://www.monews.co.kr/news/articleView.html?idxno=411983",
+    "date": "20260620",
+    "collected_at": "2026-06-19 23:40:09"
+  },
+  {
+    "keyword": "미수용",
+    "source": "medigatenews",
+    "title": "대전협, ‘응급실 미수용’ 전공의 송치에 반발…“시스템 실패 책임 개...",
+    "url": "https://www.medigatenews.com/news/2509953882",
+    "date": "20260620",
+    "collected_at": "2026-06-19 23:40:06"
+  },
+  {
+    "keyword": "미수용",
+    "source": "medicaltimes",
+    "title": "복지부, 응급환자 이송체계 시범사업 성과 간담회 개최",
+    "url": "https://www.medicaltimes.com/Main/News/NewsView.html?ID=1169353&ref=naverpc",
+    "date": "20260620",
+    "collected_at": "2026-06-19 23:40:03"
+  },
+  {
+    "keyword": "미수용",
+    "source": "medicaltimes",
+    "title": "대구 응급실 미수용 전공의 검찰 송치…대전협 \"보호 필요\"",
+    "url": "https://www.medicaltimes.com/Main/News/NewsView.html?ID=1169350&ref=naverpc",
+    "date": "20260620",
+    "collected_at": "2026-06-19 23:40:15"
+  },
+  {
+    "keyword": "미수용",
+    "source": "kjmbc",
+    "title": "호남지역 '응급실 미수용 0건'‥ 사업 전국 확대",
+    "url": "https://kjmbc.co.kr/NewsArticle/1523851",
+    "date": "20260620",
+    "collected_at": "2026-06-19 23:40:09"
+  },
+  {
+    "keyword": "미수용",
+    "source": "imnews",
+    "title": "대전협 \"응급실 미수용, 시스템 실패‥전공의에 책임전가 중단\"",
+    "url": "https://imnews.imbc.com/news/2026/society/article/6831463_36918.html",
+    "date": "20260620",
+    "collected_at": "2026-06-19 23:40:06"
+  },
+  {
+    "keyword": "미수용",
+    "source": "ggmedinews",
+    "title": "응급실 미수용은 '시스템 실패'… 의료진 태만 아닌 '배후 진료·전달체...",
+    "url": "http://www.ggmedinews.com/news/articleView.html?idxno=6590",
+    "date": "20260620",
+    "collected_at": "2026-06-19 23:40:09"
+  },
+  {
+    "keyword": "미수용",
+    "source": "edaily",
+    "title": "복지부 \"호남권 이송체계 시범사업, 응급실 미수용 0건\"",
+    "url": "https://www.edaily.co.kr/news/newspath.asp?newsid=04319766645483360",
+    "date": "20260620",
+    "collected_at": "2026-06-19 23:40:06"
+  },
+  {
+    "keyword": "미수용",
+    "source": "docdocdoc",
+    "title": "\"응급이송체계 시범사업 '미수용 0건' 성과\"…政, 긍정 평가",
+    "url": "http://www.docdocdoc.co.kr/news/articleView.html?idxno=3040208",
+    "date": "20260620",
+    "collected_at": "2026-06-19 23:40:15"
+  },
+  {
+    "keyword": "미수용",
+    "source": "dailian",
+    "title": "응급환자 이송지침 손봤더니 응급실 미수용 '0건'",
+    "url": "https://www.dailian.co.kr/news/view/1657710/?sc=Naver",
+    "date": "20260620",
+    "collected_at": "2026-06-19 23:40:15"
+  },
+  {
+    "keyword": "미수용",
+    "source": "bosa",
+    "title": "응급환자 이송체계 혁신 시범사업, 미수용 '0건'...9월 전국 확대",
+    "url": "https://www.bosa.co.kr/news/articleView.html?idxno=3006634",
+    "date": "20260620",
+    "collected_at": "2026-06-19 23:40:15"
+  },
+  {
+    "keyword": "미수용",
+    "source": "bokuennews",
+    "title": "대전협 \"응급실 미수용은 시스템 실패\"… 전공의 송치에 유감",
+    "url": "http://www.bokuennews.com/news/article.html?no=280043",
+    "date": "20260620",
+    "collected_at": "2026-06-19 23:40:15"
+  },
+  {
+    "keyword": "모자의료",
+    "source": "whosaeng",
+    "title": "최승원 세종충남대병원장 …\"재정 건전성 확보·지역완결형 필수의료 구...",
+    "url": "http://www.whosaeng.com/171463",
+    "date": "20260620",
+    "collected_at": "2026-06-19 23:41:38"
+  },
+  {
+    "keyword": "모자보건",
+    "source": "docdocdoc",
+    "title": "필수의료는 정부 지원 '노심초사'인데… 의협 \"탈모치료 급여 논의 부적...",
+    "url": "http://www.docdocdoc.co.kr/news/articleView.html?idxno=3040184",
+    "date": "20260620",
+    "collected_at": "2026-06-19 23:41:28"
+  },
+  {
+    "keyword": "닥터헬기",
+    "source": "rapportian",
+    "title": "원광대병원 닥터헬기, 제35보병사단과 합동훈련 실시",
+    "url": "https://www.rapportian.com/news/articleView.html?idxno=237275",
+    "date": "20260620",
+    "collected_at": "2026-06-19 23:38:53"
+  },
+  {
+    "keyword": "닥터헬기",
+    "source": "rapportian",
+    "title": "\"응급실 미수용 0건…이송지침 현장서 작동\"...전국 확대 과제는 '사법리...",
+    "url": "https://www.rapportian.com/news/articleView.html?idxno=237264",
+    "date": "20260620",
+    "collected_at": "2026-06-19 23:38:56"
+  },
+  {
+    "keyword": "닥터헬기",
+    "source": "pressian",
+    "title": "도입 10주년 원광대병원 '닥터헬기'…1600명 환자 이송 등 '생명줄 헬기...",
+    "url": "https://www.pressian.com/pages/articles/2026061915250412845?utm_source=naver&utm_medium=search",
+    "date": "20260620",
+    "collected_at": "2026-06-19 23:38:53"
+  },
+  {
+    "keyword": "닥터헬기",
+    "source": "jibs",
+    "title": "해상 응급환자 잇따라...병원 긴급 이송",
+    "url": "https://www.jibs.co.kr/news/replay/viewNewsReplayDetail/2026061919375325857?feed=na",
+    "date": "20260620",
+    "collected_at": "2026-06-19 23:38:53"
+  },
+  {
+    "keyword": "닥터헬기",
+    "source": "jejumbc",
+    "title": "70대 해녀 우도 물질 중 사고‥닥터헬기로 이송",
+    "url": "https://jejumbc.com/NewsArticle/846738",
+    "date": "20260620",
+    "collected_at": "2026-06-19 23:38:53"
+  },
+  {
+    "keyword": "광역상황실",
+    "source": "medipana",
+    "title": "응급의학회, 응급이송 전국 확산 지지…\"가시적 성과 확인\"",
+    "url": "https://www.medipana.com/news/articleView.html?idxno=413204",
+    "date": "20260620",
+    "collected_at": "2026-06-19 23:42:25"
+  },
+  {
+    "keyword": "광역상황실",
+    "source": "medipana",
+    "title": "응급의학醫 \"성과 검증도 없이 전국 확대\"…데이터 공개 요구",
+    "url": "https://www.medipana.com/news/articleView.html?idxno=413202",
+    "date": "20260620",
+    "collected_at": "2026-06-19 23:42:25"
+  },
+  {
+    "keyword": "공소제한",
+    "source": "nocutnews",
+    "title": "검찰 수사범위 다시 묻는 법원…'위법 기소' 공소기각 잇따라",
+    "url": "https://www.nocutnews.co.kr/news/6535943?utm_source=naver&utm_medium=article&utm_campaign=20260620050048",
+    "date": "20260620",
+    "collected_at": "2026-06-19 23:43:22"
+  },
+  {
+    "keyword": "응급실",
+    "source": "뉴스1",
+    "title": "강릉의료원 응급의학과장, 응급실 간호인력 교육 인재양성기금 기부",
+    "url": "https://www.news1.kr/local/kangwon/6202808",
+    "date": "2026-06-20",
+    "collected_at": "2026-06-19 23:45:49"
+  }
+]
