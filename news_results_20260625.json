@@ -1,0 +1,658 @@
+[
+  {
+    "keyword": "형사특례",
+    "source": "new",
+    "title": "역대 최대 3.6조 투입 '건보수가 혁신'…필수의료 정조준",
+    "url": "https://new.dailypharm.com/user/news/339772?REFERER=NP",
+    "date": "20260626",
+    "collected_at": "2026-06-26 00:02:46"
+  },
+  {
+    "keyword": "형사특례",
+    "source": "kukinews",
+    "title": "지역·필수의료에 연 3조6000억원 투입…검사 과잉지출 2조6000억원 줄인...",
+    "url": "https://www.kukinews.com/article/view/kuk202606250039",
+    "date": "20260626",
+    "collected_at": "2026-06-26 00:02:43"
+  },
+  {
+    "keyword": "필수의료",
+    "source": "dailypharcom",
+    "title": "의협 \"필수의료 살린다며 검체·영상검사 희생양 삼아\"",
+    "url": "https://www.dailypharm.com/user/news/339819?REFERER=NP",
+    "date": "20260626",
+    "collected_at": "2026-06-26 00:00:22"
+  },
+  {
+    "keyword": "중증응급",
+    "source": "news",
+    "title": "25년 만에 건강보험 수가 대수술…지역·필수의료에 3조6000억 투입",
+    "url": "https://news.mtn.co.kr/news-detail/2026062516061849711",
+    "date": "20260626",
+    "collected_at": "2026-06-25 23:58:53"
+  },
+  {
+    "keyword": "중증응급",
+    "source": "mt",
+    "title": "건보 수가 대수술… 지역·필수의료에 年3.6조 투입",
+    "url": "https://www.mt.co.kr/thebio/2026/06/26/2026062519442454004",
+    "date": "20260626",
+    "collected_at": "2026-06-25 23:58:44"
+  },
+  {
+    "keyword": "중증응급",
+    "source": "mk",
+    "title": "CT·MRI 수가 낮춰 연 2.6조 절감…지역·필수의료에 3.6조 투입",
+    "url": "https://www.mk.co.kr/article/12083269",
+    "date": "20260626",
+    "collected_at": "2026-06-25 23:58:50"
+  },
+  {
+    "keyword": "중증응급",
+    "source": "medicalworldnews",
+    "title": "건강보험 수가 25년 만에 역대 최대 규모 개편…지역·필수의료에 연 3....",
+    "url": "https://medicalworldnews.co.kr/news/view.php?idx=1510975512",
+    "date": "20260626",
+    "collected_at": "2026-06-25 23:58:47"
+  },
+  {
+    "keyword": "중증응급",
+    "source": "medicalworldnews",
+    "title": "고위험 산모 6곳서 수용 거부…충북 태아 사망, 모자의료 붕괴 경고",
+    "url": "https://medicalworldnews.co.kr/news/view.php?idx=1510975511",
+    "date": "20260626",
+    "collected_at": "2026-06-25 23:58:47"
+  },
+  {
+    "keyword": "중증응급",
+    "source": "mbn",
+    "title": "\"CT·MRI 깎고 필수의료 보상 확대\"…건강보험 수가 25년 만에 대수술",
+    "url": "http://www.mbn.co.kr/pages/news/newsView.php?news_seq_no=5201988",
+    "date": "20260626",
+    "collected_at": "2026-06-25 23:58:47"
+  },
+  {
+    "keyword": "중증응급",
+    "source": "kmib",
+    "title": "지역·필수의료에 年 3조6000억원 투입",
+    "url": "https://www.kmib.co.kr/article/view.asp?arcid=1782379466&code=11132000&cp=nv",
+    "date": "20260626",
+    "collected_at": "2026-06-25 23:58:47"
+  },
+  {
+    "keyword": "중증응급",
+    "source": "khan",
+    "title": "[사설] 필수의료 살리려면 건보수가 발본 개혁은 불가피",
+    "url": "https://www.khan.co.kr/article/202606251815001",
+    "date": "20260626",
+    "collected_at": "2026-06-25 23:58:50"
+  },
+  {
+    "keyword": "중증응급",
+    "source": "kado",
+    "title": "지역 필수의료 수가 높인다…강원 고위험 분만 100% 인상",
+    "url": "https://www.kado.net/news/articleView.html?idxno=2058023",
+    "date": "20260626",
+    "collected_at": "2026-06-25 23:58:44"
+  },
+  {
+    "keyword": "중증응급",
+    "source": "joseilbo",
+    "title": "건보 수가 25년만에 대수술…지역·필수의료 3.6조 투입",
+    "url": "http://www.joseilbo.com/news/news_read.php?uid=570751&class=33&grp=",
+    "date": "20260626",
+    "collected_at": "2026-06-25 23:58:47"
+  },
+  {
+    "keyword": "중증응급",
+    "source": "hankyung",
+    "title": "건보 재정 3.6조 투입…'중증·분만·응급실' 살린다",
+    "url": "https://www.hankyung.com/article/2026062585221",
+    "date": "20260626",
+    "collected_at": "2026-06-25 23:58:50"
+  },
+  {
+    "keyword": "중증응급",
+    "source": "fnnews",
+    "title": "지역·필수의료에 年 3조6천억 투입… 병·의원 진찰료 오른다",
+    "url": "http://www.fnnews.com/news/202606251822589597",
+    "date": "20260626",
+    "collected_at": "2026-06-25 23:58:50"
+  },
+  {
+    "keyword": "중증응급",
+    "source": "dongascience",
+    "title": "지역·필수의료 연 3.6조 역대 최대 투자…CT·MRI는 축소",
+    "url": "https://www.dongascience.com/news/view/78631",
+    "date": "20260626",
+    "collected_at": "2026-06-25 23:58:50"
+  },
+  {
+    "keyword": "중증응급",
+    "source": "donga",
+    "title": "비수도권 수술 수가 최소 10% 인상…지역·필수의료에 3조6000억 지원",
+    "url": "https://www.donga.com/news/Society/article/all/20260625/134182496/1",
+    "date": "20260626",
+    "collected_at": "2026-06-25 23:58:53"
+  },
+  {
+    "keyword": "중증응급",
+    "source": "chosun",
+    "title": "CT·MRI 과잉 검사 줄여… 필수의료에 3조6000억 투입",
+    "url": "https://www.chosun.com/national/welfare-medical/2026/06/26/74FWQV76NFG3NHCXWTSXDNXJZ4/?utm_source=naver&utm_medium=referral&utm_campaign=naver-news",
+    "date": "20260626",
+    "collected_at": "2026-06-25 23:58:44"
+  },
+  {
+    "keyword": "중증외상",
+    "source": "newsgn",
+    "title": "마산소방서 , 중증응급환자 소생률 향상 위한 '구급장비 규격심의회' 개...",
+    "url": "https://www.newsgn.com/news/articleView.html?idxno=558837",
+    "date": "20260626",
+    "collected_at": "2026-06-25 23:58:15"
+  },
+  {
+    "keyword": "중증외상",
+    "source": "gndomin",
+    "title": "마산소방서 중증응급환자 소생률 향상 '구급장비 규격심의회' 개최",
+    "url": "http://www.gndomin.com/news/articleView.html?idxno=480047",
+    "date": "20260626",
+    "collected_at": "2026-06-25 23:58:07"
+  },
+  {
+    "keyword": "중증외상",
+    "source": "biz",
+    "title": "[당신의 생각은] ‘응급실 뺑뺑이’ 대신 ‘응급실 미수용’ 써달라...의...",
+    "url": "https://biz.chosun.com/science-chosun/medicine-health/2026/06/25/2PHA3YSZSVDCFITHBJCWRUOSUU/?utm_source=naver&utm_medium=original&utm_campaign=biz",
+    "date": "20260626",
+    "collected_at": "2026-06-25 23:58:18"
+  },
+  {
+    "keyword": "이송 지연",
+    "source": "rapportian",
+    "title": "서울의료원, 요양기관-응급의료기관 응급이송 정보 연계 사업 추진",
+    "url": "https://www.rapportian.com/news/articleView.html?idxno=237469",
+    "date": "20260626",
+    "collected_at": "2026-06-26 00:01:47"
+  },
+  {
+    "keyword": "이송 지연",
+    "source": "fpn119",
+    "title": "119구급차 차대 재편 본격화… 소방청, 픽업트럭 개조 방식까지 검토",
+    "url": "http://fpn119.co.kr/252953",
+    "date": "20260626",
+    "collected_at": "2026-06-26 00:01:50"
+  },
+  {
+    "keyword": "이송 지연",
+    "source": "edaily",
+    "title": "서울의료원, 요양시설 응급환자 정보 연계 사업 본격 추진",
+    "url": "https://www.edaily.co.kr/news/newspath.asp?newsid=03962246645485328",
+    "date": "20260626",
+    "collected_at": "2026-06-26 00:01:44"
+  },
+  {
+    "keyword": "이송 지연",
+    "source": "docdocdoc",
+    "title": "요양시설-응급실 정보 단절 줄인다…서울의료원, 표준 이송 서식 도입",
+    "url": "http://www.docdocdoc.co.kr/news/articleView.html?idxno=3040359",
+    "date": "20260626",
+    "collected_at": "2026-06-26 00:01:47"
+  },
+  {
+    "keyword": "이송 지연",
+    "source": "bosa",
+    "title": "서울의료원, 요양기관-응급의료기관 응급이송 정보 연계사업 추진",
+    "url": "https://www.bosa.co.kr/news/articleView.html?idxno=3007051",
+    "date": "20260626",
+    "collected_at": "2026-06-26 00:01:47"
+  },
+  {
+    "keyword": "의료분쟁",
+    "source": "sedaily",
+    "title": "지역·필수의료에 건보 재정 3.6조원 투입… 건보료 인상 가능성",
+    "url": "https://www.sedaily.com/article/20060134?ref=naver",
+    "date": "20260626",
+    "collected_at": "2026-06-26 00:02:25"
+  },
+  {
+    "keyword": "의료분쟁",
+    "source": "imnews",
+    "title": "지역·필수의료 수가 높인다‥건보재정 '역대 최대' 연 3조 6천억 투입",
+    "url": "https://imnews.imbc.com/news/2026/society/article/6832838_36918.html",
+    "date": "20260626",
+    "collected_at": "2026-06-26 00:02:28"
+  },
+  {
+    "keyword": "응급의료 취약지역",
+    "source": "ziksir",
+    "title": "\"검사 수가 낮추고 필수의료 올린다\"…건보 수가 25년 만에 손질",
+    "url": "https://www.ziksir.com/news/articleView.html?idxno=138049",
+    "date": "20260626",
+    "collected_at": "2026-06-25 23:59:01"
+  },
+  {
+    "keyword": "응급의료 취약지역",
+    "source": "yna",
+    "title": "25년만에 건보수가 대개편…지역·필수의료 연 3조6천억 투입(종합)",
+    "url": "https://www.yna.co.kr/view/AKR20260625018151530?input=1195m",
+    "date": "20260626",
+    "collected_at": "2026-06-25 23:59:01"
+  },
+  {
+    "keyword": "응급의료 취약지역",
+    "source": "yna",
+    "title": "지역·필수의료 수가 높인다…건보재정 연 3조6천억 투입",
+    "url": "https://www.yna.co.kr/view/AKR20260625018100530?input=1195m",
+    "date": "20260626",
+    "collected_at": "2026-06-25 23:59:04"
+  },
+  {
+    "keyword": "응급의료 취약지역",
+    "source": "wowtv",
+    "title": "지역·필수의료에 연 3.6조 건보 투입...취약지에 우대 수가",
+    "url": "http://www.wowtv.co.kr/NewsCenter/News/Read?articleId=A202606250367&t=NN",
+    "date": "20260626",
+    "collected_at": "2026-06-25 23:59:01"
+  },
+  {
+    "keyword": "응급의료 취약지역",
+    "source": "ohmynews",
+    "title": "지역·필수의료에 건강보험 3.6조 투입... \"25년만에 수가 구조개혁\"",
+    "url": "https://www.ohmynews.com/NWS_Web/View/at_pg.aspx?CNTN_CD=A0003246301&CMPT_CD=P0010&utm_source=naver&utm_medium=newsearch&utm_campaign=naver_news",
+    "date": "20260626",
+    "collected_at": "2026-06-25 23:59:01"
+  },
+  {
+    "keyword": "응급의료 취약지역",
+    "source": "obsnews",
+    "title": "지역·필수의료에 건보재정 3조 6천억 원 투입",
+    "url": "https://www.obsnews.co.kr/news/articleView.html?idxno=1528614",
+    "date": "20260626",
+    "collected_at": "2026-06-25 23:59:04"
+  },
+  {
+    "keyword": "응급의료 취약지역",
+    "source": "news",
+    "title": "지역·필수의료에 '건강보험 수가' 올린다... 건보 재정 연 3.6조 투입 '...",
+    "url": "https://news.bbsi.co.kr/news/articleView.html?idxno=4091261",
+    "date": "20260626",
+    "collected_at": "2026-06-25 23:59:04"
+  },
+  {
+    "keyword": "응급의료 취약지역",
+    "source": "joongangenews",
+    "title": "25년 만에 건보 수가체계 대수술… 지역·필수의료에 연 3.6조원 투입",
+    "url": "https://www.joongangenews.com/news/articleView.html?idxno=528376",
+    "date": "20260626",
+    "collected_at": "2026-06-25 23:59:01"
+  },
+  {
+    "keyword": "응급의료 취약지역",
+    "source": "fnnews",
+    "title": "지역·필수의료에 연 3.6조 투입...건보 수가체계 '가치 중심'으로 전환",
+    "url": "http://www.fnnews.com/news/202606251325205355",
+    "date": "20260626",
+    "collected_at": "2026-06-25 23:59:04"
+  },
+  {
+    "keyword": "응급의료 취약지역",
+    "source": "bosa",
+    "title": "고위험 산모 '응급실 미수용' 막는다",
+    "url": "https://www.bosa.co.kr/news/articleView.html?idxno=3007065",
+    "date": "20260626",
+    "collected_at": "2026-06-25 23:59:04"
+  },
+  {
+    "keyword": "응급의료",
+    "source": "yonhapnewstv",
+    "title": "응급 수술·지역 등 필수의료 수가 상향",
+    "url": "http://www.yonhapnewstv.co.kr/news/MYH202606260537087Ne",
+    "date": "20260626",
+    "collected_at": "2026-06-25 23:57:36"
+  },
+  {
+    "keyword": "응급의료",
+    "source": "seoul",
+    "title": "지역·필수의료에 3.6조 투입… MRI·CT 등 수가 깎는다",
+    "url": "https://www.seoul.co.kr/news/society/health-medical/2026/06/26/20260626006008?wlog_tag3=naver",
+    "date": "20260626",
+    "collected_at": "2026-06-25 23:57:36"
+  },
+  {
+    "keyword": "응급의료",
+    "source": "nongmin",
+    "title": "응급실 뺑뺑이 3개월간 ‘제로’…호남 이송체계 혁신 ‘효과’",
+    "url": "https://www.nongmin.com/article/20260624500589",
+    "date": "20260626",
+    "collected_at": "2026-06-25 23:57:36"
+  },
+  {
+    "keyword": "응급의료",
+    "source": "news",
+    "title": "\"나 경찰이니까 신고해\"…응급실서 난동 부린 여경",
+    "url": "https://news.sbs.co.kr/news/endPage.do?news_id=N1008628327&plink=ORI&cooper=NAVER",
+    "date": "20260626",
+    "collected_at": "2026-06-25 23:57:36"
+  },
+  {
+    "keyword": "응급의료",
+    "source": "kbsnet",
+    "title": "25년만에 건보수가 대개편…지역·필수의료 연 3조6천억 투입",
+    "url": "https://www.kbsm.net/news/view.php?idx=524511",
+    "date": "20260626",
+    "collected_at": "2026-06-25 23:57:25"
+  },
+  {
+    "keyword": "응급의료",
+    "source": "joongang",
+    "title": "“넌 아픈데 짜증 안내냐”…술 취해 응급실서 난동 부린 여경",
+    "url": "https://www.joongang.co.kr/article/25440086",
+    "date": "20260626",
+    "collected_at": "2026-06-25 23:57:28"
+  },
+  {
+    "keyword": "응급의료",
+    "source": "imnews",
+    "title": "건강보험 수가 대수술‥'필수의료' 지원 확대",
+    "url": "https://imnews.imbc.com/replay/2026/nwtoday/article/6833034_37012.html",
+    "date": "20260626",
+    "collected_at": "2026-06-25 23:57:28"
+  },
+  {
+    "keyword": "응급의료",
+    "source": "fnnews",
+    "title": "\"넌 아픈데 짜증 안내냐\"…술 취해 응급실서 난동 부린 여경 '벌금형'",
+    "url": "http://www.fnnews.com/news/202606260824199075",
+    "date": "20260626",
+    "collected_at": "2026-06-25 23:57:22"
+  },
+  {
+    "keyword": "응급의료",
+    "source": "edaily",
+    "title": "\"아픈데 짜증 안 내냐!\"…응급실서 소란 피운 경찰관 2심도 벌금형",
+    "url": "https://www.edaily.co.kr/news/newspath.asp?newsid=02604326645485656",
+    "date": "20260626",
+    "collected_at": "2026-06-25 23:57:25"
+  },
+  {
+    "keyword": "응급의료",
+    "source": "doctorstimes",
+    "title": "정부, 건강보험 수가 구조 전면 개편···지역·필수의료에 연 3조6000억...",
+    "url": "http://www.doctorstimes.com/news/articleView.html?idxno=238774",
+    "date": "20260626",
+    "collected_at": "2026-06-25 23:57:22"
+  },
+  {
+    "keyword": "응급의료",
+    "source": "docdocdoc",
+    "title": "의료혁신위 '기본의료 국가책임' 제안…간호간병·모자의료 개편",
+    "url": "http://www.docdocdoc.co.kr/news/articleView.html?idxno=3040380",
+    "date": "20260626",
+    "collected_at": "2026-06-25 23:57:32"
+  },
+  {
+    "keyword": "응급의료",
+    "source": "cctoday",
+    "title": "[사설] 건보수가 대개편, 지역·필수의료 강화 전환점 돼야",
+    "url": "https://www.cctoday.co.kr/news/articleView.html?idxno=2232219",
+    "date": "20260626",
+    "collected_at": "2026-06-25 23:57:32"
+  },
+  {
+    "keyword": "응급실 뺑뺑이",
+    "source": "seoul",
+    "title": "지역·필수의료에 연 3.6조 붓는다…25년 만 진료비 가격 최대 개편",
+    "url": "https://www.seoul.co.kr/news/society/2026/06/25/20260625500156?wlog_tag3=naver",
+    "date": "20260626",
+    "collected_at": "2026-06-25 23:58:30"
+  },
+  {
+    "keyword": "응급실 뺑뺑이",
+    "source": "news1",
+    "title": "'응급실 뺑뺑이' 막은 건양대병원…50㎞ 달려온 산모 무사히 분만",
+    "url": "https://www.news1.kr/local/daejeon-chungnam/6208281",
+    "date": "20260626",
+    "collected_at": "2026-06-25 23:58:30"
+  },
+  {
+    "keyword": "응급실 뺑뺑이",
+    "source": "kado",
+    "title": "지방의료원 응급실 잇단 셧다운…민선 9기 해법 찾을까",
+    "url": "https://www.kado.net/news/articleView.html?idxno=2057702",
+    "date": "20260626",
+    "collected_at": "2026-06-25 23:58:34"
+  },
+  {
+    "keyword": "응급실 뺑뺑이",
+    "source": "ggilbo",
+    "title": "역대 최대 규모 수가 개편 추진…지역·필수의료 살린다",
+    "url": "https://www.ggilbo.com/news/articleView.html?idxno=1165850",
+    "date": "20260626",
+    "collected_at": "2026-06-25 23:58:26"
+  },
+  {
+    "keyword": "응급실 뺑뺑이",
+    "source": "ggilbo",
+    "title": "건양대병원 응급실 뺑뺑이로 50㎞ 달려온 고위험 산모 무사 분만",
+    "url": "https://www.ggilbo.com/news/articleView.html?idxno=1165828",
+    "date": "20260626",
+    "collected_at": "2026-06-25 23:58:26"
+  },
+  {
+    "keyword": "응급실 뺑뺑이",
+    "source": "etoday",
+    "title": "검사료 깎고 지역·필수의료 강화…연 3조6000억원 투입",
+    "url": "https://www.etoday.co.kr/news/view/2597127",
+    "date": "20260626",
+    "collected_at": "2026-06-25 23:58:30"
+  },
+  {
+    "keyword": "응급실 뺑뺑이",
+    "source": "donga",
+    "title": "구급차 분만 年 100건… 119대원에 ‘아이 받는 법’ 가르친다",
+    "url": "https://www.donga.com/news/Society/article/all/20260625/134177551/2",
+    "date": "20260626",
+    "collected_at": "2026-06-25 23:58:34"
+  },
+  {
+    "keyword": "응급실 뺑뺑이",
+    "source": "biz",
+    "title": "CT·MRI 수가 깎아 응급실 '최종치료'에 쏟는다 … '3.6조' 투입 건보 대...",
+    "url": "https://biz.newdaily.co.kr/site/data/html/2026/06/25/2026062500189.html",
+    "date": "20260626",
+    "collected_at": "2026-06-25 23:58:30"
+  },
+  {
+    "keyword": "응급실",
+    "source": "wowtv",
+    "title": "술 취해 \"야, 신고해\"…응급실서 욕설·폭언한 여경 결국",
+    "url": "http://www.wowtv.co.kr/NewsCenter/News/Read?articleId=A202606250458&t=NN",
+    "date": "20260626",
+    "collected_at": "2026-06-25 23:58:00"
+  },
+  {
+    "keyword": "응급실",
+    "source": "view",
+    "title": "\"야, 경찰이니까 신고해\"…응급실 난동 현직 여경, 항소심도 벌금형",
+    "url": "https://view.asiae.co.kr/article/2026062519234929835",
+    "date": "20260626",
+    "collected_at": "2026-06-25 23:57:56"
+  },
+  {
+    "keyword": "응급실",
+    "source": "tjmbc",
+    "title": "'응급실 뺑뺑이' 고위험 산모, 건양대병원서 무사히 분만",
+    "url": "https://tjmbc.co.kr/NewsArticle/847823",
+    "date": "20260626",
+    "collected_at": "2026-06-25 23:57:47"
+  },
+  {
+    "keyword": "응급실",
+    "source": "tjmbc",
+    "title": "'응급실 뺑뺑이' 고위험 산모, 건양대병원서 무사히 분만",
+    "url": "https://tjmbc.co.kr/NewsArticle/847765",
+    "date": "20260626",
+    "collected_at": "2026-06-25 23:57:56"
+  },
+  {
+    "keyword": "응급실",
+    "source": "mbn",
+    "title": "\"야, 경찰이니까 신고해!\" 응급실서 폭언한 여경 결국",
+    "url": "http://mbn.mk.co.kr/pages/news/newsView.php?category=mbn00009&news_seq_no=5201994",
+    "date": "20260626",
+    "collected_at": "2026-06-25 23:58:00"
+  },
+  {
+    "keyword": "응급실",
+    "source": "kado",
+    "title": "술 취해 응급실서 난동피운 경찰관 항소심도 벌금형",
+    "url": "https://www.kado.net/news/articleView.html?idxno=2058005",
+    "date": "20260626",
+    "collected_at": "2026-06-25 23:57:53"
+  },
+  {
+    "keyword": "상급종합병원",
+    "source": "shinailbo",
+    "title": "진찰료 올리고 CT·MRI 수가 낮춘다…정부, 25년만에 지역·필수의료 '메...",
+    "url": "https://www.shinailbo.co.kr/news/articleView.html?idxno=5034421",
+    "date": "20260626",
+    "collected_at": "2026-06-25 23:59:31"
+  },
+  {
+    "keyword": "상급종합병원",
+    "source": "sedaily",
+    "title": "지역·필수의료 강화에 내년 건보료 오를까… “연 1조 추가 부담”",
+    "url": "https://www.sedaily.com/article/20060357?ref=naver",
+    "date": "20260626",
+    "collected_at": "2026-06-25 23:59:22"
+  },
+  {
+    "keyword": "상급종합병원",
+    "source": "rapportian",
+    "title": "역대 최대 규모 건강보험 수가 개편…지역·필수의료 3.6조 투입",
+    "url": "https://www.rapportian.com/news/articleView.html?idxno=237495",
+    "date": "20260626",
+    "collected_at": "2026-06-25 23:59:35"
+  },
+  {
+    "keyword": "상급종합병원",
+    "source": "newsis",
+    "title": "25년 만에 건보 수가 대수술…지역·필수의료에 연 3.6조원 투자(종합)",
+    "url": "https://www.newsis.com/view/NISX20260625_0003683502",
+    "date": "20260626",
+    "collected_at": "2026-06-25 23:59:35"
+  },
+  {
+    "keyword": "상급종합병원",
+    "source": "mdtoday",
+    "title": "지역∙필수의료에 건보 재정 연 3조6000억원 투입…역대 최대 수가 구조...",
+    "url": "https://www.mdtoday.co.kr/news/articleView.html?idxno=602488",
+    "date": "20260626",
+    "collected_at": "2026-06-25 23:59:35"
+  },
+  {
+    "keyword": "상급종합병원",
+    "source": "eroun",
+    "title": "[이로운주목] 지역·필수의료에 연 3.6조원 투입…정부, 건강보험 수가...",
+    "url": "https://www.eroun.net/news/articleView.html?idxno=83980",
+    "date": "20260626",
+    "collected_at": "2026-06-25 23:59:35"
+  },
+  {
+    "keyword": "상급종합병원",
+    "source": "ccdailynews",
+    "title": "치과대학도 없는 의료취약지역 충북, 공공치과병원이 필요하다",
+    "url": "https://www.ccdailynews.com/news/articleView.html?idxno=2424205",
+    "date": "20260626",
+    "collected_at": "2026-06-25 23:59:35"
+  },
+  {
+    "keyword": "보건복지위",
+    "source": "news1",
+    "title": "광주전남 시민사회 \"'민주인권평화국' 보건복지위 조정 재검토해야\"",
+    "url": "https://www.news1.kr/local/gwangju-jeonnam/6208672",
+    "date": "20260626",
+    "collected_at": "2026-06-26 00:03:32"
+  },
+  {
+    "keyword": "미수용",
+    "source": "news",
+    "title": "정부, 25년 만에 건보 수가 혁신…지역·필수의료에 연 3.6조 원 집중 투...",
+    "url": "https://news.tf.co.kr/read/photomovie/2336541.htm",
+    "date": "20260626",
+    "collected_at": "2026-06-25 23:59:11"
+  },
+  {
+    "keyword": "미수용",
+    "source": "mt",
+    "title": "[문답]정은경 장관 \"지역·필수의료에 3.6조 투입…환자 본인부담 차등...",
+    "url": "https://www.mt.co.kr/thebio/2026/06/26/2026062514105781579",
+    "date": "20260626",
+    "collected_at": "2026-06-25 23:59:11"
+  },
+  {
+    "keyword": "모자보건",
+    "source": "yonhapnewstv",
+    "title": "응급 수술·지역 등 필수의료 수가 상향",
+    "url": "http://www.yonhapnewstv.co.kr/news/AKR202606251512515bK",
+    "date": "20260626",
+    "collected_at": "2026-06-26 00:00:46"
+  },
+  {
+    "keyword": "모자보건",
+    "source": "viva100",
+    "title": "역대 최대 수가 혁신… 지역·필수의료 강화에 건보 재정 3.6조 투입",
+    "url": "https://www.viva100.com/article/20260625500682",
+    "date": "20260626",
+    "collected_at": "2026-06-26 00:00:46"
+  },
+  {
+    "keyword": "모자보건",
+    "source": "newscammp",
+    "title": "CT·MRI·검사비 줄이고 필수의료에 재투자…건보 지출 구조 전면 개편",
+    "url": "https://www.newscammp.co.kr/news/articleView.html?idxno=6462",
+    "date": "20260626",
+    "collected_at": "2026-06-26 00:00:42"
+  },
+  {
+    "keyword": "모자보건",
+    "source": "m-economynews",
+    "title": "정은경 “건보 수가체계 25년 만에 대수술”…지역·필수의료에 연 3.6조...",
+    "url": "https://www.m-economynews.com/news/article.html?no=68172",
+    "date": "20260626",
+    "collected_at": "2026-06-26 00:00:46"
+  },
+  {
+    "keyword": "모자보건",
+    "source": "kyeonggi",
+    "title": "정부, 연 3조6천억원 들여 지역·필수의료 강화",
+    "url": "https://www.kyeonggi.com/article/20260625580403",
+    "date": "20260626",
+    "collected_at": "2026-06-26 00:00:39"
+  },
+  {
+    "keyword": "공소제한",
+    "source": "yna",
+    "title": "공소청·중수청 D-100…법무연수원·형정원, 형사사법포럼 개최",
+    "url": "https://www.yna.co.kr/view/AKR20260625100500004?input=1195m",
+    "date": "20260626",
+    "collected_at": "2026-06-26 00:03:05"
+  },
+  {
+    "keyword": "공소제한",
+    "source": "newsis",
+    "title": "'공소청·중수청' 출범 3개월 앞…\"수사 단계부터 '검·경 협업' 필수\"",
+    "url": "https://www.newsis.com/view/NISX20260625_0003683367",
+    "date": "20260626",
+    "collected_at": "2026-06-26 00:03:05"
+  },
+  {
+    "keyword": "필수의료",
+    "source": "뉴스1",
+    "title": "지역·필수의료 수가 年3.6조 인상…환자부담은 안 는다(종합)",
+    "url": "https://www.news1.kr/bio/welfare-medical/6208116",
+    "date": "2026-06-26",
+    "collected_at": "2026-06-26 00:05:19"
+  }
+]
