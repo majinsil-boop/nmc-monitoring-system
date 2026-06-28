@@ -1,0 +1,386 @@
+[
+  {
+    "keyword": "형사특례",
+    "source": "donga",
+    "title": "[광화문에서/강경석]“검찰 공소권 남용” 판결로 수사기관 악습 끊어야",
+    "url": "https://www.donga.com/news/Opinion/article/all/20260628/134197972/2",
+    "date": "20260629",
+    "collected_at": "2026-06-28 23:48:05"
+  },
+  {
+    "keyword": "필수의료",
+    "source": "news1",
+    "title": "검사비 깎아 필수의료 지원?…\"일차의료 외면\",\"질 관리 우려\"",
+    "url": "https://www.news1.kr/bio/welfare-medical/6209879",
+    "date": "20260629",
+    "collected_at": "2026-06-28 23:45:54"
+  },
+  {
+    "keyword": "중증응급",
+    "source": "shinailbo",
+    "title": "울진군의료원, 한울원전 지원사업 4건 선정…응급이송·간병비 등 지원...",
+    "url": "https://www.shinailbo.co.kr/news/articleView.html?idxno=5034887",
+    "date": "20260629",
+    "collected_at": "2026-06-28 23:44:29"
+  },
+  {
+    "keyword": "중증외상",
+    "source": "kukinews",
+    "title": "복지부, 지역·필수의료 전담조직 7월 신설…분만·신생아·소아정책과...",
+    "url": "https://www.kukinews.com/article/view/kuk202606280017",
+    "date": "20260629",
+    "collected_at": "2026-06-28 23:43:54"
+  },
+  {
+    "keyword": "중증외상",
+    "source": "idjnews",
+    "title": "당진시, 소아 응급환자 민간구급차 이송비, 전액 지원",
+    "url": "https://www.idjnews.kr/news/articleView.html?idxno=301325",
+    "date": "20260629",
+    "collected_at": "2026-06-28 23:43:57"
+  },
+  {
+    "keyword": "중증외상",
+    "source": "gnnews",
+    "title": "경상국립대병원, 구급대원 중증응급 교육 실시",
+    "url": "https://www.gnnews.co.kr/news/articleView.html?idxno=639918",
+    "date": "20260629",
+    "collected_at": "2026-06-28 23:43:51"
+  },
+  {
+    "keyword": "중증외상",
+    "source": "gndomin",
+    "title": "경상국립대병원 '2026년 제2차 중증응급 교육' 실시",
+    "url": "http://www.gndomin.com/news/articleView.html?idxno=480183",
+    "date": "20260629",
+    "collected_at": "2026-06-28 23:43:51"
+  },
+  {
+    "keyword": "중앙응급의료센터",
+    "source": "fpn119",
+    "title": "인천중부소방서, 가천대 응급구조학과 학생 119구급차 동승 실습 운영",
+    "url": "http://fpn119.co.kr/253042",
+    "date": "20260629",
+    "collected_at": "2026-06-28 23:45:22"
+  },
+  {
+    "keyword": "입증책임",
+    "source": "법률신문",
+    "title": "[법조광장] 수사·기소 분리 시대의 수사책임과 공소청 검사의 역할",
+    "url": "https://www.lawtimes.co.kr/news/articleView.html?idxno=222534",
+    "date": "20260629",
+    "collected_at": "2026-06-28 23:50:43"
+  },
+  {
+    "keyword": "입증책임",
+    "source": "dailian",
+    "title": "'명태균'으로 쌓은 특검 공소…결국 남은 것은 증거의 무게 [기자수첩]",
+    "url": "https://www.dailian.co.kr/news/view/1660434/?sc=Naver",
+    "date": "20260629",
+    "collected_at": "2026-06-28 23:48:40"
+  },
+  {
+    "keyword": "이송 지연",
+    "source": "kmib",
+    "title": "요양시설-응급의료기관 ‘응급 이송 정보’ 연계 추진",
+    "url": "https://www.kmib.co.kr/article/view.asp?arcid=0030025021&code=61171911&cp=nv",
+    "date": "20260629",
+    "collected_at": "2026-06-28 23:47:15"
+  },
+  {
+    "keyword": "응급이송",
+    "source": "gndomin",
+    "title": "마산소방서 '119구급차·감염관리실 오염실태조사' 실시",
+    "url": "http://www.gndomin.com/news/articleView.html?idxno=480189",
+    "date": "20260629",
+    "collected_at": "2026-06-28 23:46:43"
+  },
+  {
+    "keyword": "응급의료법",
+    "source": "breaknews",
+    "title": "영월의료원, “지역완결형 필수의료 촘촘히 짠다”… 원외대표 협의체...",
+    "url": "http://www.breaknews.com/1217077",
+    "date": "20260629",
+    "collected_at": "2026-06-28 23:47:39"
+  },
+  {
+    "keyword": "응급의료 취약지역",
+    "source": "shinailbo",
+    "title": "영월의료원, 지역·필수의료 협력회의 개최…공공의료 안전망 강화 논의",
+    "url": "https://www.shinailbo.co.kr/news/articleView.html?idxno=5034537",
+    "date": "20260629",
+    "collected_at": "2026-06-28 23:44:46"
+  },
+  {
+    "keyword": "응급의료 취약지역",
+    "source": "newspicom",
+    "title": "신용한 \"도민 생명·안전 최우선\"…농촌 응급이송체계 전면 강화",
+    "url": "https://www.newspim.com/news/view/20260626000767",
+    "date": "20260629",
+    "collected_at": "2026-06-28 23:44:39"
+  },
+  {
+    "keyword": "응급의료 취약지역",
+    "source": "kyeongin",
+    "title": "추미애, 27일 道의료원 이천병원 방문… 필수의료 공백 해소 방안 논의",
+    "url": "https://www.kyeongin.com/article/1766257",
+    "date": "20260629",
+    "collected_at": "2026-06-28 23:44:39"
+  },
+  {
+    "keyword": "응급의료 취약지역",
+    "source": "kyeonggi",
+    "title": "추미애 경기도지사 당선인, ‘경기도형 필수의료 안심체계’ 확산 논의...",
+    "url": "https://www.kyeonggi.com/article/20260626580247",
+    "date": "20260629",
+    "collected_at": "2026-06-28 23:44:39"
+  },
+  {
+    "keyword": "응급의료 취약지역",
+    "source": "korea",
+    "title": "지역·필수의료 보상 대폭 늘린다…건강보험 수가체계 전면 개편",
+    "url": "https://www.korea.kr/news/policyNewsView.do?newsId=148967170&call_from=naver_news",
+    "date": "20260629",
+    "collected_at": "2026-06-28 23:44:42"
+  },
+  {
+    "keyword": "응급의료 취약지역",
+    "source": "jeonmae",
+    "title": "추미애, 경기도의료원 이천병원 방문… 경기도형 필수의료 체계 점검",
+    "url": "https://www.jeonmae.co.kr/news/articleView.html?idxno=1269107",
+    "date": "20260629",
+    "collected_at": "2026-06-28 23:44:42"
+  },
+  {
+    "keyword": "응급의료 취약지역",
+    "source": "incheonilbo",
+    "title": "추미애 인수위, 이천병원서 필수의료 점검…경기도형 공공의료체계 모...",
+    "url": "https://www.incheonilbo.com/news/articleView.html?idxno=1325980",
+    "date": "20260629",
+    "collected_at": "2026-06-28 23:44:42"
+  },
+  {
+    "keyword": "응급의료 취약지역",
+    "source": "imnews",
+    "title": "건강보험 수가 대수술‥'필수의료' 지원 확대",
+    "url": "https://imnews.imbc.com/replay/2026/nwtoday/article/6833034_37012.html",
+    "date": "20260629",
+    "collected_at": "2026-06-28 23:44:46"
+  },
+  {
+    "keyword": "응급의료 취약지역",
+    "source": "enewstoday",
+    "title": "추미애 당선인, 의료취약지 이천서 필수의료 안심체계 시동",
+    "url": "http://www.enewstoday.co.kr/news/articleView.html?idxno=2443007",
+    "date": "20260629",
+    "collected_at": "2026-06-28 23:44:36"
+  },
+  {
+    "keyword": "응급의료 취약지역",
+    "source": "econonews",
+    "title": "추미애 당선인, 27일 경기도의료원 이천병원 방문...필수의료체계 시동",
+    "url": "http://www.econonews.co.kr/news/articleView.html?idxno=440239",
+    "date": "20260629",
+    "collected_at": "2026-06-28 23:44:39"
+  },
+  {
+    "keyword": "응급의료 취약지역",
+    "source": "doctorstimes",
+    "title": "정부, 건강보험 수가 구조 전면 개편···지역·필수의료에 연 3조6000억...",
+    "url": "http://www.doctorstimes.com/news/articleView.html?idxno=238774",
+    "date": "20260629",
+    "collected_at": "2026-06-28 23:44:46"
+  },
+  {
+    "keyword": "응급의료 취약지역",
+    "source": "cctoday",
+    "title": "[사설] 건보수가 대개편, 지역·필수의료 강화 전환점 돼야",
+    "url": "https://www.cctoday.co.kr/news/articleView.html?idxno=2232219",
+    "date": "20260629",
+    "collected_at": "2026-06-28 23:44:46"
+  },
+  {
+    "keyword": "응급의료 취약지역",
+    "source": "beyondpost",
+    "title": "추미애, '현장'에서 민선9기 밑그림…필수의료·농정혁신·경기북부 대...",
+    "url": "http://www.beyondpost.co.kr/view.php?ud=2026062617084960784c878f8fa1_30",
+    "date": "20260629",
+    "collected_at": "2026-06-28 23:44:39"
+  },
+  {
+    "keyword": "응급의료 취약지역",
+    "source": "asiatoday",
+    "title": "민선 9기 경기준비위, 이천병원 찾는다…‘지역 완결형 필수의료’ 확산...",
+    "url": "https://www.asiatoday.co.kr/kn/view.php?key=20260626010009443",
+    "date": "20260629",
+    "collected_at": "2026-06-28 23:44:39"
+  },
+  {
+    "keyword": "응급의료 취약지역",
+    "source": "akomnews",
+    "title": "지역·필수의료에 연 3.6조 투입…일부 과잉 검사 억제",
+    "url": "https://www.akomnews.com/bbs/board.php?bo_table=news&wr_id=67575",
+    "date": "20260629",
+    "collected_at": "2026-06-28 23:44:42"
+  },
+  {
+    "keyword": "응급의료 취약지역",
+    "source": "ajunews",
+    "title": "추미애 경기준비위, 이천병원 찾아 필수의료 안심체계 점검",
+    "url": "https://www.ajunews.com/view/20260626153911508",
+    "date": "20260629",
+    "collected_at": "2026-06-28 23:44:39"
+  },
+  {
+    "keyword": "응급의료",
+    "source": "kwnews",
+    "title": "영월의료원, 영월·정선·평창과 지역완결형 필수의료 협력 본격화",
+    "url": "https://www.kwnews.co.kr/article/20260626500328",
+    "date": "20260629",
+    "collected_at": "2026-06-28 23:43:21"
+  },
+  {
+    "keyword": "응급의료",
+    "source": "idaegu",
+    "title": "[의료칼럼]히포크라테스 선서의 오해와 필수의료 위기",
+    "url": "https://www.idaegu.co.kr/news/articleView.html?idxno=552274",
+    "date": "20260629",
+    "collected_at": "2026-06-28 23:43:24"
+  },
+  {
+    "keyword": "응급의료",
+    "source": "doctorsnews",
+    "title": "[기획]필수의료 살리기 첫발 뗀 '의료분쟁조정법', 사법리스크 해소 기...",
+    "url": "http://www.doctorsnews.co.kr/news/articleView.html?idxno=165097",
+    "date": "20260629",
+    "collected_at": "2026-06-28 23:43:12"
+  },
+  {
+    "keyword": "응급의료",
+    "source": "dailymedi",
+    "title": "서울의료원 \"요양기관-응급의료기관 이송 정보 연계\"",
+    "url": "https://www.dailymedi.com/news/news_view.php?wr_id=937725",
+    "date": "20260629",
+    "collected_at": "2026-06-28 23:43:15"
+  },
+  {
+    "keyword": "응급실 뺑뺑이",
+    "source": "tjmbc",
+    "title": "'응급실 뺑뺑이' 고위험 산모, 건양대병원서 무사히 분만",
+    "url": "https://tjmbc.co.kr/NewsArticle/847823",
+    "date": "20260629",
+    "collected_at": "2026-06-28 23:44:11"
+  },
+  {
+    "keyword": "응급실 뺑뺑이",
+    "source": "seoul",
+    "title": "지역·필수의료에 3.6조 투입… MRI·CT 등 수가 깎는다",
+    "url": "https://www.seoul.co.kr/news/society/health-medical/2026/06/26/20260626006008?wlog_tag3=naver",
+    "date": "20260629",
+    "collected_at": "2026-06-28 23:44:11"
+  },
+  {
+    "keyword": "응급실 뺑뺑이",
+    "source": "nongmin",
+    "title": "응급실 뺑뺑이 3개월간 ‘제로’…호남 이송체계 혁신 ‘효과’",
+    "url": "https://www.nongmin.com/article/20260624500589",
+    "date": "20260629",
+    "collected_at": "2026-06-28 23:44:11"
+  },
+  {
+    "keyword": "응급실 뺑뺑이",
+    "source": "etoday",
+    "title": "'응급실 뺑뺑이' 사망...민사와 형사 결론이 다른 이유는? [수사와 재판...",
+    "url": "https://www.etoday.co.kr/news/view/2597743",
+    "date": "20260629",
+    "collected_at": "2026-06-28 23:44:08"
+  },
+  {
+    "keyword": "응급실",
+    "source": "yeongnacom",
+    "title": "대구 응급실 ‘뺑뺑이’ 뒤엔 2차 병원 의사 구인난 있었다",
+    "url": "https://www.yeongnam.com/web/view.php?key=20260628029132510",
+    "date": "20260629",
+    "collected_at": "2026-06-28 23:43:41"
+  },
+  {
+    "keyword": "응급실",
+    "source": "biz",
+    "title": "“살인폭염에 응급실 마비”…프랑스 초강수 결단 ‘이것’마저 막았다...",
+    "url": "https://biz.heraldcorp.com/article/10790297?ref=naver",
+    "date": "20260629",
+    "collected_at": "2026-06-28 23:43:47"
+  },
+  {
+    "keyword": "상급종합병원",
+    "source": "jeollailbo",
+    "title": "정부 수가구조 개편에… 지역 의료현장은 \"필수의료 인력 양성 병행돼야...",
+    "url": "http://www.jeollailbo.com/news/articleView.html?idxno=803836",
+    "date": "20260629",
+    "collected_at": "2026-06-28 23:45:09"
+  },
+  {
+    "keyword": "보건복지위",
+    "source": "newsis",
+    "title": "광주 민주인권평화국 상임위, 보건복지위→행정소방위 변경",
+    "url": "https://www.newsis.com/view/NISX20260626_0003685494",
+    "date": "20260629",
+    "collected_at": "2026-06-28 23:48:53"
+  },
+  {
+    "keyword": "보건복지위",
+    "source": "dailypharcom",
+    "title": "여야, 후반기 국회 원 구성 대치…보건복지위도 미지수",
+    "url": "https://www.dailypharm.com/user/news/339864?REFERER=NP",
+    "date": "20260629",
+    "collected_at": "2026-06-28 23:48:53"
+  },
+  {
+    "keyword": "모자보건",
+    "source": "zdnet",
+    "title": "지역·필수의료에 연 3조6천억원 건강보험 투입",
+    "url": "https://zdnet.co.kr/view/?no=20260626111246",
+    "date": "20260629",
+    "collected_at": "2026-06-28 23:46:17"
+  },
+  {
+    "keyword": "모자보건",
+    "source": "4th",
+    "title": "의료분쟁 늘자 병원 책임보험 수요 부각…KB손보, 의료기관 단체보험 확...",
+    "url": "http://www.4th.kr/news/articleView.html?idxno=2113754",
+    "date": "20260629",
+    "collected_at": "2026-06-28 23:46:14"
+  },
+  {
+    "keyword": "공소제한",
+    "source": "news1",
+    "title": "[단독]檢보완수사권 폐지·공소제기도 '심의회' 통제…구속기간 30→21일...",
+    "url": "https://www.news1.kr/society/court-prosecution/6209658",
+    "date": "20260629",
+    "collected_at": "2026-06-28 23:48:27"
+  },
+  {
+    "keyword": "고위험산모",
+    "source": "medicalworldnews",
+    "title": "의료혁신위, 산모 등록제·5극 중증센터 확충 등 모자의료 전면 개편 권...",
+    "url": "https://medicalworldnews.co.kr/news/view.php?idx=1510975526",
+    "date": "20260629",
+    "collected_at": "2026-06-28 23:46:59"
+  },
+  {
+    "keyword": "고위험산모",
+    "source": "docdocdoc",
+    "title": "의료혁신위 '기본의료 국가책임' 제안…간호간병·모자의료 개편",
+    "url": "http://www.docdocdoc.co.kr/news/articleView.html?idxno=3040380",
+    "date": "20260629",
+    "collected_at": "2026-06-28 23:47:02"
+  },
+  {
+    "keyword": "고위험산모",
+    "source": "chosun",
+    "title": "CT·MRI 과잉 검사 줄여… 필수의료에 3조6000억 투입",
+    "url": "https://www.chosun.com/national/welfare-medical/2026/06/26/74FWQV76NFG3NHCXWTSXDNXJZ4/?utm_source=naver&utm_medium=referral&utm_campaign=naver-news",
+    "date": "20260629",
+    "collected_at": "2026-06-28 23:47:02"
+  }
+]
