@@ -1,0 +1,22 @@
+[
+  {
+    "title": "소위원회",
+    "date": "2026-09-15",
+    "is_upcoming": true,
+    "event_type": "소위원회",
+    "topic_keyword": "",
+    "url": "https://health.na.go.kr/cmmit/schl/cmitSchl/schlList.do?menuNo=2000048&fromDate=20260915&toDate=20260915",
+    "source": "달력/일정목록",
+    "collected_at": "2026-09-13 00:10:17"
+  },
+  {
+    "title": "소위원회",
+    "date": "2026-09-16",
+    "is_upcoming": true,
+    "event_type": "소위원회",
+    "topic_keyword": "",
+    "url": "https://health.na.go.kr/cmmit/schl/cmitSchl/schlList.do?menuNo=2000048&fromDate=20260916&toDate=20260916",
+    "source": "달력/일정목록",
+    "collected_at": "2026-09-13 00:10:17"
+  }
+]
