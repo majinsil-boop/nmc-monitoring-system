@@ -1,0 +1,40 @@
+[
+  {
+    "bill_no": "2221919",
+    "bill_name": "의료법 일부개정법률안 (소병훈의원 등 10인) (새창 열림)",
+    "proposer": "의원",
+    "proposed_date": "2026-10-16",
+    "vote_date": "",
+    "status": "소관위접수",
+    "url": "https://likms.assembly.go.kr/bill/bi/billDetailPage.do?billId=PRC_R2Q6Q0O9P1O8O1K4I4J3H0I5G1H1P2",
+    "keyword": "의료법",
+    "status_changed_date": "2026-10-19",
+    "legislative_notice": "입법예고중(2026-10-19 ~ 2026-10-28)",
+    "committee": "보건복지위원회",
+    "summary": "",
+    "prev_status": "",
+    "status_change_label": "",
+    "status_changed": false,
+    "is_key_member": false,
+    "priority_mark": ""
+  },
+  {
+    "bill_no": "2221891",
+    "bill_name": "응급의료에 관한 법률 일부개정법률안 (송영길의원 등 11인) (새창 열림)",
+    "proposer": "의원",
+    "proposed_date": "2026-10-14",
+    "vote_date": "",
+    "status": "소관위접수",
+    "url": "https://likms.assembly.go.kr/bill/bi/billDetailPage.do?billId=PRC_E37FE80B84E64084BABD8E9EB5F802",
+    "keyword": "응급의료",
+    "status_changed_date": "2026-10-16",
+    "legislative_notice": "입법예고중(2026-10-16 ~ 2026-10-25)",
+    "committee": "보건복지위원회",
+    "summary": "",
+    "prev_status": "",
+    "status_change_label": "",
+    "status_changed": false,
+    "is_key_member": false,
+    "priority_mark": ""
+  }
+]
