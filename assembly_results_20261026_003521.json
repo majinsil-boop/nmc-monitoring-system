@@ -1,0 +1,21 @@
+[
+  {
+    "bill_no": "2221919",
+    "bill_name": "의료법 일부개정법률안 (소병훈의원 등 10인) (새창 열림)",
+    "proposer": "의원",
+    "proposed_date": "2026-10-16",
+    "vote_date": "",
+    "status": "소관위접수",
+    "url": "https://likms.assembly.go.kr/bill/bi/billDetailPage.do?billId=PRC_R2Q6Q0O9P1O8O1K4I4J3H0I5G1H1P2",
+    "keyword": "의료법",
+    "status_changed_date": "2026-10-19",
+    "legislative_notice": "입법예고중(2026-10-19 ~ 2026-10-28)",
+    "committee": "보건복지위원회",
+    "summary": "및 주요내용 제안이유 및 주요내용 「의료법」은 환자의 의무기록을 다른 사람이 확인할 수 없도록 엄격히 제한하면서 확인 가능한 예외사유를 한정적으로 열거하고 있음. 그런데 「장기등 이식에 관한 법률」 및 「인체조직안전 및 관리 등에 관한 법률」은 장기구득기관 또는 조직기증지원기관에서 뇌사추정자ㆍ뇌사판정대상자 또는 잠재적 조직기증자의 의무기록을 열람할 수 있도",
+    "prev_status": "",
+    "status_change_label": "",
+    "status_changed": false,
+    "is_key_member": false,
+    "priority_mark": ""
+  }
+]
