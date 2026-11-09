@@ -1,0 +1,40 @@
+[
+  {
+    "bill_no": "2222363",
+    "bill_name": "의료사고 피해구제 및 의료분쟁 조정 등에 관한 법률 일부개정법률안 (이소희의원 등 12인) (새창 열림)",
+    "proposer": "의원",
+    "proposed_date": "2026-11-02",
+    "vote_date": "",
+    "status": "소관위접수",
+    "url": "https://likms.assembly.go.kr/bill/bi/billDetailPage.do?billId=PRC_05C21C79DDEF489ABF677F6AA6B937",
+    "keyword": "의료",
+    "status_changed_date": "2026-11-04",
+    "legislative_notice": "입법예고중(2026-11-04 ~ 2026-11-13)",
+    "committee": "보건복지위원회",
+    "summary": "",
+    "prev_status": "",
+    "status_change_label": "",
+    "status_changed": false,
+    "is_key_member": false,
+    "priority_mark": ""
+  },
+  {
+    "bill_no": "2222329",
+    "bill_name": "의료법 일부개정법률안 (정부) (새창 열림)",
+    "proposer": "정부",
+    "proposed_date": "2026-10-30",
+    "vote_date": "",
+    "status": "소관위접수",
+    "url": "https://likms.assembly.go.kr/bill/bi/billDetailPage.do?billId=PRC_A43D9B12395E4A5BB0662F76D038FB",
+    "keyword": "의료법",
+    "status_changed_date": "2026-11-02",
+    "legislative_notice": "입법예고중(2026-11-02 ~ 2026-11-11)",
+    "committee": "보건복지위원회",
+    "summary": "",
+    "prev_status": "",
+    "status_change_label": "",
+    "status_changed": false,
+    "is_key_member": false,
+    "priority_mark": ""
+  }
+]
