@@ -1,0 +1,32 @@
+[
+  {
+    "title": "소아 응급·중환자 진료체계 지원 확대 방안 토론회",
+    "date": "2026-11-23",
+    "is_upcoming": true,
+    "event_type": "토론회",
+    "topic_keyword": "응급",
+    "url": "https://ampos.nanet.go.kr:7443/seminarList.do#fromDate=20261123&endDate=20261123&searchGubun=search",
+    "source": "국회도서관/세미나",
+    "collected_at": "2026-11-22 02:32:34"
+  },
+  {
+    "title": "소위원회",
+    "date": "2026-11-24",
+    "is_upcoming": true,
+    "event_type": "소위원회",
+    "topic_keyword": "",
+    "url": "https://health.na.go.kr/cmmit/schl/cmitSchl/schlList.do?menuNo=2000048&fromDate=20261124&toDate=20261124",
+    "source": "달력/일정목록",
+    "collected_at": "2026-11-22 02:32:26"
+  },
+  {
+    "title": "소위원회",
+    "date": "2026-11-25",
+    "is_upcoming": true,
+    "event_type": "소위원회",
+    "topic_keyword": "",
+    "url": "https://health.na.go.kr/cmmit/schl/cmitSchl/schlList.do?menuNo=2000048&fromDate=20261125&toDate=20261125",
+    "source": "달력/일정목록",
+    "collected_at": "2026-11-22 02:32:26"
+  }
+]
